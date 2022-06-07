@@ -1,0 +1,103 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class Player : MonoBehaviour
+{
+    public event UnityAction<int> OnLevelChange;
+    public event UnityAction<int> OnEnergyChange;
+
+    [SerializeField] private Inventory _inventory;
+
+    [SerializeField] private AttackDeck _attackDeck;
+
+    [SerializeField] private int _maxHealth;
+    private int _health;
+
+    private int _level = 1;
+    private int _energy = 25;
+    private int _exp;
+
+    private int _amountCardBaseAttack;
+    private int _amountCardBaseDef;
+
+    public float MaxHealth => _maxHealth;
+    public float Health => _health;
+
+    public float MaxExp => _level * 100;
+    public float Exp => _exp;
+
+    public int Energy => _energy;
+
+    public int Attack => _amountCardBaseAttack;
+    public int Def => _amountCardBaseDef;
+
+    public List<CardCellInDeck> AttackCards => _attackDeck.CardsInDeck;
+    
+    private void Start()
+    {
+        _health = _maxHealth;
+    }
+
+    private void OnEnable()
+    {
+        _attackDeck.OnCardChanged += (List<CardCellInDeck> cardInDeck) =>
+        {
+            _amountCardBaseAttack = 0;
+
+            foreach (var item in cardInDeck)
+                _amountCardBaseAttack += item.Attack;
+        };
+
+        _inventory.OnReestablishEnergy += () =>
+        {
+            _energy = 25;
+            OnEnergyChange?.Invoke(_energy);
+        };
+    }
+
+    public void SpendEnergy(int energy)
+    {
+        if (energy > _energy)
+            throw new System.ArgumentOutOfRangeException();
+
+        _energy -= energy;
+
+        OnEnergyChange?.Invoke(_energy);
+    }
+
+    public void TakeDamage(int amountDamage)
+    {
+        if (amountDamage < 0)
+            throw new System.ArgumentException();
+
+        _health -= amountDamage;
+        CheakAlive();
+    }
+
+    public void GetExp(int exp)
+    {
+        _exp += exp;
+        CheckLevelUp();
+    }
+
+    private void CheakAlive()
+    {
+        if (_health <= 0)
+        {
+            _health = 0;
+            Debug.Log("You Dead");
+        }
+    }
+
+    private void CheckLevelUp()
+    {
+        if (_exp >= MaxExp)
+        {
+            _level++;
+            _exp = 0;
+            OnLevelChange?.Invoke(_level);
+        }
+    }
+}

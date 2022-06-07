@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
+  m_Name: Devil Card
+  m_EditorClassIdentifier: 
+  _image: {fileID: 21300000, guid: 70fe59a9baad741489e6744a967b26c8, type: 3}
+  _name: Devil
+  _rarity: 1
+  _race: 2
+  _attack: 7
+  _def: 5
+  _attackSillName: dev
+  _attackSkill: 4
+  _defSkillName: ved
+  _defSkill: 1
+  _skillChance: 0.3
+  _discription: devil option
+  _roulette: {fileID: 1608309579893797357, guid: 6d33e6e59a629c846be05ed61d9b8400, type: 3}
