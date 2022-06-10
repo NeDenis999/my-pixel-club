@@ -5,14 +5,13 @@ using UnityEngine;
 public class CristalWallet : Wallet
 {
     [SerializeField] private Shop _shop;
-    [SerializeField] private RouletteArrow _rouletteArrow;
 
     private void Start()
     {
-        _shop.OnCristalBuy += Add製rrency;
-        _farm.OnAcceruCristal += Add製rrency;
-        _questPrizeWindow.OnAcceruCristal += Add製rrency;
-        _roulette.OnReceivedCristal += Add製rrency;
-        _rouletteArrow.OnBuyRouletteSpin += Withdraw製rrency;
+        _shop.OnCristalBuy += Add小urrency;
+        _farm.OnAcceruCristal += Add小urrency;
+        _questPrizeWindow.OnAcceruCristal += Add小urrency;
+        _roulette.OnReceivedCristal += Add小urrency;
+        _roulette.OnBuyRouletteSpin += Withdraw小urrency;
     }   
 }

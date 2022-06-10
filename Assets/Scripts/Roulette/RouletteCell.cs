@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,30 @@ public class RouletteCell : MonoBehaviour
 
     [SerializeField] private ScriptableObject _rouletteItem;
 
+    [SerializeField] private Image _image;
+    
     public IRoulette RouletteItem => _rouletteItem as IRoulette;
 
     private void OnEnable()
     {
         Render(_rouletteItem as IRoulette);
+    }
+
+    private void Start()
+    {
+        Unselect();
+    }
+
+    public void Select()
+    {
+        //_image.color.SetAlpha(1);
+        _image.color = new Color(1, 1, 1, 1);
+    }
+
+    public void Unselect()
+    {
+        //_image.color.SetAlpha(0.75f);
+        _image.color = new Color(0.5f, 0.5f, 0.5f,1);
     }
 
     private void Render(IRoulette item)

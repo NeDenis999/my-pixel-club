@@ -18,21 +18,21 @@ public abstract class Wallet : MonoBehaviour
         _textMoney.text = _amountMoney.ToString();
     }
 
-    protected void Withdraw製rrency(int money)
+    protected void Withdraw小urrency(int money)
     {
         if (money > _amountMoney)
             throw new InvalidOperationException();
         _amountMoney -= money;
-        Update製rrencyText();
+        Update小urrencyText();
     }
 
-    protected void Add製rrency(int countMoney)
+    protected void Add小urrency(int countMoney)
     {
         _amountMoney += countMoney;
-        Update製rrencyText();
+        Update小urrencyText();
     }
 
-    private void Update製rrencyText()
+    private void Update小urrencyText()
     {
         _textMoney.text = _amountMoney.ToString();
     }

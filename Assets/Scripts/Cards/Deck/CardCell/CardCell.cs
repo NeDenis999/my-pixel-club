@@ -13,15 +13,18 @@ public abstract class CardCell : MonoBehaviour, ICard
 
     private int _attack;
     private int _def;
+    private int _health;
     private int _level;
 
     private int _attackSkill;
    
     public int Attack => _attack;
     public int Def => _def;
+    public int Health => _health;
     public int Level => _level;
 
     public int BonusAttackSkill => _attackSkill;
+    public void TakeDamage(int damage) => _health -= damage;
 
     virtual public Card Card => _card;
 
