@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cards.Card;
 using Cards.Deck.CardCell;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,7 +24,7 @@ namespace Battle
         private BattleAnimator _battleAnimator;
         
         private List<Card> _enemyDefCards = new();
-
+        private CardAnimator[] _enemyCardAnimators;
         private int _baseEnemyDefValue;
 
         private int _countPlayerAliveCards() => PlayerAliveCards().Count;
@@ -48,7 +49,7 @@ namespace Battle
         public IEnumerator StartFight()
         {
             gameObject.SetActive(true);
-            yield return StartCoroutine(_battleAnimator.AppearanceCards());
+            yield return StartCoroutine(_battleAnimator.AppearanceCards(_enemyCardAnimators));
             StartCoroutine(Fight());
         }
 
@@ -57,10 +58,13 @@ namespace Battle
             foreach (Transform item in _container)
                 Destroy(item.gameObject);
 
+            _enemyCardAnimators = new CardAnimator[_enemyDefCards.Count];
+            
             for (int i = 0; i < _enemyDefCards.Count; i++)
             {
                 var card = Instantiate(_enemyDefCardImage, _container);
                 card.sprite = _enemyDefCards[i].UIIcon;
+                _enemyCardAnimators[i] = card.GetComponent<CardAnimator>();
             }
         }
 
