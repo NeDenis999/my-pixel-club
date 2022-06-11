@@ -12,6 +12,6 @@ public class GoldWallet : Wallet
         _confirmWindow.OnWithdrawMoney += WithdrawСurrency;
         _farm.OnAcceruGold += AddСurrency;
         _questPrizeWindow.OnAcceruGold += AddСurrency;
-        rouletteScreen.OnReceivedGold += AddСurrency;
+        roulettePage.OnReceivedGold += AddСurrency;
     }    
 }

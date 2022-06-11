@@ -10,7 +10,7 @@ public abstract class Wallet : MonoBehaviour
 
     [SerializeField] protected Farm _farm;
     [SerializeField] protected QuestPrizeWindow _questPrizeWindow;
-    [SerializeField] protected RouletteScreen rouletteScreen;
+    [SerializeField] protected RoulettePage roulettePage;
 
     public int AmountMoney => _amountMoney;
 

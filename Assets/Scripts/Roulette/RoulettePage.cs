@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Roulette
 {
-    public class RouletteScreen : MonoBehaviour
+    public class RoulettePage : MonoBehaviour
     {
         public event UnityAction<Card[]> OnReceivedCard;
         public event UnityAction<int> OnReceivedCristal;

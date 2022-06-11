@@ -41,7 +41,7 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     [SerializeField] private string _discription;
 
-    [SerializeField] private RouletteScreen rouletteScreen;
+    [SerializeField] private RoulettePage roulettePage;
 
     public Sprite UIIcon => _image;
     public string Name => _name;
@@ -71,6 +71,6 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     public void TakeItem()
     {
-        rouletteScreen.ReceiveCard(this);
+        roulettePage.ReceiveCard(this);
     }
 }

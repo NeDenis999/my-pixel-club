@@ -1,7 +1,10 @@
-public  class AttackDeck : Deck
+namespace Collection
 {
-    private void Awake()
+    public  class AttackDeck : Deck
     {
-        _deckType = AtackOrDefCardType.Atack;
+        private void Awake()
+        {
+            _deckType = AtackOrDefCardType.Atack;
+        }
     }
 }

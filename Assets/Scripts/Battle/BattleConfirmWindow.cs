@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Battle;
 using TMPro;
 using UnityEngine;
 
 public class BattleConfirmWindow : MonoBehaviour
 {
-    [SerializeField] private Battle _battle;
+    [SerializeField] private BattleController _battle;
 
     [SerializeField] private Player _player;
 
@@ -29,7 +30,7 @@ public class BattleConfirmWindow : MonoBehaviour
         {
             _player.SpendEnergy(5);
             _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
-            _battle.StartFight();
+            StartCoroutine(_battle.StartFight());
         }
         else
         {

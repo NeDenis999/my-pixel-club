@@ -1,5 +1,6 @@
 using TMPro;
 using System.Collections.Generic;
+using Battle;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ public class QuestPrizeWindow : MonoBehaviour
     [SerializeField] private Transform _container;
 
     [SerializeField] private QuestFight _quest;
-    [SerializeField] private Battle _battle;
+    [SerializeField] private BattleController _battle;
 
     [SerializeField] private TMP_Text _winOrLoseText;
 

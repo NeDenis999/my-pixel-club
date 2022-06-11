@@ -18,16 +18,16 @@ public class Prize : ScriptableObject, IRoulette
     public int AmountPrize;
     public PrizeType TypePrize;
 
-    [SerializeField] private RouletteScreen rouletteScreen;
+    [SerializeField] private RoulettePage roulettePage;
 
     public Sprite UIIcon => Sprite;
 
     public void TakeItem()
     {
         if (TypePrize == PrizeType.Cristal)
-            rouletteScreen.ReceiveCristal();
+            roulettePage.ReceiveCristal();
 
         if (TypePrize == PrizeType.Gold)
-            rouletteScreen.ReceiveGold();
+            roulettePage.ReceiveGold();
     }
 }

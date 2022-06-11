@@ -1,39 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CardCellInDeck : CardCell
+namespace Cards.Deck.CardCell
 {
-    [SerializeField] private LinkBetweenCardsAndCollections _linkBetweenCardCollectionAndDeck;
-    [SerializeField] private EmptyCardCell _emptyCard;
-    [SerializeField] private AtackOrDefCardType _deckType;
-
-    [SerializeField] private StatisticWindow _statisticCardWindow;
-
-    private void Start()
+    public class CardCellInDeck : global::CardCell
     {
-        var button = GetComponent<Button>();
-        if(button != null)
-            button.onClick.AddListener(OpenCardCollection);
-    }
+        [SerializeField] private LinkBetweenCardsAndCollections _linkBetweenCardCollectionAndDeck;
+        [SerializeField] private EmptyCardCell _emptyCard;
+        [SerializeField] private AtackOrDefCardType _deckType;
 
-    private void OpenCardCollection()
-    {
-        if (Card.Rarity == RarityCard.Epmpty)
+        [SerializeField] private StatisticWindow _statisticCardWindow;
+
+        private void Start()
         {
-            _linkBetweenCardCollectionAndDeck.OpenCardCollection(transform.GetSiblingIndex(), _deckType);
+            var button = GetComponent<Button>();
+            if(button != null)
+                button.onClick.AddListener(OpenCardCollection);
         }
-        else
-        {
-            _statisticCardWindow.gameObject.SetActive(true);
-            _statisticCardWindow.Render(this);
-        }
-    }
 
-    public void ResetComponent()
-    {
-        _linkBetweenCardCollectionAndDeck.RetrieveCard(this, _emptyCard, transform.GetSiblingIndex(), _deckType);
+        private void OpenCardCollection()
+        {
+            if (Card.Rarity == RarityCard.Epmpty)
+            {
+                _linkBetweenCardCollectionAndDeck.OpenCardCollection(transform.GetSiblingIndex(), _deckType);
+            }
+            else
+            {
+                _statisticCardWindow.gameObject.SetActive(true);
+                _statisticCardWindow.Render(this);
+            }
+        }
+
+        public void ResetComponent()
+        {
+            _linkBetweenCardCollectionAndDeck.RetrieveCard(this, _emptyCard, transform.GetSiblingIndex(), _deckType);
+        }
     }
 }

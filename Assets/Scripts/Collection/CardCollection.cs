@@ -13,7 +13,7 @@ public class CardCollection : MonoBehaviour
     [SerializeField] private Transform _container;
 
     [SerializeField] private Shop _shop;
-    [SerializeField] private RouletteScreen rouletteScreen;
+    [SerializeField] private RoulettePage roulettePage;
 
     [SerializeField] private StartGame _startGame;
     [SerializeField] private LinkBetweenCardsAndCollections _linkBetweenCardCollectionAndDeck;
@@ -38,7 +38,7 @@ public class CardCollection : MonoBehaviour
         _linkBetweenCardCollectionAndDeck.OnRetrieveCard += RetrieveCardCell;
 
         _shop.OnCardBuy += AddCard;
-        rouletteScreen.OnReceivedCard += AddCard;
+        roulettePage.OnReceivedCard += AddCard;
 
         _startGame.OnSetStartPackCard += AddCard;
 
