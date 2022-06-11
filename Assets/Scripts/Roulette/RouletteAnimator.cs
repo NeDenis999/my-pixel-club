@@ -8,7 +8,7 @@ namespace Roulette
     public class RouletteAnimator : MonoBehaviour
     {
         [SerializeField]
-        private float _braking = 1.5f;
+        private float _braking;
 
         [SerializeField]
         private CanvasGroup _winningPanel;
@@ -16,42 +16,44 @@ namespace Roulette
         [SerializeField]
         private Transform _target;
 
-        [SerializeField] 
-        private float _startSpeedRotation;
-
-        private float _currentSpeedRotation;
         private Transform _currentParrent;
         private Vector3 _previousCurrentCellPosition;
         private Vector3 _previousCurrentCellScale;
 
         private RouletteCell _currentCell;
 
-        public IEnumerator Spine(int price, RouletteCell[] rouletteCells)
+        public IEnumerator Spine(int prize, RouletteCell[] rouletteCells)
         {
-            _currentCell = rouletteCells[price];
-            _currentSpeedRotation = _startSpeedRotation;
-            
-            var currentCellNumber = 0;
-            var isCirclePassed = false;
+            float rotationSpeed = 0.1f;
 
-            while (price != currentCellNumber || !isCirclePassed)
+            _currentCell = rouletteCells[prize];
+            
+            int currentCellNumber = 0;
+            bool isCirclePassed = false;
+
+            while (prize != currentCellNumber || isCirclePassed == false)
             {
+                rouletteCells[currentCellNumber].Unselect();
+
                 if (currentCellNumber < rouletteCells.Length - 1)
+                {
                     currentCellNumber++;
+                }
                 else
                 {
                     isCirclePassed = true;
                     currentCellNumber = 0;
                 }
 
-                UnselectedAllCells(rouletteCells);
                 rouletteCells[currentCellNumber].Select();
 
-                if (_currentSpeedRotation < _braking && isCirclePassed)
-                    _currentSpeedRotation *= 1.2f;
+                if (rotationSpeed < _braking && isCirclePassed)
+                    rotationSpeed *= 1.2f;
 
-                yield return new WaitForSeconds(_currentSpeedRotation);
+                yield return new WaitForSeconds(rotationSpeed);
             }
+
+
             
             _currentParrent = _currentCell.transform.parent;
 
@@ -84,12 +86,6 @@ namespace Roulette
             _currentCell.transform.DOLocalMove(_previousCurrentCellPosition, 0.75f);
             yield return new WaitForSeconds(0.75f);
             startRoletteButton.interactable = true;
-        }
-
-        private void UnselectedAllCells(RouletteCell[] rouletteCells)
-        {
-            foreach (var rouletteCell in rouletteCells)
-                rouletteCell.Unselect();
-        }
+        }        
     }
 }

@@ -71,6 +71,6 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     public void TakeItem()
     {
-        roulettePage.ReceiveCard(this);
+        roulettePage.AccrueCard(this);
     }
 }

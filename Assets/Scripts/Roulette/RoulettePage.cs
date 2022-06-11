@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace Roulette
 {
@@ -27,7 +26,7 @@ namespace Roulette
         [SerializeField] 
         private RouletteAnimator _rouletteAnimator;
 
-        private int _price;
+        private int _prize;
         
         private void OnEnable()
         {
@@ -41,23 +40,23 @@ namespace Roulette
             _collectButton.onClick.RemoveListener(StartCloseWinningPanel);
         }
 
-        public void ReceiveCard(Card card) => 
+        public void AccrueCard(Card card) => 
             OnReceivedCard?.Invoke(new Card[] { card });
 
-        public void ReceiveCristal() => 
+        public void AccrueCristal() => 
             OnReceivedCristal?.Invoke(Random.Range(1, 6));
 
-        public void ReceiveGold() => 
+        public void AccrueGold() => 
             OnReceivedGold?.Invoke(Random.Range(1,6));
 
-        public void StartSpine()
+        private void StartSpine()
         {
             if (FindObjectOfType<CristalWallet>().gameObject.GetComponent<CristalWallet>().AmountMoney >= _spinePrise)
             {
-                _price = RandomCell();
+                _prize = RandomCell();
                 
                 _startRoletteButton.interactable = false;
-                StartCoroutine(_rouletteAnimator.Spine(_price, _rouletteCells));
+                StartCoroutine(_rouletteAnimator.Spine(_prize, _rouletteCells));
                 OnBuyRouletteSpin?.Invoke(_spinePrise);
             }
         }
@@ -65,7 +64,7 @@ namespace Roulette
         private int RandomCell() => 
             Random.Range(0, _rouletteCells.Length);
     
-        private void ReceiveItem(IRoulette rouletteItem)
+        private void TakeItem(IRoulette rouletteItem)
         {
             var taker = rouletteItem;
             taker.TakeItem();
@@ -74,7 +73,7 @@ namespace Roulette
         private void StartCloseWinningPanel()
         {
             StartCoroutine(_rouletteAnimator.CloseWinningPanel(_startRoletteButton));
-            ReceiveItem(_rouletteCells[_price].RouletteItem);
+            TakeItem(_rouletteCells[_prize].RouletteItem);
         }
     }
 }
