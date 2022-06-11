@@ -11,7 +11,7 @@ public class CristalWallet : Wallet
         _shop.OnCristalBuy += AddСurrency;
         _farm.OnAcceruCristal += AddСurrency;
         _questPrizeWindow.OnAcceruCristal += AddСurrency;
-        _roulette.OnReceivedCristal += AddСurrency;
-        _roulette.OnBuyRouletteSpin += WithdrawСurrency;
+        rouletteScreen.OnReceivedCristal += AddСurrency;
+        rouletteScreen.OnBuyRouletteSpin += WithdrawСurrency;
     }   
 }

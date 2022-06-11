@@ -9,9 +9,9 @@ public class GoldWallet : Wallet
 
     private void OnEnable()
     {
-        _confirmWindow.OnWithdrawMoney += Withdraw製rrency;
-        _farm.OnAcceruGold += Add製rrency;
-        _questPrizeWindow.OnAcceruGold += Add製rrency;
-        _roulette.OnReceivedGold += Add製rrency;
+        _confirmWindow.OnWithdrawMoney += Withdraw小urrency;
+        _farm.OnAcceruGold += Add小urrency;
+        _questPrizeWindow.OnAcceruGold += Add小urrency;
+        rouletteScreen.OnReceivedGold += Add小urrency;
     }    
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Roulette;
 using UnityEngine;
 
 public enum RarityCard
@@ -40,7 +41,7 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     [SerializeField] private string _discription;
 
-    [SerializeField] private Roulette _roulette;
+    [SerializeField] private RouletteScreen rouletteScreen;
 
     public Sprite UIIcon => _image;
     public string Name => _name;
@@ -70,6 +71,6 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     public void TakeItem()
     {
-        _roulette.ReceiveCard(this);
+        rouletteScreen.ReceiveCard(this);
     }
 }

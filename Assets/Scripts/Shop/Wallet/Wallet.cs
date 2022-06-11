@@ -1,4 +1,5 @@
 using System;
+using Roulette;
 using UnityEngine;
 using TMPro;
 
@@ -9,7 +10,7 @@ public abstract class Wallet : MonoBehaviour
 
     [SerializeField] protected Farm _farm;
     [SerializeField] protected QuestPrizeWindow _questPrizeWindow;
-    [SerializeField] protected Roulette _roulette;
+    [SerializeField] protected RouletteScreen rouletteScreen;
 
     public int AmountMoney => _amountMoney;
 

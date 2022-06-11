@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Roulette;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,16 +18,16 @@ public class Prize : ScriptableObject, IRoulette
     public int AmountPrize;
     public PrizeType TypePrize;
 
-    [SerializeField] private Roulette _roulette;
+    [SerializeField] private RouletteScreen rouletteScreen;
 
     public Sprite UIIcon => Sprite;
 
     public void TakeItem()
     {
         if (TypePrize == PrizeType.Cristal)
-            _roulette.ReceiveCristal();
+            rouletteScreen.ReceiveCristal();
 
         if (TypePrize == PrizeType.Gold)
-            _roulette.ReceiveGold();
+            rouletteScreen.ReceiveGold();
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using System.Linq;
+using Roulette;
 
 public class CardCollection : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class CardCollection : MonoBehaviour
     [SerializeField] private Transform _container;
 
     [SerializeField] private Shop _shop;
-    [SerializeField] private Roulette _roulette;
+    [SerializeField] private RouletteScreen rouletteScreen;
 
     [SerializeField] private StartGame _startGame;
     [SerializeField] private LinkBetweenCardsAndCollections _linkBetweenCardCollectionAndDeck;
@@ -37,7 +38,7 @@ public class CardCollection : MonoBehaviour
         _linkBetweenCardCollectionAndDeck.OnRetrieveCard += RetrieveCardCell;
 
         _shop.OnCardBuy += AddCard;
-        _roulette.OnReceivedCard += AddCard;
+        rouletteScreen.OnReceivedCard += AddCard;
 
         _startGame.OnSetStartPackCard += AddCard;
 
