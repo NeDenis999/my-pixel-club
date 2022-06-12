@@ -21,15 +21,33 @@ namespace Battle
         public IEnumerator AppearanceCards(CardAnimator[] enemyCardAnimators)
         {
             _enemyHorizontalLayoutGroup.spacing = -850;
-            _playerHorizontalLayoutGroup.spacing = -520;
-            yield return new WaitForSeconds(1);
+            //_playerHorizontalLayoutGroup.spacing = -520;
+            yield return new WaitForSeconds(0.1f);
             SpreadCards(_enemyHorizontalLayoutGroup);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(ShowSideAllCards(enemyCardAnimators));
+            print("Анимация закончилась");
+            
+            //yield return new WaitForSeconds(0.1f);
+            /*SpreadCards(_playerHorizontalLayoutGroup);
+            yield return new WaitForSeconds(0.5f);
+            yield return StartCoroutine(ShowSideAllCards(_playerCardAnimators));*/
+        }
+
+        public IEnumerator HitAllCards(CardAnimator[] cardAnimators)
+        {
+            _enemyHorizontalLayoutGroup.enabled = false;
+            
+            foreach (var cardAnimator in cardAnimators) 
+                StartCoroutine(cardAnimator.Hit());
+
+            yield return new WaitForSeconds(4);
+            
+            _enemyHorizontalLayoutGroup.enabled = true;
         }
 
         private void SpreadCards(HorizontalLayoutGroup layoutGroup) => 
-            DOTween.To(() => layoutGroup.spacing, x => layoutGroup.spacing = x, 5, 1);
+            DOTween.To(() => layoutGroup.spacing, x => layoutGroup.spacing = x, 5, 0.5f);
 
         private IEnumerator ShowSideAllCards(CardAnimator[] cardAnimators)
         {
@@ -39,14 +57,18 @@ namespace Battle
                 {
                     print(i + "/" + (cardAnimators.Length - 1));
                     StartCoroutine(cardAnimators[i].ShowSide());
-                    yield return StartCoroutine(cardAnimators[cardAnimators.Length - 1 - i].ShowSide());    
+                    StartCoroutine(cardAnimators[cardAnimators.Length - 1 - i].ShowSide());
+                    yield return new WaitForSeconds(0.3f);
                 }
                 else
                 {
                     print(i + "/" + (cardAnimators.Length - 1));
-                    yield return StartCoroutine(cardAnimators[i].ShowSide());    
+                    yield return StartCoroutine(cardAnimators[i].ShowSide());
+                    yield return new WaitForSeconds(0.3f);
                 }
             }
+            
+            print("Колода раскрылась");
         }
     }
 }

@@ -49,8 +49,12 @@ namespace Battle
         public IEnumerator StartFight()
         {
             gameObject.SetActive(true);
-            yield return StartCoroutine(_battleAnimator.AppearanceCards(_enemyCardAnimators));
+            print("Начало рпсскрытия колоды");
             StartCoroutine(Fight());
+            StartCoroutine(_battleAnimator.AppearanceCards(_enemyCardAnimators));
+            print("Конец анимации раскрытия колоды");
+            //yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1);
         }
 
         private void RenderEnemyDefCard()
@@ -70,15 +74,15 @@ namespace Battle
 
         private IEnumerator Fight()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(4);
 
-            while (_countPlayerAliveCards() > 0 && _countEnemyAliveCards() > 0)
-            {
-                PlayerMove();
+            //while (_countPlayerAliveCards() > 0 && _countEnemyAliveCards() > 0)
+            //{
+                yield return PlayerMove();
                 yield return new WaitForSeconds(1);
-                EnemyMove();
+                //EnemyMove();
                 yield return null;
-            }
+            //}
         
             yield return new WaitForSeconds(1);
         
@@ -90,27 +94,39 @@ namespace Battle
             gameObject.SetActive(false);
         }
 
-        private void PlayerMove()
+        private IEnumerator PlayerMove()
         {
-            var randomEnemyAliveCart = RandomEnemyAliveCart();
-            var randomPlayerAliveCart = RandomPlayerAliveCart();
-        
-            randomEnemyAliveCart.TakeDamage(randomPlayerAliveCart.Attack);
+            print("Ход игрока");
+            
+            /*var randomEnemyAliveCart = EnemyAliveCards()[randomNumberEnemyAliveCart];
+            var randomNumberPlayerAliveCart = RandomNumberPlayerAliveCart();
+            var randomPlayerAliveCart = PlayerAliveCards()[randomNumberPlayerAliveCart];*/
+
+            //var randomNumberEnemyAliveCart = RandomNumberEnemyAliveCart();
+            for (int i = 0; i < 10; i++)
+                yield return _battleAnimator.HitAllCards(_enemyCardAnimators);
+
+            StartCoroutine(_battleAnimator.HitAllCards(_enemyCardAnimators));
+            yield return new WaitForSeconds(3);
+
+            //randomEnemyAliveCart.TakeDamage(PlayerAliveCards()[randomNumberPlayerAliveCart].Attack);
         }
 
         private void EnemyMove()
         {
-            var randomEnemyAliveCart = RandomEnemyAliveCart();
-            var randomPlayerAliveCart = RandomPlayerAliveCart();
+            var randomNumberEnemyAliveCart = RandomNumberEnemyAliveCart();
+            var randomEnemyAliveCart = EnemyAliveCards()[randomNumberEnemyAliveCart];
+            var randomNumberPlayerAliveCart = RandomNumberPlayerAliveCart();
+            var randomPlayerAliveCart = PlayerAliveCards()[randomNumberPlayerAliveCart];
         
             randomPlayerAliveCart.TakeDamage(randomEnemyAliveCart.Attack);
         }
 
-        private ICard RandomPlayerAliveCart() => 
-            PlayerAliveCards()[Random.Range(0, PlayerAliveCards().Count)];
+        private int RandomNumberPlayerAliveCart() => 
+            Random.Range(0, PlayerAliveCards().Count);
 
-        private ICard RandomEnemyAliveCart() => 
-            EnemyAliveCards()[Random.Range(0, EnemyAliveCards().Count)];
+        private int RandomNumberEnemyAliveCart() => 
+            Random.Range(0, EnemyAliveCards().Count);
 
         private List<ICard> PlayerAliveCards()
         {
