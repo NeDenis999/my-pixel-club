@@ -20,12 +20,16 @@ namespace Battle
 
         public IEnumerator AppearanceCards(CardAnimator[] enemyCardAnimators)
         {
-            _enemyHorizontalLayoutGroup.spacing = -850;
+            //_enemyHorizontalLayoutGroup.spacing = -850;
             //_playerHorizontalLayoutGroup.spacing = -520;
+            
             yield return new WaitForSeconds(0.1f);
-            SpreadCards(_enemyHorizontalLayoutGroup);
+            _enemyHorizontalLayoutGroup.enabled = false;
+            InitPositionAllCards(enemyCardAnimators);
+            yield return ShowSideAllCards(enemyCardAnimators);
+            yield return ShowStateAllCards(enemyCardAnimators);
+            //SpreadCards(_enemyHorizontalLayoutGroup);
             yield return new WaitForSeconds(0.5f);
-            yield return StartCoroutine(ShowSideAllCards(enemyCardAnimators));
             print("Анимация закончилась");
             
             //yield return new WaitForSeconds(0.1f);
@@ -58,17 +62,33 @@ namespace Battle
                     print(i + "/" + (cardAnimators.Length - 1));
                     StartCoroutine(cardAnimators[i].ShowSide());
                     StartCoroutine(cardAnimators[cardAnimators.Length - 1 - i].ShowSide());
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(1f);
                 }
                 else
                 {
                     print(i + "/" + (cardAnimators.Length - 1));
                     yield return StartCoroutine(cardAnimators[i].ShowSide());
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(1f);
                 }
             }
             
             print("Колода раскрылась");
+        }
+
+        public void InitPositionAllCards(CardAnimator[] cardAnimators)
+        {
+            foreach (var cardAnimator in cardAnimators) 
+                cardAnimator.InitPosition();
+        }
+
+        private IEnumerator ShowStateAllCards(CardAnimator[] cardAnimators)
+        {
+            foreach (var cardAnimator in cardAnimators)
+            {
+                StartCoroutine(cardAnimator.ShowState());
+            }
+        
+            yield return new WaitForSeconds(1);
         }
     }
 }

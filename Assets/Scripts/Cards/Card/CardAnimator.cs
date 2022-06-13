@@ -24,30 +24,60 @@ namespace Cards.Card
         private Image _hitImage;
 
         [SerializeField] 
+        private Image _stateImage;
+        
+        [SerializeField] 
         private TextMeshProUGUI[] _damageTexts;
         
         private Sprite _sideSprite;
         private float startLocalScaleX;
+        private Vector3 _startPosition;
 
         private void Start()
         {
-            Init();
+            //Init();
         }
 
         public void Init()
         {
             _sideSprite = _image.sprite;
-            _image.sprite = _sideBackSprite;
+            //_image.sprite = _sideBackSprite;
+            _image.color = new Color(1, 1, 1, 0);
             startLocalScaleX = transform.localScale.x;
+            
         }
+
+        public void InitPosition()
+        {
+            _startPosition = transform.localPosition;
+            transform.localPosition = new Vector3(transform.localPosition.x, 1000, 0);
+            _image.color = new Color(1, 1, 1, 1);
+        }
+
+        public void SetImage(Sprite uiIcon) => 
+            _image.sprite = uiIcon;
 
         public IEnumerator ShowSide()
         {
-            transform.DOScaleX(0, 0.4f);
+            print("ShowSide");
+            transform.DOLocalMove(_startPosition, 2f);
+            yield return new WaitForSeconds(2f);
+
+            /*transform.DOScaleX(0, 0.4f);
             yield return new WaitForSeconds(0.4f);
             _image.sprite = _sideSprite;
             transform.DOScaleX(startLocalScaleX, 0.4f);
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.4f);*/
+        }
+
+        public IEnumerator ShowState()
+        {
+            _lightImage.DOColor(new Color(0, 1, 0, 0.60f), 1);
+            _stateImage.DOColor(new Color(1, 1, 1, 1f), 1);
+            yield return new WaitForSeconds(2f);
+            _lightImage.DOColor(new Color(0, 1, 0, 0), 1);
+            _stateImage.DOColor(new Color(1, 1, 1, 0), 1);
+            yield return new WaitForSeconds(1f);
         }
 
         public IEnumerator Hit()

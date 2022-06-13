@@ -1067,7 +1067,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
         m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
-        m_MethodName: TurnOffAllPages
+        m_MethodName: TurnOffAllPagesSmooth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1802,6 +1802,8 @@ GameObject:
   - component: {fileID: 103291580}
   - component: {fileID: 103291582}
   - component: {fileID: 103291581}
+  - component: {fileID: 103291584}
+  - component: {fileID: 103291583}
   m_Layer: 5
   m_Name: 'Battle Page '
   m_TagString: Untagged
@@ -1872,6 +1874,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103291579}
   m_CullTransparentMesh: 1
+--- !u!225 &103291583
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103291579}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &103291584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103291579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 103291583}
 --- !u!1 &113615168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,7 +3869,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
+        m_TargetAssemblyTypeName: HideAllPages, Assembly-CSharp
         m_MethodName: TurnOffAllPages
         m_Mode: 1
         m_Arguments:
@@ -3853,10 +3880,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2046426827}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2046426832}
+        m_TargetAssemblyTypeName: Page, Assembly-CSharp
+        m_MethodName: StartShowSmooth
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4177,6 +4204,31 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4882793710469487307, guid: aa0b3e9fcee922646bced06f2b397d54, type: 3}
   m_PrefabInstance: {fileID: 4882793710285428058}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &353931159
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353931152}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &353931160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353931152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 353931159}
 --- !u!224 &357504684 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4074883899957757991, guid: f24aa2ac73a0d8b43bfcf1df6d0b7b6f, type: 3}
@@ -4475,7 +4527,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
+        m_TargetAssemblyTypeName: HideAllPages, Assembly-CSharp
         m_MethodName: TurnOffAllPages
         m_Mode: 1
         m_Arguments:
@@ -4486,22 +4538,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 353931152}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2046426827}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 353931160}
+        m_TargetAssemblyTypeName: Page, Assembly-CSharp
+        m_MethodName: StartShowSmooth
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6440,7 +6480,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
+        m_TargetAssemblyTypeName: HideAllPages, Assembly-CSharp
         m_MethodName: TurnOffAllPages
         m_Mode: 1
         m_Arguments:
@@ -6451,10 +6491,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 103291579}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 103291584}
+        m_TargetAssemblyTypeName: Page, Assembly-CSharp
+        m_MethodName: StartShowSmooth
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9767,7 +9807,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
         m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
-        m_MethodName: TurnOffAllPages
+        m_MethodName: TurnOffAllPagesSmooth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10960,7 +11000,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
+        m_TargetAssemblyTypeName: HideAllPages, Assembly-CSharp
         m_MethodName: TurnOffAllPages
         m_Mode: 1
         m_Arguments:
@@ -10971,10 +11011,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1766458003}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1766458009}
+        m_TargetAssemblyTypeName: Page, Assembly-CSharp
+        m_MethodName: StartShowSmooth
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12603,6 +12643,31 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3978301843201196571, guid: cf7e25b8deef00e40ad0569eb5467c4f, type: 3}
   m_PrefabInstance: {fileID: 3978301842145735828}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1126889107
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126889099}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1126889108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126889099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1126889107}
 --- !u!1 &1140701541
 GameObject:
   m_ObjectHideFlags: 0
@@ -15044,6 +15109,8 @@ GameObject:
   - component: {fileID: 1403269450}
   - component: {fileID: 571986166769136734}
   - component: {fileID: 1270515826423723257}
+  - component: {fileID: 1270515826423723259}
+  - component: {fileID: 1270515826423723258}
   m_Layer: 5
   m_Name: 'Roulette Page '
   m_TagString: Untagged
@@ -15122,6 +15189,31 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7142938792374736159, guid: fe4580d4393b22949976daede4b5ad9c, type: 3}
   m_PrefabInstance: {fileID: 7142938793243724517}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1417469952
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417469940}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1417469953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417469940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1417469952}
 --- !u!1 &1419143140
 GameObject:
   m_ObjectHideFlags: 0
@@ -15694,7 +15786,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
+        m_TargetAssemblyTypeName: HideAllPages, Assembly-CSharp
         m_MethodName: TurnOffAllPages
         m_Mode: 1
         m_Arguments:
@@ -15705,10 +15797,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1417469940}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1417469953}
+        m_TargetAssemblyTypeName: Page, Assembly-CSharp
+        m_MethodName: StartShowSmooth
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19282,6 +19374,8 @@ GameObject:
   - component: {fileID: 1766458004}
   - component: {fileID: 1766458007}
   - component: {fileID: 1766458006}
+  - component: {fileID: 1766458009}
+  - component: {fileID: 1766458008}
   m_Layer: 5
   m_Name: 'Quest Page '
   m_TagString: Untagged
@@ -19349,6 +19443,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766458003}
   m_CullTransparentMesh: 1
+--- !u!225 &1766458008
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766458003}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1766458009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766458003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1766458008}
 --- !u!1 &1771258405
 GameObject:
   m_ObjectHideFlags: 0
@@ -21227,7 +21346,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7348516147358554140}
         m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
-        m_MethodName: TurnOffAllPages
+        m_MethodName: TurnOffAllPagesSmooth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21889,6 +22008,8 @@ GameObject:
   - component: {fileID: 2046426830}
   - component: {fileID: 2046426829}
   - component: {fileID: 2046426828}
+  - component: {fileID: 2046426832}
+  - component: {fileID: 2046426831}
   m_Layer: 5
   m_Name: Deck Page
   m_TagString: Untagged
@@ -21961,6 +22082,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0.36621094, y: -0.106933594}
   m_SizeDelta: {x: 0.11999512, y: -0.30999756}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &2046426831
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046426827}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2046426832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046426827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 2046426831}
 --- !u!1 &2046500029
 GameObject:
   m_ObjectHideFlags: 0
@@ -23075,7 +23221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129456545}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -23199,7 +23345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1370303614}
-  _enemyDefCardImage: {fileID: 7415505992693563116, guid: ee121d64383d2654fa76ac9ced64f980, type: 3}
+  _enemyDefCardImage: {fileID: -8321465666958115488, guid: ee121d64383d2654fa76ac9ced64f980, type: 3}
   _container: {fileID: 1825444585}
   _battleCardsStatistic: {fileID: 346955498}
   _battleAnimator: {fileID: 2142506624}
@@ -23832,6 +23978,31 @@ MonoBehaviour:
   _braking: 1
   _winningPanel: {fileID: 8508518758063639824}
   _target: {fileID: 1403269449}
+--- !u!225 &1270515826423723258
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403269448}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1270515826423723259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403269448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1270515826423723258}
 --- !u!225 &1270515827067483245
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23955,7 +24126,7 @@ GameObject:
   - component: {fileID: 3670792500712331869}
   - component: {fileID: 7348516147358554140}
   m_Layer: 0
-  m_Name: Switch Scene
+  m_Name: Hide and Seek Pages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30290,7 +30461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4367835409327318032, guid: aa0b3e9fcee922646bced06f2b397d54, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4882793709371743277, guid: aa0b3e9fcee922646bced06f2b397d54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -31294,6 +31465,8 @@ GameObject:
   - component: {fileID: 1729395455167374802}
   - component: {fileID: 5167463131108954780}
   - component: {fileID: 6069786466755894694}
+  - component: {fileID: 6069786466755894696}
+  - component: {fileID: 6069786466755894695}
   m_Layer: 5
   m_Name: Farme Page
   m_TagString: Untagged
@@ -31322,6 +31495,31 @@ MonoBehaviour:
   _chooseCharacterButton: {fileID: 7663144839692019133}
   _lockNFTImage: {fileID: 810222153}
   _nftImage: {fileID: 2178287809600960506}
+--- !u!225 &6069786466755894695
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069786466755894693}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &6069786466755894696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069786466755894693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 6069786466755894695}
 --- !u!114 &6115587834911814450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32457,15 +32655,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0035db5c5a0e93f49b97134329775002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scenes:
-  - {fileID: 1417469940}
-  - {fileID: 2046426827}
-  - {fileID: 353931152}
-  - {fileID: 2006589935}
-  - {fileID: 1766458003}
-  - {fileID: 103291579}
-  - {fileID: 1126889099}
-  - {fileID: 1403269448}
+  _pages:
+  - {fileID: 6069786466755894696}
+  - {fileID: 1766458009}
+  - {fileID: 1417469953}
+  - {fileID: 2046426832}
+  - {fileID: 353931160}
+  - {fileID: 103291584}
+  - {fileID: 1126889108}
+  - {fileID: 1270515826423723259}
+  _startPage: {fileID: 1417469953}
 --- !u!114 &7352768791873697843
 MonoBehaviour:
   m_ObjectHideFlags: 0

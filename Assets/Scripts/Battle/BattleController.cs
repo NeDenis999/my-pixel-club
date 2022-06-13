@@ -15,7 +15,7 @@ namespace Battle
 
         [SerializeField] private Player _player;
 
-        [SerializeField] private Image _enemyDefCardImage;
+        [SerializeField] private CardAnimator _enemyDefCardImage;
         [SerializeField] private Transform _container;
 
         [SerializeField] private BattleCardsStatistic _battleCardsStatistic;
@@ -50,7 +50,7 @@ namespace Battle
         {
             gameObject.SetActive(true);
             print("Начало рпсскрытия колоды");
-            StartCoroutine(Fight());
+            //StartCoroutine(Fight());
             StartCoroutine(_battleAnimator.AppearanceCards(_enemyCardAnimators));
             print("Конец анимации раскрытия колоды");
             //yield return new WaitForSeconds(3f);
@@ -67,8 +67,9 @@ namespace Battle
             for (int i = 0; i < _enemyDefCards.Count; i++)
             {
                 var card = Instantiate(_enemyDefCardImage, _container);
-                card.sprite = _enemyDefCards[i].UIIcon;
-                _enemyCardAnimators[i] = card.GetComponent<CardAnimator>();
+                card.SetImage(_enemyDefCards[i].UIIcon);
+                _enemyCardAnimators[i] = card;
+                _enemyCardAnimators[i].Init();
             }
         }
 
@@ -103,7 +104,7 @@ namespace Battle
             var randomPlayerAliveCart = PlayerAliveCards()[randomNumberPlayerAliveCart];*/
 
             //var randomNumberEnemyAliveCart = RandomNumberEnemyAliveCart();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 2; i++)
                 yield return _battleAnimator.HitAllCards(_enemyCardAnimators);
 
             StartCoroutine(_battleAnimator.HitAllCards(_enemyCardAnimators));
