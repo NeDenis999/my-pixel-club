@@ -15,19 +15,17 @@ namespace Battle
         [SerializeField] 
         private HorizontalLayoutGroup _playerHorizontalLayoutGroup;
 
-        [SerializeField]
-        private CardAnimator[] _playerCardAnimators;
-
-        public IEnumerator AppearanceCards(CardAnimator[] enemyCardAnimators)
+        public IEnumerator AppearanceCards(CardAnimator[] enemyCardAnimators, CardAnimator[] playerCardAnimators)
         {
             //_enemyHorizontalLayoutGroup.spacing = -850;
             //_playerHorizontalLayoutGroup.spacing = -520;
             
-            yield return new WaitForSeconds(0.1f);
-            _enemyHorizontalLayoutGroup.enabled = false;
-            InitPositionAllCards(enemyCardAnimators);
-            yield return ShowSideAllCards(enemyCardAnimators);
-            yield return ShowStateAllCards(enemyCardAnimators);
+            //yield return new WaitForSeconds(0.1f);
+            //_enemyHorizontalLayoutGroup.enabled = false;
+            //InitPositionAllCards(enemyCardAnimators);
+            StartCoroutine(ShowSideAllCards(enemyCardAnimators, 50, _enemyHorizontalLayoutGroup));
+            yield return ShowSideAllCards(playerCardAnimators, -50, _playerHorizontalLayoutGroup);
+            //yield return ShowStateAllCards(enemyCardAnimators);
             //SpreadCards(_enemyHorizontalLayoutGroup);
             yield return new WaitForSeconds(0.5f);
             print("Анимация закончилась");
@@ -53,9 +51,22 @@ namespace Battle
         private void SpreadCards(HorizontalLayoutGroup layoutGroup) => 
             DOTween.To(() => layoutGroup.spacing, x => layoutGroup.spacing = x, 5, 0.5f);
 
-        private IEnumerator ShowSideAllCards(CardAnimator[] cardAnimators)
+        private IEnumerator ShowSideAllCards(CardAnimator[] cardAnimators, float y, HorizontalLayoutGroup horizontalLayoutGroup)
         {
-            for (int i = 0; i < (cardAnimators.Length + 1) / 2; i++)
+            var sequence = DOTween.Sequence();
+
+            sequence
+                .Insert(0, DOTween.To(() =>
+                        horizontalLayoutGroup.spacing,
+                    x => horizontalLayoutGroup.spacing = x,
+                    -526.5f, 1))
+                .Insert(0, horizontalLayoutGroup.transform.DOLocalMoveY(
+                    horizontalLayoutGroup.transform.localPosition.y + y, 1));
+            
+            foreach (var cardAnimator in cardAnimators) 
+                cardAnimator.StartingAnimation(sequence);
+
+            /*for (int i = 0; i < (cardAnimators.Length + 1) / 2; i++)
             {
                 if (cardAnimators[i] != cardAnimators[cardAnimators.Length - 1 - i])
                 {
@@ -70,8 +81,9 @@ namespace Battle
                     yield return StartCoroutine(cardAnimators[i].ShowSide());
                     yield return new WaitForSeconds(1f);
                 }
-            }
+            }*/
             
+            yield return new WaitForSeconds(1f);
             print("Колода раскрылась");
         }
 

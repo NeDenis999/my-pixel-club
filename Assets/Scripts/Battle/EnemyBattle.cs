@@ -16,9 +16,6 @@ public class EnemyBattle : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.AddListener(OpenConfirmWindow);
     }
 
-    private void OpenConfirmWindow()
-    {
-        _battleConfirmWindow.gameObject.SetActive(true);
+    private void OpenConfirmWindow() => 
         _battleConfirmWindow.OpenConfirmWindow(_enemyDefCards, _amountEnemyDefValue);
-    }
 }

@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using Sequence = DG.Tweening.Sequence;
 
 namespace Cards.Card
 {
@@ -25,10 +26,16 @@ namespace Cards.Card
 
         [SerializeField] 
         private Image _stateImage;
+
+        [SerializeField] 
+        private Image _shadow;
+
+        [SerializeField] 
+        private Image _selectImage;
         
         [SerializeField] 
         private TextMeshProUGUI[] _damageTexts;
-        
+
         private Sprite _sideSprite;
         private float startLocalScaleX;
         private Vector3 _startPosition;
@@ -42,9 +49,9 @@ namespace Cards.Card
         {
             _sideSprite = _image.sprite;
             //_image.sprite = _sideBackSprite;
-            _image.color = new Color(1, 1, 1, 0);
+            //_image.color = Color.clear;
             startLocalScaleX = transform.localScale.x;
-            
+            _shadow.sprite = _image.sprite;
         }
 
         public void InitPosition()
@@ -57,6 +64,15 @@ namespace Cards.Card
         public void SetImage(Sprite uiIcon) => 
             _image.sprite = uiIcon;
 
+        public void StartingAnimation(Sequence sequence)
+        {
+            var scale = transform.localScale / 1.3f;
+
+            sequence
+                .Insert(0, transform.DOScale(scale, 1))
+                .Insert(0, _shadow.transform.DOLocalMove(Vector3.zero, 1));
+        }
+        
         public IEnumerator ShowSide()
         {
             print("ShowSide");
@@ -122,6 +138,15 @@ namespace Cards.Card
             yield return new WaitForSeconds(0.5f);
 
             _damageText.transform.localPosition = startPosition;
+        }
+
+        public void Selected()
+        {
+            var sequence = DOTween.Sequence();
+            
+            sequence
+                .Insert(0, _selectImage.DOColor(new Color(1, 1, 1, 0.5f), 1))
+                .Insert(1, _selectImage.DOColor(Color.clear, 1));
         }
     }
 }
