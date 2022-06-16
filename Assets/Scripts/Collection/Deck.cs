@@ -15,8 +15,16 @@ public abstract class Deck : MonoBehaviour
     [SerializeField] private LinkBetweenCardsAndCollections _linkBetweenCardsAndCollections;
 
     protected AtackOrDefCardType _deckType;
-
+    protected DataSaveLoadService _data;
+    
     public List<CardCellInDeck> CardsInDeck => _cardsInDeck;
+
+    [Inject]
+    public void Construct(DataSaveLoadService data)
+    {
+        _data = data;
+        InitCards(data);
+    }
 
     private void OnEnable()
     {        
@@ -32,4 +40,7 @@ public abstract class Deck : MonoBehaviour
             OnCardChanged?.Invoke(_cardsInDeck);
         }
     }
+
+    protected abstract void SaveDesks();
+    protected abstract void InitCards(DataSaveLoadService data);
 }

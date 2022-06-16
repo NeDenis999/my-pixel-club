@@ -1,4 +1,5 @@
 ﻿using Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -6,8 +7,7 @@ namespace Infrastructure
 {
     public class BootstrapInstaller : MonoInstaller
     {
-        [SerializeField] 
-        private PlayerDataScriptableObject _data;
+        private DataSaveLoadService _data = new DataSaveLoadService();
         
         public override void InstallBindings()
         {
@@ -17,9 +17,16 @@ namespace Infrastructure
         private void BindPlayerData()
         {
             Container
-                .Bind<PlayerDataScriptableObject>()
+                .Bind<DataSaveLoadService>()
                 .FromInstance(_data)
                 .AsSingle();
+            
+            _data.Load();
+        }
+
+        private void OnApplicationQuit()
+        {
+            _data.Save();
         }
     }
 }

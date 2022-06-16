@@ -9,10 +9,10 @@ public class GoldWallet : Wallet
 {
     [SerializeField] ConfirmWindow _confirmWindow;    
 
-    private PlayerDataScriptableObject _data;
+    private DataSaveLoadService _data;
     
     [Inject]
-    public void Construct(PlayerDataScriptableObject data)
+    public void Construct(DataSaveLoadService data)
     {
         _data = data;
     }
@@ -30,5 +30,5 @@ public class GoldWallet : Wallet
     }
 
     private void OnApplicationQuit() => 
-        _data.PlayerData.Coins = _amountMoney;
+        _data.SetCoinCount(_amountMoney);
 }

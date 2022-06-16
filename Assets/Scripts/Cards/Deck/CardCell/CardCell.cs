@@ -38,7 +38,7 @@ public abstract class CardCell : MonoBehaviour, ICard
 
     public void Render(Card cardForRender)
     {
-        CopyCardValue(cardForRender);        
+        CopyCardValue(cardForRender);
     }
 
     public void SwitchComponentValue(CardCell cardCell)
@@ -49,7 +49,7 @@ public abstract class CardCell : MonoBehaviour, ICard
     private void CopyCardValue<T>(T cardCell) where T : ICard
     {
         _card = cardCell.Card;
-
+        
         _icon.sprite = _card.UIIcon;
         _attack = cardCell.Attack;
         _def = cardCell.Def;

@@ -7,11 +7,11 @@ using Zenject;
 public class CristalWallet : Wallet
 {
     [SerializeField] private Shop _shop;
-    
-    private PlayerDataScriptableObject _data;
+
+    private DataSaveLoadService _data;
     
     [Inject]
-    public void Construct(PlayerDataScriptableObject data)
+    public void Construct(DataSaveLoadService data)
     {
         _data = data;
     }
@@ -30,5 +30,5 @@ public class CristalWallet : Wallet
     }   
     
     private void OnApplicationQuit() => 
-        _data.PlayerData.Crystals = _amountMoney;
+        _data.SetCoinCount(_amountMoney);
 }

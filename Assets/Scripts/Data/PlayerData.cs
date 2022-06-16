@@ -4,7 +4,7 @@ using Collection;
 namespace Data
 {
     [Serializable]
-    public class PlayerData
+    public struct PlayerData
     {
         public Card[] AttackDecks;
         public Card[] DefDecks;

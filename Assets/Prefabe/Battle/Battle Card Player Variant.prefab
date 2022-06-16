@@ -109,6 +109,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee121d64383d2654fa76ac9ced64f980, type: 3}
+--- !u!114 &4916115305922670530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3476695820825171205, guid: ee121d64383d2654fa76ac9ced64f980, type: 3}
+  m_PrefabInstance: {fileID: 8360432152126372551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6615047210969550322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3443959438799042357, guid: ee121d64383d2654fa76ac9ced64f980, type: 3}
@@ -126,9 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d102c61292f4eac40b30c9c0a95ac042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
+  _icon: {fileID: 4916115305922670530}
   _card: {fileID: 0}
-  _linkBetweenCardCollectionAndDeck: {fileID: 0}
-  _emptyCard: {fileID: 0}
+  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
+  _emptyCard: {fileID: -9071980186230592325, guid: 2c17f633fd3a00f44906015aaeefbc92, type: 3}
   _deckType: 0
   _statisticCardWindow: {fileID: 0}
