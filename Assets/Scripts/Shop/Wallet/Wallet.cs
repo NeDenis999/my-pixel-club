@@ -1,7 +1,9 @@
 using System;
+using Data;
 using Roulette;
 using UnityEngine;
 using TMPro;
+using Zenject;
 
 public abstract class Wallet : MonoBehaviour
 {    
@@ -11,18 +13,17 @@ public abstract class Wallet : MonoBehaviour
     [SerializeField] protected Farm _farm;
     [SerializeField] protected QuestPrizeWindow _questPrizeWindow;
     [SerializeField] protected RoulettePage roulettePage;
-
+    
     public int AmountMoney => _amountMoney;
 
-    private void OnEnable()
-    {
+    protected void RefreshText() => 
         _textMoney.text = _amountMoney.ToString();
-    }
 
     protected void WithdrawСurrency(int money)
     {
         if (money > _amountMoney)
             throw new InvalidOperationException();
+        
         _amountMoney -= money;
         UpdateСurrencyText();
     }
@@ -33,9 +34,6 @@ public abstract class Wallet : MonoBehaviour
         UpdateСurrencyText();
     }
 
-    private void UpdateСurrencyText()
-    {
+    private void UpdateСurrencyText() => 
         _textMoney.text = _amountMoney.ToString();
-    }
-   
 }

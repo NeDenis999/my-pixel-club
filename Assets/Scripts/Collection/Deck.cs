@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cards.Deck.CardCell;
+using Data;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public abstract class Deck : MonoBehaviour
 {
@@ -19,6 +21,14 @@ public abstract class Deck : MonoBehaviour
 
     public List<CardCellInDeck> CardsInDeck => _cardsInDeck;
 
+    [Inject]
+    public void Construct(PlayerDataScriptableObject data)
+    {
+        for (int i = 0; i < data.PlayerData.AttackDecks.Length && i < _cardsInDeck.Count; i++)
+            if (data.PlayerData.AttackDecks[i] != null && _cardsInDeck[i] != null)
+                _cardsInDeck[i].Render(data.PlayerData.AttackDecks[i]);
+    }
+    
     private void OnEnable()
     {        
         _linkBetweenCardsAndCollections.OnSelectedDeckCard += SetCardInDeck;

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894ea2ba8ffb47b188cf6d35c53f6050, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  PlayerData:
+    AttackDecks:
+    - {fileID: 11400000, guid: 0e85928ac02c6f1458740841d7df748e, type: 2}
+    - {fileID: 11400000, guid: e4611258600a3f54c8d2e697afb49a41, type: 2}
+    - {fileID: 11400000, guid: 3aa00b14c5ab4d448a5fd5605ebed388, type: 2}
+    - {fileID: 11400000, guid: 6975f9e411ab0384994ec714e2e7a693, type: 2}
+    - {fileID: 11400000, guid: 515f12d6bd134ba4a8a7c3e33e7dc933, type: 2}
+    DefDecks:
+    - {fileID: 11400000, guid: e2cbffd8f60d3834390e924a35af6bcb, type: 2}
+    - {fileID: 11400000, guid: 6975f9e411ab0384994ec714e2e7a693, type: 2}
+    - {fileID: 11400000, guid: 8b1a22a9b02d3da4c94f952ddb3a548b, type: 2}
+    - {fileID: 11400000, guid: ef6d0caeb33560e41b59c6c659b2783e, type: 2}
+    - {fileID: 11400000, guid: 5eea5b60b9b41be4885bc20a529643ef, type: 2}
+    Coins: 99958
+    Crystals: 100004
