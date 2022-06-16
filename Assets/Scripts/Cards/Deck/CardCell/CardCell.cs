@@ -8,14 +8,12 @@ using UnityEngine.UI;
 public abstract class CardCell : MonoBehaviour, ICard
 {
     [SerializeField] private Image _icon;
-
     [SerializeField] private Card _card;
 
     private int _attack;
     private int _def;
     private int _health;
     private int _level;
-
     private int _attackSkill;
    
     public int Attack => _attack;
@@ -26,7 +24,7 @@ public abstract class CardCell : MonoBehaviour, ICard
     public int BonusAttackSkill => _attackSkill;
     public void TakeDamage(int damage) => _health -= damage;
 
-    virtual public Card Card => _card;
+    public virtual Card Card => _card;
 
     public int TryUseSkill()
     {
