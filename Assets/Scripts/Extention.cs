@@ -14,4 +14,11 @@ public static class Extention
         vector3.y = y;
         return vector3;
     }
+    
+    public static Vector3 ToX(this Vector3 vector, float x)
+    {
+        Vector3 vector3 = vector;
+        vector3.x = x;
+        return vector3;
+    }
 }

@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices;
 using Data;
 using UnityEngine;
 using Zenject;
@@ -18,24 +16,15 @@ public class HideAndSeekPages : MonoBehaviour
     private void Construct(DataSaveLoadService data)
     {
         _data = data;
+        
+        if (_data.PlayerData.Coins == 0)
+            _data.SetCoinCount(1000);
     }
     
     private void Start()
     { 
         TurnOffAllPages();
         _startPage.Show();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-            _data.Save();
-
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-            _data.Load();
-        
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-            _data.SetCoinCount(1000);
     }
 
     public void TurnOffAllPages()

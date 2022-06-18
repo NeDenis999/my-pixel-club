@@ -12,6 +12,8 @@ namespace Cards.Card
 {
     public class CardAnimator : MonoBehaviour
     {
+        private static readonly int _smoke = Animator.StringToHash("Smoke");
+
         [SerializeField] 
         private Image _image;
 
@@ -20,7 +22,7 @@ namespace Cards.Card
 
         [SerializeField] 
         private Image _lightImage;
-        
+
         [SerializeField] 
         private Image _hitImage;
 
@@ -32,9 +34,16 @@ namespace Cards.Card
 
         [SerializeField] 
         private Image _selectImage;
-        
+
+        [SerializeField]
+        private Animator _smokeEffect;
+
         [SerializeField] 
         private TextMeshProUGUI[] _damageTexts;
+
+
+        [SerializeField]
+        private ParticleSystem[] _effects;
 
         private Sprite _sideSprite;
         private float startLocalScaleX;
@@ -64,13 +73,22 @@ namespace Cards.Card
         public void SetImage(Sprite uiIcon) => 
             _image.sprite = uiIcon;
 
-        public void StartingAnimation(Sequence sequence)
+        public IEnumerator StartingAnimation(Sequence sequence)
         {
             var scale = transform.localScale / 1.3f;
 
             sequence
-                .Insert(0, transform.DOScale(scale, 1))
-                .Insert(0, _shadow.transform.DOLocalMove(Vector3.zero, 1));
+                .Insert(0, transform.DOScale(scale, 0.5f))
+                .Insert(0, _shadow.transform.DOLocalMove(Vector3.zero, 0.5f));
+            
+            //yield return new WaitForSeconds(0.3f);
+            print("Старт анимации");
+            _smokeEffect.GetComponent<Image>().enabled = true;
+            _smokeEffect.SetTrigger(_smoke);
+            yield return new WaitForSeconds(1f);
+            print("Конец анимации");
+            _smokeEffect.GetComponent<Image>().enabled = false;
+            
         }
         
         public IEnumerator ShowSide()
@@ -98,9 +116,12 @@ namespace Cards.Card
 
         public IEnumerator Hit()
         {
-            _hitImage.DOColor(new Color(1, 1, 1, 1), 0.05f);
-            yield return new WaitForSeconds(0.2f);
-
+            //_hitImage.DOColor(new Color(1, 1, 1, 1), 0.05f);
+            _effects[Random.Range(0, _effects.Length)].Play();
+            yield return new WaitForSeconds(0.3f);
+    
+            var damageText = _damageTexts[0];
+            
             var startLocalPosition = transform.localPosition;
             
             for (int i = 0; i < 10; i++)
@@ -112,10 +133,17 @@ namespace Cards.Card
                 transform.DOLocalMove(startLocalPosition, 0.005f);
                 yield return new WaitForSeconds(0.005f);
             }
+            
+            damageText.DOColor(new Color(1, 0, 0, 1), 0.3f);
+            //yield return new WaitForSeconds(0.3f);
+            //damageText.transform.DOMoveY(damageText.transform.position.y - 80, 1);
+            yield return new WaitForSeconds(1f);
 
+            damageText.DOColor(new Color(1, 0, 0, 0), 0.3f);
             yield return new WaitForSeconds(0.5f);
-            _hitImage.DOColor(new Color(1, 1, 1, 0), 0.05f);
-            yield return new WaitForSeconds(0.1f);
+            //_hitImage.DOColor(new Color(1, 1, 1, 0), 0.05f);
+            
+            /*yield return new WaitForSeconds(0.1f);
             
             foreach (var damageText in _damageTexts)
             {
@@ -123,7 +151,7 @@ namespace Cards.Card
                 yield return new WaitForSeconds(0.4f);
             }
             
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(10);*/
         }
 
         private static IEnumerator TextEffect(TextMeshProUGUI _damageText)
@@ -145,8 +173,8 @@ namespace Cards.Card
             var sequence = DOTween.Sequence();
             
             sequence
-                .Insert(0, _selectImage.DOColor(new Color(1, 1, 1, 0.5f), 1))
-                .Insert(1, _selectImage.DOColor(Color.clear, 1));
+                .Insert(0, _selectImage.DOColor(new Color(1, 1, 1, 0.5f), 0.5f))
+                .Insert(0.5f, _selectImage.DOColor(Color.clear, 0.5f));
         }
     }
 }

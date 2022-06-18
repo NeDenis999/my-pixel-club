@@ -1,6 +1,4 @@
 ﻿using Data;
-using Unity.VisualScripting;
-using UnityEngine;
 using Zenject;
 
 namespace Infrastructure
@@ -22,11 +20,6 @@ namespace Infrastructure
                 .AsSingle();
             
             _data.Load();
-        }
-
-        private void OnApplicationQuit()
-        {
-            _data.Save();
         }
     }
 }
