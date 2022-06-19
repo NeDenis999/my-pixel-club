@@ -15,12 +15,12 @@ public class CardCollectionCell : CardCell, IInventory
     public BottleEffects Effect => BottleEffects.None;
 
 
-    private void Start()
+    private void Awake()
     {
         var button = GetComponent<Button>();
         button.onClick.AddListener(SetCardInDeck);
     }
-    
+
     private void SetCardInDeck()
     {
         _linkBetweenCardCollectionAndDeck.SelectCard(this);

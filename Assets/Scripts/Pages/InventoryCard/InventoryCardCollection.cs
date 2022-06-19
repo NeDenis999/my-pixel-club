@@ -1,14 +1,15 @@
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Roulette;
 using UnityEngine;
 
-namespace Pages.Collection
+namespace Pages.InventoryCard
 {
-    public class CardCollection : MonoBehaviour
+    public class InventoryCardCollection : MonoBehaviour
     {
-        [SerializeField] private List<CardCollectionCell> _cards;
-        [SerializeField] private CardCollectionCell _cardCellTemplate;
+        [SerializeField] private List<CardCollectionInventoryCell> _cards;
+        [SerializeField] private CardCollectionInventoryCell _cardCellTemplate;
         [SerializeField] private Transform _container;
 
         [SerializeField] private Shop _shop;
@@ -19,7 +20,7 @@ namespace Pages.Collection
 
         [SerializeField] private StatisticWindow _statisticWindow;
 
-        public List<CardCollectionCell> Cards => _cards;
+        public List<CardCollectionInventoryCell> Cards => _cards;
 
         private void Awake()
         {
@@ -29,7 +30,7 @@ namespace Pages.Collection
             {
                 if (cardCell.Card.Rarity != RarityCard.Epmpty)
                 {
-                    _cards.Remove((CardCollectionCell)cardCell);
+                    _cards.Remove((CardCollectionInventoryCell)cardCell);
                     Destroy(cardCell.gameObject);
                 }
             };
@@ -40,8 +41,6 @@ namespace Pages.Collection
             roulettePage.OnReceivedCard += AddCard;
 
             _startGame.OnSetStartPackCard += AddCard;
-
-            gameObject.SetActive(false);
         }
 
         private void OnEnable()
@@ -57,7 +56,6 @@ namespace Pages.Collection
 
             _cards = _cards.OrderByDescending(e => e.Card.Rarity).ToList();
             Render(_cards);
-            //_statisticWindow.gameObject.SetActive(false);
         }
 
         public void AttackSort()
@@ -100,7 +98,7 @@ namespace Pages.Collection
             }
         }
 
-        private void Render(List<CardCollectionCell> cards)
+        private void Render(List<CardCollectionInventoryCell> cards)
         {
             for (int i = 0; i < _cards.Count; i++)
             {
@@ -113,6 +111,7 @@ namespace Pages.Collection
             var cell = Instantiate(_cardCellTemplate, _container);
             cell.SwitchComponentValue(card);
             _cards.Add(cell);
+            cell.Initialization(_statisticWindow, card.Card);
         }
 
         private void AddCard(Card[] newCards)
@@ -122,6 +121,7 @@ namespace Pages.Collection
                 var cell = Instantiate(_cardCellTemplate, _container);
                 cell.Render(newCards[i]);
                 _cards.Add(cell);
+                cell.Initialization(_statisticWindow, cell.Card);
             }
 
             Render(_cards);

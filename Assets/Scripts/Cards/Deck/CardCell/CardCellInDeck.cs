@@ -30,9 +30,15 @@ namespace Cards.Deck.CardCell
             if(button != null)
                 button.onClick.AddListener(OpenCardCollection);
 
-            UpdatePanelStats(_card);
+            //UpdatePanelStats(_card);
         }
-
+        
+        public void Initialize(ICard card, StatisticWindow statisticCardWindow)
+        {
+            _card = (global::Card) card;
+            _statisticCardWindow = statisticCardWindow;
+        }
+        
         private void OpenCardCollection()
         {
             if (Card.Rarity == RarityCard.Epmpty)

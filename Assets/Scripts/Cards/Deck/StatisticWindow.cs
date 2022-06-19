@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cards.Deck.CardCell;
+using Pages.Collection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cards.Deck.CardCell;
 using Data;
+using Pages.Collection;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;

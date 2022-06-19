@@ -19,6 +19,10 @@ public class Farm : MonoBehaviour
     [SerializeField] private GameObject _getButton, _startButton, _chooseCharacterButton, _lockNFTImage;
 
     [SerializeField] private Image _nftImage;
+
+    [SerializeField] 
+    private GameObject _block;
+    
     private bool _isNFTSet;
     private bool _isFarm;
 
@@ -32,6 +36,8 @@ public class Farm : MonoBehaviour
 
     public void StartFarm()
     {
+        _block.SetActive(true);
+        
         if (_isFarm == false && _isNFTSet)
         {
             _startButton.SetActive(false);
@@ -82,6 +88,7 @@ public class Farm : MonoBehaviour
         _lockNFTImage.SetActive(false);
 
         _isFarm = false;
+        _block.SetActive(false);
     }
 
     private IEnumerator Timer()
