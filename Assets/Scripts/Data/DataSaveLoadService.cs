@@ -14,6 +14,7 @@ namespace Data
             string jsonString = JsonUtility.ToJson(_playerData);
             PlayerPrefs.SetString(DataKey, jsonString);
 
+
             string info = "";
 
             if (_playerData.AttackDecks != null)
@@ -34,7 +35,8 @@ namespace Data
         public void Load()
         {
             var jsonString = PlayerPrefs.GetString(DataKey);
-            _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
+            if(jsonString != "")
+                _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
             
             Debug.Log("Load");
             Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
