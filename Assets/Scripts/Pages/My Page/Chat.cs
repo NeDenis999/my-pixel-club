@@ -4,7 +4,9 @@ using System;
 
 public class Chat : MonoBehaviour
 {
+    [SerializeField]
     private Friend _currentFriend;
+    
     [SerializeField] private TMP_Text _friendName;
 
     [SerializeField] private TMP_InputField _inputMessege;

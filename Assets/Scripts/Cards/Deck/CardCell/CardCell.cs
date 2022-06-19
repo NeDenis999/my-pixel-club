@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public abstract class CardCell : MonoBehaviour, ICard
 {
-    [SerializeField] private Image _icon;
-    [SerializeField] private Card _card;
+    [SerializeField] protected Image _icon;
+    [SerializeField] protected Card _card;
 
     private int _attack;
     private int _def;
@@ -41,6 +41,11 @@ public abstract class CardCell : MonoBehaviour, ICard
         CopyCardValue(cardForRender);
     }
 
+    public virtual void UpdatePanelStats(ICard cardForRender)
+    {
+        
+    }
+
     public void SwitchComponentValue(CardCell cardCell)
     {
         CopyCardValue(cardCell);
@@ -55,5 +60,7 @@ public abstract class CardCell : MonoBehaviour, ICard
         _def = cardCell.Def;
         _level = cardCell.Level;
         _attackSkill = cardCell.BonusAttackSkill;  
+        
+        UpdatePanelStats(cardCell);
     }
 }

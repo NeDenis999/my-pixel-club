@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,11 +12,25 @@ namespace Cards.Deck.CardCell
 
         [SerializeField] private StatisticWindow _statisticCardWindow;
 
+        [SerializeField] 
+        private TextMeshProUGUI _attackText;
+        
+        [SerializeField] 
+        private TextMeshProUGUI _defenseText;
+
+        [SerializeField] 
+        private GameObject _statsPanel;
+
+        [SerializeField] 
+        private Sprite _noneCardSprite;
+        
         private void Start()
         {
             var button = GetComponent<Button>();
             if(button != null)
                 button.onClick.AddListener(OpenCardCollection);
+
+            //UpdateStatistic(_card);
         }
 
         private void OpenCardCollection()
@@ -34,6 +49,24 @@ namespace Cards.Deck.CardCell
         public void ResetComponent()
         {
             _linkBetweenCardCollectionAndDeck.RetrieveCard(this, _emptyCard, transform.GetSiblingIndex(), _deckType);
+        }
+
+        public override void UpdatePanelStats(ICard cardForRender)
+        {
+            if (!_statsPanel)
+                return;
+            
+            if (cardForRender.Attack != 0 && cardForRender.Def != 0)
+            {
+                _statsPanel.SetActive(true);
+                _attackText.text = Attack.ToString();
+                _defenseText.text = Def.ToString();
+            }
+            else
+            {
+                _statsPanel.SetActive(false);
+                _icon.sprite = _noneCardSprite;
+            }
         }
     }
 }
