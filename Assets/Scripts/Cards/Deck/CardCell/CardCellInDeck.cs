@@ -23,7 +23,7 @@ namespace Cards.Deck.CardCell
 
         [SerializeField] 
         private Sprite _noneCardSprite;
-        
+
         private void Start()
         {
             var button = GetComponent<Button>();
@@ -53,7 +53,7 @@ namespace Cards.Deck.CardCell
 
         public override void UpdatePanelStats(ICard cardForRender)
         {
-            if (!_statsPanel)
+            if (!_statsPanel || cardForRender == null)
                 return;
             
             if (cardForRender.Attack != 0 && cardForRender.Def != 0)
