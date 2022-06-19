@@ -16,6 +16,9 @@ namespace Roulette
         [SerializeField]
         private Transform _target;
 
+        [SerializeField] 
+        private GameObject _protectionFromExitingMenu;
+        
         private Transform _currentParrent;
         private Vector3 _previousCurrentCellPosition;
         private Vector3 _previousCurrentCellScale;
@@ -24,6 +27,7 @@ namespace Roulette
 
         public IEnumerator Spine(int prize, RouletteCell[] rouletteCells)
         {
+            _protectionFromExitingMenu.SetActive(true);
             float rotationSpeed = 0.1f;
 
             _currentCell = rouletteCells[prize];
@@ -86,6 +90,7 @@ namespace Roulette
             _currentCell.transform.DOLocalMove(_previousCurrentCellPosition, 0.75f);
             yield return new WaitForSeconds(0.75f);
             startRoletteButton.interactable = true;
+            _protectionFromExitingMenu.SetActive(false);
         }        
     }
 }

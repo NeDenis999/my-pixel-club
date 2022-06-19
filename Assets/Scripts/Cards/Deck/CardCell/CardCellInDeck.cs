@@ -30,7 +30,7 @@ namespace Cards.Deck.CardCell
             if(button != null)
                 button.onClick.AddListener(OpenCardCollection);
 
-            //UpdateStatistic(_card);
+            UpdatePanelStats(_card);
         }
 
         private void OpenCardCollection()
