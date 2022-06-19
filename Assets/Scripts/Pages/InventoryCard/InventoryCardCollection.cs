@@ -26,14 +26,14 @@ namespace Pages.InventoryCard
         {
             _linkBetweenCardCollectionAndDeck.OnOpenCardCollection += () => gameObject.SetActive(true);
 
-            _linkBetweenCardCollectionAndDeck.OnSelectedDeckCard += (CardCell cardCell, AtackOrDefCardType deckType, int positionCardInDeck) =>
+            /*_linkBetweenCardCollectionAndDeck.OnSelectedDeckCard += (CardCell cardCell, AtackOrDefCardType deckType, int positionCardInDeck) =>
             {
                 if (cardCell.Card.Rarity != RarityCard.Epmpty)
                 {
                     _cards.Remove((CardCollectionInventoryCell)cardCell);
                     Destroy(cardCell.gameObject);
                 }
-            };
+            };*/
 
             _linkBetweenCardCollectionAndDeck.OnRetrieveCard += RetrieveCardCell;
 
