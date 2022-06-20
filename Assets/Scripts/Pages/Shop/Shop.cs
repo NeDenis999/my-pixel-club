@@ -5,7 +5,7 @@ public class Shop : MonoBehaviour
 {
     public event UnityAction<int> OnCristalBuy;
     public event UnityAction<ShopItemBottle> OnBottleBuy;
-    public event UnityAction<Card[]> OnCardBuy;
+    public event UnityAction<Card[]> OnCardsBuy;
 
     private ShopItemCardPack _cardsPack;
 
@@ -24,7 +24,7 @@ public class Shop : MonoBehaviour
     public void BuyCard(ShopItemCardPack shopItem)
     {
         _cardsPack = shopItem;
-        OnCardBuy?.Invoke(GetRandomCards((int)shopItem.TypeItem));
+        OnCardsBuy?.Invoke(GetRandomCards((int)shopItem.TypeItem));
     }
 
     private Card[] GetRandomCards(int amountCard)

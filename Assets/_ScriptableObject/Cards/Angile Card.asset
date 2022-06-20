@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
   m_Name: Angile Card
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: e9563c6dd663b7a4d9c6ab6979633fa5, type: 3}
+  _currentImage: {fileID: 21300000, guid: e9563c6dd663b7a4d9c6ab6979633fa5, type: 3}
+  _imageFirstEvolution: {fileID: 21300000, guid: e9563c6dd663b7a4d9c6ab6979633fa5, type: 3}
+  _imageSecondeEvolution: {fileID: 21300000, guid: 4f1a6ec21d52dcf46952a00947305b38, type: 3}
   _name: Angile
   _rarity: 1
   _race: 1
-  _attack: 7
-  _def: 3
-  _health: 0
+  _attack: 1250
+  _def: 852
+  _health: 1365
   _attackSillName: ang
   _attackSkill: 10
   _defSkillName: gna
   _defSkill: 3
   _skillChance: 1
   _discription: angel option
-  rouletteScreen: {fileID: 1608309579893797357, guid: 6d33e6e59a629c846be05ed61d9b8400, type: 3}

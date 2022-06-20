@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class StartGame : MonoBehaviour
 {
-    public event UnityAction<Card[]> OnSetStartPackCard;
+    public event UnityAction<Card[]> OnSetStartPackCards;
 
     [SerializeField] private Card[] _cards;
 
@@ -16,6 +16,6 @@ public class StartGame : MonoBehaviour
 
     private void GenerateStartPackCard()
     {
-        OnSetStartPackCard?.Invoke(_cards);
+        OnSetStartPackCards?.Invoke(_cards);
     }
 }

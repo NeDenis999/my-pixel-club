@@ -12,9 +12,10 @@ namespace Pages.Collection
         [SerializeField] private Transform _container;
 
         [SerializeField] private Shop _shop;
-        [SerializeField] private RoulettePage roulettePage;
-
+        [SerializeField] private RoulettePage _roulettePage;
         [SerializeField] private StartGame _startGame;
+        [SerializeField] private Evolution _evolution;
+
         [SerializeField] private LinkBetweenCardsAndCollections _linkBetweenCardCollectionAndDeck;
 
         [SerializeField] private StatisticWindow _statisticWindow;
@@ -36,10 +37,10 @@ namespace Pages.Collection
 
             _linkBetweenCardCollectionAndDeck.OnRetrieveCard += RetrieveCardCell;
 
-            _shop.OnCardBuy += AddCard;
-            roulettePage.OnReceivedCard += AddCard;
-
-            _startGame.OnSetStartPackCard += AddCard;
+            _shop.OnCardsBuy += AddCards;
+            _startGame.OnSetStartPackCards += AddCards;
+            _roulettePage.OnReceivedCard += AddCard;
+            _evolution.OnEvolvedCard += AddCard;
 
             gameObject.SetActive(false);
         }
@@ -115,14 +116,19 @@ namespace Pages.Collection
             _cards.Add(cell);
         }
 
-        private void AddCard(Card[] newCards)
+        private void AddCards(Card[] newCards)
         {
             for (int i = 0; i < newCards.Length; i++)
             {
-                var cell = Instantiate(_cardCellTemplate, _container);
-                cell.Render(newCards[i]);
-                _cards.Add(cell);
+                AddCard(newCards[i]);
             }
+        }
+
+        private void AddCard(Card newCards)
+        {            
+            var cell = Instantiate(_cardCellTemplate, _container);
+            cell.Render(newCards);
+            _cards.Add(cell);
 
             Render(_cards);
         }

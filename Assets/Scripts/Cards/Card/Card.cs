@@ -20,7 +20,11 @@ public enum RaceCard
 [CreateAssetMenu(fileName = "Card", menuName = "ScriptableObjects/Card")]
 public class Card : ScriptableObject, ICard, IRoulette
 {
-    [SerializeField] private Sprite _image;
+    [SerializeField] private Sprite _currentImage;
+
+    [SerializeField] private Sprite _imageFirstEvolution;
+    [SerializeField] private Sprite _imageSecondeEvolution;
+
     [SerializeField] private string _name;
 
     [SerializeField] private RarityCard _rarity;
@@ -29,6 +33,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     [SerializeField] private int _attack;
     [SerializeField] private int _def;
     [SerializeField] private int _health;
+    private int _level = 1;
 
     [SerializeField] private string _attackSillName;
     [SerializeField] private int _attackSkill;
@@ -41,9 +46,7 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     [SerializeField] private string _discription;
 
-    [SerializeField] private RoulettePage roulettePage;
-
-    public Sprite UIIcon => _image;
+    public Sprite UIIcon => _currentImage;
     public string Name => _name;
 
     public RarityCard Rarity => _rarity;
@@ -53,7 +56,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     public int Def => _def;
     public int Health => _health;
 
-    public int Level => 1;
+    public int Level => _level;
 
     public int BonusAttackSkill => _attackSkill;
     public void TakeDamage(int damage) => _health -= damage;
@@ -69,8 +72,19 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     Card ICard.Card => this;
 
+    public void SetEvolutionValue(int attack, int def, int health)
+    {
+        if (_currentImage.name == _imageSecondeEvolution.name) throw new System.InvalidOperationException();
+        _attack = attack;
+        _def = def;
+        _health = health;
+        _currentImage = _imageSecondeEvolution;
+    }
+
     public void TakeItem()
     {
+        var roulettePage = FindObjectOfType<RoulettePage>().gameObject.GetComponent<RoulettePage>();
+
         roulettePage.AccrueCard(this);
     }
 }

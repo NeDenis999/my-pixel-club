@@ -6,7 +6,7 @@ namespace Roulette
 {
     public class RoulettePage : MonoBehaviour
     {
-        public event UnityAction<Card[]> OnReceivedCard;
+        public event UnityAction<Card> OnReceivedCard;
         public event UnityAction<int> OnReceivedCristal;
         public event UnityAction<int> OnReceivedGold;
         public event UnityAction<int> OnBuyRouletteSpin;
@@ -44,7 +44,7 @@ namespace Roulette
         }
 
         public void AccrueCard(Card card) => 
-            OnReceivedCard?.Invoke(new Card[] { card });
+            OnReceivedCard?.Invoke(card);
 
         public void AccrueCristal() => 
             OnReceivedCristal?.Invoke(Random.Range(1, 6));
