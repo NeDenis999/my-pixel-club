@@ -5,27 +5,33 @@ using UnityEngine;
 public class Page : MonoBehaviour
 {
     [SerializeField] 
-    private CanvasGroup _canvasGroup;
+    protected CanvasGroup CanvasGroup;
+
+    [SerializeField] 
+    private bool _isZeroPosition;
     
-    private Vector3 _startPosition;
-    private Sequence _sequence;
+    protected Vector3 StartPosition;
+    protected Sequence Sequence;
 
 
     private void Start()
     {
-        _startPosition = transform.localPosition;
+        InitStartPosition();
     }
+
+    private void InitStartPosition() => 
+        StartPosition = _isZeroPosition ? Vector3.zero : transform.localPosition;
 
     public void Show()
     {
-        _sequence = DOTween.Sequence();
+        Sequence = DOTween.Sequence();
         gameObject.SetActive(true);
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
-        _sequence.Kill();
-        transform.localPosition = _startPosition;
+        Sequence.Kill();
+        transform.localPosition = StartPosition;
         gameObject.SetActive(false);
     }
 
@@ -45,11 +51,11 @@ public class Page : MonoBehaviour
 
     private IEnumerator ShowSmooth()
     {
-        _canvasGroup.alpha = 0;
-        transform.localPosition = _startPosition + new Vector3(200, 0, 0);
-        _sequence
-            .Insert(0, DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, 0.75f))
-            .Insert(0, transform.DOLocalMove(_startPosition, 0.75f));
+        CanvasGroup.alpha = 0;
+        transform.localPosition = StartPosition + new Vector3(200, 0, 0);
+        Sequence
+            .Insert(0, DOTween.To(() => CanvasGroup.alpha, x => CanvasGroup.alpha = x, 1, 0.75f))
+            .Insert(0, transform.DOLocalMove(StartPosition, 0.75f));
         
         yield return new WaitForSeconds(1);
     }
@@ -57,10 +63,10 @@ public class Page : MonoBehaviour
     private IEnumerator HideSmooth()
     {
         print("HideSmooth");
-        _canvasGroup.alpha = 1;
-        transform.localPosition = _startPosition;
-        DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, 1);
-        transform.DOLocalMove(_startPosition + new Vector3(200, 0, 0), 1);
+        CanvasGroup.alpha = 1;
+        transform.localPosition = StartPosition;
+        DOTween.To(() => CanvasGroup.alpha, x => CanvasGroup.alpha = x, 0, 1);
+        transform.DOLocalMove(StartPosition + new Vector3(200, 0, 0), 1);
         yield return new WaitForSeconds(1);
     }
 }
