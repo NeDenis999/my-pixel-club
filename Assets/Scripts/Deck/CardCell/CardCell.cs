@@ -15,7 +15,8 @@ public abstract class CardCell : MonoBehaviour, ICard
     private int _health;
     private int _level;
     private int _attackSkill;
-   
+
+    public Image Icon => _icon;
     public int Attack => _attack;
     public int Def => _def;
     public int Health => _health;
@@ -58,6 +59,7 @@ public abstract class CardCell : MonoBehaviour, ICard
         _icon.sprite = _card.UIIcon;
         _attack = cardCell.Attack;
         _def = cardCell.Def;
+        _health = cardCell.Health;
         _level = cardCell.Level;
         _attackSkill = cardCell.BonusAttackSkill;  
         

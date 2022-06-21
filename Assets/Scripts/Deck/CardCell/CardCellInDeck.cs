@@ -14,9 +14,12 @@ namespace Cards.Deck.CardCell
 
         [SerializeField] 
         private TextMeshProUGUI _attackText;
-        
+
         [SerializeField] 
         private TextMeshProUGUI _defenseText;
+
+        [SerializeField] 
+        private TextMeshProUGUI _healthText;
 
         [SerializeField] 
         private GameObject _statsPanel;
@@ -30,6 +33,8 @@ namespace Cards.Deck.CardCell
             if(button != null)
                 button.onClick.AddListener(OpenCardCollection);
 
+            if (_card)
+                Icon.transform.localPosition = Icon.transform.localPosition.ToMove(_card.DirectionView);
             //UpdatePanelStats(_card);
         }
         
@@ -67,6 +72,7 @@ namespace Cards.Deck.CardCell
                 _statsPanel.SetActive(true);
                 _attackText.text = Attack.ToString();
                 _defenseText.text = Def.ToString();
+                _healthText.text = Health.ToString();
             }
             else
             {

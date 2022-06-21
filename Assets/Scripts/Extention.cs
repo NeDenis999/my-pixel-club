@@ -21,4 +21,11 @@ public static class Extention
         vector3.x = x;
         return vector3;
     }
+    
+    public static Vector3 ToMove(this Vector3 vector, Vector3 direction)
+    {
+        Vector3 vector3 = vector;
+        vector3 += direction;
+        return vector3;
+    }
 }

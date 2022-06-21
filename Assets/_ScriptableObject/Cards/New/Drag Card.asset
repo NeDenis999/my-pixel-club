@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
-  m_Name: Bee Card
+  m_Name: Drag Card
   m_EditorClassIdentifier: 
-  _currentImage: {fileID: 21300000, guid: 5fd167d587585584aa624cf52af6397d, type: 3}
-  _imageFirstEvolution: {fileID: 21300000, guid: 5fd167d587585584aa624cf52af6397d, type: 3}
+  _currentImage: {fileID: 21300000, guid: 782bd1fd6c02be64cb9b316fc6c8c95a, type: 3}
+  _imageFirstEvolution: {fileID: 21300000, guid: 782bd1fd6c02be64cb9b316fc6c8c95a, type: 3}
   _imageSecondeEvolution: {fileID: 21300000, guid: 4d16541f40428454580e57b97adb9fd1, type: 3}
-  _name: Bee
+  _name: Drag
   _rarity: 1
   _race: 2
-  _attack: 8
-  _def: 3
-  _health: 0
-  _attackSillName: bee
+  _attack: 807
+  _def: 375
+  _health: 643
+  _attackSillName: drag
   _attackSkill: 25
   _defSkillName: eeb
   _defSkill: 4
   _skillChance: 0.1
-  _discription: bee option
+  _discription: drag option
+  _directionView: {x: -45, y: 0}
