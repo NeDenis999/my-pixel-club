@@ -5,14 +5,18 @@ using UnityEngine.UI;
 public class Evolution : MonoBehaviour
 {
     public event UnityAction<Card> OnEvolvedCard;
+    public event UnityAction<CardCollectionCell, CardCollectionCell> OnDelitedUseCards;
+
+    [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;    
 
     [SerializeField] private Button _evolveButton;
 
     [SerializeField] private GameObject _exeptionWindow;
 
-    [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;
-
     private Card _evolvedCard;
+
+    public EvolutionCard FirstCard => _firstCardForEvolution;
+    public EvolutionCard SecondeCard => _secondeCardForEvolution;
 
     private void OnEnable()
     {
@@ -27,9 +31,14 @@ public class Evolution : MonoBehaviour
     private void EvolveCard()
     {
         if (_firstCardForEvolution.IsSet && _secondeCardForEvolution.IsSet)
+        {
+            OnDelitedUseCards?.Invoke(_firstCardForEvolution.CardCell, _secondeCardForEvolution.CardCell);
             OnEvolvedCard?.Invoke(GetEvolvedCard());
+        }
         else
+        {
             _exeptionWindow.SetActive(true);
+        }
     }
 
     private Card GetEvolvedCard()
@@ -38,7 +47,7 @@ public class Evolution : MonoBehaviour
         float avargeDef = GetAvargeValue(_firstCardForEvolution.CardCell.Def, _secondeCardForEvolution.CardCell.Def);
         float avargeHealth = GetAvargeValue(_firstCardForEvolution.CardCell.Health, _secondeCardForEvolution.CardCell.Health);
 
-        _evolvedCard = Instantiate(_firstCardForEvolution.CardCell);
+        _evolvedCard = Instantiate(_firstCardForEvolution.CardCell.Card);
 
         _evolvedCard.SetEvolutionValue((int)(avargeAtack *= 1.35f),
                                        (int)(avargeDef *= 1.35f),

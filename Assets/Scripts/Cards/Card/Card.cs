@@ -24,6 +24,8 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     [SerializeField] private Sprite _imageFirstEvolution;
     [SerializeField] private Sprite _imageSecondeEvolution;
+    private int _evolution = 1;
+    public int Evoulution => _evolution;
 
     [SerializeField] private string _name;
 
@@ -83,6 +85,8 @@ public class Card : ScriptableObject, ICard, IRoulette
         _def = def;
         _health = health;
         _currentImage = _imageSecondeEvolution;
+        _evolution++;
+        if (_evolution > 2) throw new System.InvalidOperationException();
     }
 
     public void TakeItem()

@@ -29,6 +29,8 @@ namespace Cards.Deck.CardCell
 
         private void Start()
         {
+            if (_card == null) _card = _emptyCard.Card;
+
             var button = GetComponent<Button>();
             if(button != null)
                 button.onClick.AddListener(OpenCardCollection);

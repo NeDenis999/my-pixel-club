@@ -15,7 +15,7 @@ public class CardCollectionCell : CardCell, IInventory
     public BottleEffects Effect => BottleEffects.None;
 
 
-    private void Awake()
+    virtual protected void Awake()
     {
         var button = GetComponent<Button>();
         button.onClick.AddListener(SetCardInDeck);

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public abstract class CardCell : MonoBehaviour, ICard
 {
     [SerializeField] protected Image _icon;
-    [SerializeField] protected Card _card;
+    protected Card _card;
 
     private int _attack;
     private int _def;

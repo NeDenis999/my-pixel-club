@@ -40,7 +40,13 @@ namespace Pages.Collection
             _shop.OnCardsBuy += AddCards;
             _startGame.OnSetStartPackCards += AddCards;
             _roulettePage.OnReceivedCard += AddCard;
+
             _evolution.OnEvolvedCard += AddCard;
+            _evolution.OnDelitedUseCards += (firstCard, secondCard) =>
+            {
+                _cards.Remove(secondCard);
+                _cards.Remove(firstCard);
+            };
 
             gameObject.SetActive(false);
         }
