@@ -1,6 +1,8 @@
+using Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Pages.My_Page
 {
@@ -22,15 +24,35 @@ namespace Pages.My_Page
         [SerializeField]
         private Slider _xpSlider;
 
+        private DataSaveLoadService _data;
+        
+        [Inject]
+        private void Construct(DataSaveLoadService data)
+        {
+            _data = data;
+        }
+        
         private void Start()
         {
-            _player.OnLevelChange += level => _levelText.text = level.ToString() + "/100";
+            /*_player.OnLevelChange += level => _levelText.text = level.ToString() + "/100";
         
             _player.OnEnergyChange += energy =>
             {
                 _energyText.text = energy + "/25";
                 _energySlider.value = energy;
-            };
+            };*/
+        }
+
+        public void UpdateDisplay()
+        {
+            _levelText.text = 1.ToString();
+            _rankText.text = 1500.ToString();
+            _energyText.text = _player.Energy.ToString();
+            _xpText.text = _player.Exp.ToString();
+            _xpSlider.value = _player.Exp;
+            _heroesText.text = 5.ToString() + '/' + 25.ToString();
+            _powerText.text = 90.ToString();
+            _goldText.text = _data.PlayerData.Coins.ToString();
         }
     }
 }
