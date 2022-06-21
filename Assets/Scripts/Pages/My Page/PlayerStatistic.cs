@@ -12,7 +12,7 @@ public class PlayerStatistic : MonoBehaviour
 
     private void Start()
     {
-        _player.OnLevelChange += (int level) => _levelText.text = "Level: " + level.ToString();
-        _player.OnEnergyChange += (int energy) => _energyText.text = "Energy: " + energy.ToString() + "/25";
+        _player.OnLevelChange += (int level) => _levelText.text = level.ToString() + "/100";
+        _player.OnEnergyChange += (int energy) => _energyText.text = energy.ToString() + "/25";
     }
 }
