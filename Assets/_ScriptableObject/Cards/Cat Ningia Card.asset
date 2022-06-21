@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
   m_Name: Cat Ningia Card
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: ae6d115725816f948972f41c74f066a6, type: 3}
+  _currentImage: {fileID: 21300000, guid: 0ce2fb78341a69f41b9894796a8c8db8, type: 3}
+  _imageFirstEvolution: {fileID: 21300000, guid: 0ce2fb78341a69f41b9894796a8c8db8, type: 3}
+  _imageSecondeEvolution: {fileID: 21300000, guid: 4d16541f40428454580e57b97adb9fd1, type: 3}
   _name: Cat NIngia
   _rarity: 2
   _race: 0
@@ -25,4 +27,3 @@ MonoBehaviour:
   _defSkill: 6
   _skillChance: 2
   _discription: cat option
-  rouletteScreen: {fileID: 1608309579893797357, guid: 6d33e6e59a629c846be05ed61d9b8400, type: 3}

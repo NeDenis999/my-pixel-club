@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
   m_Name: Electricer Card
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: 0a7784d7b3a44e54d9645d53d2339ba0, type: 3}
+  _currentImage: {fileID: 21300000, guid: 5bcf7bf7e93f9b947b2a5f184a831237, type: 3}
+  _imageFirstEvolution: {fileID: 21300000, guid: 5bcf7bf7e93f9b947b2a5f184a831237, type: 3}
+  _imageSecondeEvolution: {fileID: 21300000, guid: 733daa21a12e77d489371ecd79ef5710, type: 3}
   _name: Electricer
   _rarity: 1
   _race: 0
@@ -25,4 +27,3 @@ MonoBehaviour:
   _defSkill: 3
   _skillChance: 0.9
   _discription: electric option
-  rouletteScreen: {fileID: 1608309579893797357, guid: 6d33e6e59a629c846be05ed61d9b8400, type: 3}

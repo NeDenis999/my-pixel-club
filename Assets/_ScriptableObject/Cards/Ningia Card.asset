@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
   m_Name: Ningia Card
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: 872ed5cdad1a03449b212655a5da6c67, type: 3}
+  _currentImage: {fileID: 21300000, guid: ae6d115725816f948972f41c74f066a6, type: 3}
+  _imageFirstEvolution: {fileID: 21300000, guid: ae6d115725816f948972f41c74f066a6, type: 3}
+  _imageSecondeEvolution: {fileID: 21300000, guid: 733daa21a12e77d489371ecd79ef5710, type: 3}
   _name: Ninga
   _rarity: 1
   _race: 0
@@ -25,4 +27,3 @@ MonoBehaviour:
   _defSkill: 9
   _skillChance: 0.52
   _discription: ningia option
-  rouletteScreen: {fileID: 1608309579893797357, guid: 6d33e6e59a629c846be05ed61d9b8400, type: 3}

@@ -25,6 +25,7 @@ public class Page : MonoBehaviour
     public void Hide()
     {
         _sequence.Kill();
+        transform.localPosition = _startPosition;
         gameObject.SetActive(false);
     }
 
