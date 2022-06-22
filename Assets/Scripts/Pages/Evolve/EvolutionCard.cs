@@ -13,20 +13,21 @@ public class EvolutionCard : MonoBehaviour
     [SerializeField] private Sprite _standardSprite;
 
     public bool IsSet => _isSet;
-    private bool _isSet = true;
+    private bool _isSet = false;
 
     public CardCollectionCell CardCell { get; private set; }
 
     private void OnEnable()
     {
         GetComponent<Button>().onClick.AddListener(OpenCollectionCard);
-        _evolution.OnEvolvedCard += Reset;
+        _evolution.OnEvolvedCard += (a) => Reset();
+        Reset();
     }
 
     private void OnDisable()
     {
         GetComponent<Button>().onClick.RemoveListener(OpenCollectionCard);
-        _evolution.OnEvolvedCard += Reset;
+        _evolution.OnEvolvedCard -= (a) => Reset();
     }
 
     private void OpenCollectionCard()
@@ -35,7 +36,7 @@ public class EvolutionCard : MonoBehaviour
         _cardCollection.OneOfCardInEvolutioin = this;
     }
 
-    private void Reset(Card card)
+    private void Reset()
     {
         CardCell = null;
         _UIIcon.sprite = _standardSprite;
