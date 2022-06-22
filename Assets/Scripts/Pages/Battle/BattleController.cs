@@ -32,6 +32,9 @@ namespace Battle
         
         [SerializeField]
         private CardAnimator[] _playerCardAnimators;
+
+        [SerializeField] 
+        private ShakeCamera _shakeCamera;
         
         private List<Card> _enemyDefCards = new();
         private int _baseEnemyDefValue;
@@ -39,7 +42,7 @@ namespace Battle
         private int _countPlayerAliveCards() => PlayerAliveCards().Count;
         private int _countEnemyAliveCards() => EnemyAliveCards().Count;
 
-        private void Start()
+        private void Awake()
         {
             gameObject.SetActive(false);
         }
@@ -58,6 +61,7 @@ namespace Battle
         public void StartFight()
         {
             gameObject.SetActive(true);
+            _battleIntro.Initialization();
             print("Начало рпсскрытия колоды");
             StartCoroutine(Fight());
             print("Конец анимации раскрытия колоды");
@@ -87,10 +91,10 @@ namespace Battle
 
             //while (_countPlayerAliveCards() > 0 && _countEnemyAliveCards() > 0)
             //{
-            yield return _battleIntro.Intro();
+            //yield return _battleIntro.Intro("Start Battle");
             yield return _battleAnimator.AppearanceCards(_enemyCardAnimators, _playerCardAnimators);
-            yield return _battleIntro.SwitchTurnIntro("Player Turn");
-            yield return new WaitForSeconds(0.5f);
+            //yield return _battleIntro.SwitchTurnIntro("Player Turn");
+            //yield return new WaitForSeconds(0.5f);
             yield return PlayerMove();
             yield return _battleIntro.SwitchTurnIntro("Opponent Turn");
             yield return new WaitForSeconds(0.5f);
@@ -100,11 +104,11 @@ namespace Battle
         
             yield return new WaitForSeconds(1);
         
-            if (GetAmountPlayerCardsDamage() > GetAmountEnemyCardsDef())
+           /* if (GetAmountPlayerCardsDamage() > GetAmountEnemyCardsDef())
                 OnPlayerWin?.Invoke();
             else
                 OnPlayerLose?.Invoke();
-
+*/
             gameObject.SetActive(false);
         }
 
@@ -120,7 +124,7 @@ namespace Battle
                     randomPlayerCard.Selected();
                 }
                 
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.3f);
 
                 var randomEnemyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
                 
@@ -128,6 +132,13 @@ namespace Battle
                 {
                     var randomEnemyCard = _enemyCardAnimators[Random.Range(0, _enemyCardAnimators.Length)];
                     StartCoroutine(randomEnemyCard.Hit());
+                    yield return new WaitForSeconds(0.2f);
+
+                    for (int k = 0; k < randomEnemyCardDamageCount; k++)
+                    {
+                        _shakeCamera.Shake(0.5f, 10);
+                        yield return new WaitForSeconds(0.1f);
+                    }
                 }
                 
                 yield return new WaitForSeconds(2);
@@ -154,6 +165,13 @@ namespace Battle
                 {
                     var randomPlayerCard = _playerCardAnimators[Random.Range(0, _playerCardAnimators.Length)];
                     StartCoroutine(randomPlayerCard.Hit());
+                    yield return new WaitForSeconds(0.2f);
+
+                    for (int k = 0; k < randomPlayerCardDamageCount; k++)
+                    {
+                        _shakeCamera.Shake(0.5f, 10);
+                        yield return new WaitForSeconds(0.1f);
+                    }
                 }
                 
                 yield return new WaitForSeconds(2);

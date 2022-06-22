@@ -1033,7 +1033,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965099158956}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 1
@@ -1346,7 +1345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965234531438}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 0
@@ -4115,7 +4113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965718411557}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 1
@@ -4216,7 +4213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965732713393}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 1
@@ -4668,7 +4664,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965770589182}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 0
@@ -4904,7 +4899,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965785548660}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 1
@@ -5223,7 +5217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965825872447}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 1
@@ -6021,7 +6014,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1350219965365566047}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.54802346
+  m_Size: 0.5480234
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6117,7 +6110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965942320194}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 0
@@ -6888,7 +6880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.21776962, y: -7.007141}
+  m_AnchoredPosition: {x: -0.21776962, y: -7.007145}
   m_SizeDelta: {x: 16.131348, y: 27.965591}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1350219966005383196
@@ -7929,7 +7921,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219966247445509}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 0
@@ -8518,7 +8509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219966446660200}
-  _card: {fileID: 0}
   _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
   _deckType: 0
@@ -10668,6 +10658,8 @@ GameObject:
   - component: {fileID: 1350219966936058181}
   - component: {fileID: 1350219966936058183}
   - component: {fileID: 1350219966936058296}
+  - component: {fileID: 4976829971087628449}
+  - component: {fileID: 2031185638}
   m_Layer: 5
   m_Name: Battle
   m_TagString: Untagged
@@ -10766,6 +10758,7 @@ MonoBehaviour:
   - {fileID: 7655836002436865735}
   - {fileID: 7655836002818689801}
   - {fileID: 7655836002615951193}
+  _shakeCamera: {fileID: 2031185638}
 --- !u!114 &1350219966936058296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10780,6 +10773,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyHorizontalLayoutGroup: {fileID: 1350219966680864210}
   _playerHorizontalLayoutGroup: {fileID: 1350219965574872966}
+--- !u!114 &4976829971087628449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350219966936058179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab2670bd7c749caa735fe775500057a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0
+  _power: 0
+--- !u!114 &2031185638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350219966936058179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab2670bd7c749caa735fe775500057a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0
+  _power: 0
 --- !u!1 &1350219966957391791
 GameObject:
   m_ObjectHideFlags: 0
