@@ -25,10 +25,12 @@ public abstract class Deck : MonoBehaviour
     {
         _data = data;
         InitCards(data);
-    }
+    }    
 
     private void OnEnable()
-    {        
+    {
+        OnCardChanged?.Invoke(_cardsInDeck);
+
         _linkBetweenCardsAndCollections.OnSelectedDeckCard += SetCardInDeck;
     }
 

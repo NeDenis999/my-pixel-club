@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
+        foreach (var item in _attackDeck.CardsInDeck)
+            _amountCardBaseAttack += item.Attack;
+
         _attackDeck.OnCardChanged += (List<CardCellInDeck> cardInDeck) =>
         {
             _amountCardBaseAttack = 0;
@@ -76,6 +79,11 @@ public class Player : MonoBehaviour
 
         _health -= amountDamage;
         CheakAlive();
+    }
+
+    public void RevertHealth()
+    {
+        _health = _maxHealth;
     }
 
     public void GetExp(int exp)

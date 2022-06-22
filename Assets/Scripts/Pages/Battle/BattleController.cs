@@ -103,12 +103,12 @@ namespace Battle
             //}
         
             yield return new WaitForSeconds(1);
-        
-           /* if (GetAmountPlayerCardsDamage() > GetAmountEnemyCardsDef())
+
+            if (GetAmountPlayerCardsDamage() > GetAmountEnemyCardsDef())
                 OnPlayerWin?.Invoke();
             else
                 OnPlayerLose?.Invoke();
-*/
+
             gameObject.SetActive(false);
         }
 

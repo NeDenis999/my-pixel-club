@@ -66,16 +66,18 @@ public class QuestFight : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
         }
-        
+
         gameObject.SetActive(false);
         _questList.SetActive(true);
-        
+
         if (_player.Health > 0)
         {
             OnPlayerWin?.Invoke();
             _player.GetExp(25);
             _playerExpPerProcentText.text = (_player.Exp / _player.MaxExp * 100).ToString() + " %";
         }
+
+        _player.RevertHealth();
     }
 
     private int GenerateEnemyAttackValue(EnemyType enemyType)

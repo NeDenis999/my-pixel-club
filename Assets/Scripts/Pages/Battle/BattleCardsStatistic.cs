@@ -1,3 +1,4 @@
+using Battle;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class BattleCardsStatistic : MonoBehaviour
 {
     [SerializeField] private TMP_Text _statisticText;
+
+    [SerializeField] private BattleController _battle;
 
     private List<string> _listPlayerCardUsedSkill = new();
     private List<string> _listPlayerCardSkillName = new();
@@ -17,7 +20,8 @@ public class BattleCardsStatistic : MonoBehaviour
 
     private void OnEnable()
     {
-        RenderStatisticText();
+        _battle.OnPlayerWin += RenderStatisticText;
+        _battle.OnPlayerWin += RenderStatisticText;
     }
 
     private void OnDisable()
@@ -27,6 +31,9 @@ public class BattleCardsStatistic : MonoBehaviour
 
         _listEnemyCardUsedSkill.Clear();
         _listEnemyCardSkillName.Clear();
+
+        _battle.OnPlayerWin -= RenderStatisticText;
+        _battle.OnPlayerWin -= RenderStatisticText;
     }
 
     public void AddPlayerCardWhileUsedSkill(string cardName, string skillName)
