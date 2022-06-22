@@ -17,6 +17,8 @@ namespace Pages.My_Page
         [SerializeField] private TMP_Text _heroesText;
         [SerializeField] private TMP_Text _powerText;
         [SerializeField] private TMP_Text _goldText;
+        [SerializeField] private TMP_Text _nickName;
+        [SerializeField] private Image _avatar;
 
         [SerializeField]
         private Slider _energySlider;
@@ -24,6 +26,9 @@ namespace Pages.My_Page
         [SerializeField]
         private Slider _xpSlider;
 
+        [SerializeField] 
+        private Sprite[] _avatars;
+        
         private DataSaveLoadService _data;
         
         [Inject]
@@ -34,6 +39,9 @@ namespace Pages.My_Page
         
         private void Start()
         {
+            _nickName.text = RandomNickName();
+            _avatar.sprite = RandomAvatar();
+
             /*_player.OnLevelChange += level => _levelText.text = level.ToString() + "/100";
         
             _player.OnEnergyChange += energy =>
@@ -42,6 +50,17 @@ namespace Pages.My_Page
                 _energySlider.value = energy;
             };*/
         }
+
+        private string RandomNickName()
+        {
+            var nickNames = new[]
+                { "Tijagi", "Luxulo", "Lofuwa", "Xyboda", "Sopogy", "Lydiba", "Dekale", "Tareqi", "Muqawo", "Dejalo" };
+
+            return nickNames[Random.Range(0, nickNames.Length)];
+        }
+
+        private Sprite RandomAvatar() =>
+            _avatars[Random.Range(0, _avatars.Length)];
 
         public void UpdateDisplay()
         {

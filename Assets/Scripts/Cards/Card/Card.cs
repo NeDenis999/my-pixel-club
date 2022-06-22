@@ -49,6 +49,9 @@ public class Card : ScriptableObject, ICard, IRoulette
     [SerializeField] private string _discription;
 
     [SerializeField] private Vector2 _directionView;
+
+    [SerializeField] 
+    private ParticleSystem _attackEffect;
     
     public Sprite UIIcon => _currentImage;
     public string Name => _name;
@@ -59,10 +62,9 @@ public class Card : ScriptableObject, ICard, IRoulette
     public int Attack => _attack;
     public int Def => _def;
     public int Health => _health;
-
     public int Level => _level;
-    
     public Vector2 DirectionView => _directionView;
+    public ParticleSystem AttackEffect => _attackEffect;
 
     public int BonusAttackSkill => _attackSkill;
     public void TakeDamage(int damage) => _health -= damage;

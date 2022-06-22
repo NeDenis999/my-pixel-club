@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Cards.Card;
 using Cards.Deck.CardCell;
+using Data;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Battle
 {
@@ -32,9 +34,15 @@ namespace Battle
         
         [SerializeField]
         private CardAnimator[] _playerCardAnimators;
-
+        
+        private Card[] _enemyCards;
+        private Card[] _playerCards;
+        
         [SerializeField] 
         private ShakeCamera _shakeCamera;
+
+        [SerializeField] 
+        private ParticleSystem _defaultAttackEffect;
         
         private List<Card> _enemyDefCards = new();
         private int _baseEnemyDefValue;
@@ -42,6 +50,12 @@ namespace Battle
         private int _countPlayerAliveCards() => PlayerAliveCards().Count;
         private int _countEnemyAliveCards() => EnemyAliveCards().Count;
 
+        [Inject]
+        private void Construct(DataSaveLoadService dataSaveLoadService)
+        {
+            _playerCards = dataSaveLoadService.PlayerData.AttackDecks;
+        }
+        
         private void Awake()
         {
             gameObject.SetActive(false);
@@ -65,50 +79,44 @@ namespace Battle
             print("Начало рпсскрытия колоды");
             StartCoroutine(Fight());
             print("Конец анимации раскрытия колоды");
-            //yield return new WaitForSeconds(3f);
         }
 
         private void RenderEnemyDefCard()
         {
-            /*foreach (Transform item in _container)
-                Destroy(item.gameObject);*/
-
-            //_enemyCardAnimators = new CardAnimator[_enemyDefCards.Count];
-
             for (int i = 0; i < _enemyDefCards.Count; i++)
             {
-                //var card = Instantiate(_enemyDefCardImage, _container);
                 var card = _enemyCardAnimators[i];
                 card.SetImage(_enemyDefCards[i].UIIcon);
                 _enemyCardAnimators[i] = card;
                 _enemyCardAnimators[i].Init();
             }
+            
+            _enemyCards = _enemyDefCards.ToArray();
         }
 
         private IEnumerator Fight()
         {
-            //yield return new WaitForSeconds(4);
-
-            //while (_countPlayerAliveCards() > 0 && _countEnemyAliveCards() > 0)
-            //{
-            //yield return _battleIntro.Intro("Start Battle");
             yield return _battleAnimator.AppearanceCards(_enemyCardAnimators, _playerCardAnimators);
-            //yield return _battleIntro.SwitchTurnIntro("Player Turn");
-            //yield return new WaitForSeconds(0.5f);
-            yield return PlayerMove();
-            yield return _battleIntro.SwitchTurnIntro("Opponent Turn");
-            yield return new WaitForSeconds(0.5f);
-            yield return EnemyMove();
-            yield return _battleIntro.EndIntro();
-            //}
-        
-            yield return new WaitForSeconds(1);
 
-            if (GetAmountPlayerCardsDamage() > GetAmountEnemyCardsDef())
+            for (int i = 0; i < 2; i++)
+            {
+                yield return _battleIntro.SwitchTurnIntro("Player Turn");
+                yield return new WaitForSeconds(0.5f);
+                yield return PlayerMove();
+                yield return _battleIntro.SwitchTurnIntro("Opponent Turn");
+                yield return new WaitForSeconds(0.5f);
+                yield return EnemyMove();
+            }
+
+            yield return _battleIntro.EndIntro();
+
+            yield return new WaitForSeconds(1);
+        
+           /* if (GetAmountPlayerCardsDamage() > GetAmountEnemyCardsDef())
                 OnPlayerWin?.Invoke();
             else
                 OnPlayerLose?.Invoke();
-
+*/
             gameObject.SetActive(false);
         }
 
@@ -117,28 +125,47 @@ namespace Battle
             for (int i = 0; i < 3; i++)
             {
                 var randomPlayerCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
-                
+
                 for (int j = 0; j < randomPlayerCardDamageCount; j++)
                 {
-                    var randomPlayerCard = _playerCardAnimators[Random.Range(0, _playerCardAnimators.Length)];
-                    randomPlayerCard.Selected();
-                }
-                
-                yield return new WaitForSeconds(0.3f);
+                    Card randomPlayerCard = null;
+                    var randomNumber = 0;
 
-                var randomEnemyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
-                
-                for (int j = 0; j < randomEnemyCardDamageCount; j++)
-                {
-                    var randomEnemyCard = _enemyCardAnimators[Random.Range(0, _enemyCardAnimators.Length)];
-                    StartCoroutine(randomEnemyCard.Hit());
-                    yield return new WaitForSeconds(0.2f);
+                    do
+                    {
+                        randomNumber = Random.Range(0, _playerCardAnimators.Length);
+                        randomPlayerCard = _playerCards[randomNumber];
+                    } while (randomPlayerCard.Name == "Empty");
+
+                    var playerCardAnimator = _playerCardAnimators[randomNumber];
+                    playerCardAnimator.Selected();
+                    
+                    var randomEnemyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
 
                     for (int k = 0; k < randomEnemyCardDamageCount; k++)
                     {
+                        Card randomEnemyCard = null;
+                        var randomEnemyCardNumber = 0;
+
+                        do
+                        {
+                            randomEnemyCardNumber = Random.Range(0, _enemyCardAnimators.Length);
+                            randomEnemyCard = _enemyCards[randomEnemyCardNumber];
+                        } while (randomEnemyCard.Name == "Empty");
+                        
+                        CardAnimator enemyCardAnimator = _enemyCardAnimators[randomEnemyCardNumber];
+
+                        var attackEffect = randomPlayerCard.AttackEffect;
+                        var attack = randomPlayerCard.Attack;
+
+                        StartCoroutine(enemyCardAnimator.Hit(attackEffect, attack));
+                        
+                        yield return new WaitForSeconds(0.2f);
                         _shakeCamera.Shake(0.5f, 10);
                         yield return new WaitForSeconds(0.1f);
                     }
+                    
+                    yield return new WaitForSeconds(0.2f);
                 }
                 
                 yield return new WaitForSeconds(2);
@@ -150,7 +177,7 @@ namespace Battle
             for (int i = 0; i < 3; i++)
             {
                 var randomEnemyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
-                
+
                 for (int j = 0; j < randomEnemyCardDamageCount; j++)
                 {
                     var randomEnemyCard = _enemyCardAnimators[Random.Range(0, _enemyCardAnimators.Length)];
@@ -164,7 +191,12 @@ namespace Battle
                 for (int j = 0; j < randomPlayerCardDamageCount; j++)
                 {
                     var randomPlayerCard = _playerCardAnimators[Random.Range(0, _playerCardAnimators.Length)];
-                    StartCoroutine(randomPlayerCard.Hit());
+                    var attackEffect = _defaultAttackEffect;
+                    
+                    if (_enemyCards[randomEnemyCardDamageCount])
+                        attackEffect = _enemyCards[randomEnemyCardDamageCount].AttackEffect;
+                    
+                    StartCoroutine(randomPlayerCard.Hit(attackEffect, _enemyCards[randomEnemyCardDamageCount].Attack));
                     yield return new WaitForSeconds(0.2f);
 
                     for (int k = 0; k < randomPlayerCardDamageCount; k++)

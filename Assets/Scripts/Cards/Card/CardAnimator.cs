@@ -34,16 +34,21 @@ namespace Cards.Card
 
         [SerializeField] 
         private Image _selectImage;
+        
+        [SerializeField] 
+        private Image _magicCircleImage;
 
+        [SerializeField]
+        private ParticleSystem _flyEffect;
+        
         [SerializeField]
         private Animator _smokeEffect;
 
+        [SerializeField]
+        private Transform _effectContainer;
+
         [SerializeField] 
         private TextMeshProUGUI[] _damageTexts;
-
-
-        [SerializeField]
-        private ParticleSystem[] _effects;
 
         private Sprite _sideSprite;
         private float startLocalScaleX;
@@ -68,12 +73,25 @@ namespace Cards.Card
 
         public IEnumerator StartingAnimation(Sequence sequence)
         {
-            var scale = transform.localScale / 1.3f;
-
-            sequence
-                .Insert(0, transform.DOScale(scale, 0.5f))
-                .Insert(0, _shadow.transform.DOLocalMove(Vector3.zero, 0.5f));
+            var startScale = transform.localScale;
+            var startShadowColor = _shadow.color;
+            var scale = startScale / 1.3f;
             
+            sequence
+                .Insert(0, _selectImage.DOColor(Color.white, 1f))
+                .Insert(0, _shadow.DOColor(Color.clear, 1f))
+                .Insert(1, _selectImage.DOColor(Color.clear, 1f))
+                .Insert(1, transform.DOScale(startScale / 4, 1f))
+                .Insert(1, _image.DOColor(Color.clear, 1f))
+                .Insert(1, _magicCircleImage.DOColor(Color.white, 1f))
+                .Insert(3, _image.DOColor(Color.white, 1f))
+                .Insert(3, _shadow.DOColor(startShadowColor, 1f))
+                .Insert(3, _magicCircleImage.DOColor(Color.clear, 1f))
+                .Insert(4, transform.DOScale(scale, 0.5f))
+                .Insert(4, _shadow.transform.DOLocalMove(Vector3.zero, 0.5f));
+            
+            yield return new WaitForSeconds(4f);
+
             print("Старт анимации");
             _smokeEffect.GetComponent<Image>().enabled = true;
             _smokeEffect.SetTrigger(_smoke);
@@ -100,13 +118,16 @@ namespace Cards.Card
             yield return new WaitForSeconds(1f);
         }
 
-        public IEnumerator Hit()
+        public IEnumerator Hit(ParticleSystem attackEffect, int attack)
         {
-            _effects[Random.Range(0, _effects.Length)].Play();
+            var effect = Instantiate(attackEffect, _effectContainer);
+            effect.Play();
+            //_effects[Random.Range(0, _effects.Length)].Play();
             yield return new WaitForSeconds(0.3f);
     
             var damageText = _damageTexts[0];
-
+            damageText.text = attack.ToString();
+            
             yield return Shake();
 
             damageText.DOColor(new Color(1, 0, 0, 1), 0.3f);
@@ -114,6 +135,8 @@ namespace Cards.Card
 
             damageText.DOColor(new Color(1, 0, 0, 0), 0.3f);
             yield return new WaitForSeconds(0.5f);
+            
+            Destroy(effect);
         }
 
         private IEnumerator Shake()
