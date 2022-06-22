@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using Data;
 using Roulette;
 using UnityEngine;
+using Zenject;
 
 namespace Pages.Collection
 {
@@ -20,10 +22,21 @@ namespace Pages.Collection
 
         [SerializeField] private StatisticWindow _statisticWindow;
 
+        private DataSaveLoadService _dataSaveLoadService;
+        
         public List<CardCollectionCell> Cards => _cards;
+
+        [Inject]
+        private void Construct(DataSaveLoadService dataSaveLoadService)
+        {
+            _dataSaveLoadService = dataSaveLoadService;
+        }
 
         private void Awake()
         {
+            //_cards = _dataSaveLoadService.PlayerData.InventoryDecks; //загрузить
+            //_dataSaveLoadService.SetInventoryDecks(_cards); //сохранить
+            
             _linkBetweenCardCollectionAndDeck.OnOpenCardCollection += () => gameObject.SetActive(true);
 
             _linkBetweenCardCollectionAndDeck.OnSelectedDeckCard += (CardCell cardCell, AtackOrDefCardType deckType, int positionCardInDeck) =>
