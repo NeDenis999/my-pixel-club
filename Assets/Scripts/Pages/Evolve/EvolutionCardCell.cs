@@ -25,6 +25,8 @@ public class EvolutionCardCell : CardCell
 
     public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)
     {
+        if (cardInCollection == null) throw new System.NullReferenceException();
+
         _cardInCollection = cardInCollection;
     }
 

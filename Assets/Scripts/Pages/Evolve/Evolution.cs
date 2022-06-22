@@ -1,3 +1,4 @@
+using Pages.Collection;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -6,6 +7,9 @@ public class Evolution : MonoBehaviour
 {
     public event UnityAction<Card> OnEvolvedCard;
     public event UnityAction<CardCollectionCell, CardCollectionCell> OnDelitedUseCards;
+
+    [SerializeField] private CardCollection _cardCollection;
+    [SerializeField] private EvolveCardCollection _evolveCardCollection;
 
     [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;    
 
@@ -20,6 +24,8 @@ public class Evolution : MonoBehaviour
 
     private void OnEnable()
     {
+        _evolveCardCollection.SetCardCollection(_cardCollection.Cards);
+
         _evolveButton.onClick.AddListener(EvolveCard);
     }
 

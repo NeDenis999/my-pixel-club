@@ -1,3 +1,4 @@
+using Pages.Collection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 public class EvolutionCard : MonoBehaviour
 {
-    [SerializeField] private EvolveCardCollection _cardCollection;
+    [SerializeField] private EvolveCardCollection _evolveCardCollection;
 
     [SerializeField] private Evolution _evolution;
 
@@ -32,8 +33,8 @@ public class EvolutionCard : MonoBehaviour
 
     private void OpenCollectionCard()
     {
-        _cardCollection.gameObject.SetActive(true);
-        _cardCollection.OneOfCardInEvolutioin = this;
+        _evolveCardCollection.gameObject.SetActive(true);
+        _evolveCardCollection.OneOfCardInEvolutioin = this;
     }
 
     private void Reset()

@@ -57,6 +57,9 @@ namespace Pages.Collection
             _evolution.OnEvolvedCard += AddCard;
             _evolution.OnDelitedUseCards += (firstCard, secondCard) =>
             {
+                Destroy(firstCard.gameObject);
+                Destroy(secondCard.gameObject);
+
                 _cards.Remove(secondCard);
                 _cards.Remove(firstCard);
             };
@@ -123,9 +126,7 @@ namespace Pages.Collection
         private void Render(List<CardCollectionCell> cards)
         {
             for (int i = 0; i < _cards.Count; i++)
-            {
                 cards[i].transform.SetSiblingIndex(i);
-            }
         }
 
         private void RetrieveCardCell(CardCell card)
