@@ -35,7 +35,7 @@ public class Page : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void StartShowSmooth()
+    public virtual void StartShowSmooth()
     {
         if (gameObject.activeSelf)
             return;
@@ -49,7 +49,7 @@ public class Page : MonoBehaviour
         StartCoroutine(HideSmooth());
     }
 
-    private IEnumerator ShowSmooth()
+    protected IEnumerator ShowSmooth()
     {
         CanvasGroup.alpha = 0;
         transform.localPosition = StartPosition + new Vector3(200, 0, 0);

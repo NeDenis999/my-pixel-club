@@ -10,5 +10,11 @@ namespace Pages.Farm
             transform.localPosition = StartPosition;
             CanvasGroup.alpha = 0;
         }
+
+        public override void StartShowSmooth()
+        {
+            Show();
+            StartCoroutine(ShowSmooth());
+        }
     }
 }
