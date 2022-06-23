@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Roulette;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public enum RarityCard
 {
@@ -52,6 +52,9 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     [SerializeField] 
     private ParticleSystem _attackEffect;
+
+    [SerializeField] 
+    private Image _attackIcon;
     
     public Sprite UIIcon => _currentImage;
     public string Name => _name;
@@ -65,6 +68,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     public int Level => _level;
     public Vector2 DirectionView => _directionView;
     public ParticleSystem AttackEffect => _attackEffect;
+    public Image AttackIcon => _attackIcon;
 
     public int BonusAttackSkill => _attackSkill;
     public void TakeDamage(int damage) => _health -= damage;

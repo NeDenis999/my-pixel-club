@@ -17,8 +17,8 @@ namespace Battle
 
         public IEnumerator AppearanceCards(CardAnimator[] enemyCardAnimators, CardAnimator[] playerCardAnimators)
         {
-            StartCoroutine(ShowSideAllCards(enemyCardAnimators, 50, _enemyHorizontalLayoutGroup));
-            yield return ShowSideAllCards(playerCardAnimators, -50, _playerHorizontalLayoutGroup);
+            StartCoroutine(ShowSideAllCards(enemyCardAnimators, 1000, _enemyHorizontalLayoutGroup));
+            yield return ShowSideAllCards(playerCardAnimators, 1000, _playerHorizontalLayoutGroup);
             yield return new WaitForSeconds(1f);
             yield return new WaitForSeconds(0.2f);
             print("Анимация закончилась");
@@ -42,13 +42,25 @@ namespace Battle
         private IEnumerator ShowSideAllCards(CardAnimator[] cardAnimators, float y, HorizontalLayoutGroup horizontalLayoutGroup)
         {
             var sequence = DOTween.Sequence();
+            
+            //yield return new WaitForSeconds(0.1f);
+            //horizontalLayoutGroup.enabled = false;
 
-                        
-            foreach (var cardAnimator in cardAnimators) 
-                StartCoroutine(cardAnimator.StartingAnimation(sequence));
+            //var startPosition = horizontalLayoutGroup.transform.localPosition;
+            //horizontalLayoutGroup.transform.localPosition = horizontalLayoutGroup.transform.localPosition.ToY(y);
+            //horizontalLayoutGroup.transform.DOLocalMove(startPosition, 1);
+            //yield return new WaitForSeconds(0.1f);
+            
+            foreach (var cardAnimator in cardAnimators)
+            {
+                StartCoroutine(cardAnimator.StartingAnimation(sequence, y));
+                //yield return new WaitForSeconds(0.2f);
+            }
+                
             
             yield return new WaitForSeconds(2f);
             
+            /*
             sequence
                 .Insert(0, DOTween.To(() =>
                         horizontalLayoutGroup.spacing,
@@ -56,7 +68,8 @@ namespace Battle
                     -526.5f, 0.5f))
                 .Insert(0, horizontalLayoutGroup.transform.DOLocalMoveY(
                     horizontalLayoutGroup.transform.localPosition.y + y, 0.5f));
-
+*/
+            
             yield return new WaitForSeconds(1f);
             print("Колода раскрылась");
         }
@@ -64,7 +77,7 @@ namespace Battle
         public void InitPositionAllCards(CardAnimator[] cardAnimators)
         {
             foreach (var cardAnimator in cardAnimators) 
-                cardAnimator.InitPosition();
+                cardAnimator.InitPosition(1000);
         }
 
         private IEnumerator ShowStateAllCards(CardAnimator[] cardAnimators)

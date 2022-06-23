@@ -1042,6 +1042,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965114299351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1357,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965270553453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4122,6 +4128,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965732713405
 GameObject:
   m_ObjectHideFlags: 0
@@ -4222,6 +4231,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965734966444
 GameObject:
   m_ObjectHideFlags: 0
@@ -4673,6 +4685,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965771152773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4908,6 +4923,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965810306859
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,6 +5244,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965852376984
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,6 +6140,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219965953573656
 GameObject:
   m_ObjectHideFlags: 0
@@ -7930,6 +7954,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219966261985188
 GameObject:
   m_ObjectHideFlags: 0
@@ -8518,6 +8545,9 @@ MonoBehaviour:
   _healthText: {fileID: 0}
   _statsPanel: {fileID: 0}
   _noneCardSprite: {fileID: 0}
+  _isStartMoveDirection: 0
+  _frameImage: {fileID: 0}
+  _frames: []
 --- !u!1 &1350219966481701817
 GameObject:
   m_ObjectHideFlags: 0
@@ -10757,8 +10787,6 @@ MonoBehaviour:
   - {fileID: 7655836002436865735}
   - {fileID: 7655836002818689801}
   - {fileID: 7655836002615951193}
-  _enemyCards: []
-  _playerCards: []
   _shakeCamera: {fileID: 4976829971087628449}
   _defaultAttackEffect: {fileID: 5373061118796645098, guid: 2e860dbf01010ba428d8b4e12f164bec, type: 3}
 --- !u!114 &1350219966936058296

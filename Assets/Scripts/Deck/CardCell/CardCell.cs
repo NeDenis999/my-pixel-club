@@ -21,6 +21,7 @@ public abstract class CardCell : MonoBehaviour, ICard
     public int Def => _def;
     public int Health => _health;
     public int Level => _level;
+    public RaceCard Race { get; }
 
     public int BonusAttackSkill => _attackSkill;
     public void TakeDamage(int damage) => _health -= damage;

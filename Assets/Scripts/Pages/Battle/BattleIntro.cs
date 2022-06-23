@@ -41,25 +41,26 @@ namespace Battle
             _obstacle.color = Color.clear;
             _turnText.color = Color.clear;
 
-
+            float m = 0.5f;
+            
             sequence
-                .Insert(0, _obstacle.DOColor(Color.white, 0.3f))
+                .Insert(0, _obstacle.DOColor(Color.white, 0.3f * m))
                 .Insert(0, _turnText.DOColor(Color.red, 0.3f))
-                .Insert(0, _obstacle.transform.DOScale(_startObstacleScale, 0.5f))
-                .Insert(0, _turnText.transform.DOScale(_startTurnTextScale, 0.5f))
-                .Insert(0, _obstacle.transform.DORotate(new Vector3(0, 0, 45), 3f))
+                .Insert(0, _obstacle.transform.DOScale(_startObstacleScale, 0.5f * m))
+                .Insert(0, _turnText.transform.DOScale(_startTurnTextScale, 0.5f * m))
+                .Insert(0, _obstacle.transform.DORotate(new Vector3(0, 0, 45), 3f * m))
 
-                .Insert(1f, _obstacle.transform.DOScale(_startTurnTextScale * 0.9f, 2))
-                .Insert(1f, _turnText.transform.DOScale(_startTurnTextScale * 1.1f, 2))
+                .Insert(1f * m, _obstacle.transform.DOScale(_startTurnTextScale * 0.9f, 2 * m))
+                .Insert(1f * m, _turnText.transform.DOScale(_startTurnTextScale * 1.1f, 2 * m))
                 //.Insert(2.5f, _obstacle.transform.DORotate(new Vector3(0, 0, 40), 0.5f))
 
-                .Insert(3f, _obstacle.transform.DORotate(new Vector3(0, 0, 0), 0.5f))
-                .Insert(3f, _obstacle.transform.DOScale(_startTurnTextScale * 2f, 0.5f))
-                .Insert(3f, _turnText.transform.DOScale(_startTurnTextScale / 2f, 0.5f))
-                .Insert(3f, _obstacle.DOColor(Color.clear, 0.5f))
-                .Insert(3f, _turnText.DOColor(Color.clear, 0.5f));
+                .Insert(3f * m, _obstacle.transform.DORotate(new Vector3(0, 0, 0), 0.5f * m))
+                .Insert(3f * m, _obstacle.transform.DOScale(_startTurnTextScale * 2f, 0.5f * m))
+                .Insert(3f * m, _turnText.transform.DOScale(_startTurnTextScale / 2f, 0.5f * m))
+                .Insert(3f * m, _obstacle.DOColor(Color.clear, 0.5f * m))
+                .Insert(3f * m, _turnText.DOColor(Color.clear, 0.5f * m));
                 //.Insert(4f, _obstacle.transform.DORotate(new Vector3(0, 0, -30), 0.5f));
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(3.5f * m);
         }
 
         public IEnumerator EndIntro() => 

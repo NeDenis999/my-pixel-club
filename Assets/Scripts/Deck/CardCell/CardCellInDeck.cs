@@ -27,6 +27,15 @@ namespace Cards.Deck.CardCell
         [SerializeField] 
         private Sprite _noneCardSprite;
 
+        [SerializeField] 
+        private bool _isStartMoveDirection;
+
+        [SerializeField] 
+        private Image _frameImage;
+
+        [SerializeField] 
+        private Sprite[] _frames;
+        
         private void Start()
         {
             if (_card == null) _card = _emptyCard.Card;
@@ -36,7 +45,29 @@ namespace Cards.Deck.CardCell
                 button.onClick.AddListener(OpenCardCollection);
 
             if (_card)
-                Icon.transform.localPosition = Icon.transform.localPosition.ToMove(_card.DirectionView);
+            {
+                if (_isStartMoveDirection)
+                    Icon.transform.localPosition = Icon.transform.localPosition.ToMove(_card.DirectionView);
+                
+                if (_frameImage && _frames.Length != 0)
+                {
+                    switch (_card.Race)
+                    {
+                        case RaceCard.Demons:
+                            _frameImage.sprite = _frames[0];
+                            break;
+                        
+                        case RaceCard.Gods:
+                            _frameImage.sprite = _frames[1];
+                            break;
+                        
+                        case RaceCard.Humans:
+                            _frameImage.sprite = _frames[2];
+                            break;
+                    }
+                }
+            }
+
             //UpdatePanelStats(_card);
         }
         
