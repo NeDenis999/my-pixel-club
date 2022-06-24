@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Battle;
+using Data;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class BattleConfirmWindow : MonoBehaviour
 {
@@ -21,7 +23,14 @@ public class BattleConfirmWindow : MonoBehaviour
     private Sequence _sequence;
     private List<Card> _enemyDefCards;
     private int _amountEnemyDefValue;
-
+    private DataSaveLoadService _dataSaveLoadService;
+    
+    [Inject]
+    private void Construct(DataSaveLoadService dataSaveLoadService)
+    {
+        _dataSaveLoadService = dataSaveLoadService;
+    }
+    
     private void Start()
     {
         _startPosition = transform.localPosition;
@@ -49,16 +58,34 @@ public class BattleConfirmWindow : MonoBehaviour
 
             });*/
         
-        if (_player.Energy > 0)
+        var isPlayerCardAlive = false;
+                
+        foreach (var playerCard in _dataSaveLoadService.PlayerData.AttackDecks)
         {
-            _player.SpendEnergy(5);
-            _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
-            _battle.StartFight();
+            if (playerCard.Name != "Empty")
+                isPlayerCardAlive = true;
+            else
+                print(playerCard.Name);
+        }
+
+        if (!isPlayerCardAlive)
+        {
+            _exeptionBaner.SetActive(true);
+            _exeptionText.text = "You don't have any heroes in your deck";
         }
         else
         {
-            _exeptionBaner.SetActive(true);
-            _exeptionText.text = "Not enough energy";
+            if (_player.Energy > 0)
+            {
+                _player.SpendEnergy(5);
+                _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
+                _battle.StartFight();
+            }
+            else
+            {
+                _exeptionBaner.SetActive(true);
+                _exeptionText.text = "Not enough energy";
+            }
         }
 
         _sequence.Kill();

@@ -102,7 +102,7 @@ namespace Cards.Card
         {
             _startPosition = transform.localPosition;
             transform.localPosition = new Vector3(transform.localPosition.x, y, 0);
-            _image.color = new Color(1, 1, 1, 1);
+            //_image.color = new Color(1, 1, 1, 1);
         }
 
         public void SetImage(Sprite uiIcon) => 
@@ -175,10 +175,7 @@ namespace Cards.Card
 
         public IEnumerator Hit(ParticleSystem attackEffect, int attack)
         {
-            print(attackEffect);
-            print(_effectContainer);
             var effect = Instantiate(attackEffect, _effectContainer);
-            print(effect);
             effect.Play();
             yield return new WaitForSeconds(0.3f);
     

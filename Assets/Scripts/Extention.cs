@@ -35,4 +35,26 @@ public static class Extention
         vector3 += direction;
         return vector3;
     }
+    
+    public static Quaternion EulerToQuaternion(this Vector3 euler)
+    {
+        float xOver2 = euler.x * Mathf.Deg2Rad * 0.5f;
+        float yOver2 = euler.y * Mathf.Deg2Rad * 0.5f;
+        float zOver2 = euler.z * Mathf.Deg2Rad * 0.5f;
+
+        float sinXOver2 = Mathf.Sin(xOver2);
+        float cosXOver2 = Mathf.Cos(xOver2);
+        float sinYOver2 = Mathf.Sin(yOver2);
+        float cosYOver2 = Mathf.Cos(yOver2);
+        float sinZOver2 = Mathf.Sin(zOver2);
+        float cosZOver2 = Mathf.Cos(zOver2);
+
+        UnityEngine.Quaternion result;
+        result.x = cosYOver2 * sinXOver2 * cosZOver2 + sinYOver2 * cosXOver2 * sinZOver2;
+        result.y = sinYOver2 * cosXOver2 * cosZOver2 - cosYOver2 * sinXOver2 * sinZOver2;
+        result.z = cosYOver2 * cosXOver2 * sinZOver2 - sinYOver2 * sinXOver2 * cosZOver2;
+        result.w = cosYOver2 * cosXOver2 * cosZOver2 + sinYOver2 * sinXOver2 * sinZOver2;
+
+        return result;
+    }
 }

@@ -11210,6 +11210,10 @@ PrefabInstance:
       propertyPath: _statisticCardWindow
       value: 
       objectReference: {fileID: 6672812290248358888}
+    - target: {fileID: 1350219966495988403, guid: 628b0c38de68e3b4c9a22e0669c9639f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 1350219966524148196, guid: 628b0c38de68e3b4c9a22e0669c9639f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -1.0957031
@@ -11222,6 +11226,10 @@ PrefabInstance:
       propertyPath: _cardCollection
       value: 
       objectReference: {fileID: 3257952396040427956}
+    - target: {fileID: 1350219966603015924, guid: 628b0c38de68e3b4c9a22e0669c9639f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -180
+      objectReference: {fileID: 0}
     - target: {fileID: 1350219966603015925, guid: 628b0c38de68e3b4c9a22e0669c9639f, type: 3}
       propertyPath: _cardCollection
       value: 
@@ -11234,6 +11242,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1370303614}
+    - target: {fileID: 1350219966936058183, guid: 628b0c38de68e3b4c9a22e0669c9639f, type: 3}
+      propertyPath: _turnEffect
+      value: 
+      objectReference: {fileID: 1242302650674417622, guid: 1f85a8a24e76201418731e634743bfac, type: 3}
     - target: {fileID: 1350219966936058183, guid: 628b0c38de68e3b4c9a22e0669c9639f, type: 3}
       propertyPath: _battleCardsStatistic
       value: 
@@ -18406,7 +18418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4995850967489047434, guid: aa0b3e9fcee922646bced06f2b397d54, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -118.99971
+      value: -118.99965
       objectReference: {fileID: 0}
     - target: {fileID: 6179379918268404308, guid: aa0b3e9fcee922646bced06f2b397d54, type: 3}
       propertyPath: m_AnchoredPosition.y

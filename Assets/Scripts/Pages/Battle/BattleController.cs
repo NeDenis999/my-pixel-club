@@ -4,11 +4,12 @@ using Cards.Card;
 using Cards.Deck.CardCell;
 using Data;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Zenject;
+using Image = UnityEngine.UI.Image;
+using Random = UnityEngine.Random;
 
 namespace Battle
 {
@@ -44,6 +45,9 @@ namespace Battle
 
         [SerializeField] 
         private ParticleSystem _defaultAttackEffect;
+        
+        [SerializeField] 
+        private Animator _turnEffect;
         
         private List<Card> _enemyDefCards = new();
         private int _baseEnemyDefValue;
@@ -149,10 +153,18 @@ namespace Battle
                     Card randomPlayerCard = null;
                     var randomNumber = 0;
 
+                    var counter1 = 0;
+                    
                     do
                     {
                         randomNumber = Random.Range(0, _playerCardAnimators.Length);
                         randomPlayerCard = _playerCards[randomNumber];
+                        
+                        ++counter1; 
+                        
+                        if (counter1 > 1000)
+                            break;
+
                     } while (randomPlayerCard.Name == "Empty");
 
                     var playerCardAnimator = _playerCardAnimators[randomNumber];
@@ -162,8 +174,8 @@ namespace Battle
                     var attackEffect = randomPlayerCard.AttackEffect;
                     var attack = randomPlayerCard.Attack;
                     
-                    //if (IsRandomChange(randomPlayerCard.SkillChance))
-                    //{
+                    if (IsRandomChange(randomPlayerCard.SkillChance))
+                    {
                         foreach (var enemyCardAnimator in _enemyCardAnimators)
                         {
                             StartCoroutine(enemyCardAnimator.Hit(attackEffect, attack));
@@ -173,7 +185,7 @@ namespace Battle
                         yield return new WaitForSeconds(0.2f);
                         _shakeCamera.Shake(0.5f, 10);
                         yield return new WaitForSeconds(0.5f);
-                   /* }
+                    }
                     else
                     {
                         for (int k = 0; k < randomEnemyCardDamageCount; k++)
@@ -181,23 +193,60 @@ namespace Battle
                             Card randomEnemyCard = null;
                             var randomEnemyCardNumber = 0;
 
+                            var counter = 0;
+                            
                             do
                             {
                                 randomEnemyCardNumber = Random.Range(0, _enemyCardAnimators.Length);
                                 randomEnemyCard = _enemyCards[randomEnemyCardNumber];
+
+                                ++counter;
+                                
+                                if (counter > 1000)
+                                    break;
+
                             } while (randomEnemyCard.Name == "Empty");
                         
                             CardAnimator enemyCardAnimator = _enemyCardAnimators[randomEnemyCardNumber];
 
+                            var playerAnimatorPosition = playerCardAnimator.transform.position;
+                            var enemyAnimatorPosition = enemyCardAnimator.transform.position;
+                            
+                            float angleTurnEffect = 
+                                Mathf.Atan2(playerAnimatorPosition.y - enemyAnimatorPosition.y, 
+                                    playerAnimatorPosition.x - enemyAnimatorPosition.x) * Mathf.Rad2Deg;
+                            
+                            var turnEffectPosition =
+                                new Vector3(
+                                    (playerAnimatorPosition.x + enemyAnimatorPosition.x) / 2, 
+                                    transform.position.y, transform.position.z);
+                            
+                            var turnEffect = 
+                                Instantiate(_turnEffect, turnEffectPosition, new Vector3(0, 0, angleTurnEffect)
+                                    .EulerToQuaternion(), transform);
+
+                            var turnEffectImage = turnEffect.GetComponent<Image>();
+                            turnEffectImage.color = Color.clear;
+                            turnEffectImage.DOColor(Color.white, 0.2f);
+                            
+                            var ratioScale = 1f;
+                            
+                            turnEffect.transform.localScale = 
+                                turnEffect.transform.localScale.ToX(ratioScale * (enemyAnimatorPosition.x - playerAnimatorPosition.x));
+                            
+                            turnEffect.SetTrigger("Effect");
+                            
                             StartCoroutine(enemyCardAnimator.Hit(attackEffect, attack));
                         
                             yield return new WaitForSeconds(0.2f);
                             _shakeCamera.Shake(0.5f, 10);
                             yield return new WaitForSeconds(0.1f);
+                            
+                            turnEffectImage.DOColor(Color.clear, 0.2f).OnComplete(()=>Destroy(turnEffect));
                         }
                     
                         yield return new WaitForSeconds(0.2f);
-                    }*/
+                    }
                 }
                 
                 yield return new WaitForSeconds(2);
