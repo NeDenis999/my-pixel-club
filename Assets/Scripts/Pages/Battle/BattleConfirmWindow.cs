@@ -18,6 +18,15 @@ public class BattleConfirmWindow : MonoBehaviour
 
     [SerializeField] 
     private CanvasGroup _canvasGroup;
+
+    [SerializeField] 
+    private GameObject _myProfile;
+    
+    [SerializeField] 
+    private GameObject _myDeck;
+    
+    [SerializeField]
+    private GameObject _enemyList;
     
     private Vector3 _startPosition;
     private Sequence _sequence;
@@ -48,24 +57,12 @@ public class BattleConfirmWindow : MonoBehaviour
 
     public void OpenBattleWindow()
     {
-        /*_sequence = DOTween.Sequence();
-        
-        _sequence
-            .Insert(0, DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, 0.6f))
-            .Insert(0, transform.DOLocalMove(_startPosition + new Vector3(0, -120, 0) , 0.5f))
-            .OnComplete(() =>
-            {
-
-            });*/
-        
         var isPlayerCardAlive = false;
                 
         foreach (var playerCard in _dataSaveLoadService.PlayerData.AttackDecks)
         {
             if (playerCard.Name != "Empty")
                 isPlayerCardAlive = true;
-            else
-                print(playerCard.Name);
         }
 
         if (!isPlayerCardAlive)
@@ -77,6 +74,10 @@ public class BattleConfirmWindow : MonoBehaviour
         {
             if (_player.Energy > 0)
             {
+                _myProfile.SetActive(false);
+                _myDeck.SetActive(false);
+                _enemyList.SetActive(false);
+                
                 _player.SpendEnergy(5);
                 _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
                 _battle.StartFight();

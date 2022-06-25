@@ -6,9 +6,16 @@ namespace Data
     {
         private const string DataKey = "data";
         public PlayerData PlayerData => _playerData;
-
-        private PlayerData _playerData;
         
+        private Card _emptyCard;
+        
+        private PlayerData _playerData;
+
+        public DataSaveLoadService(Card emptyCard)
+        {
+            _emptyCard = emptyCard;
+        }
+
         public void Save()
         {
             string jsonString = JsonUtility.ToJson(_playerData);
@@ -42,6 +49,14 @@ namespace Data
                 _playerData = new PlayerData();
                 SetCoinCount(1000);
                 SetCrystalsCount(1000);
+
+                var cards = new Card[5];
+
+                for (int i = 0; i < cards.Length; i++) 
+                    cards[i] = _emptyCard;
+                
+                SetAttackDecks(cards);
+                SetDefDecks(cards);
             }
             
             Debug.Log("Load");

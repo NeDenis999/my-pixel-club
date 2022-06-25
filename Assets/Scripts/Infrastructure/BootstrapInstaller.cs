@@ -1,11 +1,15 @@
 ﻿using Data;
+using UnityEngine;
 using Zenject;
 
 namespace Infrastructure
 {
     public class BootstrapInstaller : MonoInstaller
     {
-        private DataSaveLoadService _data = new DataSaveLoadService();
+        [SerializeField]
+        private Card _emptyCard;
+        
+        private DataSaveLoadService _data;
         
         public override void InstallBindings()
         {
@@ -14,6 +18,8 @@ namespace Infrastructure
 
         private void BindPlayerData()
         {
+            _data = new DataSaveLoadService(_emptyCard);
+            
             Container
                 .Bind<DataSaveLoadService>()
                 .FromInstance(_data)

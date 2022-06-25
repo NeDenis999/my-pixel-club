@@ -30,5 +30,8 @@ public class AdminTools : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha4))
             _data.SetCrystalsCount(_data.PlayerData.Crystals + 1000);
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            PlayerPrefs.DeleteAll();
     }
 }

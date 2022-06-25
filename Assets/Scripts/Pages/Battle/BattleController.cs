@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cards.Card;
@@ -41,7 +42,7 @@ namespace Battle
         private Card[] _playerCards;
         
         [SerializeField] 
-        private ShakeCamera _shakeCamera;
+        private Shaking shaking;
 
         [SerializeField] 
         private ParticleSystem _defaultAttackEffect;
@@ -49,11 +50,17 @@ namespace Battle
         [SerializeField] 
         private Animator _turnEffect;
         
+        [SerializeField] 
+        private GameObject _myProfile;
+    
+        [SerializeField] 
+        private GameObject _myDeck;
+    
+        [SerializeField]
+        private GameObject _enemyList;
+        
         private List<Card> _enemyDefCards = new();
         private int _baseEnemyDefValue;
-
-        private int _countPlayerAliveCards() => PlayerAliveCards().Count;
-        private int _countEnemyAliveCards() => EnemyAliveCards().Count;
 
         [Inject]
         private void Construct(DataSaveLoadService dataSaveLoadService)
@@ -79,28 +86,23 @@ namespace Battle
 
         public void StartFight()
         {
+            foreach (var playerCard in _playerCardAnimators) 
+                playerCard.Hide();
+            
+            foreach (var enemyCard in _enemyCardAnimators) 
+                enemyCard.Hide();
+
             gameObject.SetActive(true);
 
-            HideNonActiveCards();
+            HideNonAllActiveCards();
             _battleIntro.Initialization();
-            print("Начало рпсскрытия колоды");
             StartCoroutine(Fight());
-            print("Конец анимации раскрытия колоды");
         }
 
-        private void HideNonActiveCards()
+        private void HideNonAllActiveCards()
         {
-            for (int i = 0; i < _enemyCards.Length; i++)
-            {
-                if (_enemyCards[i].Name == "Empty")
-                    _enemyCardAnimators[i].gameObject.SetActive(false);
-            }
-
-            for (int i = 0; i < _playerCards.Length; i++)
-            {
-                if (_playerCards[i].Name == "Empty")
-                    _playerCardAnimators[i].gameObject.SetActive(false);
-            }
+            HideNonActiveCards(_playerCards, _playerCardAnimators);
+            HideNonActiveCards(_enemyCards, _enemyCardAnimators);
         }
 
         private void RenderEnemyDefCard()
@@ -118,16 +120,17 @@ namespace Battle
 
         private IEnumerator Fight()
         {
-            yield return _battleAnimator.AppearanceCards(_enemyCardAnimators, _playerCardAnimators);
+            yield return _battleAnimator.AppearanceCards(_enemyCardAnimators, _playerCardAnimators, 
+                GetAliveCards(_playerCards), GetAliveCards(_enemyCards));
 
             for (int i = 0; i < 2; i++)
             {
                 yield return _battleIntro.SwitchTurnIntro("Player Turn");
                 yield return new WaitForSeconds(0.5f);
-                yield return PlayerMove();
+                yield return PlayerTurn();
                 yield return _battleIntro.SwitchTurnIntro("Opponent Turn");
                 yield return new WaitForSeconds(0.5f);
-                yield return EnemyMove();
+                yield return EnemyTurn();
             }
 
             yield return _battleIntro.EndIntro();
@@ -140,106 +143,104 @@ namespace Battle
                 OnPlayerLose?.Invoke();
 
             gameObject.SetActive(false);
+            _myProfile.SetActive(true);
+            _myDeck.SetActive(true);
+            _enemyList.SetActive(true);
         }
 
-        private IEnumerator PlayerMove()
+        private IEnumerator PlayerTurn()
+        {
+            var playerAliveCardNumbers = GetAliveCards(_playerCards);
+            var enemyAliveCardNumbers = GetAliveCards(_enemyCards);
+
+            yield return Turn(playerAliveCardNumbers, enemyAliveCardNumbers, 
+                _playerCardAnimators, _enemyCardAnimators, 
+                _playerCards, _enemyCards);
+        }
+
+        private IEnumerator EnemyTurn()
+        {
+            var playerAliveCardNumbers = GetAliveCards(_playerCards);
+            var enemyAliveCardNumbers = GetAliveCards(_enemyCards);
+
+            yield return Turn(enemyAliveCardNumbers, playerAliveCardNumbers, 
+                _enemyCardAnimators, _playerCardAnimators, 
+                _enemyCards, _playerCards);
+        }
+
+        private IEnumerator Turn(List<int> myAliveCardNumbers, List<int> opponentAliveCardNumbers, 
+            CardAnimator[] myCardAnimators, CardAnimator[] opponentCardAnimators, Card[] myCards, Card[] opponentCards)
         {
             for (int i = 0; i < 3; i++)
             {
-                var randomPlayerCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
+                var randomMyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
 
-                for (int j = 0; j < randomPlayerCardDamageCount; j++)
+                for (int j = 0; j < randomMyCardDamageCount; j++)
                 {
-                    Card randomPlayerCard = null;
-                    var randomNumber = 0;
+                    var randomNumber = Random.Range(0, myAliveCardNumbers.Count);
+                    Card randomMyCard = myCards[randomNumber];
 
-                    var counter1 = 0;
+                    var myCardAnimator = myCardAnimators[randomNumber];
+                    myCardAnimator.Selected();
                     
-                    do
+                    var randomOpponentCardDamageCount = Random.Range(1, opponentCardAnimators.Length);
+                    var attackEffect = randomMyCard.AttackEffect;
+                    var attack = randomMyCard.Attack;
+                    
+                    if (IsRandomChange(randomMyCard.SkillChance))
                     {
-                        randomNumber = Random.Range(0, _playerCardAnimators.Length);
-                        randomPlayerCard = _playerCards[randomNumber];
-                        
-                        ++counter1; 
-                        
-                        if (counter1 > 1000)
-                            break;
+                        foreach (var opponentCardAnimator in opponentCardAnimators)
+                            StartCoroutine(opponentCardAnimator.Hit(attackEffect, attack));
 
-                    } while (randomPlayerCard.Name == "Empty");
-
-                    var playerCardAnimator = _playerCardAnimators[randomNumber];
-                    playerCardAnimator.Selected();
-                    
-                    var randomEnemyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
-                    var attackEffect = randomPlayerCard.AttackEffect;
-                    var attack = randomPlayerCard.Attack;
-                    
-                    if (IsRandomChange(randomPlayerCard.SkillChance))
-                    {
-                        foreach (var enemyCardAnimator in _enemyCardAnimators)
-                        {
-                            StartCoroutine(enemyCardAnimator.Hit(attackEffect, attack));
-                        }
-                        
-                        print("Skill");
                         yield return new WaitForSeconds(0.2f);
-                        _shakeCamera.Shake(0.5f, 10);
+                        shaking.Shake(0.5f, 10);
                         yield return new WaitForSeconds(0.5f);
                     }
                     else
                     {
-                        for (int k = 0; k < randomEnemyCardDamageCount; k++)
+                        for (int k = 0; k < randomOpponentCardDamageCount; k++)
                         {
-                            Card randomEnemyCard = null;
-                            var randomEnemyCardNumber = 0;
+                            var randomOpponentCardNumber = Random.Range(0, opponentAliveCardNumbers.Count);
+                            Card randomEnemyCard = opponentCards[randomOpponentCardNumber];
 
-                            var counter = 0;
-                            
-                            do
-                            {
-                                randomEnemyCardNumber = Random.Range(0, _enemyCardAnimators.Length);
-                                randomEnemyCard = _enemyCards[randomEnemyCardNumber];
+                            CardAnimator opponentCardAnimator = opponentCardAnimators[randomOpponentCardNumber];
 
-                                ++counter;
-                                
-                                if (counter > 1000)
-                                    break;
-
-                            } while (randomEnemyCard.Name == "Empty");
-                        
-                            CardAnimator enemyCardAnimator = _enemyCardAnimators[randomEnemyCardNumber];
-
-                            var playerAnimatorPosition = playerCardAnimator.transform.position;
-                            var enemyAnimatorPosition = enemyCardAnimator.transform.position;
+                            var myAnimatorPosition = myCardAnimator.transform.position;
+                            var opponentAnimatorPosition = opponentCardAnimator.transform.position;
                             
                             float angleTurnEffect = 
-                                Mathf.Atan2(playerAnimatorPosition.y - enemyAnimatorPosition.y, 
-                                    playerAnimatorPosition.x - enemyAnimatorPosition.x) * Mathf.Rad2Deg;
+                                Mathf.Atan2(myAnimatorPosition.y - opponentAnimatorPosition.y, 
+                                    myAnimatorPosition.x - opponentAnimatorPosition.x) * Mathf.Rad2Deg;
                             
                             var turnEffectPosition =
                                 new Vector3(
-                                    (playerAnimatorPosition.x + enemyAnimatorPosition.x) / 2, 
+                                    (myAnimatorPosition.x + opponentAnimatorPosition.x) / 2, 
                                     transform.position.y, transform.position.z);
                             
                             var turnEffect = 
                                 Instantiate(_turnEffect, turnEffectPosition, new Vector3(0, 0, angleTurnEffect)
                                     .EulerToQuaternion(), transform);
 
-                            var turnEffectImage = turnEffect.GetComponent<Image>();
+                            var turnEffectImage = turnEffect.GetComponentInChildren<Image>();
                             turnEffectImage.color = Color.clear;
                             turnEffectImage.DOColor(Color.white, 0.2f);
                             
                             var ratioScale = 1f;
+                            var ratioScaleRotation = (opponentAnimatorPosition.x - myAnimatorPosition.x) < 0 ? 1 : -1;
+                            var scale = ratioScale * (opponentAnimatorPosition.x - myAnimatorPosition.x) *
+                                        ratioScaleRotation;
+
+                            if (Math.Abs(scale) < 1f)
+                                scale = -1;
                             
-                            turnEffect.transform.localScale = 
-                                turnEffect.transform.localScale.ToX(ratioScale * (enemyAnimatorPosition.x - playerAnimatorPosition.x));
+                            turnEffect.transform.localScale = turnEffect.transform.localScale.ToX(scale);
                             
                             turnEffect.SetTrigger("Effect");
                             
-                            StartCoroutine(enemyCardAnimator.Hit(attackEffect, attack));
+                            StartCoroutine(opponentCardAnimator.Hit(attackEffect, attack));
                         
                             yield return new WaitForSeconds(0.2f);
-                            _shakeCamera.Shake(0.5f, 10);
+                            shaking.Shake(0.5f, 10);
                             yield return new WaitForSeconds(0.1f);
                             
                             turnEffectImage.DOColor(Color.clear, 0.2f).OnComplete(()=>Destroy(turnEffect));
@@ -252,67 +253,7 @@ namespace Battle
                 yield return new WaitForSeconds(2);
             }
         }
-
-        private IEnumerator EnemyMove()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                var randomEnemyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
-
-                for (int j = 0; j < randomEnemyCardDamageCount; j++)
-                {
-                    Card randomEnemyrCard = null;
-                    var randomNumber = 0;
-
-                    do
-                    {
-                        randomNumber = Random.Range(0, _enemyCardAnimators.Length);
-                        randomEnemyrCard = _enemyCards[randomNumber];
-                    } while (randomEnemyrCard.Name == "Empty");
-
-                    var enemyCardAnimator = _enemyCardAnimators[randomNumber];
-                    enemyCardAnimator.Selected();
-                    
-                    var randomPlayerCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
-
-                    for (int k = 0; k < randomPlayerCardDamageCount; k++)
-                    {
-                        Card randomPlayerCard = null;
-                        var randomPlayerCardNumber = 0;
-
-                        do
-                        {
-                            randomPlayerCardNumber = Random.Range(0, _playerCardAnimators.Length);
-                            randomPlayerCard = _playerCards[randomPlayerCardNumber];
-                        } while (randomPlayerCard.Name == "Empty");
-                        
-                        CardAnimator playerCardAnimator = _playerCardAnimators[randomPlayerCardNumber];
-
-                        print(randomEnemyrCard);
-                        
-                        var attackEffect = randomEnemyrCard.AttackEffect;
-                        var attack = randomEnemyrCard.Attack;
-
-                        StartCoroutine(playerCardAnimator.Hit(attackEffect, attack));
-                        
-                        yield return new WaitForSeconds(0.2f);
-                        _shakeCamera.Shake(0.5f, 10);
-                        yield return new WaitForSeconds(0.1f);
-                    }
-                    
-                    yield return new WaitForSeconds(0.2f);
-                }
-                
-                yield return new WaitForSeconds(2);
-            }
-        }
-
-        private int RandomNumberPlayerAliveCart() => 
-            Random.Range(0, PlayerAliveCards().Count);
-
-        private int RandomNumberEnemyAliveCart() => 
-            Random.Range(0, EnemyAliveCards().Count);
-
+        
         private List<ICard> PlayerAliveCards()
         {
             List<ICard> playerAliveCards = new List<ICard>();
@@ -367,6 +308,28 @@ namespace Battle
             return amountDamage;
         }
 
+        private List<int> GetAliveCards(Card[] cards)
+        {
+            var aliveCards = new List<int>();
+            
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (cards[i].Name != "Empty")
+                    aliveCards.Add(i);
+            }
+
+            return aliveCards;
+        }
+
+        private void HideNonActiveCards(Card[] cards, CardAnimator[] cardAnimators)
+        {
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (cards[i].Name == "Empty")
+                    cardAnimators[i].Hide();
+            }
+        }
+        
         private int GetAmountEnemyCardsDef()
         {
             int amountDef = 0;

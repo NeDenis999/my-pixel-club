@@ -52,15 +52,17 @@ namespace Battle
 
                 .Insert(1f * m, _obstacle.transform.DOScale(_startTurnTextScale * 0.9f, 2 * m))
                 .Insert(1f * m, _turnText.transform.DOScale(_startTurnTextScale * 1.1f, 2 * m))
-                //.Insert(2.5f, _obstacle.transform.DORotate(new Vector3(0, 0, 40), 0.5f))
 
                 .Insert(3f * m, _obstacle.transform.DORotate(new Vector3(0, 0, 0), 0.5f * m))
                 .Insert(3f * m, _obstacle.transform.DOScale(_startTurnTextScale * 2f, 0.5f * m))
                 .Insert(3f * m, _turnText.transform.DOScale(_startTurnTextScale / 2f, 0.5f * m))
                 .Insert(3f * m, _obstacle.DOColor(Color.clear, 0.5f * m))
                 .Insert(3f * m, _turnText.DOColor(Color.clear, 0.5f * m));
-                //.Insert(4f, _obstacle.transform.DORotate(new Vector3(0, 0, -30), 0.5f));
+            
             yield return new WaitForSeconds(3.5f * m);
+            
+            _obstacle.transform.localScale = _startObstacleScale;
+            _turnText.transform.localScale = _startTurnTextScale;
         }
 
         public IEnumerator EndIntro() => 
@@ -69,23 +71,6 @@ namespace Battle
         public IEnumerator SwitchTurnIntro(string text)
         {
             yield return Intro(text);
-            /*var sequence = DOTween.Sequence();
-            _finishText.text = text;
-            var imageStartPosition = _background.transform.localPosition;
-            var textStartPosition = _finishText.transform.localPosition;
-
-            _background.transform.localPosition = imageStartPosition.ToX(100);
-            _finishText.transform.localPosition = textStartPosition.ToX(-100);
-
-            sequence
-                .Insert(0, _background.DOColor(new Color(0, 0, 0, 0.5f), 0.5f))
-                .Insert(0, _finishText.DOColor(new Color(1, 0, 0, 1), 0.5f))
-                .Insert(0, _background.transform.DOLocalMove(imageStartPosition, 0.5f))
-                .Insert(0, _finishText.transform.DOLocalMove(textStartPosition, 0.5f))
-                .Insert(1, _background.DOColor(Color.clear, 0.5f))
-                .Insert(1, _finishText.DOColor(Color.clear, 0.5f));
-            
-            yield return new WaitForSeconds(1.5f);*/
         }
     }
 }
