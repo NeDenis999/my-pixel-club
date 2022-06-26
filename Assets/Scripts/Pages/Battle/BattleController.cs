@@ -51,14 +51,8 @@ namespace Battle
         private Animator _turnEffect;
         
         [SerializeField] 
-        private GameObject _myProfile;
-    
-        [SerializeField] 
-        private GameObject _myDeck;
-    
-        [SerializeField]
-        private GameObject _enemyList;
-        
+        private GameObject _battleChouse;
+
         private List<Card> _enemyDefCards = new();
         private int _baseEnemyDefValue;
 
@@ -143,9 +137,7 @@ namespace Battle
                 OnPlayerLose?.Invoke();
 
             gameObject.SetActive(false);
-            _myProfile.SetActive(true);
-            _myDeck.SetActive(true);
-            _enemyList.SetActive(true);
+            _battleChouse.SetActive(true);
         }
 
         private IEnumerator PlayerTurn()
@@ -252,32 +244,6 @@ namespace Battle
                 
                 yield return new WaitForSeconds(2);
             }
-        }
-        
-        private List<ICard> PlayerAliveCards()
-        {
-            List<ICard> playerAliveCards = new List<ICard>();
-
-            foreach (var playerAttackCard in _player.AttackCards)
-            {
-                if (playerAttackCard.Health > 0)
-                    playerAliveCards.Add(playerAttackCard);
-            }
-        
-            return playerAliveCards;
-        }
-    
-        private List<ICard> EnemyAliveCards()
-        {
-            List<ICard> enemyAliveCards = new List<ICard>();
-
-            foreach (var enemyAttackCard in _enemyDefCards)
-            {
-                if (enemyAttackCard.Health > 0)
-                    enemyAliveCards.Add(enemyAttackCard);
-            }
-        
-            return enemyAliveCards;
         }
 
         private bool IsRandomChange(float change) => 

@@ -3,67 +3,70 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Evolution : MonoBehaviour
+namespace Pages.Evolve
 {
-    public event UnityAction<Card> OnEvolvedCard;
-    public event UnityAction<CardCollectionCell, CardCollectionCell> OnDelitedUseCards;
-
-    [SerializeField] private CardCollection _cardCollection;
-    [SerializeField] private EvolveCardCollection _evolveCardCollection;
-
-    [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;    
-
-    [SerializeField] private Button _evolveButton;
-
-    [SerializeField] private GameObject _exeptionWindow;
-
-    private Card _evolvedCard;
-
-    public EvolutionCard FirstCard => _firstCardForEvolution;
-    public EvolutionCard SecondeCard => _secondeCardForEvolution;
-
-    private void OnEnable()
+    public class Evolution : MonoBehaviour
     {
-        _evolveCardCollection.SetCardCollection(_cardCollection.Cards);
+        public event UnityAction<Card> OnEvolvedCard;
+        public event UnityAction<CardCollectionCell, CardCollectionCell> OnDelitedUseCards;
 
-        _evolveButton.onClick.AddListener(EvolveCard);
-    }
+        [SerializeField] private CardCollection _cardCollection;
+        [SerializeField] private EvolveCardCollection _evolveCardCollection;
 
-    private void OnDisable()
-    {
-        _evolveButton.onClick.RemoveListener(EvolveCard);
-    }
+        [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;    
 
-    private void EvolveCard()
-    {
-        if (_firstCardForEvolution.IsSet && _secondeCardForEvolution.IsSet)
+        [SerializeField] private Button _evolveButton;
+
+        [SerializeField] private GameObject _exeptionWindow;
+
+        private Card _evolvedCard;
+
+        public EvolutionCard FirstCard => _firstCardForEvolution;
+        public EvolutionCard SecondeCard => _secondeCardForEvolution;
+
+        private void OnEnable()
         {
-            OnDelitedUseCards?.Invoke(_firstCardForEvolution.CardCell, _secondeCardForEvolution.CardCell);
-            OnEvolvedCard?.Invoke(GetEvolvedCard());
+            _evolveCardCollection.SetCardCollection(_cardCollection.Cards);
+
+            _evolveButton.onClick.AddListener(EvolveCard);
         }
-        else
+
+        private void OnDisable()
         {
-            _exeptionWindow.SetActive(true);
+            _evolveButton.onClick.RemoveListener(EvolveCard);
         }
-    }
 
-    private Card GetEvolvedCard()
-    {
-        float avargeAtack = GetAvargeValue(_firstCardForEvolution.CardCell.Attack, _secondeCardForEvolution.CardCell.Attack);
-        float avargeDef = GetAvargeValue(_firstCardForEvolution.CardCell.Def, _secondeCardForEvolution.CardCell.Def);
-        float avargeHealth = GetAvargeValue(_firstCardForEvolution.CardCell.Health, _secondeCardForEvolution.CardCell.Health);
+        private void EvolveCard()
+        {
+            if (_firstCardForEvolution.IsSet && _secondeCardForEvolution.IsSet)
+            {
+                OnDelitedUseCards?.Invoke(_firstCardForEvolution.CardCell, _secondeCardForEvolution.CardCell);
+                OnEvolvedCard?.Invoke(GetEvolvedCard());
+            }
+            else
+            {
+                _exeptionWindow.SetActive(true);
+            }
+        }
 
-        _evolvedCard = Instantiate(_firstCardForEvolution.CardCell.Card);
+        private Card GetEvolvedCard()
+        {
+            float avargeAtack = GetAvargeValue(_firstCardForEvolution.CardCell.Attack, _secondeCardForEvolution.CardCell.Attack);
+            float avargeDef = GetAvargeValue(_firstCardForEvolution.CardCell.Def, _secondeCardForEvolution.CardCell.Def);
+            float avargeHealth = GetAvargeValue(_firstCardForEvolution.CardCell.Health, _secondeCardForEvolution.CardCell.Health);
 
-        _evolvedCard.SetEvolutionValue((int)(avargeAtack *= 1.35f),
-                                       (int)(avargeDef *= 1.35f),
-                                       (int)(avargeHealth *= 1.35f));
+            _evolvedCard = Instantiate(_firstCardForEvolution.CardCell.Card);
 
-        return _evolvedCard;
-    }
+            _evolvedCard.SetEvolutionValue((int)(avargeAtack *= 1.35f),
+                (int)(avargeDef *= 1.35f),
+                (int)(avargeHealth *= 1.35f));
 
-    private float GetAvargeValue(int firstValue, int secondeValue)
-    {
-        return (firstValue + secondeValue) / 2;
+            return _evolvedCard;
+        }
+
+        private float GetAvargeValue(int firstValue, int secondeValue)
+        {
+            return (firstValue + secondeValue) / 2;
+        }
     }
 }

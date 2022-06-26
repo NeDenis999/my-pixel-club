@@ -20,14 +20,8 @@ public class BattleConfirmWindow : MonoBehaviour
     private CanvasGroup _canvasGroup;
 
     [SerializeField] 
-    private GameObject _myProfile;
-    
-    [SerializeField] 
-    private GameObject _myDeck;
-    
-    [SerializeField]
-    private GameObject _enemyList;
-    
+    private GameObject _battleChouse;
+
     private Vector3 _startPosition;
     private Sequence _sequence;
     private List<Card> _enemyDefCards;
@@ -74,10 +68,8 @@ public class BattleConfirmWindow : MonoBehaviour
         {
             if (_player.Energy > 0)
             {
-                _myProfile.SetActive(false);
-                _myDeck.SetActive(false);
-                _enemyList.SetActive(false);
-                
+                _battleChouse.SetActive(false);
+
                 _player.SpendEnergy(5);
                 _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
                 _battle.StartFight();

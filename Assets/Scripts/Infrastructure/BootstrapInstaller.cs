@@ -9,6 +9,9 @@ namespace Infrastructure
         [SerializeField]
         private Card _emptyCard;
         
+        [SerializeField]
+        private Sprite[] _avatars;
+        
         private DataSaveLoadService _data;
         
         public override void InstallBindings()
@@ -18,7 +21,7 @@ namespace Infrastructure
 
         private void BindPlayerData()
         {
-            _data = new DataSaveLoadService(_emptyCard);
+            _data = new DataSaveLoadService(_emptyCard, _avatars);
             
             Container
                 .Bind<DataSaveLoadService>()

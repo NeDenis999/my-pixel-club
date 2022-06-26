@@ -88,9 +88,6 @@ namespace Cards.Card
             }
         }
 
-        public void InitPosition(float y) => 
-            transform.localPosition = new Vector3(transform.localPosition.x, y, 0);
-
         public void SetImage(Sprite uiIcon) => 
             _image.sprite = uiIcon;
 
@@ -108,16 +105,6 @@ namespace Cards.Card
             _smokeEffect.SetTrigger(_smoke);
             yield return new WaitForSeconds(1f);
             _smokeEffect.GetComponent<Image>().enabled = false;
-        }
-
-        public IEnumerator ShowState()
-        {
-            _lightImage.DOColor(new Color(0, 1, 0, 0.60f), 1);
-            _stateImage.DOColor(new Color(1, 1, 1, 1f), 1);
-            yield return new WaitForSeconds(2f);
-            _lightImage.DOColor(new Color(0, 1, 0, 0), 1);
-            _stateImage.DOColor(new Color(1, 1, 1, 0), 1);
-            yield return new WaitForSeconds(1f);
         }
 
         public IEnumerator Hit(ParticleSystem attackEffect, int attack)

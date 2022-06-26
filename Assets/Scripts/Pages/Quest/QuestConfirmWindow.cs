@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Collection;
+using Pages.Collection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

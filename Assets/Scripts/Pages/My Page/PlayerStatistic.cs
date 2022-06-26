@@ -1,4 +1,5 @@
 using Data;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,9 +27,6 @@ namespace Pages.My_Page
         [SerializeField]
         private Slider _xpSlider;
 
-        [SerializeField] 
-        private Sprite[] _avatars;
-        
         private DataSaveLoadService _data;
         
         [Inject]
@@ -39,37 +37,28 @@ namespace Pages.My_Page
         
         private void Start()
         {
-            _nickName.text = RandomNickName();
-            _avatar.sprite = RandomAvatar();
-
-            /*_player.OnLevelChange += level => _levelText.text = level.ToString() + "/100";
-        
-            _player.OnEnergyChange += energy =>
-            {
-                _energyText.text = energy + "/25";
-                _energySlider.value = energy;
-            };*/
+            UpdateDisplay();
         }
-
-        private string RandomNickName()
-        {
-            var nickNames = new[]
-                { "Tijagi", "Luxulo", "Lofuwa", "Xyboda", "Sopogy", "Lydiba", "Dekale", "Tareqi", "Muqawo", "Dejalo" };
-
-            return nickNames[Random.Range(0, nickNames.Length)];
-        }
-
-        private Sprite RandomAvatar() =>
-            _avatars[Random.Range(0, _avatars.Length)];
 
         public void UpdateDisplay()
         {
+            var energy = _energySlider.value;
+            var xp = _xpSlider.value;
+
+            _energySlider.value = 0;
+            _xpSlider.value = 0;
+            
+            DOTween.To(()=> _energySlider.value, x=> _energySlider.value = x, energy, 1); 
+            DOTween.To(()=> _xpSlider.value, x=> _xpSlider.value = x, xp, 1); 
+            
+            _avatar.sprite = _data.PlayerData.Avatar;
+            _nickName.text = _data.PlayerData.Nickname;
             _levelText.text = 1.ToString();
             _rankText.text = 1500.ToString();
             _energyText.text = _player.Energy.ToString();
             _xpText.text = _player.Exp.ToString();
             _xpSlider.value = _player.Exp;
-            _heroesText.text = 5.ToString() + '/' + 25.ToString();
+            _heroesText.text = 5.ToString() + '/' + 25;
             _powerText.text = 90.ToString();
             _goldText.text = _data.PlayerData.Coins.ToString();
         }

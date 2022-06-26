@@ -1,5 +1,5 @@
 ﻿using System;
-using Collection;
+using UnityEngine;
 
 namespace Data
 {
@@ -11,5 +11,7 @@ namespace Data
         public Card[] InventoryDecks;
         public int Coins;
         public int Crystals;
+        public string Nickname;
+        public Sprite Avatar;
     }
 }

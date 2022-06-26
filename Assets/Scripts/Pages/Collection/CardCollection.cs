@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Data;
+using Pages.Evolve;
 using Roulette;
 using UnityEngine;
 using Zenject;
@@ -39,7 +40,7 @@ namespace Pages.Collection
             
             _linkBetweenCardCollectionAndDeck.OnOpenCardCollection += () => gameObject.SetActive(true);
 
-            _linkBetweenCardCollectionAndDeck.OnSelectedDeckCard += (CardCell cardCell, AtackOrDefCardType deckType, int positionCardInDeck) =>
+            _linkBetweenCardCollectionAndDeck.OnSelectedDeckCard += (cardCell, deckType, positionCardInDeck) =>
             {
                 if (cardCell.Card.Rarity != RarityCard.Epmpty)
                 {

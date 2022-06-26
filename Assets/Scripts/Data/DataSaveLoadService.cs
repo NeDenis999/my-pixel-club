@@ -8,12 +8,13 @@ namespace Data
         public PlayerData PlayerData => _playerData;
         
         private Card _emptyCard;
-        
         private PlayerData _playerData;
-
-        public DataSaveLoadService(Card emptyCard)
+        private Sprite[] _avatars;
+        
+        public DataSaveLoadService(Card emptyCard, Sprite[] avatars)
         {
             _emptyCard = emptyCard;
+            _avatars = avatars;
         }
 
         public void Save()
@@ -41,22 +42,36 @@ namespace Data
         public void Load()
         {
             var jsonString = PlayerPrefs.GetString(DataKey);
-            
-            if(jsonString != "")
+
+            if (jsonString != "")
+            {
                 _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
+                
+                for (int i = 0; i < _playerData.AttackDecks.Length; i++) 
+                    if (!_playerData.AttackDecks[i])
+                        _playerData.AttackDecks[i] = _emptyCard;
+                
+                for (int i = 0; i < _playerData.DefDecks.Length; i++) 
+                    if (!_playerData.DefDecks[i])
+                        _playerData.DefDecks[i] = _emptyCard;
+            }
             else
             {
                 _playerData = new PlayerData();
-                SetCoinCount(1000);
-                SetCrystalsCount(1000);
+                _playerData.Coins = 1000;
+                _playerData.Crystals = 1000;
 
                 var cards = new Card[5];
 
                 for (int i = 0; i < cards.Length; i++) 
                     cards[i] = _emptyCard;
                 
-                SetAttackDecks(cards);
-                SetDefDecks(cards);
+                _playerData.AttackDecks = cards;;
+                _playerData.DefDecks = cards;
+                _playerData.Nickname = RandomNickname();
+                _playerData.Avatar = RandomAvatar();
+                    
+                Save();
             }
             
             Debug.Log("Load");
@@ -92,5 +107,16 @@ namespace Data
             _playerData.InventoryDecks = cards;
             Save();
         }
+        
+        private string RandomNickname()
+        {
+            var nickNames = new[]
+                { "Tijagi", "Luxulo", "Lofuwa", "Xyboda", "Sopogy", "Lydiba", "Dekale", "Tareqi", "Muqawo", "Dejalo" };
+
+            return nickNames[Random.Range(0, nickNames.Length)];
+        }
+        
+        private Sprite RandomAvatar() =>
+            _avatars[Random.Range(0, _avatars.Length)];
     }
 }

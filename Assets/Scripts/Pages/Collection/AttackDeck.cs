@@ -1,7 +1,6 @@
 using Data;
-using Zenject;
 
-namespace Collection
+namespace Pages.Collection
 {
     public  class AttackDeck : Deck
     {
