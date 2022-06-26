@@ -3,70 +3,60 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Pages.Evolve
+public class Evolution : MonoBehaviour
 {
-    public class Evolution : MonoBehaviour
+    public event UnityAction OnEvolvedCard;
+
+    [SerializeField] private CardCollection _cardCollection;
+    [SerializeField] private EvolveCardCollection _evolveCardCollection;
+
+    [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;    
+
+    [SerializeField] private Button _evolveButton;
+
+    [SerializeField] private GameObject _exeptionWindow;
+
+    [SerializeField] private GameObject _evolvedCardWindow;
+    [SerializeField] private Image _evolvedCardImage;
+
+    public EvolutionCard FirstCard => _firstCardForEvolution;
+    public EvolutionCard SecondeCard => _secondeCardForEvolution;
+
+    private void OnEnable()
     {
-        public event UnityAction<Card> OnEvolvedCard;
-        public event UnityAction<CardCollectionCell, CardCollectionCell> OnDelitedUseCards;
+        _evolveCardCollection.SetCardCollection(_cardCollection.Cards);
 
-        [SerializeField] private CardCollection _cardCollection;
-        [SerializeField] private EvolveCardCollection _evolveCardCollection;
+        _evolveButton.onClick.AddListener(EvolveCard);
+    }
 
-        [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;    
+    private void OnDisable()
+    {
+        _evolveButton.onClick.RemoveListener(EvolveCard);
+    }
 
-        [SerializeField] private Button _evolveButton;
-
-        [SerializeField] private GameObject _exeptionWindow;
-
-        private Card _evolvedCard;
-
-        public EvolutionCard FirstCard => _firstCardForEvolution;
-        public EvolutionCard SecondeCard => _secondeCardForEvolution;
-
-        private void OnEnable()
+    private void EvolveCard()
+    {
+        if (_firstCardForEvolution.IsSet && _secondeCardForEvolution.IsSet)
         {
-            _evolveCardCollection.SetCardCollection(_cardCollection.Cards);
-
-            _evolveButton.onClick.AddListener(EvolveCard);
+            _cardCollection.AddCard(GetEvolvedCard());
+            _cardCollection.DeleteCards(new[] { FirstCard.CardCell, SecondeCard.CardCell });
+            OnEvolvedCard?.Invoke();
         }
-
-        private void OnDisable()
+        else
         {
-            _evolveButton.onClick.RemoveListener(EvolveCard);
+            _exeptionWindow.SetActive(true);
         }
+    }
 
-        private void EvolveCard()
-        {
-            if (_firstCardForEvolution.IsSet && _secondeCardForEvolution.IsSet)
-            {
-                OnDelitedUseCards?.Invoke(_firstCardForEvolution.CardCell, _secondeCardForEvolution.CardCell);
-                OnEvolvedCard?.Invoke(GetEvolvedCard());
-            }
-            else
-            {
-                _exeptionWindow.SetActive(true);
-            }
-        }
+    private Card GetEvolvedCard()
+    {
+        Card evolvedCard = Instantiate(_firstCardForEvolution.CardCell.Card);
 
-        private Card GetEvolvedCard()
-        {
-            float avargeAtack = GetAvargeValue(_firstCardForEvolution.CardCell.Attack, _secondeCardForEvolution.CardCell.Attack);
-            float avargeDef = GetAvargeValue(_firstCardForEvolution.CardCell.Def, _secondeCardForEvolution.CardCell.Def);
-            float avargeHealth = GetAvargeValue(_firstCardForEvolution.CardCell.Health, _secondeCardForEvolution.CardCell.Health);
+        evolvedCard.Evolve(_firstCardForEvolution, _secondeCardForEvolution);
 
-            _evolvedCard = Instantiate(_firstCardForEvolution.CardCell.Card);
+        _evolvedCardWindow.SetActive(true);
+        _evolvedCardImage.sprite = evolvedCard.UIIcon;
 
-            _evolvedCard.SetEvolutionValue((int)(avargeAtack *= 1.35f),
-                (int)(avargeDef *= 1.35f),
-                (int)(avargeHealth *= 1.35f));
-
-            return _evolvedCard;
-        }
-
-        private float GetAvargeValue(int firstValue, int secondeValue)
-        {
-            return (firstValue + secondeValue) / 2;
-        }
+        return evolvedCard;
     }
 }
