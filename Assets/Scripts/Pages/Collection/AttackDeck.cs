@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Collection
 {
-    public  class AttackDeck : Deck
+    public class AttackDeck : Deck
     {
         private void Awake()
         {

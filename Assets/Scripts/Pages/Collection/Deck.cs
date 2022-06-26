@@ -30,7 +30,6 @@ public abstract class Deck : MonoBehaviour
     private void OnEnable()
     {
         OnCardChanged?.Invoke(_cardsInDeck);
-
         _linkBetweenCardsAndCollections.OnSelectedDeckCard += SetCardInDeck;
     }
 

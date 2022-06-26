@@ -84,15 +84,23 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     Card ICard.Card => this;
 
-    public void SetEvolutionValue(int attack, int def, int health)
+    public void Evolve(EvolutionCard firstCard, EvolutionCard secondCard)
     {
-        if (_currentImage.name == _imageSecondeEvolution.name) throw new System.InvalidOperationException();
-        _attack = attack;
-        _def = def;
-        _health = health;
+        if (firstCard.CardCell.UIIcon != secondCard.CardCell.UIIcon || _evolution == 2) throw new System.InvalidOperationException();
+
+        float valueIncreaseMultiplier  = 1.35f;
+
+        int GetLevelUpValue(int firstValue, int secondValue)
+        {
+            return (int)((firstValue + secondValue) / 2 * valueIncreaseMultiplier );
+        }
+
+        _attack = GetLevelUpValue(firstCard.CardCell.Attack, secondCard.CardCell.Attack);
+        _def = GetLevelUpValue(firstCard.CardCell.Def, secondCard.CardCell.Def);
+        _health = GetLevelUpValue(firstCard.CardCell.Health, secondCard.CardCell.Health);
+
         _currentImage = _imageSecondeEvolution;
         _evolution++;
-        if (_evolution > 2) throw new System.InvalidOperationException();
     }
 
     public void TakeItem()

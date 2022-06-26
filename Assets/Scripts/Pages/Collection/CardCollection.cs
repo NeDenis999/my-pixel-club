@@ -54,16 +54,6 @@ namespace Pages.Collection
             _startGame.OnSetStartPackCards += AddCards;
             _roulettePage.OnReceivedCard += AddCard;
 
-            _evolution.OnEvolvedCard += AddCard;
-            _evolution.OnDelitedUseCards += (firstCard, secondCard) =>
-            {
-                Destroy(firstCard.gameObject);
-                Destroy(secondCard.gameObject);
-
-                _cards.Remove(secondCard);
-                _cards.Remove(firstCard);
-            };
-
             gameObject.SetActive(false);
         }
 
@@ -136,7 +126,7 @@ namespace Pages.Collection
             _cards.Add(cell);
         }
 
-        private void AddCards(Card[] newCards)
+        public void AddCards(Card[] newCards)
         {
             for (int i = 0; i < newCards.Length; i++)
             {
@@ -144,13 +134,25 @@ namespace Pages.Collection
             }
         }
 
-        private void AddCard(Card newCards)
-        {            
+        public void AddCard(Card newCards)
+        {
+            if (newCards == null) throw new System.ArgumentNullException();
+
             var cell = Instantiate(_cardCellTemplate, _container);
             cell.Render(newCards);
             _cards.Add(cell);
 
             Render(_cards);
+        }
+
+        public void DeleteCards(CardCollectionCell[] cardsForDelete)
+        {
+            foreach (var card in cardsForDelete)
+            {
+                Destroy(card.gameObject);
+
+                _cards.Remove(card);
+            }
         }
     }
 }
