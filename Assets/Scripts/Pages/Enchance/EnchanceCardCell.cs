@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EvolutionCardCell : CardCell
+public class EnchanceCardCell : CardCell
 {
-    private EvolveCardCollection _evolveCardCollection;
+    private EnchanceCardCollection _enchanceCardCollection;
     private CardCollectionCell _cardInCollection;
 
     private SelectPanel _selectPanel;
 
     private void Start()
     {
-        _evolveCardCollection = FindObjectOfType<EvolveCardCollection>().gameObject.GetComponent<EvolveCardCollection>();
+        _enchanceCardCollection = FindObjectOfType<EnchanceCardCollection>().gameObject.GetComponent<EnchanceCardCollection>();
         _selectPanel = FindObjectOfType<SelectPanel>().gameObject.GetComponent<SelectPanel>();
     }
 
     private void OnEnable()
     {
-      GetComponent<Button>().onClick.AddListener(SelectCard);
+        GetComponent<Button>().onClick.AddListener(SelectCard);
     }
 
     private void OnDisable()
@@ -36,7 +36,7 @@ public class EvolutionCardCell : CardCell
 
     private void SelectCard()
     {
-        _evolveCardCollection.SelectCard(_cardInCollection);
+        _enchanceCardCollection.SelectCard(_cardInCollection);
         _selectPanel.SetPanelAboveSelectCard(this);
     }
 }

@@ -22,14 +22,14 @@ public class EvolutionCard : MonoBehaviour
     private void OnEnable()
     {
         GetComponent<Button>().onClick.AddListener(OpenCollectionCard);
-        _evolution.OnEvolvedCard += (a) => Reset();
+        _evolution.OnEvolvedCard += Reset;
         Reset();
     }
 
     private void OnDisable()
     {
         GetComponent<Button>().onClick.RemoveListener(OpenCollectionCard);
-        _evolution.OnEvolvedCard -= (a) => Reset();
+        _evolution.OnEvolvedCard -= Reset;
     }
 
     private void OpenCollectionCard()
