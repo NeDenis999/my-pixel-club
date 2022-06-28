@@ -1,4 +1,6 @@
+using Infrastructure.Services;
 using Roulette;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
@@ -55,7 +57,7 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     [SerializeField] 
     private Image _attackIcon;
-    
+
     public Sprite UIIcon => _currentImage;
     public string Name => _name;
 
@@ -100,5 +102,22 @@ public class Card : ScriptableObject, ICard, IRoulette
         var roulettePage = FindObjectOfType<RoulettePage>().gameObject.GetComponent<RoulettePage>();
 
         roulettePage.AccrueCard(this);
+    }
+
+    public Sprite GetFrame(Sprite[] _frames)
+    {
+        switch (_race)
+        {
+            case RaceCard.Demons:
+                return _frames[0];
+
+            case RaceCard.Gods:
+                return _frames[1];
+
+            case RaceCard.Humans:
+                return _frames[2];
+        }
+
+        return null;
     }
 }

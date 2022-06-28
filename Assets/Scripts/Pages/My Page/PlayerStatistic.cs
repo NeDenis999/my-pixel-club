@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Globalization;
 using Data;
 using DG.Tweening;
+using Infrastructure.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,29 +41,30 @@ namespace Pages.My_Page
         private void Start()
         {
             UpdateDisplay();
+            
+            //_avatar.sprite = _data.PlayerData.Avatar;
         }
 
         public void UpdateDisplay()
         {
-            var energy = _energySlider.value;
-            var xp = _xpSlider.value;
-
-            _energySlider.value = 0;
-            _xpSlider.value = 0;
+            UpdateSlider(_energySlider, _data.PlayerData.Energy);
+            UpdateSlider(_xpSlider, _data.PlayerData.XP);
             
-            DOTween.To(()=> _energySlider.value, x=> _energySlider.value = x, energy, 1); 
-            DOTween.To(()=> _xpSlider.value, x=> _xpSlider.value = x, xp, 1); 
-            
-            _avatar.sprite = _data.PlayerData.Avatar;
             _nickName.text = _data.PlayerData.Nickname;
-            _levelText.text = 1.ToString();
-            _rankText.text = 1500.ToString();
-            _energyText.text = _player.Energy.ToString();
-            _xpText.text = _player.Exp.ToString();
+            _levelText.text = _data.PlayerData.Level.ToString();
+            _rankText.text = _data.PlayerData.Rank.ToString();
+            _energyText.text = _data.PlayerData.Energy.ToString(CultureInfo.InvariantCulture);
+            _xpText.text = _player.Exp.ToString(CultureInfo.InvariantCulture);
             _xpSlider.value = _player.Exp;
             _heroesText.text = 5.ToString() + '/' + 25;
             _powerText.text = 90.ToString();
             _goldText.text = _data.PlayerData.Coins.ToString();
+        }
+
+        private void UpdateSlider(Slider slider, float value)
+        {
+            slider.value = 0;
+            DOTween.To(()=> slider.value, x=> slider.value = x, value, 1); 
         }
     }
 }

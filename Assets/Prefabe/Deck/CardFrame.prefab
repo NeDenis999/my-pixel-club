@@ -874,7 +874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7211317731572426750}
   - component: {fileID: 9027734969519003045}
-  - component: {fileID: 4510086758926646797}
+  - component: {fileID: 2264684815441419333}
   m_Layer: 5
   m_Name: CardFrame
   m_TagString: Untagged
@@ -912,7 +912,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5658396790020266074}
   m_CullTransparentMesh: 1
---- !u!114 &4510086758926646797
+--- !u!114 &2264684815441419333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -921,22 +921,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5658396790020266074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d102c61292f4eac40b30c9c0a95ac042, type: 3}
+  m_Script: {fileID: 11500000, guid: 354294cbcae4401f81bd55a20b6fa7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1922775790207040615}
-  _linkBetweenCardCollectionAndDeck: {fileID: 0}
-  _emptyCard: {fileID: 0}
-  _deckType: 0
-  _statisticCardWindow: {fileID: 0}
   _attackText: {fileID: 5884659628261872326}
   _defenseText: {fileID: 5295734915173664796}
   _healthText: {fileID: 8620159113331126137}
   _statsPanel: {fileID: 2814643555036611638}
-  _noneCardSprite: {fileID: 1422278879473461319, guid: cf20d0fe892770145976b65515b4fb99, type: 3}
-  _isStartMoveDirection: 1
-  _frameImage: {fileID: 0}
-  _frames: []
 --- !u!1 &8164448437682320571
 GameObject:
   m_ObjectHideFlags: 0

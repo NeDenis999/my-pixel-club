@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using Data;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
-namespace Data
+namespace Infrastructure.Services
 {
     public class DataSaveLoadService
     {
@@ -45,35 +48,40 @@ namespace Data
 
             if (jsonString != "")
             {
-                _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
-                
-                for (int i = 0; i < _playerData.AttackDecks.Length; i++) 
-                    if (!_playerData.AttackDecks[i])
-                        _playerData.AttackDecks[i] = _emptyCard;
-                
-                for (int i = 0; i < _playerData.DefDecks.Length; i++) 
-                    if (!_playerData.DefDecks[i])
-                        _playerData.DefDecks[i] = _emptyCard;
-            }
-            else
-            {
-                _playerData = new PlayerData();
-                _playerData.Coins = 1000;
-                _playerData.Crystals = 1000;
-
-                var cards = new Card[5];
-
-                for (int i = 0; i < cards.Length; i++) 
-                    cards[i] = _emptyCard;
-                
-                _playerData.AttackDecks = cards;;
-                _playerData.DefDecks = cards;
-                _playerData.Nickname = RandomNickname();
-                _playerData.Avatar = RandomAvatar();
+                try
+                {
+                    _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
                     
-                Save();
+                    for (int i = 0; i < _playerData.AttackDecks.Length; i++) 
+                        if (!_playerData.AttackDecks[i])
+                            _playerData.AttackDecks[i] = _emptyCard;
+                
+                    for (int i = 0; i < _playerData.DefDecks.Length; i++) 
+                        if (!_playerData.DefDecks[i])
+                            _playerData.DefDecks[i] = _emptyCard;
+                }
+                catch (Exception e)
+                {
+                    _playerData = new PlayerData();
+                    _playerData.Coins = 1000;
+                    _playerData.Crystals = 1000;
+
+                    var cards = new Card[5];
+
+                    for (int i = 0; i < cards.Length; i++) 
+                        cards[i] = _emptyCard;
+                
+                    _playerData.AttackDecks = cards;;
+                    _playerData.DefDecks = cards;
+                    _playerData.Nickname = RandomNickname();
+                    _playerData.Avatar = RandomAvatar();
+                    
+                    Save();
+                    
+                    Debug.LogError(e);
+                }
             }
-            
+
             Debug.Log("Load");
             Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
         }

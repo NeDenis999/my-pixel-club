@@ -20,6 +20,12 @@ namespace Battle
         [SerializeField] 
         private TextMeshProUGUI _finishText;
 
+        [SerializeField] 
+        private Sprite _playerObstacle;
+        
+        [SerializeField] 
+        private Sprite _enemyObstacle;
+        
         private Vector3 _startObstacleScale;
         private Vector3 _startTurnTextScale;
 
@@ -29,9 +35,10 @@ namespace Battle
             _startTurnTextScale = _turnText.transform.localScale;
         }
 
-        public IEnumerator Intro(string text)
+        private IEnumerator Intro(string text, Sprite obstacle)
         {
             gameObject.SetActive(true);
+            _obstacle.sprite = obstacle;
             _turnText.text = text;
 
             var sequence = DOTween.Sequence();
@@ -65,12 +72,13 @@ namespace Battle
             _turnText.transform.localScale = _startTurnTextScale;
         }
 
+        public IEnumerator PlayerTurn() => 
+            Intro("Player Turn", _playerObstacle);
+        
+        public IEnumerator OpponentTurn() => 
+            Intro("Opponent Turn", _enemyObstacle);
+        
         public IEnumerator EndIntro() => 
-            SwitchTurnIntro("You Win");
-
-        public IEnumerator SwitchTurnIntro(string text)
-        {
-            yield return Intro(text);
-        }
+            Intro("You Win", _playerObstacle);
     }
 }

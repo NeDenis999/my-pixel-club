@@ -43,11 +43,6 @@ public abstract class CardCell : MonoBehaviour, ICard
         CopyCardValue(cardForRender);
     }
 
-    public virtual void UpdatePanelStats(ICard cardForRender)
-    {
-        
-    }
-
     public void SwitchComponentValue(CardCell cardCell)
     {
         CopyCardValue(cardCell);
@@ -62,8 +57,6 @@ public abstract class CardCell : MonoBehaviour, ICard
         _def = cardCell.Def;
         _health = cardCell.Health;
         _level = cardCell.Level;
-        _attackSkill = cardCell.BonusAttackSkill;  
-        
-        UpdatePanelStats(cardCell);
+        _attackSkill = cardCell.BonusAttackSkill;
     }
 }

@@ -5,6 +5,7 @@ using Cards.Card;
 using Cards.Deck.CardCell;
 using Data;
 using DG.Tweening;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -119,10 +120,10 @@ namespace Battle
 
             for (int i = 0; i < 2; i++)
             {
-                yield return _battleIntro.SwitchTurnIntro("Player Turn");
+                yield return _battleIntro.PlayerTurn();
                 yield return new WaitForSeconds(0.5f);
                 yield return PlayerTurn();
-                yield return _battleIntro.SwitchTurnIntro("Opponent Turn");
+                yield return _battleIntro.OpponentTurn();
                 yield return new WaitForSeconds(0.5f);
                 yield return EnemyTurn();
             }

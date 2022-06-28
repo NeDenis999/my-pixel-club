@@ -13,5 +13,9 @@ namespace Data
         public int Crystals;
         public string Nickname;
         public Sprite Avatar;
+        public float XP;
+        public float Energy;
+        public int Level;
+        public int Rank;
     }
 }
