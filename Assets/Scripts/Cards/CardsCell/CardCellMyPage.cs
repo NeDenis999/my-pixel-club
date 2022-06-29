@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cards.Deck.CardCell
+namespace Cards.CardCell
 {
     public class CardCellMyPage : MonoBehaviour
     {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cards.Deck.CardCell;
+using Cards.CardCell;
 using Data;
 using Infrastructure.Services;
 using UnityEngine;

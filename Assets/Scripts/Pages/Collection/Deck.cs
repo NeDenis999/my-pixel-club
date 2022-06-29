@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Cards.Deck.CardCell;
 using Data;
 using Infrastructure.Services;
 using Pages.Collection;
@@ -14,12 +13,17 @@ public abstract class Deck : MonoBehaviour
     [SerializeField] protected List<CardCellInDeck> _cardsInDeck;
 
     [SerializeField] private CardCollection _cardCollection;
-    [SerializeField] private LinkBetweenCardsAndCollections _linkBetweenCardsAndCollections;
 
-    protected AtackOrDefCardType _deckType;
+    private int _cardPositionInDeck;
+    private AtackOrDefCardType _deckType;
+    public AtackOrDefCardType WritenDeck => _deckType;
+
     protected DataSaveLoadService _data;
     
     public List<CardCellInDeck> CardsInDeck => _cardsInDeck;
+
+    protected abstract void SaveDecks();
+    protected abstract void InitCards(DataSaveLoadService data);
 
     [Inject]
     public void Construct(DataSaveLoadService data)
@@ -31,21 +35,38 @@ public abstract class Deck : MonoBehaviour
     private void OnEnable()
     {
         OnCardChanged?.Invoke(_cardsInDeck);
-
-        _linkBetweenCardsAndCollections.OnSelectedDeckCard += SetCardInDeck;
     }
 
-    private void SetCardInDeck(CardCell card, AtackOrDefCardType deckType, int positionCardInDeck)
+    private void OnDisable()
     {
-        if (deckType == _deckType)
-        {
-            _cardsInDeck[positionCardInDeck].SwitchComponentValue(card);
-            _cardCollection.gameObject.SetActive(false);
-            OnCardChanged?.Invoke(_cardsInDeck);
-            SaveDesks();
-        }
+        SaveDecks(); 
     }
 
-    protected abstract void SaveDesks();
-    protected abstract void InitCards(DataSaveLoadService data);
+    private void OnApplicationQuit()
+    {
+        SaveDecks();
+    }
+
+    public void RememberCardLocation(int cardPositionInDeck, AtackOrDefCardType fromDeck)
+    {
+        _cardCollection.gameObject.SetActive(true);
+        _cardPositionInDeck = cardPositionInDeck;
+        _deckType = fromDeck;
+    }
+
+    public void SetCardInDeck(CardCollectionCell card)
+    {
+        if (card == null) throw new System.ArgumentNullException(); 
+
+        _cardsInDeck[_cardPositionInDeck].SwitchComponentValue(card);
+        _cardCollection.DeleteCards(new[] { card });
+        OnCardChanged?.Invoke(_cardsInDeck);
+        SaveDecks();
+        _cardCollection.gameObject.SetActive(false);
+    }
+
+    public void RetrieveCardInCollection(Card card)
+    {
+        _cardCollection.AddCard(card);
+    }
 }

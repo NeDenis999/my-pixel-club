@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using Pages.Collection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +6,6 @@ public class Shop : MonoBehaviour
 {
     public event UnityAction<int> OnCristalBuy;
     public event UnityAction<ShopItemBottle> OnBottleBuy;
-    public event UnityAction<Card[]> OnCardsBuy;
 
     private ShopItemCardPack _cardsPack;
 
@@ -15,6 +14,8 @@ public class Shop : MonoBehaviour
 
     [SerializeField] 
     private ShopCategoryRendering _startCategory;
+
+    [SerializeField] private CardCollection _cardCollection;
 
     private void Start()
     {
@@ -33,7 +34,7 @@ public class Shop : MonoBehaviour
     public void BuyCard(ShopItemCardPack shopItem)
     {
         _cardsPack = shopItem;
-        OnCardsBuy?.Invoke(GetRandomCards((int)shopItem.TypeItem));
+        _cardCollection.AddCards(GetRandomCards((int)shopItem.TypeItem));
     }
 
     private Card[] GetRandomCards(int amountCard)

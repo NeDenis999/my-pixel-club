@@ -1,4 +1,4 @@
-﻿using Cards.Deck.CardCell;
+﻿using Cards.CardCell;
 using UnityEngine;
 using UnityEngine.UI;
 

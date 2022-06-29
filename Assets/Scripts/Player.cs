@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cards.Deck.CardCell;
+using Cards.CardCell;
 using Pages.Collection;
 using UnityEngine;
 using UnityEngine.Events;

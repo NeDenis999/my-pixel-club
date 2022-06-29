@@ -1,3 +1,4 @@
+using Pages.Collection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,12 @@ using UnityEngine.Events;
 
 public class StartGame : MonoBehaviour
 {
-    public event UnityAction<Card[]> OnSetStartPackCards;
-
     [SerializeField] private Card[] _cards;
+    [SerializeField] private CardCollection _cardCollection;
 
-    private void Start()
+    private void Awake()
     {
-        GenerateStartPackCard();
-    }
-
-    private void GenerateStartPackCard()
-    {
-        OnSetStartPackCards?.Invoke(_cards);
+        _cardCollection.gameObject.SetActive(true);
+        _cardCollection.gameObject.SetActive(false);
     }
 }

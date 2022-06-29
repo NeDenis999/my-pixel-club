@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cards.Deck.CardCell;
 using Pages.Collection;
 using TMPro;
 using UnityEngine;
@@ -14,6 +13,11 @@ public class StatisticWindow : MonoBehaviour
     [SerializeField] private CardCollection _cardCollection;
 
     private CardCellInDeck _card;
+
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
 
     private void OnEnable()
     {
