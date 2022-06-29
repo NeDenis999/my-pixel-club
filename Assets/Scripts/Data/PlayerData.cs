@@ -17,5 +17,6 @@ namespace Data
         public float Energy;
         public int Level;
         public int Rank;
+        public DateTime FirstDayInGame;
     }
 }

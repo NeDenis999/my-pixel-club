@@ -21,18 +21,34 @@ public class AdminTools : MonoBehaviour
     private void CommandInputUpdates()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             _data.Save();
+            print("Save");
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
             _data.Load();
-        
+            print("Load");
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
             _data.SetCoinCount(_data.PlayerData.Coins + 1000);
-        
+            print("SetCoinCount");
+        }
+            
+
         if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
             _data.SetCrystalsCount(_data.PlayerData.Crystals + 1000);
+            print("SetCrystalsCount");
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
             PlayerPrefs.DeleteAll();
+            print("DeleteAllSave");
+        }
     }
 }

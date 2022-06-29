@@ -136,7 +136,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3443959438799042357, guid: ee121d64383d2654fa76ac9ced64f980, type: 3}
   m_PrefabInstance: {fileID: 8360432152126372551}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &628015753859569667
+--- !u!114 &1645245715549478861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,22 +145,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6615047210969550322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d102c61292f4eac40b30c9c0a95ac042, type: 3}
+  m_Script: {fileID: 11500000, guid: d355600da5da454fb340f435117ecb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 4916115305922670530}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
-  _emptyCard: {fileID: -9071980186230592325, guid: 2c17f633fd3a00f44906015aaeefbc92, type: 3}
-  _deckType: 0
-  _statisticCardWindow: {fileID: 0}
-  _attackText: {fileID: 0}
-  _defenseText: {fileID: 0}
-  _healthText: {fileID: 0}
-  _statsPanel: {fileID: 0}
-  _noneCardSprite: {fileID: 0}
-  _isStartMoveDirection: 0
-  _frameImage: {fileID: 1631755615777579800}
-  _frames:
-  - {fileID: 21300000, guid: 7fce207c8b54fd542a50e1fb68b3b187, type: 3}
-  - {fileID: 21300000, guid: c148b6c59b5472d4bb3a7a237d48bc8b, type: 3}
-  - {fileID: 21300000, guid: 17c38b5e53772d749b59cbd050ca7f3d, type: 3}
+  _frame: {fileID: 1631755615777579800}

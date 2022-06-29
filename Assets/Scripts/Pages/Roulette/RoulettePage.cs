@@ -21,6 +21,9 @@ namespace Roulette
         private Button _startRoletteButton;
         
         [SerializeField] 
+        private Button _closeButton;
+        
+        [SerializeField] 
         private Button _collectButton;
 
         [SerializeField] 
@@ -59,6 +62,7 @@ namespace Roulette
                 _prize = RandomCell();
                 
                 _startRoletteButton.interactable = false;
+                _closeButton.interactable = false;
                 StartCoroutine(_rouletteAnimator.Spine(_prize, _rouletteCells));
                 OnBuyRouletteSpin?.Invoke(_spinePrise);
             }
@@ -75,7 +79,7 @@ namespace Roulette
 
         private void StartCloseWinningPanel()
         {
-            StartCoroutine(_rouletteAnimator.CloseWinningPanel(_startRoletteButton));
+            StartCoroutine(_rouletteAnimator.CloseWinningPanel(_startRoletteButton, _closeButton));
             TakeItem(_rouletteCells[_prize].RouletteItem);
         }
     }

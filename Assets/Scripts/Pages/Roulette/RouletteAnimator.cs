@@ -74,7 +74,7 @@ namespace Roulette
             _winningPanel.blocksRaycasts = true;
         }
 
-        public IEnumerator CloseWinningPanel(Button startRoletteButton)
+        public IEnumerator CloseWinningPanel(Button startRoletteButton, Button closeButton)
         {
             _currentCell.transform.parent = _currentParrent;
             DOTween.To(() => _winningPanel.alpha, x => _winningPanel.alpha = x, 0, 0.75f)
@@ -90,6 +90,7 @@ namespace Roulette
             _currentCell.transform.DOLocalMove(_previousCurrentCellPosition, 0.75f);
             yield return new WaitForSeconds(0.75f);
             startRoletteButton.interactable = true;
+            closeButton.interactable = true;
             _protectionFromExitingMenu.SetActive(false);
         }        
     }

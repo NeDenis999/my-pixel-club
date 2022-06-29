@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,14 @@ public class Shop : MonoBehaviour
     [Header("Chance per procent")]
     [SerializeField] private float _dropChance;
 
+    [SerializeField] 
+    private ShopCategoryRendering _startCategory;
+
+    private void Start()
+    {
+        _startCategory.SelectCategore();
+    }
+    
     public void BuyItem(ShopItem shopItem)
     {
         if (shopItem.TypeItem == ShopItemType.Cristal)

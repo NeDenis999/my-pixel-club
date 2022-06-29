@@ -7,6 +7,9 @@ public class ShopCategoryRendering : MonoBehaviour
     [SerializeField] private List<ShopItem> _shopItems;
     [SerializeField] private ShopItemCell _shopItemCellTemplate;
     [SerializeField] private Transform _container;
+    
+    [SerializeField] 
+    private ConfirmWindow _confirmWindow;
 
     public void SelectCategore()
     {
@@ -22,7 +25,10 @@ public class ShopCategoryRendering : MonoBehaviour
         _shopItems.ForEach(item =>
         {
             var cell = Instantiate(_shopItemCellTemplate, _container);
+            cell.Init(_confirmWindow);
             cell.Render(item);
         });
+        
+        _confirmWindow.Render(_shopItems[0]);
     }
 }

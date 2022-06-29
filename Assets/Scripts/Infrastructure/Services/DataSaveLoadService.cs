@@ -46,8 +46,8 @@ namespace Infrastructure.Services
         {
             var jsonString = PlayerPrefs.GetString(DataKey);
 
-            if (jsonString != "")
-            {
+            //if (jsonString != "")
+            //{
                 try
                 {
                     _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
@@ -75,12 +75,17 @@ namespace Infrastructure.Services
                     _playerData.DefDecks = cards;
                     _playerData.Nickname = RandomNickname();
                     _playerData.Avatar = RandomAvatar();
-                    
+                    _playerData.FirstDayInGame = DateTime.Now;
+                    _playerData.Rank = 1;
+                    _playerData.Level = 1;
+                    _playerData.Energy = 25;
+
                     Save();
                     
-                    Debug.LogError(e);
+                    Debug.LogWarning("All Save Update");
+                    Debug.LogWarning(e);
                 }
-            }
+            //}
 
             Debug.Log("Load");
             Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");

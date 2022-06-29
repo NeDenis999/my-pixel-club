@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cards.Deck.CardCell;
 using Data;
+using Decks.CardCell;
 using Infrastructure.Services;
 using UnityEngine;
 using Zenject;
@@ -8,7 +9,7 @@ using Zenject;
 public class DeckDeferenceDisplay : MonoBehaviour
 {
     [SerializeField] 
-    protected List<CardCellInDeck> _cardsInDeck;
+    protected List<CardDisplay> _cardsInDeck;
     
     private DataSaveLoadService _data;
     
@@ -27,6 +28,6 @@ public class DeckDeferenceDisplay : MonoBehaviour
     private void UpdateCardDisplay()
     {
         for (int i = 0; i < _cardsInDeck.Count; i++) 
-            _cardsInDeck[i].Render(_data.PlayerData.DefDecks[i]);
+            _cardsInDeck[i].UpdateDisplay(_data.PlayerData.DefDecks[i]);
     }
 }
