@@ -1,17 +1,32 @@
-using Pages.Collection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enchance : MonoBehaviour
 {
     [SerializeField] private CardCollection _cardCollection;
-    [SerializeField] private EnchanceCardCollection _enhanceCardCollection;
+    [SerializeField] private EnchanceCardCollection _enhanceCardForUpgradeCollection;
+    [SerializeField] private EnchanceCardsForDeleteCollection _enchanceCardsForDeleteCollection;
 
-    private CardCell _upgradeCard;
+    [SerializeField] private EnchanceUpgradeCard _upgradeCard;
+
+    [SerializeField] private Button _enhanceButton;
 
     private void OnEnable()
     {
-        _enhanceCardCollection.SetCardCollection(_cardCollection.Cards);
+        _enhanceCardForUpgradeCollection.SetCardCollection(_cardCollection.Cards);
+
+        _enhanceButton.onClick.AddListener(Enhance);
+    }
+
+    private void OnDestroy()
+    {
+        _enhanceButton.onClick.RemoveListener(Enhance);
+    }
+
+    private void Enhance()
+    {
+        
     }
 }

@@ -7,9 +7,6 @@ namespace Pages.InventoryCard
     public class CardCollectionInventoryCell : CardCell, IInventory
     {
         [SerializeField]
-        private LinkBetweenCardsAndCollections _linkBetweenCardCollectionAndDeck;
-
-        [SerializeField]
         private CardCellInDeck _cellInDeck;
 
         [SerializeField] 

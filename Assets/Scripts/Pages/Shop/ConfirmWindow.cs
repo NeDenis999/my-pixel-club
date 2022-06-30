@@ -17,7 +17,6 @@ public class ConfirmWindow : MonoBehaviour
     private TMP_Text _countText;
     
     [SerializeField] private Shop _shop;
-    [SerializeField] private GoldWallet _goldWallet;
     [SerializeField] private Image _iconImage;
     
     private ShopItem _shopItem;

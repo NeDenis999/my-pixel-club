@@ -7,6 +7,8 @@ public class EnchanceCardCollection : MonoBehaviour
 {
     [SerializeField] private Enchance _ennchance;
 
+    [SerializeField] private EnchanceCardsForDeleteCollection _enchanceCardsForDeleteCollection;
+
     private List<CardCollectionCell> _listCardsInCollection = new();
 
     [SerializeField] private EnchanceCardCell _cardCellTemplate;
@@ -22,7 +24,7 @@ public class EnchanceCardCollection : MonoBehaviour
     {
         _doneButton.onClick.AddListener(DoneChange);
         _selectedCard = null;
-        RenderCard();
+        RenderCards();
     }
 
     private void OnDisable()
@@ -38,7 +40,7 @@ public class EnchanceCardCollection : MonoBehaviour
         _listCardsInCollection.AddRange(cardCollectionCells);
     }
 
-    private void RenderCard()
+    private void RenderCards()
     {
         foreach (Transform card in _container)
         {
@@ -57,7 +59,7 @@ public class EnchanceCardCollection : MonoBehaviour
     {
         if (UpgradeCard == null) throw new System.InvalidOperationException();
 
-        if (UpgradeCard.CardCell != null)
+        if (UpgradeCard.CardCell != null && _selectedCard != null)
             _listCardsInCollection.Add(UpgradeCard.CardCell);
 
         if (_selectedCard != null)
@@ -65,6 +67,8 @@ public class EnchanceCardCollection : MonoBehaviour
             _listCardsInCollection.Remove(_selectedCard);
             UpgradeCard.SetCardForUpgrade(_selectedCard);
             _selectedCard = null;
+
+            _enchanceCardsForDeleteCollection.DisplayCardsForDelete(_listCardsInCollection);
         }
     }
 

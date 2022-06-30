@@ -1,4 +1,3 @@
-using Pages.Collection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnchanceUpgradeCard : MonoBehaviour
 {    
-    [SerializeField] private EnchanceCardCollection _enhanceCardCollection;
+    [SerializeField] private EnchanceCardCollection _enhanceCardCollection;    
 
     [SerializeField] private Image _UIIcon;
     [SerializeField] private Sprite _standardSprite;

@@ -1,4 +1,3 @@
-using Pages.Collection;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -58,11 +57,6 @@ public class Evolution : MonoBehaviour
         _evolvedCardImage.sprite = evolvedCard.UIIcon;
 
         return evolvedCard;
-    }
-
-    private float GetAvargeValue(int firstValue, int secondeValue)
-    {
-        return (firstValue + secondeValue) / 2;
     }
 }
 

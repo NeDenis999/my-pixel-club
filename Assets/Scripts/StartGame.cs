@@ -1,4 +1,3 @@
-using Pages.Collection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +11,10 @@ public class StartGame : MonoBehaviour
     private void Awake()
     {
         _cardCollection.gameObject.SetActive(true);
+    }
+
+    private void Start()
+    {
         _cardCollection.gameObject.SetActive(false);
     }
 }
