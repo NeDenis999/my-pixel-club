@@ -10,8 +10,15 @@ public class EnchanceUpgradeCard : MonoBehaviour
     [SerializeField] private Image _UIIcon;
     [SerializeField] private Sprite _standardSprite;
 
+    private EnhanceCardForUpgradeStatistic _cardStatistic;
+
     private CardCollectionCell _cardCell;
     public CardCollectionCell CardCell => _cardCell;
+
+    private void Start()
+    {
+        _cardStatistic = FindObjectOfType<EnhanceCardForUpgradeStatistic>().gameObject.GetComponent<EnhanceCardForUpgradeStatistic>();
+    }
 
     private void OnEnable()
     {        
@@ -42,5 +49,6 @@ public class EnchanceUpgradeCard : MonoBehaviour
 
         _cardCell = card;
         _UIIcon.sprite = CardCell.UIIcon;
+        _cardStatistic.Render(_cardCell);
     }
 }

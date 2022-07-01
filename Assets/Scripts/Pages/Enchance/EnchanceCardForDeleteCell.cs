@@ -11,6 +11,8 @@ public class EnchanceCardForDeleteCell : CardCell
     private EnchanceCardsForDeleteCollection _enchanceCardForDeleteCollection;
     private CardCollectionCell _cardInCollection;
 
+    private EnhanceCardForDeleteStatistic _cardStatistic;
+
     private Button _cardButton;
     private Button _selectPanelButton;
 
@@ -18,6 +20,8 @@ public class EnchanceCardForDeleteCell : CardCell
     private void Awake()
     {
         _enchanceCardForDeleteCollection = FindObjectOfType<EnchanceCardsForDeleteCollection>().gameObject.GetComponent<EnchanceCardsForDeleteCollection>();
+
+        _cardStatistic = FindObjectOfType<EnhanceCardForDeleteStatistic>().gameObject.GetComponent<EnhanceCardForDeleteStatistic>();
 
         _cardButton = GetComponent<Button>();
         _selectPanelButton = _selectPanel.GetComponent<Button>();
@@ -47,6 +51,7 @@ public class EnchanceCardForDeleteCell : CardCell
     {
         _enchanceCardForDeleteCollection.AddToDeleteCollection(_cardInCollection);
         _selectPanel.SetActive(true);
+        _cardStatistic.Render(_cardInCollection);
     }
 
     private void UnselectCard()
