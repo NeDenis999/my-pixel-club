@@ -22,5 +22,6 @@ namespace Data
         public int Level;
         public int Rank;
         public DateTime FirstDayInGame;
+        public DateTime FirstDayInGame1;
     }
 }

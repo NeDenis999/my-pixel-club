@@ -41,46 +41,65 @@ namespace Infrastructure.Services
             
             try
             {
-                _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
+                if (jsonString == "")
+                    CreatePlayerData();
+                else
+                    _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
             }
             catch (Exception e)
             {
-                var cards = new CardData[5];
-
-                for (int i = 0; i < cards.Length; i++) 
-                    cards[i].Id = EmptyCardId;
-                
-                _playerData = new PlayerData
-                {
-                    Coins = 1000,
-                    Crystals = 1000,
-                    AttackDecksData = cards,
-                    DefDecksData = cards,
-                    InventoryDecksData = new CardData[0],
-                    InventoryDecks = new Card[0],
-                    Nickname = RandomNickname(),
-                    AvatarId = RandomAvatarId(),
-                    FirstDayInGame = DateTime.Now,
-                    Rank = 1,
-                    Level = 1,
-                    Energy = 25
-                };
-
-                Save();
+                CreatePlayerData();
                     
                 Debug.LogWarning("All Save Update");
                 Debug.LogWarning(e);
             }
             
-            UpdateAttackDeck();
-            UpdateDefenceDeck();
-            UpdateInventoryDeck();
-            UpdateAvatar();
+            try
+            {
+                UpdateAttackDeck();
+                UpdateDefenceDeck();
+                UpdateInventoryDeck();
+                UpdateAvatar();
+            }
+            catch (Exception e)
+            {
+                CreatePlayerData();
+                UpdateAttackDeck();
+                UpdateDefenceDeck();
+                UpdateInventoryDeck();
+                UpdateAvatar();
+            }
 
             Debug.Log("Load");
             Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
         }
 
+        private void CreatePlayerData()
+        {
+            var cards = new CardData[5];
+
+            for (int i = 0; i < cards.Length; i++) 
+                cards[i].Id = EmptyCardId;
+                
+            _playerData = new PlayerData
+            {
+                Coins = 1000,
+                Crystals = 1000,
+                AttackDecksData = cards,
+                DefDecksData = cards,
+                InventoryDecksData = new CardData[0],
+                InventoryDecks = new Card[0],
+                Nickname = RandomNickname(),
+                AvatarId = RandomAvatarId(),
+                FirstDayInGame = DateTime.Now,
+                Rank = 1,
+                Level = 1,
+                Energy = 25
+            };
+
+            Save();
+        }
+        
         public void SetCoinCount(int count)
         {
             _playerData.Coins = count;
@@ -171,6 +190,8 @@ namespace Infrastructure.Services
         private void UpdateDefenceDeck()
         {
             var defenceDecks = new Card[5];
+            
+            Debug.Log(_playerData.DefDecksData);
 
             for (int i = 0; i < _playerData.DefDecksData.Length; i++)
             {
@@ -184,6 +205,8 @@ namespace Infrastructure.Services
         {
             var attackDecks = new Card[5];
 
+            Debug.Log(_playerData.AttackDecksData);
+            
             for (int i = 0; i < _playerData.AttackDecksData.Length; i++)
             {
                 attackDecks[i] = _allCards[_playerData.AttackDecksData[i].Id];
