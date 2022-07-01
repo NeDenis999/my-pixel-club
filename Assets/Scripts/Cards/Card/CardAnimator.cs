@@ -121,13 +121,13 @@ namespace Cards.Card
             damageText.text = '-' + attack.ToString();
 
             damageText.DOColor(new Color(1, 0, 0, 1), 0.3f);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.3f);
             
             yield return Shake();
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             damageText.DOColor(new Color(1, 0, 0, 0), 0.3f);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
 
             Destroy(effect);
         }
@@ -153,8 +153,8 @@ namespace Cards.Card
 
             sequence
                 .Insert(0, _selectImage.DOColor(new Color(1, 1, 1, 0.5f), 0.5f))
-                .Insert(0, transform.DOLocalMove(_localPosition + new Vector3(0, 100, 0), 0.5f))
-                .Insert(0, transform.DOScale(_scale * 1.5f, 0.5f))
+                .Insert(0, transform.DOLocalMove(_localPosition + new Vector3(0, 50, 0), 0.5f))
+                .Insert(0, transform.DOScale(_scale * 1.2f, 0.5f))
                 .Insert(0.5f, _selectImage.DOColor(Color.clear, 0.5f));
                 //.Insert(1, transform.DOLocalMove(_localPosition, 0.5f))
                 //.Insert(1, transform.DOScale(_scale, 0.5f));

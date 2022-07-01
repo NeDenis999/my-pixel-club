@@ -253,7 +253,7 @@ public class BattleController : MonoBehaviour
             
             myCardAnimators[previousRandomNumber].Unselected();
             previousRandomNumber = -1;
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
         }
     }
 
