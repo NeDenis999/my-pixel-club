@@ -18,10 +18,24 @@ public class EnchanceCardsForDeleteCollection : CardCollectionSort
         _cards.Clear();
     }
 
+    private void OnDisable()
+    {
+        ClearCardForDeleteCollection();
+    }
+
+    private void ClearCardForDeleteCollection()
+    {
+        foreach (Transform child in _container)
+            Destroy(child.gameObject);
+
+        _cards.Clear();
+    }
+
     public void DisplayCardsForDelete(List<CardCollectionCell> cardsForDelete)
     {
+        ClearCardForDeleteCollection();
+
         if (cardsForDelete == null) throw new System.ArgumentNullException();
-        if (_cards.Count > 0) throw new System.InvalidOperationException();
 
         _cards.AddRange(cardsForDelete);
 

@@ -6,29 +6,34 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class EnchanceCardForDeleteCell : CardCell
 {
+    [SerializeField] private GameObject _selectPanel;
+
     private EnchanceCardsForDeleteCollection _enchanceCardForDeleteCollection;
     private CardCollectionCell _cardInCollection;
 
-    private GameObject _selectPanel;
+    private Button _cardButton;
+    private Button _selectPanelButton;
 
-    private bool _isSelect;
 
-    private void Start()
+    private void Awake()
     {
         _enchanceCardForDeleteCollection = FindObjectOfType<EnchanceCardsForDeleteCollection>().gameObject.GetComponent<EnchanceCardsForDeleteCollection>();
+
+        _cardButton = GetComponent<Button>();
+        _selectPanelButton = _selectPanel.GetComponent<Button>();
     }
 
     private void OnEnable()
     {
-        GetComponent<Button>().onClick.AddListener(SelectCard);
-        GetComponent<Button>().onClick.AddListener(UnselectCard);
+        _cardButton.onClick.AddListener(SelectCard);
+        _selectPanelButton.onClick.AddListener(UnselectCard);
+        _selectPanel.SetActive(false);
     }
 
     private void OnDisable()
     {
-        GetComponent<Button>().onClick.RemoveListener(SelectCard);
-        GetComponent<Button>().onClick.RemoveListener(UnselectCard);
-        _selectPanel.SetActive(false);
+        _cardButton.onClick.RemoveListener(SelectCard);
+        _selectPanelButton.onClick.RemoveListener(UnselectCard);
     }
 
     public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)
@@ -40,19 +45,13 @@ public class EnchanceCardForDeleteCell : CardCell
 
     private void SelectCard()
     {
-        if (_isSelect == true) return;
-
         _enchanceCardForDeleteCollection.AddToDeleteCollection(_cardInCollection);
         _selectPanel.SetActive(true);
-        _isSelect = true;
     }
 
     private void UnselectCard()
     {
-        if (_isSelect == false) return;
-
         _enchanceCardForDeleteCollection.RetrieveCard(_cardInCollection);
         _selectPanel.SetActive(false);
-        _isSelect = false;
     }
 }
