@@ -8,15 +8,18 @@ namespace Infrastructure.Services
     public class DataSaveLoadService
     {
         private const string DataKey = "data";
-        public PlayerData PlayerData => _playerData;
+        private const int EmptyCardId = 0;
         
-        private Card _emptyCard;
+        protected Sprite[] _avatars;
+        protected Card[] _allCards;
+
         private PlayerData _playerData;
-        private Sprite[] _avatars;
         
-        public DataSaveLoadService(Card emptyCard, Sprite[] avatars)
+        public PlayerData PlayerData => _playerData;
+
+        public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
         {
-            _emptyCard = emptyCard;
+            _allCards = allCards;
             _avatars = avatars;
         }
 
@@ -25,67 +28,53 @@ namespace Infrastructure.Services
             string jsonString = JsonUtility.ToJson(_playerData);
             PlayerPrefs.SetString(DataKey, jsonString);
 
-            string info = "";
-
-            if (_playerData.AttackDecks != null)
-            {
-                foreach (var attackDeck in _playerData.AttackDecks)
-                {
-                    if (attackDeck)
-                        info += $"{attackDeck.Name}\n";
-                    else
-                        info += "NONE\n";
-                }
-            }
-
             Debug.Log("Save");
-            Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks} \n{info}");
+            Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
         }
 
         public void Load()
         {
+            for (int i = 0; i < _allCards.Length; i++) 
+                _allCards[i].Id = i;
+
             var jsonString = PlayerPrefs.GetString(DataKey);
+            
+            try
+            {
+                _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
+            }
+            catch (Exception e)
+            {
+                var cards = new int[5];
 
-            //if (jsonString != "")
-            //{
-                try
-                {
-                    _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
-                    
-                    for (int i = 0; i < _playerData.AttackDecks.Length; i++) 
-                        if (!_playerData.AttackDecks[i])
-                            _playerData.AttackDecks[i] = _emptyCard;
+                for (int i = 0; i < cards.Length; i++) 
+                    cards[i] = EmptyCardId;
                 
-                    for (int i = 0; i < _playerData.DefDecks.Length; i++) 
-                        if (!_playerData.DefDecks[i])
-                            _playerData.DefDecks[i] = _emptyCard;
-                }
-                catch (Exception e)
+                _playerData = new PlayerData
                 {
-                    _playerData = new PlayerData();
-                    _playerData.Coins = 1000;
-                    _playerData.Crystals = 1000;
+                    Coins = 1000,
+                    Crystals = 1000,
+                    AttackDecksId = cards,
+                    DefDecksId = cards,
+                    InventoryDecksId = null,
+                    Nickname = RandomNickname(),
+                    AvatarId = RandomAvatarId(),
+                    FirstDayInGame = DateTime.Now,
+                    Rank = 1,
+                    Level = 1,
+                    Energy = 25
+                };
 
-                    var cards = new Card[5];
-
-                    for (int i = 0; i < cards.Length; i++) 
-                        cards[i] = _emptyCard;
-                
-                    _playerData.AttackDecks = cards;;
-                    _playerData.DefDecks = cards;
-                    _playerData.Nickname = RandomNickname();
-                    _playerData.Avatar = RandomAvatar();
-                    _playerData.FirstDayInGame = DateTime.Now;
-                    _playerData.Rank = 1;
-                    _playerData.Level = 1;
-                    _playerData.Energy = 25;
-
-                    Save();
+                Save();
                     
-                    Debug.LogWarning("All Save Update");
-                    Debug.LogWarning(e);
-                }
-            //}
+                Debug.LogWarning("All Save Update");
+                Debug.LogWarning(e);
+            }
+            
+            UpdateAttackDeck();
+            UpdateDefenceDeck();
+            UpdateInventoryDeck();
+            UpdateAvatar();
 
             Debug.Log("Load");
             Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
@@ -106,18 +95,44 @@ namespace Infrastructure.Services
         public void SetAttackDecks(Card[] cards)
         {
             _playerData.AttackDecks = cards;
+
+            for (int i = 0; i < cards.Length; i++) 
+                _playerData.AttackDecksId[i] = cards[i].Id;
+
             Save();
         }
         
         public void SetDefDecks(Card[] cards)
         {
             _playerData.DefDecks = cards;
+            
+            for (int i = 0; i < cards.Length; i++) 
+                _playerData.DefDecksId[i] = cards[i].Id;
+
             Save();
         }
 
         public void SetInventoryDecks(Card[] cards)
         {
             _playerData.InventoryDecks = cards;
+
+            if (_playerData.InventoryDecks.Length > _playerData.InventoryDecksId.Length)
+            {
+                var inventoryCardsId = new int[_playerData.InventoryDecks.Length];
+
+                for (int i = 0; i < inventoryCardsId.Length; i++)
+                {
+                    inventoryCardsId[i] = _playerData.InventoryDecksId[i];
+                }
+
+                _playerData.InventoryDecksId = inventoryCardsId;
+            }
+            
+            for (int i = 0; i < _playerData.InventoryDecks.Length; i++)
+            {
+                _playerData.InventoryDecksId[i] = _playerData.InventoryDecks[i].Id;
+            }
+            
             Save();
         }
         
@@ -129,7 +144,46 @@ namespace Infrastructure.Services
             return nickNames[Random.Range(0, nickNames.Length)];
         }
         
-        private Sprite RandomAvatar() =>
-            _avatars[Random.Range(0, _avatars.Length)];
+        private int RandomAvatarId() =>
+            Random.Range(0, _avatars.Length);
+        
+        private void UpdateAvatar() => 
+            _playerData.Avatar = _avatars[_playerData.AvatarId];
+
+        private void UpdateInventoryDeck()
+        {
+            var inventoryDecks = new Card[_playerData.InventoryDecksId.Length];
+
+            for (int i = 0; i < _playerData.InventoryDecksId.Length; i++)
+            {
+                inventoryDecks[i] = _allCards[_playerData.InventoryDecksId[i]];
+            }
+
+            _playerData.InventoryDecks = inventoryDecks;
+        }
+
+        private void UpdateDefenceDeck()
+        {
+            var defenceDecks = new Card[5];
+
+            for (int i = 0; i < _playerData.DefDecksId.Length; i++)
+            {
+                defenceDecks[i] = _allCards[_playerData.DefDecksId[i]];
+            }
+
+            _playerData.DefDecks = defenceDecks;
+        }
+
+        private void UpdateAttackDeck()
+        {
+            var attackDecks = new Card[5];
+
+            for (int i = 0; i < _playerData.AttackDecksId.Length; i++)
+            {
+                attackDecks[i] = _allCards[_playerData.AttackDecksId[i]];
+            }
+
+            _playerData.AttackDecks = attackDecks;
+        }
     }
 }

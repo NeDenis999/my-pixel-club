@@ -8,7 +8,7 @@ namespace Infrastructure
     public class BootstrapInstaller : MonoInstaller
     {
         [SerializeField]
-        private Card _emptyCard;
+        private Card[] _allCards;
         
         [SerializeField]
         private Sprite[] _avatars;
@@ -21,13 +21,23 @@ namespace Infrastructure
         
         public override void InstallBindings()
         {
-            BindPlayerData();
             BindAssetProvider();
+            BindPlayerData();
+        }
+
+        private void BindAssetProvider()
+        {
+            _assetProviderService = new AssetProviderService(_frames, _allCards);
+            
+            Container
+                .Bind<AssetProviderService>()
+                .FromInstance(_assetProviderService)
+                .AsSingle();
         }
 
         private void BindPlayerData()
         {
-            _data = new DataSaveLoadService(_emptyCard, _avatars);
+            _data = new DataSaveLoadService(_allCards, _avatars);
             
             Container
                 .Bind<DataSaveLoadService>()
@@ -35,16 +45,6 @@ namespace Infrastructure
                 .AsSingle();
             
             _data.Load();
-        }
-
-        private void BindAssetProvider()
-        {
-            _assetProviderService = new AssetProviderService(_frames);
-            
-            Container
-                .Bind<AssetProviderService>()
-                .FromInstance(_assetProviderService)
-                .AsSingle();
         }
     }
 }

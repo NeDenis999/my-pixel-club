@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,13 +21,22 @@ namespace Cards.CardCell
 
         [SerializeField] 
         private GameObject _statsPanel;
+
+        private Sprite _defaultIcon;
+        private Vector2 _startPosition;
         
+        private void Awake()
+        {
+            _startPosition = _icon.transform.localPosition;
+            _defaultIcon = _icon.sprite;
+        }
+
         public void Render(global::Card card)
         {
-            if (card.Attack != 0 && card.Def != 0)
+            if (card.Name != "Empty")
             {
                 _icon.sprite = card.UIIcon;
-                _icon.transform.localPosition = _icon.transform.localPosition.ToMove(card.DirectionView);
+                _icon.transform.localPosition = _startPosition + card.DirectionView;
                 
                 _statsPanel.SetActive(true);
                 _attackText.text = card.Attack.ToString();
@@ -35,6 +45,7 @@ namespace Cards.CardCell
             }
             else
             {
+                _icon.sprite = _defaultIcon;
                 _statsPanel.SetActive(false);
             }
         }

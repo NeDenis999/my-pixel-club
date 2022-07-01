@@ -18,7 +18,6 @@ namespace Decks
         public void Construct(DataSaveLoadService data)
         {
             _data = data;
-            UpdateCardDisplay();
         }
 
         private void OnEnable()

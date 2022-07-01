@@ -877,7 +877,6 @@ MonoBehaviour:
   - {fileID: 1350219965825872445}
   - {fileID: 1350219965718411555}
   _cardCollection: {fileID: 0}
-  _linkBetweenCardsAndCollections: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
 --- !u!1 &1350219965001682714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,12 +1186,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965099158956}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
+  _deck: {fileID: 0}
   _deckType: 1
   _statisticCardWindow: {fileID: 0}
   _frameImage: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &1350219965365566046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,12 +2810,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965718411557}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
+  _deck: {fileID: 0}
   _deckType: 1
   _statisticCardWindow: {fileID: 0}
   _frameImage: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &1350219965732713405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,12 +2906,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965732713393}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
+  _deck: {fileID: 0}
   _deckType: 1
   _statisticCardWindow: {fileID: 0}
   _frameImage: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &1350219965736387154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,12 +3353,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965785548660}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
+  _deck: {fileID: 0}
   _deckType: 1
   _statisticCardWindow: {fileID: 0}
   _frameImage: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &1350219965810306859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3507,12 +3502,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1350219965825872447}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
   _emptyCard: {fileID: 0}
+  _deck: {fileID: 0}
   _deckType: 1
   _statisticCardWindow: {fileID: 0}
   _frameImage: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!1 &1350219965862828056
 GameObject:
   m_ObjectHideFlags: 0
@@ -4666,10 +4660,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsInDeck:
   - {fileID: 7596555572858924353}
-  - {fileID: 4631789405484434351}
-  - {fileID: 7278802180658026215}
   - {fileID: 146170944648504158}
+  - {fileID: 4631789405484434351}
   - {fileID: 2852971911403872048}
+  - {fileID: 7278802180658026215}
 --- !u!1 &1350219966547602838
 GameObject:
   m_ObjectHideFlags: 0
@@ -8033,10 +8027,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1350219965770589179}
-  - {fileID: 4294174551017852181}
-  - {fileID: 2221139832637593693}
   - {fileID: 8779731597711748580}
+  - {fileID: 4294174551017852181}
   - {fileID: 6649380382406168970}
+  - {fileID: 2221139832637593693}
   m_Father: {fileID: 1350219965810306860}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10880,7 +10874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11417,7 +11411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11644,7 +11638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12177,7 +12171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7197193899050864752, guid: 44416286c199d2245ae70877e3f6eca2, type: 3}
       propertyPath: m_AnchorMax.x

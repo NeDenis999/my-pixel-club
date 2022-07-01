@@ -5,6 +5,8 @@ using Zenject;
 
 public class AdminTools : MonoBehaviour
 {
+    private const string DataKey = "data";
+    
     private DataSaveLoadService _data;
     
     [Inject]
@@ -20,6 +22,9 @@ public class AdminTools : MonoBehaviour
 
     private void CommandInputUpdates()
     {
+        if (!Input.GetKey(KeyCode.Alpha0))
+            return;
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             _data.Save();
@@ -48,6 +53,7 @@ public class AdminTools : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetString(DataKey, "");
             print("DeleteAllSave");
         }
     }

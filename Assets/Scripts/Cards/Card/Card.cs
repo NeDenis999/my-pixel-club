@@ -83,6 +83,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     public float SkillChance => (float)_skillChance;
 
     public string Discription => _discription;
+    public int Id { get; set; }
 
     Card ICard.Card => this;
 
