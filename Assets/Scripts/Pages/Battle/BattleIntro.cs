@@ -25,6 +25,12 @@ namespace Battle
         
         [SerializeField] 
         private Sprite _enemyObstacle;
+
+        [SerializeField]
+        private Sprite _playerTurnImage;
+        
+        [SerializeField] 
+        private Sprite _enemyTurnImage;
         
         private Vector3 _startObstacleScale;
         private Vector3 _startTurnTextScale;

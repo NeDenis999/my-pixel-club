@@ -30,7 +30,7 @@ namespace Infrastructure.Services
             PlayerPrefs.SetString(DataKey, jsonString);
 
             Debug.Log("Save");
-            Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
+            //Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
         }
 
         public void Load()
@@ -64,7 +64,7 @@ namespace Infrastructure.Services
             //Debug.Log(_playerData);
             
             Debug.Log("Load");
-            Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
+            //Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
         }
 
         private void CreatePlayerData()

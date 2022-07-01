@@ -41,8 +41,6 @@ namespace Pages.My_Page
         private void Start()
         {
             UpdateDisplay();
-            
-            //_avatar.sprite = _data.PlayerData.Avatar;
         }
 
         public void UpdateDisplay()
@@ -50,6 +48,7 @@ namespace Pages.My_Page
             UpdateSlider(_energySlider, _data.PlayerData.Energy);
             UpdateSlider(_xpSlider, _data.PlayerData.XP);
             
+            _avatar.sprite = _data.PlayerData.Avatar;
             _nickName.text = _data.PlayerData.Nickname;
             _levelText.text = _data.PlayerData.Level.ToString();
             _rankText.text = _data.PlayerData.Rank.ToString();
