@@ -78,8 +78,21 @@ public class CardCollection : CardCollectionSort
         _cards.Add(cell);
     }
 
+    public void AddCardCell(CardCell cardCell)
+    {
+        if (cardCell == null) throw new System.ArgumentNullException();
+
+        var newCell = Instantiate(_cardCellTemplate, _container);
+        newCell.Render(cardCell);
+        _cards.Add(newCell);
+    }
+
     public void DeleteCards(CardCollectionCell[] cardsForDelete)
     {
+        foreach (var item in cardsForDelete)
+            if (_cards.Contains(item) == false) 
+                throw new System.ArgumentOutOfRangeException(item.Card.Name);
+
         foreach (var card in cardsForDelete)
         {
             Destroy(card.gameObject);

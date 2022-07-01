@@ -21,14 +21,13 @@ public abstract class CardCell : MonoBehaviour, ICard
 
     private int _currentLevelPoint;
     private int _amountIncreaseLevelPoint;
-    private int _maxLevelPoint;
+    private int _maxLevelPoint = 1000;
 
     public Image Icon => _icon;
     public int Attack => _attack;
     public int Def => _def;
     public int Health => _health;
     public int Level => _level;
-    public RaceCard Race { get; }
 
     public int BonusAttackSkill => _attackSkill;
 
@@ -49,9 +48,11 @@ public abstract class CardCell : MonoBehaviour, ICard
         return 0;
     }
 
-    public void Render(Card card)
+    public void Render(ICard card)
     {
-        _card = card;
+        if (card == null) throw new System.ArgumentNullException();
+
+        _card = card is Card ? (Card)card : (card as CardCell).Card;
 
         _icon.sprite = _card.UIIcon;
         _attack = card.Attack;
@@ -61,9 +62,9 @@ public abstract class CardCell : MonoBehaviour, ICard
         _attackSkill = card.BonusAttackSkill;
     }
 
-    public void LevelUpCard(CardCell[] cardsForEnhance)
+    public void LevelUp(CardCell[] cardsForEnhance)
     {
-        float RacialMultiplier(RaceCard race)
+        float RacialMultiplier(RarityCard race)
         {
             float multiplier = 1;
 
@@ -83,7 +84,7 @@ public abstract class CardCell : MonoBehaviour, ICard
 
         foreach (var card in cardsForEnhance)
         {
-            int deleteCardPoint = (int)(1500 * RacialMultiplier(card.Race) + _amountIncreaseLevelPoint * 0.75f);
+            int deleteCardPoint = (int)(100 * RacialMultiplier(card.Card.Rarity) + _amountIncreaseLevelPoint * 0.75f);
 
             _currentLevelPoint += deleteCardPoint;
             _amountIncreaseLevelPoint += deleteCardPoint;

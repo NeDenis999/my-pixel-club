@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class CardCellInDeck : global::CardCell
+public class CardCellInDeck : CardCell
 {
     [SerializeField] private EmptyCardCell _emptyCard;
     [SerializeField] private Deck _deck;
@@ -70,7 +70,7 @@ private void OpenCardCollection()
     public void ResetComponent()
     {
         _icon.sprite = _emptyCard.Card.UIIcon;
-        _deck.RetrieveCardInCollection(_card);
+        _deck.RetrieveCardInCollection(this);
         _card = _emptyCard.Card;
     }
 }

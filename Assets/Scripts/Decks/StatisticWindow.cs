@@ -29,10 +29,10 @@ public class StatisticWindow : MonoBehaviour
 
         _atk.text = "Atk: " + cardCell.Attack;
         _def.text = "Def: " + cardCell.Def;
+        _health.text = "HP: " + cardCell.Health.ToString();
         _race.text = cardCell.Card.Race.ToString();
         _rarity.text = cardCell.Card.Rarity.ToString();
         _name.text = cardCell.Card.Name;
-        _health.text = cardCell.Card.Health.ToString();
 
         _card = cardCell;
     }

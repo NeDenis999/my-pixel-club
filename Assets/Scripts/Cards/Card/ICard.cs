@@ -10,7 +10,6 @@ public interface ICard
     public int Def { get; }
     public int Health { get; }
     public int Level { get; }
-    public RaceCard Race { get; }
 
     public int BonusAttackSkill { get; }
     

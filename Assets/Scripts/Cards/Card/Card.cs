@@ -2,14 +2,13 @@ using Infrastructure.Services;
 using Roulette;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
+using UnityEngine.UI;
 
 public enum RarityCard
 {
-    Epmpty,
     Standard,
-    Rarity
+    Rarity,
+    Epmpty
 }
 
 public enum RaceCard

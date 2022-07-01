@@ -29,6 +29,7 @@ public class EnchanceCardsForDeleteCollection : CardCollectionSort
             Destroy(child.gameObject);
 
         _cards.Clear();
+        _cardsForDelete.Clear();
     }
 
     public void DisplayCardsForDelete(List<CardCollectionCell> cardsForDelete)
