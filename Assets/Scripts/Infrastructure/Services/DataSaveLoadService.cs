@@ -56,7 +56,7 @@ namespace Infrastructure.Services
                     Crystals = 1000,
                     AttackDecksId = cards,
                     DefDecksId = cards,
-                    InventoryDecksId = null,
+                    InventoryDecksId = new int[0],
                     Nickname = RandomNickname(),
                     AvatarId = RandomAvatarId(),
                     FirstDayInGame = DateTime.Now,

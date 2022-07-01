@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Battle;
-using Data;
 using DG.Tweening;
 using Infrastructure.Services;
 using TMPro;

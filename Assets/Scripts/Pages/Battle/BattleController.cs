@@ -16,14 +16,11 @@ using Random = UnityEngine.Random;
 
 public class BattleController : MonoBehaviour
 {
-    public event UnityAction OnPlayerWin;
-    public event UnityAction OnPlayerLose;
+    private static readonly int Effect = Animator.StringToHash("Effect");
 
     [SerializeField] private Player _player;
-
     [SerializeField] private CardAnimator _enemyDefCardImage;
     [SerializeField] private Transform _container;
-
     [SerializeField] private BattleCardsStatistic _battleCardsStatistic;
 
     [SerializeField]
@@ -34,27 +31,29 @@ public class BattleController : MonoBehaviour
 
     [SerializeField]
     private CardAnimator[] _enemyCardAnimators;
-        
+
     [SerializeField]
     private CardAnimator[] _playerCardAnimators;
-        
-    private Card[] _enemyCards;
-    private Card[] _playerCards;
-        
+
     [SerializeField] 
     private Shaking shaking;
 
     [SerializeField] 
     private ParticleSystem _defaultAttackEffect;
-        
+
     [SerializeField] 
     private Animator _turnEffect;
-        
+
     [SerializeField] 
     private GameObject _battleChouse;
 
     private List<Card> _enemyDefCards = new();
     private int _baseEnemyDefValue;
+    private Card[] _enemyCards;
+    private Card[] _playerCards;
+    
+    public event UnityAction OnPlayerWin;
+    public event UnityAction OnPlayerLose;
 
     [Inject]
     private void Construct(DataSaveLoadService dataSaveLoadService)
@@ -227,7 +226,7 @@ public class BattleController : MonoBehaviour
                             
                         turnEffect.transform.localScale = turnEffect.transform.localScale.ToX(scale);
                             
-                        turnEffect.SetTrigger("Effect");
+                        turnEffect.SetTrigger(Effect);
                             
                         StartCoroutine(opponentCardAnimator.Hit(attackEffect, attack));
                         
