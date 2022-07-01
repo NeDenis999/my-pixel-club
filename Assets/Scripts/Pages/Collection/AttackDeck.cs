@@ -15,10 +15,15 @@ public  class AttackDeck : Deck
 
     protected override void SaveDecks()
     {
-        var cards = new Card[_cardsInDeck.Count];
+        var cards = new Card[5];
 
-        for (int i = 0; i < _cardsInDeck.Count; i++) 
-            cards[i] = _cardsInDeck[i].Card;
+        for (int i = 0; i < 5; i++)
+        {
+            if (_cardsInDeck[i].Card)
+                cards[i] = _cardsInDeck[i].Card;
+            else
+                cards[i] = null;
+        }
 
         _data.SetAttackDecks(cards);
     }
