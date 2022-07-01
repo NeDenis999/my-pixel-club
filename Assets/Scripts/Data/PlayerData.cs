@@ -9,9 +9,9 @@ namespace Data
         public Card[] AttackDecks;
         public Card[] DefDecks;
         public Card[] InventoryDecks;
-        public int[] AttackDecksId;
-        public int[] DefDecksId;
-        public int[] InventoryDecksId;
+        public CardData[] AttackDecksData;
+        public CardData[] DefDecksData;
+        public CardData[] InventoryDecksData;
         public int Coins;
         public int Crystals;
         public string Nickname;

@@ -45,18 +45,18 @@ namespace Infrastructure.Services
             }
             catch (Exception e)
             {
-                var cards = new int[5];
+                var cards = new CardData[5];
 
                 for (int i = 0; i < cards.Length; i++) 
-                    cards[i] = EmptyCardId;
+                    cards[i].Id = EmptyCardId;
                 
                 _playerData = new PlayerData
                 {
                     Coins = 1000,
                     Crystals = 1000,
-                    AttackDecksId = cards,
-                    DefDecksId = cards,
-                    InventoryDecksId = new int[0],
+                    AttackDecksData = cards,
+                    DefDecksData = cards,
+                    InventoryDecksData = new CardData[0],
                     InventoryDecks = new Card[0],
                     Nickname = RandomNickname(),
                     AvatarId = RandomAvatarId(),
@@ -98,7 +98,7 @@ namespace Infrastructure.Services
             _playerData.AttackDecks = cards;
 
             for (int i = 0; i < cards.Length; i++) 
-                _playerData.AttackDecksId[i] = cards[i].Id;
+                _playerData.AttackDecksData[i].Id = cards[i].Id;
 
             Save();
         }
@@ -108,7 +108,7 @@ namespace Infrastructure.Services
             _playerData.DefDecks = cards;
             
             for (int i = 0; i < cards.Length; i++) 
-                _playerData.DefDecksId[i] = cards[i].Id;
+                _playerData.DefDecksData[i].Id = cards[i].Id;
 
             Save();
         }
@@ -118,25 +118,25 @@ namespace Infrastructure.Services
             _playerData.InventoryDecks = cards;
             
             Debug.Log(_playerData.InventoryDecks.Length);
-            Debug.Log(_playerData.InventoryDecksId.Length);
+            Debug.Log(_playerData.InventoryDecksData.Length);
 
-            if (_playerData.InventoryDecks.Length != _playerData.InventoryDecksId.Length)
+            if (_playerData.InventoryDecks.Length != _playerData.InventoryDecksData.Length)
             {
-                var inventoryCardsId = new int[_playerData.InventoryDecks.Length];
+                var inventoryCardsData = new CardData[_playerData.InventoryDecks.Length];
 
-                for (int i = 0; i < _playerData.InventoryDecksId.Length && i < _playerData.InventoryDecks.Length; i++)
+                for (int i = 0; i < _playerData.InventoryDecksData.Length && i < _playerData.InventoryDecks.Length; i++)
                 {
-                    if (inventoryCardsId[i] != EmptyCardId)
-                        inventoryCardsId[i] = _playerData.InventoryDecksId[i];
+                    if (inventoryCardsData[i].Id != EmptyCardId)
+                        inventoryCardsData[i] = _playerData.InventoryDecksData[i];
                 }
 
-                Debug.Log(inventoryCardsId.Length);
-                _playerData.InventoryDecksId = inventoryCardsId;
+                Debug.Log(inventoryCardsData.Length);
+                _playerData.InventoryDecksData = inventoryCardsData;
             }
             
             for (int i = 0; i < _playerData.InventoryDecks.Length; i++)
             {
-                _playerData.InventoryDecksId[i] = _playerData.InventoryDecks[i].Id;
+                _playerData.InventoryDecksData[i].Id = _playerData.InventoryDecks[i].Id;
             }
             
             Save();
@@ -158,11 +158,11 @@ namespace Infrastructure.Services
 
         private void UpdateInventoryDeck()
         {
-            var inventoryDecks = new Card[_playerData.InventoryDecksId.Length];
+            var inventoryDecks = new Card[_playerData.InventoryDecksData.Length];
 
-            for (int i = 0; i < _playerData.InventoryDecksId.Length; i++)
+            for (int i = 0; i < _playerData.InventoryDecksData.Length; i++)
             {
-                inventoryDecks[i] = _allCards[_playerData.InventoryDecksId[i]];
+                inventoryDecks[i] = _allCards[_playerData.InventoryDecksData[i].Id];
             }
 
             _playerData.InventoryDecks = inventoryDecks;
@@ -172,9 +172,9 @@ namespace Infrastructure.Services
         {
             var defenceDecks = new Card[5];
 
-            for (int i = 0; i < _playerData.DefDecksId.Length; i++)
+            for (int i = 0; i < _playerData.DefDecksData.Length; i++)
             {
-                defenceDecks[i] = _allCards[_playerData.DefDecksId[i]];
+                defenceDecks[i] = _allCards[_playerData.DefDecksData[i].Id];
             }
 
             _playerData.DefDecks = defenceDecks;
@@ -184,9 +184,9 @@ namespace Infrastructure.Services
         {
             var attackDecks = new Card[5];
 
-            for (int i = 0; i < _playerData.AttackDecksId.Length; i++)
+            for (int i = 0; i < _playerData.AttackDecksData.Length; i++)
             {
-                attackDecks[i] = _allCards[_playerData.AttackDecksId[i]];
+                attackDecks[i] = _allCards[_playerData.AttackDecksData[i].Id];
             }
 
             _playerData.AttackDecks = attackDecks;
