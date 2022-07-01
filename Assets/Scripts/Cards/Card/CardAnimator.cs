@@ -56,13 +56,14 @@ namespace Cards.Card
         [SerializeField] 
         private Animator _animator;
 
+        private Vector3 _scale;
+        private Vector3 _localPosition;
+
         private void Start()
         {
             _shadow.gameObject.SetActive(false);
-            _image.color = Color.clear;
-            _magicCircleImage.color = Color.white;
-            _frameImage.color = Color.clear;
             transform.localPosition = transform.localPosition.ToY(100);
+            Hide();
         }
 
         public void Init(global::Card card)
@@ -105,6 +106,9 @@ namespace Cards.Card
             _smokeEffect.SetTrigger(_smoke);
             yield return new WaitForSeconds(1f);
             _smokeEffect.GetComponent<Image>().enabled = false;
+            
+            _localPosition = transform.localPosition;
+            _scale = transform.localScale;
         }
 
         public IEnumerator Hit(ParticleSystem attackEffect, int attack)
@@ -117,13 +121,13 @@ namespace Cards.Card
             damageText.text = '-' + attack.ToString();
 
             damageText.DOColor(new Color(1, 0, 0, 1), 0.3f);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.3f);
             
             yield return Shake();
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             damageText.DOColor(new Color(1, 0, 0, 0), 0.3f);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
 
             Destroy(effect);
         }
@@ -146,10 +150,29 @@ namespace Cards.Card
         public void Selected()
         {
             var sequence = DOTween.Sequence();
-            
+
             sequence
                 .Insert(0, _selectImage.DOColor(new Color(1, 1, 1, 0.5f), 0.5f))
+                .Insert(0, transform.DOLocalMove(_localPosition + new Vector3(0, 50, 0), 0.5f))
+                .Insert(0, transform.DOScale(_scale * 1.2f, 0.5f))
                 .Insert(0.5f, _selectImage.DOColor(Color.clear, 0.5f));
+                //.Insert(1, transform.DOLocalMove(_localPosition, 0.5f))
+                //.Insert(1, transform.DOScale(_scale, 0.5f));
+
+                //Unselected();
+        }
+
+        public void Unselected()
+        {
+            var sequence = DOTween.Sequence();
+
+            sequence
+                //.Insert(0, _selectImage.DOColor(new Color(1, 1, 1, 0.5f), 0.5f))
+                //.Insert(0, transform.DOLocalMove(_localPosition + new Vector3(0, 100, 0), 1))
+                //.Insert(0, transform.DOScale(_scale * 1.5f, 1))
+                //.Insert(0.5f, _selectImage.DOColor(Color.clear, 0.5f))
+                .Insert(0, transform.DOLocalMove(_localPosition, 0.5f))
+                .Insert(0, transform.DOScale(_scale, 0.5f));
         }
 
         public void Hide()

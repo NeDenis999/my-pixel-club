@@ -51,6 +51,7 @@ public class BattleController : MonoBehaviour
     private int _baseEnemyDefValue;
     private Card[] _enemyCards;
     private Card[] _playerCards;
+    private int previousRandomNumber = -1;
     
     public event UnityAction OnPlayerWin;
     public event UnityAction OnPlayerLose;
@@ -79,15 +80,16 @@ public class BattleController : MonoBehaviour
 
     public void StartFight()
     {
+        gameObject.SetActive(true);
+        
         foreach (var playerCard in _playerCardAnimators) 
             playerCard.Hide();
-            
+
         foreach (var enemyCard in _enemyCardAnimators) 
             enemyCard.Hide();
 
-        gameObject.SetActive(true);
-
         HideNonAllActiveCards();
+
         _battleIntro.Initialization();
         StartCoroutine(Fight());
     }
@@ -168,12 +170,20 @@ public class BattleController : MonoBehaviour
 
             for (int j = 0; j < randomMyCardDamageCount; j++)
             {
+                if (previousRandomNumber != -1)
+                {
+                    myCardAnimators[previousRandomNumber].Unselected();
+                    yield return new WaitForSeconds(0.5f);
+                }
+
                 var randomNumber = Random.Range(0, myAliveCardNumbers.Count);
+                previousRandomNumber = randomNumber;
                 Card randomMyCard = myCards[randomNumber];
 
                 var myCardAnimator = myCardAnimators[randomNumber];
                 myCardAnimator.Selected();
-                    
+                yield return new WaitForSeconds(0.2f);
+
                 var randomOpponentCardDamageCount = Random.Range(1, opponentCardAnimators.Length);
                 var attackEffect = randomMyCard.AttackEffect;
                 var attack = randomMyCard.Attack;
@@ -240,8 +250,10 @@ public class BattleController : MonoBehaviour
                     yield return new WaitForSeconds(0.2f);
                 }
             }
-                
-            yield return new WaitForSeconds(2);
+            
+            myCardAnimators[previousRandomNumber].Unselected();
+            previousRandomNumber = -1;
+            yield return new WaitForSeconds(1);
         }
     }
 

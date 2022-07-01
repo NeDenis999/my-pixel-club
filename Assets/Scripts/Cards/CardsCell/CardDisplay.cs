@@ -21,7 +21,7 @@ namespace Decks.CardCell
             _frames = assetProviderService.Frames;
         }
         
-        public void UpdateDisplay(global::Card card)
+        public void UpdateDisplay(Card card)
         {
             _icon.sprite = card.UIIcon;
 
