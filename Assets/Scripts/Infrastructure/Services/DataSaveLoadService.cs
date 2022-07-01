@@ -57,6 +57,7 @@ namespace Infrastructure.Services
                     AttackDecksId = cards,
                     DefDecksId = cards,
                     InventoryDecksId = new int[0],
+                    InventoryDecks = new Card[0],
                     Nickname = RandomNickname(),
                     AvatarId = RandomAvatarId(),
                     FirstDayInGame = DateTime.Now,
@@ -115,16 +116,21 @@ namespace Infrastructure.Services
         public void SetInventoryDecks(Card[] cards)
         {
             _playerData.InventoryDecks = cards;
+            
+            Debug.Log(_playerData.InventoryDecks.Length);
+            Debug.Log(_playerData.InventoryDecksId.Length);
 
-            if (_playerData.InventoryDecks.Length > _playerData.InventoryDecksId.Length)
+            if (_playerData.InventoryDecks.Length != _playerData.InventoryDecksId.Length)
             {
                 var inventoryCardsId = new int[_playerData.InventoryDecks.Length];
 
-                for (int i = 0; i < inventoryCardsId.Length; i++)
+                for (int i = 0; i < _playerData.InventoryDecksId.Length && i < _playerData.InventoryDecks.Length; i++)
                 {
-                    inventoryCardsId[i] = _playerData.InventoryDecksId[i];
+                    if (inventoryCardsId[i] != EmptyCardId)
+                        inventoryCardsId[i] = _playerData.InventoryDecksId[i];
                 }
 
+                Debug.Log(inventoryCardsId.Length);
                 _playerData.InventoryDecksId = inventoryCardsId;
             }
             
