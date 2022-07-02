@@ -50,7 +50,7 @@ public class EvolveCardCollection : MonoBehaviour
 
         for (int i = 0; i < _listCardsInCollection.Count; i++)
         {
-            if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Card.Evoulution == 1)
+            if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Card.Evolution == 1)
             {
                 var cell = Instantiate(_cardCellTemplate, _container);
                 cell.Render(_listCardsInCollection[i].Card);
