@@ -53,7 +53,7 @@ public class PosibleLevelUpSlider : MonoBehaviour
 
     public void IncreasePossibleSliderLevelPoints(CardCollectionCell cardForDelete)
     {
-        if (_upgradeCard.CardCell.Level + _howMuchIncreaseLevel > 25) throw new System.InvalidOperationException();
+        if (_upgradeCard.CardCell.Level + _howMuchIncreaseLevel > _upgradeCard.CardCell.MaxLevel) throw new System.InvalidOperationException();
 
         _levelPointUpgradeCard += cardForDelete.GetCardDeletePoint();
 
@@ -64,10 +64,10 @@ public class PosibleLevelUpSlider : MonoBehaviour
             _howMuchIncreaseLevel++;
             _posibleIncreaseLevelText.text = "+ " + _howMuchIncreaseLevel;
 
-            if (_upgradeCard.CardCell.Level + _howMuchIncreaseLevel >= 25) 
+            if (_upgradeCard.CardCell.Level + _howMuchIncreaseLevel >= _upgradeCard.CardCell.MaxLevel) 
                 _posibleIncreaseLevelText.text = "MAX";
 
-            _lastMaxLevelPointUpgradeCard *= 1.1f;
+            _lastMaxLevelPointUpgradeCard *= _upgradeCard.CardCell.NextMaxLevelPoitnMultiplier;
             _maxLevelPointUpgradeCard += _lastMaxLevelPointUpgradeCard;
         }
     }

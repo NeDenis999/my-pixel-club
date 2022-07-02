@@ -22,11 +22,18 @@ public abstract class CardCell : MonoBehaviour, ICard
     private int _currentLevelPoint;
     private int _maxLevelPoint = 1000;
 
+    private float _nextMaxLevelPointMultiplier = 1.1f;
+
+    private int _baseEnhancmentLevelPoint = 1500;
+
     public Image Icon => _icon;
     public int Attack => _attack;
     public int Def => _def;
     public int Health => _health;
+
     public int Level => _level;
+    public int MaxLevel => _maxLevel;
+    public float NextMaxLevelPoitnMultiplier => _nextMaxLevelPointMultiplier;
 
     public int BonusAttackSkill => _attackSkill;
 
@@ -80,7 +87,7 @@ public abstract class CardCell : MonoBehaviour, ICard
         while (_currentLevelPoint >= _maxLevelPoint && _level < _maxLevel)
         {
             _currentLevelPoint -= _maxLevelPoint;
-            _maxLevelPoint = (int)(_maxLevelPoint * 1.1f);
+            _maxLevelPoint = (int)(_maxLevelPoint * _nextMaxLevelPointMultiplier);
             _level++;
             LevelUpCardValue();
             OnLevelUp?.Invoke();
@@ -103,6 +110,6 @@ public abstract class CardCell : MonoBehaviour, ICard
             return multiplier;
         }
 
-        return (int)(1500 * RacialMultiplier(Card.Rarity) + AmountIncreaseLevelPoint * 0.75f);
+        return (int)(_baseEnhancmentLevelPoint * RacialMultiplier(Card.Rarity) + AmountIncreaseLevelPoint * 0.75f);
     }
 }

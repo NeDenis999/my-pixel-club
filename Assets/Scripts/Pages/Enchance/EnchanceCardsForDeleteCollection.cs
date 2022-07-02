@@ -42,17 +42,18 @@ public class EnchanceCardsForDeleteCollection : CardCollectionSort
 
         if (cardsForDelete == null) throw new System.ArgumentNullException();
 
-        _cards.AddRange(cardsForDelete);
+        cardsForDelete.AddRange(cardsForDelete);
 
         RenderCards();
         
         void RenderCards()
         {
-            for (int i = 0; i < _cards.Count; i++)
+            for (int i = 0; i < cardsForDelete.Count; i++)
             {
                 var cell = Instantiate(_cardCellTemplate, _container);
-                cell.Render(_cards[i].Card);
-                cell.SetLinkOnCardInCollection(_cards[i]);
+                cell.Render(cardsForDelete[i].Card);
+                cell.SetLinkOnCardInCollection(cardsForDelete[i]);
+                _cards.Add(cell);
             }
         }
     }

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public enum RarityCard
 {
+    Epmpty,
     Standard,
-    Rarity,
-    Epmpty
+    Rarity
 }
 
 public enum RaceCard

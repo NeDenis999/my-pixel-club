@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class EnchanceCardForDeleteCell : CardCell
+public class EnchanceCardForDeleteCell : CardCollectionCell
 {
     [SerializeField] private GameObject _selectPanel;
 
@@ -18,7 +18,7 @@ public class EnchanceCardForDeleteCell : CardCell
 
     private EnhanceCardForDeleteStatistic _cardStatistic;
 
-    private void Awake()
+    override protected void Awake()
     {
         _enchanceCardForDeleteCollection = FindObjectOfType<EnchanceCardsForDeleteCollection>().gameObject.GetComponent<EnchanceCardsForDeleteCollection>();
         _enchance = FindObjectOfType<Enchance>().gameObject.GetComponent<Enchance>();
