@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public enum RarityCard
 {
-    Epmpty,
     Standard,
-    Rarity
+    Rarity,
+    Epmpty
 }
 
 public enum RaceCard
@@ -22,6 +22,7 @@ public enum RaceCard
 public class Card : ScriptableObject, ICard, IRoulette
 {
     private const float ValueIncreaseMultiplier = 1.35f;
+    private const float ValueLevelUpIncreaseMultiplier = 1.15f;
     
     [SerializeField] private Sprite _currentImage;
 
@@ -75,39 +76,9 @@ public class Card : ScriptableObject, ICard, IRoulette
     public RarityCard Rarity => _rarity;
     public RaceCard Race => _race;
 
-    public int Attack
-    {
-        get
-        {
-            if (_attack < 2)
-                return _attack;
-            
-            return (int)(_attack * ValueIncreaseMultiplier);
-        }
-    }
-
-    public int Def
-    {
-        get
-        {
-            if (_evolution < 2)
-                return _def;
-            
-            return (int)(_def * ValueIncreaseMultiplier);
-        }
-    }
-
-    public int Health
-    {
-        get
-        {
-            if (_evolution < 2)
-                return _health;
-            
-            return (int)(_health * ValueIncreaseMultiplier);
-        }
-    }
-
+    public int Attack => _attack;
+    public int Def => _def;
+    public int Health => _health;
     public int Level => _level;
     public Vector2 DirectionView => _directionView;
     public ParticleSystem AttackEffect => _attackEffect;
@@ -131,25 +102,28 @@ public class Card : ScriptableObject, ICard, IRoulette
     
     Card ICard.Card => this;
 
-    public void Init(int evolution, int level, int id)
+    public void Init(int evolution, int level, int id, int attack, int defence, int health)
     {
         _evolution = evolution;
         _level = level;
         Id = id;
+        _attack = attack;
+        _def = defence;
+        _health = health;
     }
     
     public void Evolve(EvolutionCard firstCard, EvolutionCard secondCard)
     {
         if (firstCard.CardCell.UIIcon != secondCard.CardCell.UIIcon || _evolution == 2) throw new System.InvalidOperationException();
 
-        int GetLevelUpValue(int firstValue, int secondValue)
+        int GetEvolveUpValue(int firstValue, int secondValue)
         {
             return (int)((firstValue + secondValue) / 2 * ValueIncreaseMultiplier);
         }
 
-        //_attack = GetLevelUpValue(firstCard.CardCell.Attack, secondCard.CardCell.Attack);
-        //_def = GetLevelUpValue(firstCard.CardCell.Def, secondCard.CardCell.Def);
-        //_health = GetLevelUpValue(firstCard.CardCell.Health, secondCard.CardCell.Health);
+        _attack = GetEvolveUpValue(firstCard.CardCell.Attack, secondCard.CardCell.Attack);
+        _def = GetEvolveUpValue(firstCard.CardCell.Def, secondCard.CardCell.Def);
+        _health = GetEvolveUpValue(firstCard.CardCell.Health, secondCard.CardCell.Health);
         Id = firstCard.CardCell.Id;
         
         _evolution++;

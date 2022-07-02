@@ -124,6 +124,9 @@ namespace Infrastructure.Services
                     _playerData.AttackDecksData[i].Id = cards[i].Id;
                     _playerData.AttackDecksData[i].Evolution = cards[i].Evolution;
                     _playerData.AttackDecksData[i].Level = cards[i].Level;
+                    _playerData.AttackDecksData[i].Attack = cards[i].Attack;
+                    _playerData.AttackDecksData[i].Defence = cards[i].Def;
+                    _playerData.AttackDecksData[i].Health = cards[i].Health;
                 }
                 else
                     _playerData.AttackDecksData[i].Id = 0;
@@ -141,6 +144,9 @@ namespace Infrastructure.Services
                     _playerData.DefDecksData[i].Id = cards[i].Id;
                     _playerData.DefDecksData[i].Evolution = cards[i].Evolution;
                     _playerData.DefDecksData[i].Level = cards[i].Level;
+                    _playerData.DefDecksData[i].Attack = cards[i].Attack;
+                    _playerData.DefDecksData[i].Defence = cards[i].Def;
+                    _playerData.DefDecksData[i].Health = cards[i].Health;
                 }
                 else
                     _playerData.DefDecksData[i].Id = 0;
@@ -184,21 +190,14 @@ namespace Infrastructure.Services
                 _playerData.InventoryDecksData[i].Id = cards[i].Id;
                 _playerData.InventoryDecksData[i].Evolution = cards[i].Evolution;
                 _playerData.InventoryDecksData[i].Level = cards[i].Level;
+                _playerData.InventoryDecksData[i].Attack = cards[i].Attack;
+                _playerData.InventoryDecksData[i].Defence = cards[i].Def;
+                _playerData.InventoryDecksData[i].Health = cards[i].Health;
             }
             
             Save();
         }
 
-        public void SetCardLevel(int cardId, int value)
-        {
-            _playerData.InventoryDecksData[cardId].Level = value;
-        }
-        
-        public void SetCardEvolution(int cardId, int value)
-        {
-            _playerData.InventoryDecksData[cardId].Evolution = value;
-        }
-        
         private string RandomNickname()
         {
             var nickNames = new[]
@@ -225,8 +224,11 @@ namespace Infrastructure.Services
 
                 for (int i = 0; i < _playerData.InventoryDecksData.Length; i++)
                 {
+                    var currentCard = _playerData.InventoryDecksData[i];
+                    
                     inventoryDecks[i] = Object.Instantiate(_allCards[_playerData.InventoryDecksData[i].Id]);
-                    inventoryDecks[i].Init(_playerData.InventoryDecksData[i].Evolution, _playerData.InventoryDecksData[i].Level,_playerData.InventoryDecksData[i].Id);
+                    inventoryDecks[i].Init(
+                        currentCard.Evolution, currentCard.Level, currentCard.Id, currentCard.Attack, currentCard.Defence, currentCard.Health);
                 }
                 
                 _playerData.InventoryDecks = inventoryDecks;
@@ -246,8 +248,11 @@ namespace Infrastructure.Services
             {
                 for (int i = 0; i < _playerData.DefDecksData.Length; i++)
                 {
+                    var currentCard = _playerData.DefDecksData[i];
+                    
                     defenceDecks[i] = Object.Instantiate(_allCards[_playerData.DefDecksData[i].Id]);
-                    defenceDecks[i].Init(_playerData.DefDecksData[i].Evolution, _playerData.DefDecksData[i].Level,_playerData.DefDecksData[i].Id);
+                    defenceDecks[i].Init(
+                        currentCard.Evolution, currentCard.Level, currentCard.Id, currentCard.Attack, currentCard.Defence, currentCard.Health);
                 }
             }
 
@@ -267,8 +272,11 @@ namespace Infrastructure.Services
             {
                 for (int i = 0; i < _playerData.AttackDecksData.Length; i++)
                 {
+                    var currentCard = _playerData.AttackDecksData[i];
+                    
                     attackDecks[i] = Object.Instantiate(_allCards[_playerData.AttackDecksData[i].Id]);
-                    attackDecks[i].Init(_playerData.AttackDecksData[i].Evolution, _playerData.AttackDecksData[i].Level,_playerData.AttackDecksData[i].Id);
+                    attackDecks[i].Init(
+                        currentCard.Evolution, currentCard.Level, currentCard.Id, currentCard.Attack, currentCard.Defence, currentCard.Health);
                 }
             }
             

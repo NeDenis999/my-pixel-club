@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class Enchance : MonoBehaviour
 {
@@ -20,6 +22,14 @@ public class Enchance : MonoBehaviour
 
     [SerializeField] private PosibleLevelUpSlider _posibleLevelUpSlider;
 
+    private DataSaveLoadService _dataSaveLoadService;
+    
+    [Inject]
+    private void Construct(DataSaveLoadService dataSaveLoadService)
+    {
+        _dataSaveLoadService = dataSaveLoadService;
+    }
+    
     private void OnEnable()
     {
         _enhanceCardForUpgradeCollection.SetCardCollection(_cardCollection.Cards);
@@ -55,5 +65,7 @@ public class Enchance : MonoBehaviour
 
         _enhanceCardForUpgradeCollection.SetCardCollection(currentEnhanceCardList);
         _enhanceCardsForDeleteCollection.DisplayCardsForDelete(currentEnhanceCardList);
+        
+        _dataSaveLoadService.SetInventoryDecks(_cardCollection.Cards);
     }
 }

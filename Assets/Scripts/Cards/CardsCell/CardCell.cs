@@ -18,6 +18,7 @@ public abstract class CardCell : MonoBehaviour, ICard
     private int _level;
     private int _maxLevel = 25;
     private int _attackSkill;
+    private int _evolution;
 
     private int _currentLevelPoint;
     private int _maxLevelPoint = 1000;
@@ -32,10 +33,12 @@ public abstract class CardCell : MonoBehaviour, ICard
     public int Health => _health;
 
     public int Level => _level;
+    public int Evolution => _evolution;
     public int MaxLevel => _maxLevel;
     public float NextMaxLevelPoitnMultiplier => _nextMaxLevelPointMultiplier;
 
     public int BonusAttackSkill => _attackSkill;
+    public int Id { get; set; }
 
     public int LevelPoint => _currentLevelPoint;
     public int MaxLevelPoint => _maxLevelPoint;
@@ -67,6 +70,8 @@ public abstract class CardCell : MonoBehaviour, ICard
         _health = card.Health;
         _level = card.Level;
         _attackSkill = card.BonusAttackSkill;
+        _evolution = card.Evolution;
+        Id = card.Id;
     }
 
     public void LevelUp(CardCell[] cardsForEnhance)
