@@ -10,8 +10,9 @@ public interface ICard
     public int Def { get; }
     public int Health { get; }
     public int Level { get; }
+    public int Evolution { get; }
 
     public int BonusAttackSkill { get; }
-    
+    public int Id { get; set; }
     public void TakeDamage(int damage);
 }

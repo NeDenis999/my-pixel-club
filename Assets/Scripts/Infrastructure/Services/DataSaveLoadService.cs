@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Data;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Infrastructure.Services
@@ -15,7 +17,6 @@ namespace Infrastructure.Services
         protected Card[] _allCards;
 
         private PlayerData _playerData;
-        
         public PlayerData PlayerData => _playerData;
 
         public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
@@ -30,14 +31,18 @@ namespace Infrastructure.Services
             PlayerPrefs.SetString(DataKey, jsonString);
 
             Debug.Log("Save");
-            //Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
         }
 
         public void Load()
         {
-            for (int i = 0; i < _allCards.Length; i++) 
+            for (int i = 0; i < _allCards.Length; i++)
+            {
                 _allCards[i].Id = i;
+            }
 
+            if (!PlayerPrefs.HasKey(DataKey))
+                CreatePlayerData();
+            
             var jsonString = PlayerPrefs.GetString(DataKey);
             
             if (jsonString == "")
@@ -71,9 +76,13 @@ namespace Infrastructure.Services
         {
             var cards = new CardData[5];
 
-            for (int i = 0; i < cards.Length; i++) 
+            for (int i = 0; i < cards.Length; i++)
+            {
                 cards[i].Id = EmptyCardId;
-                
+                cards[i].Evolution = 1;
+                cards[i].Level = 1;
+            }
+
             _playerData = new PlayerData
             {
                 Coins = 1000,
@@ -109,9 +118,13 @@ namespace Infrastructure.Services
         {
             _playerData.AttackDecks = cards;
 
-            for (int i = 0; i < SizeDeck; i++) 
+            for (int i = 0; i < SizeDeck; i++)
                 if (cards[i] != null)
+                {
                     _playerData.AttackDecksData[i].Id = cards[i].Id;
+                    _playerData.AttackDecksData[i].Evolution = cards[i].Evolution;
+                    _playerData.AttackDecksData[i].Level = cards[i].Level;
+                }
                 else
                     _playerData.AttackDecksData[i].Id = 0;
 
@@ -124,20 +137,33 @@ namespace Infrastructure.Services
             
             for (int i = 0; i < SizeDeck; i++)
                 if (cards[i] != null)
+                {
                     _playerData.DefDecksData[i].Id = cards[i].Id;
+                    _playerData.DefDecksData[i].Evolution = cards[i].Evolution;
+                    _playerData.DefDecksData[i].Level = cards[i].Level;
+                }
                 else
                     _playerData.DefDecksData[i].Id = 0;
 
             Save();
         }
 
+        public void SetInventoryDecks(List<CardCollectionCell> cardsCardCollectionCells)
+        {
+            var cards = new Card[cardsCardCollectionCells.Count];
+
+            for (int i = 0; i < cards.Length; i++)
+            {
+                cards[i] = cardsCardCollectionCells[i].Card;
+            }
+
+            SetInventoryDecks(cards);
+        }
+
         public void SetInventoryDecks(Card[] cards)
         {
             _playerData.InventoryDecks = cards;
             
-            Debug.Log(_playerData.InventoryDecks.Length);
-            Debug.Log(_playerData.InventoryDecksData.Length);
-
             if (_playerData.InventoryDecks.Length != _playerData.InventoryDecksData.Length)
             {
                 var inventoryCardsData = new CardData[_playerData.InventoryDecks.Length];
@@ -145,19 +171,32 @@ namespace Infrastructure.Services
                 for (int i = 0; i < _playerData.InventoryDecksData.Length && i < _playerData.InventoryDecks.Length; i++)
                 {
                     if (inventoryCardsData[i].Id != EmptyCardId)
+                    {
                         inventoryCardsData[i] = _playerData.InventoryDecksData[i];
+                    }
                 }
-
-                Debug.Log(inventoryCardsData.Length);
+                
                 _playerData.InventoryDecksData = inventoryCardsData;
             }
             
             for (int i = 0; i < _playerData.InventoryDecks.Length; i++)
             {
-                _playerData.InventoryDecksData[i].Id = _playerData.InventoryDecks[i].Id;
+                _playerData.InventoryDecksData[i].Id = cards[i].Id;
+                _playerData.InventoryDecksData[i].Evolution = cards[i].Evolution;
+                _playerData.InventoryDecksData[i].Level = cards[i].Level;
             }
             
             Save();
+        }
+
+        public void SetCardLevel(int cardId, int value)
+        {
+            _playerData.InventoryDecksData[cardId].Level = value;
+        }
+        
+        public void SetCardEvolution(int cardId, int value)
+        {
+            _playerData.InventoryDecksData[cardId].Evolution = value;
         }
         
         private string RandomNickname()
@@ -186,7 +225,8 @@ namespace Infrastructure.Services
 
                 for (int i = 0; i < _playerData.InventoryDecksData.Length; i++)
                 {
-                    inventoryDecks[i] = _allCards[_playerData.InventoryDecksData[i].Id];
+                    inventoryDecks[i] = Object.Instantiate(_allCards[_playerData.InventoryDecksData[i].Id]);
+                    inventoryDecks[i].Init(_playerData.InventoryDecksData[i].Evolution, _playerData.InventoryDecksData[i].Level,_playerData.InventoryDecksData[i].Id);
                 }
                 
                 _playerData.InventoryDecks = inventoryDecks;
@@ -206,7 +246,8 @@ namespace Infrastructure.Services
             {
                 for (int i = 0; i < _playerData.DefDecksData.Length; i++)
                 {
-                    defenceDecks[i] = _allCards[_playerData.DefDecksData[i].Id];
+                    defenceDecks[i] = Object.Instantiate(_allCards[_playerData.DefDecksData[i].Id]);
+                    defenceDecks[i].Init(_playerData.DefDecksData[i].Evolution, _playerData.DefDecksData[i].Level,_playerData.DefDecksData[i].Id);
                 }
             }
 
@@ -226,7 +267,8 @@ namespace Infrastructure.Services
             {
                 for (int i = 0; i < _playerData.AttackDecksData.Length; i++)
                 {
-                    attackDecks[i] = _allCards[_playerData.AttackDecksData[i].Id];
+                    attackDecks[i] = Object.Instantiate(_allCards[_playerData.AttackDecksData[i].Id]);
+                    attackDecks[i].Init(_playerData.AttackDecksData[i].Evolution, _playerData.AttackDecksData[i].Level,_playerData.AttackDecksData[i].Id);
                 }
             }
             
