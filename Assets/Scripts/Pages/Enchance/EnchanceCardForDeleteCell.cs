@@ -11,33 +11,35 @@ public class EnchanceCardForDeleteCell : CardCell
     private EnchanceCardsForDeleteCollection _enchanceCardForDeleteCollection;
     private CardCollectionCell _cardInCollection;
 
-    private EnhanceCardForDeleteStatistic _cardStatistic;
+    private Enchance _enchance;
 
     private Button _cardButton;
-    private Button _selectPanelButton;
+    private Button _selectedPanelButton;
 
+    private EnhanceCardForDeleteStatistic _cardStatistic;
 
     private void Awake()
     {
         _enchanceCardForDeleteCollection = FindObjectOfType<EnchanceCardsForDeleteCollection>().gameObject.GetComponent<EnchanceCardsForDeleteCollection>();
+        _enchance = FindObjectOfType<Enchance>().gameObject.GetComponent<Enchance>();
 
         _cardStatistic = FindObjectOfType<EnhanceCardForDeleteStatistic>().gameObject.GetComponent<EnhanceCardForDeleteStatistic>();
 
         _cardButton = GetComponent<Button>();
-        _selectPanelButton = _selectPanel.GetComponent<Button>();
+        _selectedPanelButton = _selectPanel.GetComponent<Button>();
     }
 
     private void OnEnable()
     {
         _cardButton.onClick.AddListener(SelectCard);
-        _selectPanelButton.onClick.AddListener(UnselectCard);
+        _selectedPanelButton.onClick.AddListener(UnselectCard);
         _selectPanel.SetActive(false);
     }
 
     private void OnDisable()
     {
         _cardButton.onClick.RemoveListener(SelectCard);
-        _selectPanelButton.onClick.RemoveListener(UnselectCard);
+        _selectedPanelButton.onClick.RemoveListener(UnselectCard);
     }
 
     public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)
@@ -49,9 +51,12 @@ public class EnchanceCardForDeleteCell : CardCell
 
     private void SelectCard()
     {
-        _enchanceCardForDeleteCollection.AddToDeleteCollection(_cardInCollection);
-        _selectPanel.SetActive(true);
-        _cardStatistic.Render(_cardInCollection);
+        if (_enchance.UpgradeCard.CardCell.Level + _enchanceCardForDeleteCollection.PosibleLevelUpSlider.HowMuchIncreaseLevel < 25)
+        {
+            _enchanceCardForDeleteCollection.AddToDeleteCollection(_cardInCollection);
+            _selectPanel.SetActive(true);
+            _cardStatistic.Render(_cardInCollection);
+        }
     }
 
     private void UnselectCard()

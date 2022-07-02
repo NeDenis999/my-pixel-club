@@ -20,7 +20,6 @@ public abstract class CardCell : MonoBehaviour, ICard
     private int _attackSkill;
 
     private int _currentLevelPoint;
-    private int _amountIncreaseLevelPoint;
     private int _maxLevelPoint = 1000;
 
     public Image Icon => _icon;
@@ -33,6 +32,7 @@ public abstract class CardCell : MonoBehaviour, ICard
 
     public int LevelPoint => _currentLevelPoint;
     public int MaxLevelPoint => _maxLevelPoint;
+    public int AmountIncreaseLevelPoint { get; private set; }
 
     public virtual Card Card => _card;
 
@@ -63,6 +63,33 @@ public abstract class CardCell : MonoBehaviour, ICard
     }
 
     public void LevelUp(CardCell[] cardsForEnhance)
+    {        
+        void LevelUpCardValue()
+        {
+            _attack = (int)(_attack * 1.15f);
+            _def = (int)(_def * 1.15f);
+            _health = (int)(_health * 1.15f);
+        }
+
+        foreach (var card in cardsForEnhance)
+        {
+            _currentLevelPoint += card.GetCardDeletePoint();
+            AmountIncreaseLevelPoint += card.GetCardDeletePoint();
+        }
+
+        while (_currentLevelPoint >= _maxLevelPoint && _level < _maxLevel)
+        {
+            _currentLevelPoint -= _maxLevelPoint;
+            _maxLevelPoint = (int)(_maxLevelPoint * 1.1f);
+            _level++;
+            LevelUpCardValue();
+            OnLevelUp?.Invoke();
+
+            Debug.Log("CardCell Current Level Point: " + _maxLevelPoint);
+        }
+    }
+
+    public int GetCardDeletePoint()
     {
         float RacialMultiplier(RarityCard race)
         {
@@ -75,29 +102,7 @@ public abstract class CardCell : MonoBehaviour, ICard
 
             return multiplier;
         }
-        void LevelUpCardValue()
-        {
-            _attack = (int)(_attack * 1.15f);
-            _def = (int)(_def * 1.15f);
-            _health = (int)(_health * 1.15f);
-        }
 
-        foreach (var card in cardsForEnhance)
-        {
-            int deleteCardPoint = (int)(100 * RacialMultiplier(card.Card.Rarity) + _amountIncreaseLevelPoint * 0.75f);
-
-            _currentLevelPoint += deleteCardPoint;
-            _amountIncreaseLevelPoint += deleteCardPoint;
-
-        }
-
-        while (_currentLevelPoint >= _maxLevelPoint && _level < _maxLevel)
-        {
-            _currentLevelPoint -= _maxLevelPoint;
-            _maxLevelPoint = (int)(_maxLevelPoint * 1.1f);
-            _level++;
-            LevelUpCardValue();
-            OnLevelUp?.Invoke();
-        }
+        return (int)(1500 * RacialMultiplier(Card.Rarity) + AmountIncreaseLevelPoint * 0.75f);
     }
 }

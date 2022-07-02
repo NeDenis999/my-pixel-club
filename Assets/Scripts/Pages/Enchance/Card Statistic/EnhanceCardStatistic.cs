@@ -8,7 +8,7 @@ public abstract class EnhanceCardStatistic : MonoBehaviour
     [SerializeField] private Sprite _standartImage;
     [SerializeField] private TMP_Text _atk, _def, _rarity, _race, _name, _health, _level;
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         _icon.sprite = _standartImage;
 

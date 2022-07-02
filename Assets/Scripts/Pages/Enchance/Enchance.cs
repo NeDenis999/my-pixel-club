@@ -10,11 +10,15 @@ public class Enchance : MonoBehaviour
     [SerializeField] private EnchanceCardsForDeleteCollection _enhanceCardsForDeleteCollection;
 
     [SerializeField] private EnchanceUpgradeCard _upgradeCard;
+    public EnchanceUpgradeCard UpgradeCard => _upgradeCard;
+
     [SerializeField] private EnhanceCardForUpgradeStatistic _upgradeCardStatistic;
 
     [SerializeField] private Button _enhanceButton;
 
     [SerializeField] private GameObject _exeptionWindow;
+
+    [SerializeField] private PosibleLevelUpSlider _posibleLevelUpSlider;
 
     private void OnEnable()
     {
@@ -38,11 +42,12 @@ public class Enchance : MonoBehaviour
             return;
         }
 
+        _posibleLevelUpSlider.Reset();
+
         if (_upgradeCard.CardCell == null) return;
 
-        //_cardCollection.DeleteCards(new[] { _upgradeCard.CardCell });
         _upgradeCard.CardCell.LevelUp(_enhanceCardsForDeleteCollection.CardForDelete.ToArray());
-        _upgradeCardStatistic.Render(_upgradeCard.CardCell);
+        _upgradeCardStatistic.Render(_upgradeCard);
         _cardCollection.DeleteCards(_enhanceCardsForDeleteCollection.CardForDelete.ToArray());
 
         currentEnhanceCardList.AddRange(_cardCollection.Cards);

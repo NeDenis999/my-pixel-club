@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class EnchanceCardsForDeleteCollection : CardCollectionSort
 {
     [SerializeField] private EnchanceCardForDeleteCell _cardCellTemplate;
     [SerializeField] private Transform _container;
+
+    [SerializeField] private PosibleLevelUpSlider _posibleLevelUpSlider;
+    public PosibleLevelUpSlider PosibleLevelUpSlider => _posibleLevelUpSlider;
 
     private List<CardCollectionCell> _cardsForDelete = new();
     public List<CardCollectionCell> CardForDelete => _cardsForDelete;
@@ -43,14 +47,14 @@ public class EnchanceCardsForDeleteCollection : CardCollectionSort
         RenderCards();
         
         void RenderCards()
-    {
-        for (int i = 0; i < _cards.Count; i++)
         {
-            var cell = Instantiate(_cardCellTemplate, _container);
-            cell.Render(_cards[i].Card);
-            cell.SetLinkOnCardInCollection(_cards[i]);
+            for (int i = 0; i < _cards.Count; i++)
+            {
+                var cell = Instantiate(_cardCellTemplate, _container);
+                cell.Render(_cards[i].Card);
+                cell.SetLinkOnCardInCollection(_cards[i]);
+            }
         }
-    }
     }
 
     public void AddToDeleteCollection(CardCollectionCell cardForDelete)
@@ -58,12 +62,15 @@ public class EnchanceCardsForDeleteCollection : CardCollectionSort
         if (cardForDelete == null) throw new System.ArgumentNullException();
 
         _cardsForDelete.Add(cardForDelete);
+
+        _posibleLevelUpSlider.IncreasePossibleSliderLevelPoints(cardForDelete);
     }
 
-    public void RetrieveCard(CardCollectionCell card)
+    public void RetrieveCard(CardCollectionCell cardForDelete)
     {
-        if (_cardsForDelete.Contains(card) == false) throw new System.ArgumentOutOfRangeException();
+        if (_cardsForDelete.Contains(cardForDelete) == false) throw new System.ArgumentOutOfRangeException();
 
-        _cardsForDelete.Remove(card);
+        _cardsForDelete.Remove(cardForDelete);
+        _posibleLevelUpSlider.DecreasePossibleSliderLevelPoints(cardForDelete);
     }
 }
