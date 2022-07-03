@@ -42,8 +42,6 @@ public class EnchanceCardsForDeleteCollection : CardCollectionSort
 
         if (cardsForDelete == null) throw new System.ArgumentNullException();
 
-        cardsForDelete.AddRange(cardsForDelete);
-
         RenderCards();
         
         void RenderCards()

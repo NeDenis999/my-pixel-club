@@ -51,14 +51,7 @@ public class CardCollection : CardCollectionSort
 
     private void SaveCards()
     {
-        List<Card> cardCollection = new();
-
-        foreach (var cardCell in _cards)
-        {
-            cardCollection.Add(cardCell.Card);
-        }
-
-        _dataSaveLoadService.SetInventoryDecks(cardCollection.ToArray());
+        _dataSaveLoadService.SetInventoryDecks(_cards);
     }
 
     public void AddCards(Card[] newCards)
@@ -76,6 +69,8 @@ public class CardCollection : CardCollectionSort
         var cell = Instantiate(_cardCellTemplate, _container);
         cell.Render(newCards);
         _cards.Add(cell);
+
+        SaveCards();
     }
 
     public void AddCardCell(CardCell cardCell)
@@ -85,6 +80,8 @@ public class CardCollection : CardCollectionSort
         var newCell = Instantiate(_cardCellTemplate, _container);
         newCell.Render(cardCell);
         _cards.Add(newCell);
+
+        SaveCards();
     }
 
     public void DeleteCards(CardCollectionCell[] cardsForDelete)
