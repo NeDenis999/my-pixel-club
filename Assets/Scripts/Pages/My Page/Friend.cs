@@ -7,5 +7,4 @@ public class Friend : MonoBehaviour
     public string Name { get => _name; }
 
     public string ChatText { get; set; }
-
 }

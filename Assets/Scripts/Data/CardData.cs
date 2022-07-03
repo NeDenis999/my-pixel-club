@@ -11,5 +11,7 @@ namespace Data
         public int Attack;
         public int Defence;
         public int Health;
+        public int LevelPoint;
+        public int MaxLevelPoint;
     }
 }

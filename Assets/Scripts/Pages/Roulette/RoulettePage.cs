@@ -22,9 +22,6 @@ public class RoulettePage : MonoBehaviour
     private Button _startRoletteButton;
 
     [SerializeField]
-    private Button _closeButton;
-
-    [SerializeField]
     private Button _collectButton;
 
     [SerializeField]
@@ -65,7 +62,6 @@ public class RoulettePage : MonoBehaviour
             _prize = RandomCell();
                 
             _startRoletteButton.interactable = false;
-            _closeButton.interactable = false;
             StartCoroutine(_rouletteAnimator.Spine(_prize, _rouletteCells));
             OnBuyRouletteSpin?.Invoke(_spinePrise);
         }
@@ -82,7 +78,7 @@ public class RoulettePage : MonoBehaviour
 
     private void StartCloseWinningPanel()
     {
-        StartCoroutine(_rouletteAnimator.CloseWinningPanel(_startRoletteButton, _closeButton));
+        StartCoroutine(_rouletteAnimator.CloseWinningPanel(_startRoletteButton));
         TakeItem(_rouletteCells[_prize].RouletteItem);
     }
 }

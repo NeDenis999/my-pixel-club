@@ -28,9 +28,6 @@ public class Card : ScriptableObject, ICard, IRoulette
 
     [SerializeField] private Sprite _imageFirstEvolution;
     [SerializeField] private Sprite _imageSecondeEvolution;
-    private int _evolution = 1;
-    public int Evolution => _evolution;
-
     [SerializeField] private string _name;
 
     [SerializeField] private RarityCard _rarity;
@@ -59,6 +56,13 @@ public class Card : ScriptableObject, ICard, IRoulette
     [SerializeField] 
     private Image _attackIcon;
 
+    private int _currentLevelPoint;
+    private int _maxLevelPoint;
+    private int _evolution = 1;
+    public int Evolution => _evolution;
+    public int LevelPoint => _currentLevelPoint;
+    public int MaxLevelPoint => _maxLevelPoint;
+    
     public Sprite UIIcon
     {
         get
@@ -101,7 +105,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     
     Card ICard.Card => this;
 
-    public void Init(int evolution, int level, int id, int attack, int defence, int health)
+    public void Init(int evolution, int level, int id, int attack, int defence, int health, int currentLevelPoint, int maxLevelPoint)
     {
         _evolution = evolution;
         _level = level;
@@ -109,6 +113,8 @@ public class Card : ScriptableObject, ICard, IRoulette
         _attack = attack;
         _def = defence;
         _health = health;
+        _currentLevelPoint = currentLevelPoint;
+        _maxLevelPoint = maxLevelPoint;
     }
     
     public void Evolve(EvolutionCard firstCard, EvolutionCard secondCard)
@@ -150,5 +156,12 @@ public class Card : ScriptableObject, ICard, IRoulette
         }
 
         return null;
+    }
+
+    public void Repair()
+    {
+        _maxLevelPoint = 1000;
+        _currentLevelPoint = 0;
+        _level = 0;
     }
 }

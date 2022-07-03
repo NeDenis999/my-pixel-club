@@ -22,6 +22,12 @@ namespace Infrastructure.Services
         public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
         {
             _allCards = allCards;
+            /*
+            foreach (var card in _allCards)
+            {
+                card.Repair();
+            }
+            */
             _avatars = avatars;
         }
 
@@ -127,6 +133,8 @@ namespace Infrastructure.Services
                     _playerData.AttackDecksData[i].Attack = cards[i].Attack;
                     _playerData.AttackDecksData[i].Defence = cards[i].Def;
                     _playerData.AttackDecksData[i].Health = cards[i].Health;
+                    _playerData.AttackDecksData[i].LevelPoint = cards[i].LevelPoint;
+                    _playerData.AttackDecksData[i].MaxLevelPoint = cards[i].MaxLevelPoint;
                 }
                 else
                     _playerData.AttackDecksData[i].Id = 0;
@@ -147,6 +155,8 @@ namespace Infrastructure.Services
                     _playerData.DefDecksData[i].Attack = cards[i].Attack;
                     _playerData.DefDecksData[i].Defence = cards[i].Def;
                     _playerData.DefDecksData[i].Health = cards[i].Health;
+                    _playerData.DefDecksData[i].LevelPoint = cards[i].LevelPoint;
+                    _playerData.DefDecksData[i].MaxLevelPoint = cards[i].MaxLevelPoint;
                 }
                 else
                     _playerData.DefDecksData[i].Id = 0;
@@ -160,7 +170,22 @@ namespace Infrastructure.Services
 
             for (int i = 0; i < cards.Length; i++)
             {
-                cards[i] = cardsCardCollectionCells[i].Card;
+                cards[i] = Object.Instantiate(cardsCardCollectionCells[i].Card);
+                cards[i].Init(
+                    cardsCardCollectionCells[i].Evolution, 
+                    cardsCardCollectionCells[i].Level, 
+                    cardsCardCollectionCells[i].Id, 
+                    cardsCardCollectionCells[i].Attack,
+                    cardsCardCollectionCells[i].Def,
+                    cardsCardCollectionCells[i].Health,
+                    cardsCardCollectionCells[i].LevelPoint,
+                    cardsCardCollectionCells[i].MaxLevelPoint);
+            }
+            
+            foreach (var card in cards)
+            {
+                //if (card.LevelPoint > 0)
+                    //Debug.Log("Работает 1");
             }
 
             SetInventoryDecks(cards);
@@ -193,8 +218,13 @@ namespace Infrastructure.Services
                 _playerData.InventoryDecksData[i].Attack = cards[i].Attack;
                 _playerData.InventoryDecksData[i].Defence = cards[i].Def;
                 _playerData.InventoryDecksData[i].Health = cards[i].Health;
+                _playerData.InventoryDecksData[i].LevelPoint = cards[i].LevelPoint;
+                _playerData.InventoryDecksData[i].MaxLevelPoint = cards[i].MaxLevelPoint;
+                
+                //if (_playerData.InventoryDecksData[i].LevelPoint > 0)
+                    //Debug.Log("Работает 2");
             }
-            
+
             Save();
         }
 
@@ -228,7 +258,17 @@ namespace Infrastructure.Services
                     
                     inventoryDecks[i] = Object.Instantiate(_allCards[_playerData.InventoryDecksData[i].Id]);
                     inventoryDecks[i].Init(
-                        currentCard.Evolution, currentCard.Level, currentCard.Id, currentCard.Attack, currentCard.Defence, currentCard.Health);
+                        currentCard.Evolution,
+                        currentCard.Level,
+                        currentCard.Id,
+                        currentCard.Attack,
+                        currentCard.Defence,
+                        currentCard.Health,
+                        currentCard.LevelPoint,
+                        currentCard.MaxLevelPoint);
+                    
+                    if (inventoryDecks[i].LevelPoint > 0)
+                        Debug.Log($"Работает 3 {inventoryDecks[i].LevelPoint} {inventoryDecks[i].MaxLevelPoint}");
                 }
                 
                 _playerData.InventoryDecks = inventoryDecks;
@@ -252,7 +292,14 @@ namespace Infrastructure.Services
                     
                     defenceDecks[i] = Object.Instantiate(_allCards[_playerData.DefDecksData[i].Id]);
                     defenceDecks[i].Init(
-                        currentCard.Evolution, currentCard.Level, currentCard.Id, currentCard.Attack, currentCard.Defence, currentCard.Health);
+                        currentCard.Evolution,
+                        currentCard.Level,
+                        currentCard.Id,
+                        currentCard.Attack,
+                        currentCard.Defence,
+                        currentCard.Health,
+                        currentCard.LevelPoint,
+                        currentCard.MaxLevelPoint);
                 }
             }
 
@@ -276,7 +323,14 @@ namespace Infrastructure.Services
                     
                     attackDecks[i] = Object.Instantiate(_allCards[_playerData.AttackDecksData[i].Id]);
                     attackDecks[i].Init(
-                        currentCard.Evolution, currentCard.Level, currentCard.Id, currentCard.Attack, currentCard.Defence, currentCard.Health);
+                        currentCard.Evolution,
+                        currentCard.Level,
+                        currentCard.Id,
+                        currentCard.Attack,
+                        currentCard.Defence,
+                        currentCard.Health,
+                        currentCard.LevelPoint,
+                        currentCard.MaxLevelPoint);
                 }
             }
             

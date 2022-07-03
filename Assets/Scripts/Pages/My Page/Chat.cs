@@ -11,15 +11,14 @@ public class Chat : MonoBehaviour
 
     [SerializeField] private TMP_InputField _inputMessege;
     [SerializeField] private TMP_Text _chat;
-    [SerializeField] private RectTransform _container;
+    [SerializeField] private RectTransform _chatTransform;
 
     [SerializeField] private int _messageHeight;
-    [SerializeField] private Vector2 _chatSize;
 
     private void OnEnable()
     {
-        _chat.text = _currentFriend.ChatText;
         _friendName.text = "CHAT: " + _currentFriend.Name;
+        _chat.text = _currentFriend.ChatText;
     }
 
     private void OnDisable()
@@ -38,17 +37,10 @@ public class Chat : MonoBehaviour
         {
             _chat.text += Environment.NewLine + _inputMessege.text;
 
-            ResizeContainer();           
+            _chatTransform.sizeDelta = new(_chatTransform.sizeDelta.x, _chatTransform.sizeDelta.y + _messageHeight);
         }
 
         ClierInputField();
-    }
-
-    private void ResizeContainer()
-    {
-        _container.sizeDelta = new(_container.sizeDelta.x, _container.sizeDelta.y + _messageHeight);
-        if (_container.sizeDelta.y > _chatSize.y)
-            _container.position = new(_container.position.x, _messageHeight  + _container.position.y);
     }
 
     private void ClierInputField()

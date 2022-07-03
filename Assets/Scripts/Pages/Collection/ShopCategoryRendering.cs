@@ -11,6 +11,11 @@ public class ShopCategoryRendering : MonoBehaviour
     [SerializeField] 
     private ConfirmWindow _confirmWindow;
 
+    private void OnEnable()
+    {
+        _confirmWindow.gameObject.SetActive(false);
+    }
+
     public void SelectCategore()
     {
         Render();
@@ -28,7 +33,7 @@ public class ShopCategoryRendering : MonoBehaviour
             cell.Init(_confirmWindow);
             cell.Render(item);
         });
-        
-        _confirmWindow.Render(_shopItems[0]);
+
+        _confirmWindow.gameObject.SetActive(false);
     }
 }

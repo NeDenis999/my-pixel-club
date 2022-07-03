@@ -21,6 +21,7 @@ public class ConfirmWindow : MonoBehaviour
     
     private ShopItem _shopItem;
 
+
     public void Render(ShopItem item)
     {
         _shopItem = item;
@@ -40,5 +41,7 @@ public class ConfirmWindow : MonoBehaviour
             _shop.BuyCard((ShopItemCardPack)_shopItem);
         else        
             _shop.BuyItem(_shopItem);
+
+        gameObject.SetActive(false);
     }
 }
