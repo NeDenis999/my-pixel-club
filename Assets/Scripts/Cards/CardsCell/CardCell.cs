@@ -17,7 +17,6 @@ public abstract class CardCell : MonoBehaviour, ICard
     private int _health;
     private int _level;
     private int _maxLevel = 25;
-    private int _attackSkill;
     private int _evolution;
 
     private int _currentLevelPoint;
@@ -37,7 +36,7 @@ public abstract class CardCell : MonoBehaviour, ICard
     public int MaxLevel => _maxLevel;
     public float NextMaxLevelPoitnMultiplier => _nextMaxLevelPointMultiplier;
 
-    public int BonusAttackSkill => _attackSkill;
+    public int BonusAttackSkill => (int)(_attack * 0.17f);
     public int Id { get; set; }
 
     public int LevelPoint => _currentLevelPoint;
@@ -53,7 +52,7 @@ public abstract class CardCell : MonoBehaviour, ICard
         Debug.Log(Mathf.RoundToInt(100 / Card.SkillChance).ToString());
 
         if (Random.Range(1, Mathf.RoundToInt(100 / Card.SkillChance)) == 1)
-            return _attackSkill;
+            return BonusAttackSkill;
 
         return 0;
     }
@@ -69,7 +68,6 @@ public abstract class CardCell : MonoBehaviour, ICard
         _def = card.Def;
         _health = card.Health;
         _level = card.Level;
-        _attackSkill = card.BonusAttackSkill;
         _evolution = card.Evolution;
         Id = card.Id;
     }

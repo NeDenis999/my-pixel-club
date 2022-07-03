@@ -42,7 +42,6 @@ public class Card : ScriptableObject, ICard, IRoulette
     private int _level = 1;
 
     [SerializeField] private string _attackSillName;
-    [SerializeField] private int _attackSkill;
 
     [SerializeField] private string _defSkillName;
     [SerializeField] private int _defSkill;
@@ -84,7 +83,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     public ParticleSystem AttackEffect => _attackEffect;
     public Image AttackIcon => _attackIcon;
 
-    public int BonusAttackSkill => _attackSkill;
+    public int BonusAttackSkill => (int)(_attack * 0.17f);
     public int Id { get; set; }
     public void TakeDamage(int damage) => _health -= damage;
 
