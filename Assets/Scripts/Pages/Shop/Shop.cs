@@ -1,3 +1,4 @@
+using Data;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,21 +34,19 @@ public class Shop : MonoBehaviour
     public void BuyCard(ShopItemCardPack shopItem)
     {
         _cardsPack = shopItem;
-        _cardCollection.AddCards(GetRandomCards((int)shopItem.TypeItem));
+        _cardCollection.AddCards(GetRandomCardDatas((int)shopItem.TypeItem));
     }
 
-    private Card[] GetRandomCards(int amountCard)
+    private CardData[] GetRandomCardDatas(int amountCard)
     {
-        Card[] cards = new Card[amountCard];
+        CardData[] cards = new CardData[amountCard];
 
         for (int i = 0; i < amountCard; i++)
         {
             if (Random.Range(0, Mathf.RoundToInt(1 / (_dropChance / 100))) == 1)
-                cards[i] = GetRandomCard(_cardsPack.AllRarityCards);
+                cards[i] = GetRandomCard(_cardsPack.AllRarityCards).GetCardData();
             else
-                cards[i] = GetRandomCard(_cardsPack.AllStandardCards);
-
-            cards[i].Repair();
+                cards[i] = GetRandomCard(_cardsPack.AllStandardCards).GetCardData();
         }
 
         return cards;

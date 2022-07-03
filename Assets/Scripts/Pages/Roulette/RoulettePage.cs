@@ -1,3 +1,4 @@
+using Data;
 using Roulette;
 using UnityEngine;
 using UnityEngine.Events;
@@ -44,7 +45,7 @@ public class RoulettePage : MonoBehaviour
         _collectButton.onClick.RemoveListener(StartCloseWinningPanel);
     }
 
-    public void AccrueCard(Card card)
+    public void AccrueCard(CardData card)
     {
         _cardCollection.AddCard(card);
     }

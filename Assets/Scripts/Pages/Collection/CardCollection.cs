@@ -25,7 +25,7 @@ public class CardCollection : CardCollectionSort
 
     private void Awake()
     {
-        AddCards(_dataSaveLoadService.PlayerData.InventoryDecks);
+        AddCards(_dataSaveLoadService.PlayerData.InventoryDecksData);
     }
 
     private void OnEnable()
@@ -54,7 +54,7 @@ public class CardCollection : CardCollectionSort
         _dataSaveLoadService.SetInventoryDecks(_cards);
     }
 
-    public void AddCards(Card[] newCards)
+    public void AddCards(CardData[] newCards)
     {
         for (int i = 0; i < newCards.Length; i++)
         {
@@ -62,10 +62,8 @@ public class CardCollection : CardCollectionSort
         }
     }
 
-    public void AddCard(Card newCards)
+    public void AddCard(CardData newCards)
     {
-        if (newCards == null) throw new System.ArgumentNullException();
-
         var cell = Instantiate(_cardCellTemplate, _container);
         cell.Render(newCards);
         _cards.Add(cell);
@@ -78,7 +76,7 @@ public class CardCollection : CardCollectionSort
         if (cardCell == null) throw new System.ArgumentNullException();
 
         var newCell = Instantiate(_cardCellTemplate, _container);
-        newCell.Render(cardCell);
+        newCell.Render(cardCell.CardData);
         _cards.Add(newCell);
 
         SaveCards();

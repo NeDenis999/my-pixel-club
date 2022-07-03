@@ -57,7 +57,7 @@ public abstract class Deck : MonoBehaviour
     {
         if (card == null) throw new System.ArgumentNullException(); 
 
-        _cardsInDeck[_cardPositionInDeck].Render(card);
+        _cardsInDeck[_cardPositionInDeck].Render(card.CardData);
         _cardCollection.DeleteCards(new[] { card });
         OnCardChanged?.Invoke(_cardsInDeck);
         SaveDecks();

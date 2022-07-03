@@ -50,7 +50,7 @@ public class EnchanceCardCollection : MonoBehaviour
         for (int i = 0; i < _listCardsInCollection.Count; i++)
         {
             EnchanceCardCell cell = Instantiate(_cardCellTemplate, _container);
-            cell.Render(_listCardsInCollection[i].Card);
+            cell.Render(_listCardsInCollection[i].CardData);
             cell.SetLinkOnCardInCollection(_listCardsInCollection[i]);
         }
     }

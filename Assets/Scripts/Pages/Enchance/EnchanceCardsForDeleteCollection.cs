@@ -49,7 +49,7 @@ public class EnchanceCardsForDeleteCollection : CardCollectionSort
             for (int i = 0; i < cardsForDelete.Count; i++)
             {
                 var cell = Instantiate(_cardCellTemplate, _container);
-                cell.Render(cardsForDelete[i].Card);
+                cell.Render(cardsForDelete[i].CardData);
                 cell.SetLinkOnCardInCollection(cardsForDelete[i]);
                 _cards.Add(cell);
             }

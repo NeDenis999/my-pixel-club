@@ -1,3 +1,4 @@
+using Data;
 using Infrastructure.Services;
 using Roulette;
 using UnityEditor;
@@ -21,11 +22,6 @@ public enum RaceCard
 [CreateAssetMenu(fileName = "Card", menuName = "ScriptableObjects/Card")]
 public class Card : ScriptableObject, ICard, IRoulette
 {
-    private const float ValueIncreaseMultiplier = 1.35f;
-    private const float ValueLevelUpIncreaseMultiplier = 1.15f;
-    
-    [SerializeField] private Sprite _currentImage;
-
     [SerializeField] private Sprite _imageFirstEvolution;
     [SerializeField] private Sprite _imageSecondeEvolution;
     [SerializeField] private string _name;
@@ -116,29 +112,29 @@ public class Card : ScriptableObject, ICard, IRoulette
         _currentLevelPoint = currentLevelPoint;
         _maxLevelPoint = maxLevelPoint;
     }
-    
-    public void Evolve(EvolutionCard firstCard, EvolutionCard secondCard)
+
+    public CardData GetCardData()
     {
-        if (firstCard.CardCell.UIIcon != secondCard.CardCell.UIIcon || _evolution == 2) throw new System.InvalidOperationException();
-
-        int GetEvolveUpValue(int firstValue, int secondValue)
+        var cardData = new CardData()
         {
-            return (int)((firstValue + secondValue) / 2 * ValueIncreaseMultiplier);
-        }
+            Evolution = _evolution,
+            Level = Level,
+            Attack = _attack,
+            Defence = Def,
+            Health = _health,
+            Id = Id,
+            LevelPoint = LevelPoint,
+            MaxLevelPoint = _maxLevelPoint
+        };
 
-        _attack = GetEvolveUpValue(firstCard.CardCell.Attack, secondCard.CardCell.Attack);
-        _def = GetEvolveUpValue(firstCard.CardCell.Def, secondCard.CardCell.Def);
-        _health = GetEvolveUpValue(firstCard.CardCell.Health, secondCard.CardCell.Health);
-        Id = firstCard.CardCell.Id;
-        
-        _evolution++;
+        return cardData;
     }
-
+    
     public void TakeItem()
     {
         var roulettePage = FindObjectOfType<RoulettePage>().gameObject.GetComponent<RoulettePage>();
 
-        roulettePage.AccrueCard(this);
+        roulettePage.AccrueCard(GetCardData());
     }
 
     public Sprite GetFrame(Sprite[] _frames)

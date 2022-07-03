@@ -12,5 +12,4 @@ public interface ICard
 
     public int BonusAttackSkill { get; }
     public int Id { get; set; }
-    public void TakeDamage(int damage);
 }

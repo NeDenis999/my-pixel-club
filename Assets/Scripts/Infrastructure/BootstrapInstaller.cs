@@ -16,13 +16,14 @@ namespace Infrastructure
         [SerializeField]
         private Sprite[] _frames;
         
-        private DataSaveLoadService _data;
+        private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
         
         public override void InstallBindings()
         {
             BindAssetProvider();
             BindPlayerData();
+            InitAllService();
         }
 
         private void BindAssetProvider()
@@ -37,14 +38,20 @@ namespace Infrastructure
 
         private void BindPlayerData()
         {
-            _data = new DataSaveLoadService(_allCards, _avatars);
+            _dataSaveLoadService = new DataSaveLoadService(_allCards, _avatars);
             
             Container
                 .Bind<DataSaveLoadService>()
-                .FromInstance(_data)
+                .FromInstance(_dataSaveLoadService)
                 .AsSingle();
             
-            _data.Load();
+            _dataSaveLoadService.Load();
+        }
+        
+        private void InitAllService()
+        {
+            AllServices.AssetProviderService = _assetProviderService;
+            AllServices.DataSaveLoadService = _dataSaveLoadService;
         }
     }
 }

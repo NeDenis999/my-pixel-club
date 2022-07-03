@@ -10,20 +10,15 @@ public  class AttackDeck : Deck
             
         for (int i = 0; i < data.PlayerData.AttackDecks.Length && i < _cardsInDeck.Count; i++)
             if (data.PlayerData.AttackDecks[i] != null && _cardsInDeck[i] != null)
-                _cardsInDeck[i].Render(data.PlayerData.AttackDecks[i]);
+                _cardsInDeck[i].Render(data.PlayerData.AttackDecksData[i]);
     }
 
     protected override void SaveDecks()
     {
-        var cards = new Card[5];
+        var cards = new CardData[5];
 
-        for (int i = 0; i < 5; i++)
-        {
-            if (_cardsInDeck[i].Card)
-                cards[i] = _cardsInDeck[i].Card;
-            else
-                cards[i] = null;
-        }
+        for (int i = 0; i < 5; i++) 
+            cards[i] = _cardsInDeck[i].CardData;
 
         _data.SetAttackDecks(cards);
     }

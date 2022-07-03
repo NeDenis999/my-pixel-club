@@ -53,7 +53,7 @@ public class EvolveCardCollection : MonoBehaviour
             if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Card.Evolution == 1)
             {
                 var cell = Instantiate(_cardCellTemplate, _container);
-                cell.Render(_listCardsInCollection[i].Card);
+                cell.Render(_listCardsInCollection[i].CardData);
                 cell.SetLinkOnCardInCollection(_listCardsInCollection[i]);
             }
         }

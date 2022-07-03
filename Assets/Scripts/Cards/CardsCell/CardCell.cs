@@ -1,6 +1,9 @@
+using Data;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Zenject;
 
 public abstract class CardCell : MonoBehaviour, ICard
 {
@@ -8,41 +11,32 @@ public abstract class CardCell : MonoBehaviour, ICard
 
     [SerializeField] protected Image _icon;
     protected Card _card;
-
-    private int _attack;
-    private int _def;
-    private int _health;
-    private int _level;
+    protected CardData _cardData;
+    
     private int _maxLevel = 25;
-    private int _evolution;
-
-    private int _currentLevelPoint;
-    private int _maxLevelPoint = 1000;
-
+    
     private float _nextMaxLevelPointMultiplier = 1.1f;
-
     private int _baseEnhancmentLevelPoint = 1500;
 
     public Image Icon => _icon;
-    public int Attack => _attack;
-    public int Def => _def;
-    public int Health => _health;
+    public int Attack => _cardData.Attack;
+    public int Def => _cardData.Defence;
+    public int Health => _cardData.Health;
 
-    public int Level => _level;
-    public int Evolution => _evolution;
+    public int Level => _cardData.Level;
+    public int Evolution => _cardData.Evolution;
     public int MaxLevel => _maxLevel;
     public float NextMaxLevelPoitnMultiplier => _nextMaxLevelPointMultiplier;
 
-    public int BonusAttackSkill => (int)(_attack * 0.17f);
+    public int BonusAttackSkill => (int)(Attack * 0.17f);
     public int Id { get; set; }
 
-    public int LevelPoint => _currentLevelPoint;
-    public int MaxLevelPoint => _maxLevelPoint;
+    public int LevelPoint => _cardData.LevelPoint;
+    public int MaxLevelPoint => _cardData.MaxLevelPoint;
     public int AmountIncreaseLevelPoint { get; private set; }
 
     public virtual Card Card => _card;
-
-    public void TakeDamage(int damage) => _health -= damage;
+    public virtual CardData CardData => _cardData;
 
     public int TryUseSkill()
     {
@@ -54,47 +48,37 @@ public abstract class CardCell : MonoBehaviour, ICard
         return 0;
     }
 
-    public void Render(ICard card)
+    public void Render(CardData cardData)
     {
-        if (card == null) throw new System.ArgumentNullException();
-
-        _card = card is Card ? (Card)card : (card as CardCell).Card;
-
+        _cardData = cardData;
+        _card = AllServices.AssetProviderService.AllCards[cardData.Id];
         _icon.sprite = _card.UIIcon;
-        _attack = card.Attack;
-        _def = card.Def;
-        _health = card.Health;
-        _level = card.Level;
-        _evolution = card.Evolution;
-        Id = card.Id;
-        _currentLevelPoint = card.LevelPoint;
-        _maxLevelPoint = card.MaxLevelPoint;
     }
 
     public void LevelUp(CardCell[] cardsForEnhance)
     {        
         void LevelUpCardValue()
         {
-            _attack = (int)(_attack * 1.15f);
-            _def = (int)(_def * 1.15f);
-            _health = (int)(_health * 1.15f);
+            _cardData.Attack = (int)(Attack * 1.15f);
+            _cardData.Defence = (int)(Def * 1.15f);
+            _cardData.Health = (int)(Health * 1.15f);
         }
 
         foreach (var card in cardsForEnhance)
         {
-            _currentLevelPoint += card.GetCardDeletePoint();
+            _cardData.LevelPoint += card.GetCardDeletePoint();
             AmountIncreaseLevelPoint += card.GetCardDeletePoint();
         }
 
-        while (_currentLevelPoint >= _maxLevelPoint && _level < _maxLevel)
+        while (LevelPoint >= MaxLevelPoint && Level < _maxLevel)
         {
-            _currentLevelPoint -= _maxLevelPoint;
-            _maxLevelPoint = (int)(_maxLevelPoint * _nextMaxLevelPointMultiplier);
-            _level++;
+            _cardData.LevelPoint -= MaxLevelPoint;
+            _cardData.MaxLevelPoint = (int)(MaxLevelPoint * _nextMaxLevelPointMultiplier);
+            _cardData.Level++;
             LevelUpCardValue();
             OnLevelUp?.Invoke();
 
-            Debug.Log("CardCell Current Level Point: " + _maxLevelPoint);
+            Debug.Log("CardCell Current Level Point: " + MaxLevelPoint);
         }
     }
 
