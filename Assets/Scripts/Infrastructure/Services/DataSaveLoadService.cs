@@ -22,12 +22,10 @@ namespace Infrastructure.Services
         public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
         {
             _allCards = allCards;
-            /*
-            foreach (var card in _allCards)
-            {
-                card.Repair();
-            }
-            */
+            
+            //foreach (var card in _allCards) 
+                //card.Repair();
+
             _avatars = avatars;
         }
 
