@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
   m_Name: Deva Card
   m_EditorClassIdentifier: 
-  _currentImage: {fileID: 21300000, guid: 91b32e5558565844ca8055cdb988f70f, type: 3}
   _imageFirstEvolution: {fileID: 21300000, guid: 91b32e5558565844ca8055cdb988f70f, type: 3}
   _imageSecondeEvolution: {fileID: 21300000, guid: 46f1c08684b1ff04cae9fc2cdf770695, type: 3}
   _name: Monkey
@@ -22,11 +21,10 @@ MonoBehaviour:
   _def: 100
   _health: 100
   _attackSillName: mon
-  _attackSkill: 5
   _defSkillName: nom
   _defSkill: 6
   _skillChance: 0.5
   _discription: monkey option
   _directionView: {x: 0, y: 0}
   _attackEffect: {fileID: 3121847219011696122, guid: f5fbdd99fba33c94cba4f486a2490313, type: 3}
-  _attackIcon: {fileID: 0}
+  _skillIcon: {fileID: 21300000, guid: 325b7dc77ceaa45b68b1dfe86075ab6a, type: 3}

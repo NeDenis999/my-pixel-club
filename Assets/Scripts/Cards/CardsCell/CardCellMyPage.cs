@@ -11,6 +11,9 @@ namespace Cards.CardCell
         private Image _icon;
         
         [SerializeField] 
+        private Image _skillIcon;
+        
+        [SerializeField] 
         private TextMeshProUGUI _attackText;
 
         [SerializeField] 
@@ -42,6 +45,7 @@ namespace Cards.CardCell
                 _attackText.text = card.Attack.ToString();
                 _defenseText.text = card.Def.ToString();
                 _healthText.text = card.Health.ToString();
+                _skillIcon.sprite = card.SkillIcon;
             }
             else
             {

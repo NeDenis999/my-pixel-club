@@ -50,7 +50,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     private ParticleSystem _attackEffect;
 
     [SerializeField] 
-    private Image _attackIcon;
+    private Sprite _skillIcon;
 
     private int _currentLevelPoint;
     private int _maxLevelPoint = 1000;
@@ -81,7 +81,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     public int Level => _level;
     public Vector2 DirectionView => _directionView;
     public ParticleSystem AttackEffect => _attackEffect;
-    public Image AttackIcon => _attackIcon;
+    public Sprite SkillIcon => _skillIcon;
 
     public int BonusAttackSkill => (int)(_attack * 0.17f);
     public int Id { get; set; }
