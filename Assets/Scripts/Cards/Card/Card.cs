@@ -57,7 +57,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     private Image _attackIcon;
 
     private int _currentLevelPoint;
-    private int _maxLevelPoint;
+    private int _maxLevelPoint = 1000;
     private int _evolution = 1;
     public int Evolution => _evolution;
     public int LevelPoint => _currentLevelPoint;
@@ -162,6 +162,6 @@ public class Card : ScriptableObject, ICard, IRoulette
     {
         _maxLevelPoint = 1000;
         _currentLevelPoint = 0;
-        _level = 0;
+        _level = 1;
     }
 }

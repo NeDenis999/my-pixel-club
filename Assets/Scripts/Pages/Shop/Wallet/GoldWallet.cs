@@ -8,15 +8,7 @@ using Zenject;
 
 public class GoldWallet : Wallet
 {
-    [SerializeField] ConfirmWindow _confirmWindow;    
-
-    private DataSaveLoadService _data;
-    
-    [Inject]
-    public void Construct(DataSaveLoadService data)
-    {
-        _data = data;
-    }
+    [SerializeField] ConfirmWindow _confirmWindow;        
     
     private void OnEnable()
     {
@@ -28,5 +20,19 @@ public class GoldWallet : Wallet
         roulettePage.OnReceivedGold += AddСurrency;
         
         RefreshText();
+    }
+
+    protected override void AddСurrency(int countMoney)
+    {
+        base.AddСurrency(countMoney);
+
+        _data.SetCoinCount(_amountMoney);
+    }
+
+    protected override void WithdrawСurrency(int money)
+    {
+        base.WithdrawСurrency(money);
+
+        _data.SetCoinCount(_amountMoney);
     }
 }

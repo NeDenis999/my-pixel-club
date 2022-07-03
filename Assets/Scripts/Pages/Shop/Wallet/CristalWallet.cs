@@ -5,14 +5,6 @@ using Zenject;
 public class CristalWallet : Wallet
 {
     [SerializeField] private Shop _shop;
-
-    private DataSaveLoadService _data;
-    
-    [Inject]
-    public void Construct(DataSaveLoadService data)
-    {
-        _data = data;
-    }
     
     private void Start()
     {
@@ -25,5 +17,19 @@ public class CristalWallet : Wallet
         roulettePage.OnBuyRouletteSpin += WithdrawСurrency;
 
         RefreshText();
+    }
+
+    protected override void AddСurrency(int countMoney)
+    {
+        base.AddСurrency(countMoney);
+
+        _data.SetCrystalsCount(_amountMoney);
+    }
+
+    protected override void WithdrawСurrency(int money)
+    {
+        base.WithdrawСurrency(money);
+
+        _data.SetCrystalsCount(_amountMoney);
     }
 }

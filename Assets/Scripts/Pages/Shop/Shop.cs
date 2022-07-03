@@ -46,6 +46,8 @@ public class Shop : MonoBehaviour
                 cards[i] = GetRandomCard(_cardsPack.AllRarityCards);
             else
                 cards[i] = GetRandomCard(_cardsPack.AllStandardCards);
+
+            cards[i].Repair();
         }
 
         return cards;

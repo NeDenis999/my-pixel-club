@@ -36,11 +36,11 @@ namespace Pages.My_Page
         private void Construct(DataSaveLoadService data)
         {
             _data = data;
-        }
-        
-        private void Start()
+        }        
+
+        private void OnEnable()
         {
-            UpdateDisplay();
+            UpdateDisplay();            
         }
 
         public void UpdateDisplay()
@@ -55,9 +55,22 @@ namespace Pages.My_Page
             _energyText.text = _data.PlayerData.Energy.ToString(CultureInfo.InvariantCulture);
             _xpText.text = _player.Exp.ToString(CultureInfo.InvariantCulture);
             _xpSlider.value = _player.Exp;
-            _heroesText.text = 5.ToString() + '/' + 25;
+            _heroesText.text = (CalculateHerouseCountInDeck(_data.PlayerData.AttackDecks) + CalculateHerouseCountInDeck(_data.PlayerData.DefDecks) + _data.PlayerData.InventoryDecks.Length).ToString() + '/' + 100;
             _powerText.text = 90.ToString();
             _goldText.text = _data.PlayerData.Coins.ToString();
+        }
+
+        private int CalculateHerouseCountInDeck(Card[] deck)
+        {
+            int herouseCount = 0;
+
+            foreach (var cardInDeck in deck)
+            {
+                if (cardInDeck.Rarity != RarityCard.Epmpty)
+                    herouseCount++;
+            }
+
+            return herouseCount;
         }
 
         private void UpdateSlider(Slider slider, float value)

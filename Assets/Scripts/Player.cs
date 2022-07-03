@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cards.CardCell;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class Player : MonoBehaviour
 {
@@ -35,11 +37,6 @@ public class Player : MonoBehaviour
     public int Def => _amountCardBaseDef;
 
     public List<CardCellInDeck> AttackCards => _attackDeck.CardsInDeck;
-    
-    private void Start()
-    {
-        _health = _maxHealth;
-    }
 
     private void OnEnable()
     {
@@ -67,8 +64,6 @@ public class Player : MonoBehaviour
             throw new System.ArgumentOutOfRangeException();
 
         _energy -= energy;
-
-        OnEnergyChange?.Invoke(_energy);
     }
 
     public void TakeDamage(int amountDamage)

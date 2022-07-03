@@ -18,7 +18,7 @@ namespace Data
         public Sprite Avatar;
         public int AvatarId;
         public float XP;
-        public float Energy;
+        public int Energy;
         public int Level;
         public int Rank;
         public DateTime FirstDayInGame;

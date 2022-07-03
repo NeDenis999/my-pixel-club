@@ -85,6 +85,7 @@ namespace Infrastructure.Services
                 cards[i].Id = EmptyCardId;
                 cards[i].Evolution = 1;
                 cards[i].Level = 1;
+                cards[i].MaxLevelPoint = 1000;
             }
 
             _playerData = new PlayerData
@@ -333,6 +334,22 @@ namespace Infrastructure.Services
             }
             
             _playerData.AttackDecks = attackDecks;
+        }
+
+        public void IncreaseEnergy(int energyValue)
+        {
+            if (_playerData.Energy > 25) throw new ArgumentOutOfRangeException();
+
+            _playerData.Energy += energyValue;
+            Save();
+        }
+
+        public void DecreaseEnergy(int energyValue)
+        {
+            if (energyValue > _playerData.Energy) throw new ArgumentOutOfRangeException();
+
+            _playerData.Energy -= energyValue;
+            Save();
         }
     }
 }

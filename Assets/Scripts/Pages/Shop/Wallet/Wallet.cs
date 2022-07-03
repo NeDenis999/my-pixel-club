@@ -4,6 +4,7 @@ using Roulette;
 using UnityEngine;
 using TMPro;
 using Zenject;
+using Infrastructure.Services;
 
 public abstract class Wallet : MonoBehaviour
 {    
@@ -16,10 +17,18 @@ public abstract class Wallet : MonoBehaviour
     
     public int AmountMoney => _amountMoney;
 
+    protected DataSaveLoadService _data;
+
+    [Inject]
+    public void Construct(DataSaveLoadService data)
+    {
+        _data = data;
+    }
+
     protected void RefreshText() => 
         _textMoney.text = _amountMoney.ToString();
 
-    protected void WithdrawСurrency(int money)
+    virtual protected void WithdrawСurrency(int money)
     {
         if (money > _amountMoney)
             throw new InvalidOperationException();
@@ -28,7 +37,7 @@ public abstract class Wallet : MonoBehaviour
         UpdateСurrencyText();
     }
 
-    protected void AddСurrency(int countMoney)
+    virtual protected void AddСurrency(int countMoney)
     {
         _amountMoney += countMoney;
         UpdateСurrencyText();

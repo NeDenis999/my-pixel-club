@@ -64,11 +64,11 @@ public class BattleConfirmWindow : MonoBehaviour
         }
         else
         {
-            if (_player.Energy > 0)
+            if (_dataSaveLoadService.PlayerData.Energy > 0)
             {
                 _battleChouse.SetActive(false);
 
-                _player.SpendEnergy(5);
+                _dataSaveLoadService.DecreaseEnergy(5);
                 _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
                 _battle.StartFight();
             }
@@ -76,6 +76,7 @@ public class BattleConfirmWindow : MonoBehaviour
             {
                 _exeptionBaner.SetActive(true);
                 _exeptionText.text = "Not enough energy";
+                _dataSaveLoadService.IncreaseEnergy(25);
             }
         }
 
