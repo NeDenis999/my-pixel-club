@@ -50,5 +50,7 @@ public class EnchanceUpgradeCard : MonoBehaviour
         _cardCell = card;
         _UIIcon.sprite = CardCell.UIIcon;
         _cardStatistic.Render(this);
+        
+        print(card.LevelPoint);
     }
 }

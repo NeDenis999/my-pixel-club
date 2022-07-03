@@ -65,6 +65,12 @@ public class Enchance : MonoBehaviour
 
         _enhanceCardForUpgradeCollection.SetCardCollection(currentEnhanceCardList);
         _enhanceCardsForDeleteCollection.DisplayCardsForDelete(currentEnhanceCardList);
+
+        foreach (var card in _cardCollection.Cards)
+        {
+            if (card.LevelPoint > 0)
+                print("Работает");
+        }
         
         _dataSaveLoadService.SetInventoryDecks(_cardCollection.Cards);
     }

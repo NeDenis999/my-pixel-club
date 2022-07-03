@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public abstract class CardCell : MonoBehaviour, ICard
@@ -70,6 +67,8 @@ public abstract class CardCell : MonoBehaviour, ICard
         _level = card.Level;
         _evolution = card.Evolution;
         Id = card.Id;
+        _currentLevelPoint = card.LevelPoint;
+        _maxLevelPoint = card.MaxLevelPoint;
     }
 
     public void LevelUp(CardCell[] cardsForEnhance)
