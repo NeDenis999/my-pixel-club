@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 705212730803696847}
   - component: {fileID: 3932037058429465643}
   - component: {fileID: 7894311404215500375}
-  - component: {fileID: -6609463069052898802}
-  - component: {fileID: 427270082648495553}
+  - component: {fileID: 2196618555752715009}
   m_Layer: 5
-  m_Name: Card Button 1
+  m_Name: Card Inventory Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-6609463069052898802
+--- !u!114 &2196618555752715009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,33 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 956483783056073715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241aead584c44051b14726ce7a0d8cec, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b3873d3922e081449e8e22b0a43fd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 3932037058429465643}
-  _card: {fileID: 0}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
-  _cellInDeck: {fileID: 427270082648495553}
-  _button: {fileID: 7894311404215500375}
---- !u!114 &427270082648495553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956483783056073715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d102c61292f4eac40b30c9c0a95ac042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 3932037058429465643}
-  _card: {fileID: 0}
-  _linkBetweenCardCollectionAndDeck: {fileID: -3385518759834439183, guid: 481df0ea09443124fa6744155e7efa03, type: 3}
-  _emptyCard: {fileID: 0}
-  _deckType: 0
-  _statisticCardWindow: {fileID: 0}
-  _attackText: {fileID: 0}
-  _defenseText: {fileID: 0}
-  _statsPanel: {fileID: 0}
-  _noneCardSprite: {fileID: 0}

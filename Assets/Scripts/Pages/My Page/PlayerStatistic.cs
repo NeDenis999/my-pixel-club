@@ -4,7 +4,6 @@ using Data;
 using DG.Tweening;
 using Infrastructure.Services;
 using TMPro;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -66,7 +65,7 @@ namespace Pages.My_Page
 
             foreach (var cardInDeck in deck)
             {
-                if (cardInDeck.Rarity != RarityCard.Epmpty)
+                if (cardInDeck.Rarity != RarityCard.Empty)
                     herouseCount++;
             }
 

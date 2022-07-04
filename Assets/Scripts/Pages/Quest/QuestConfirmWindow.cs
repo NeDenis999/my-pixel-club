@@ -50,7 +50,7 @@ public class QuestConfirmWindow : MonoBehaviour
     {
         foreach (var item in _attackDeck.CardsInDeck)
         {
-            if (item.Card.Rarity != RarityCard.Epmpty)
+            if (item.Card.Rarity != RarityCard.Empty)
                 return false;
         }
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CardCollectionSort : MonoBehaviour
+public class CardCollectionSort<T> : MonoBehaviour where T : CardCell
 {
-    protected List<CardCollectionCell> _cards = new();
+    protected List<T> _cards = new();
 
     public void AttackSort()
     {

@@ -34,7 +34,7 @@ public abstract class ShopItem : ScriptableObject, IShopItem
     {
         switch (_rarityCard)
         {
-            case RarityCard.Epmpty:
+            case RarityCard.Empty:
                 return Color.gray;
             case RarityCard.Standard:
                 return Color.yellow;

@@ -49,7 +49,7 @@ namespace Pages.Enhance
             if (card == null) throw new System.ArgumentNullException();
 
             _cardCell = card;
-            _UIIcon.sprite = CardCell.UIIcon;
+            _UIIcon.sprite = CardCell.Icon.sprite;
             _cardStatistic.Render(this);
         
             print(card.LevelPoint);

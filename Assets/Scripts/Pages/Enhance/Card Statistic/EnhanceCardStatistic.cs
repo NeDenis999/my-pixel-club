@@ -25,7 +25,7 @@ namespace Pages.Enhance.Card_Statistic
 
         public void Render(CardCell cardForDelete)
         {
-            _icon.sprite = cardForDelete.Card.UIIcon;
+            _icon.sprite = cardForDelete.Icon.sprite;
 
             _atk.text = "ATK: " + cardForDelete.Attack;
             _def.text = "DEF: " + cardForDelete.Def;

@@ -21,6 +21,11 @@ namespace Pages.Enhance
         private Enchance _enchance;
         private EnhanceCardForDeleteStatistic _cardStatistic;
 
+        protected override void Awake()
+        {
+            
+        }
+
         private void OnEnable()
         {
             _cardButton.onClick.AddListener(SelectCard);

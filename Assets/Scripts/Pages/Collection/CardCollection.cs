@@ -7,7 +7,7 @@ using UnityEngine;
 using Zenject;
 
 
-public class CardCollection : CardCollectionSort
+public class CardCollection : CardCollectionSort<CardCollectionCell>
 {
     [SerializeField] private CardCollectionCell _cardCellTemplate;
     [SerializeField] private Transform _container;
@@ -32,11 +32,6 @@ public class CardCollection : CardCollectionSort
     private void Awake()
     {
         AddCards(_dataSaveLoadService.PlayerData.InventoryDecksData);
-    }
-
-    private void Start()
-    {
-        gameObject.SetActive(false);
     }
 
     private void OnEnable()

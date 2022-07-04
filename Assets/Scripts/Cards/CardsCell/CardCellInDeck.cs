@@ -56,7 +56,7 @@ private void OpenCardCollection()
 {
     print("press");
         
-    if (Card.Rarity == RarityCard.Epmpty)
+    if (Card.Rarity == RarityCard.Empty)
     {
         _deck.RememberCardLocation(transform.GetSiblingIndex(), _deckType);
     }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Pages.Enhance
 {
-    public class EnchanceCardsForDeleteCollection : CardCollectionSort
+    public class EnchanceCardsForDeleteCollection : CardCollectionSort<CardCollectionCell>
     {
         [SerializeField] private EnchanceCardForDeleteCell _cardCellTemplate;
         [SerializeField] private Transform _container;

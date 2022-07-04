@@ -71,7 +71,7 @@ public abstract class CardCell : MonoBehaviour, ICard
         foreach (var card in cardsForEnhance)
         {
             _cardData.LevelPoint += card.GetCardDeletePoint();
-            AmountIncreaseLevelPoint += card.GetCardDeletePoint();
+            _cardData.AmountIncreaseLevelPoint += card.GetCardDeletePoint();
         }
 
         while (LevelPoint >= MaxLevelPoint && Level < _maxLevel)
@@ -100,6 +100,6 @@ public abstract class CardCell : MonoBehaviour, ICard
             return multiplier;
         }
 
-        return (int)(_baseEnhancmentLevelPoint * RacialMultiplier(Card.Rarity) + AmountIncreaseLevelPoint * 0.75f);
+        return (int)(_baseEnhancmentLevelPoint * RacialMultiplier(Card.Rarity) + _cardData.AmountIncreaseLevelPoint * 0.75f);
     }
 }

@@ -41,7 +41,7 @@ namespace Pages.Enhance.Card_Statistic
 
             _levelPointUpgradeCard = _upgradeCard.CardCell.LevelPoint;
 
-            _maxLevelPointUpgradeCard = _upgradeCard.CardCell.MaxLevelPoint;
+            _maxLevelPointUpgradeCard = _upgradeCard.CardCell.Card.MaxLevelPoint;
             _lastMaxLevelPointUpgradeCard = _maxLevelPointUpgradeCard;
         
             _increaseLevelPointSlider.UpdateSlider(_upgradeCard.CardCell.LevelPoint, _upgradeCard.CardCell.MaxLevelPoint);
@@ -49,13 +49,13 @@ namespace Pages.Enhance.Card_Statistic
 
         public void IncreasePossibleSliderLevelPoints(CardCollectionCell cardForDelete)
         {
-            if (_upgradeCard.CardCell.Level + _howMuchIncreaseLevel > _upgradeCard.CardCell.MaxLevel) throw new System.InvalidOperationException();
+            if (_upgradeCard.CardCell.Level + _howMuchIncreaseLevel > _upgradeCard.CardCell.MaxLevel || _maxLevelPointUpgradeCard == 0) throw new System.InvalidOperationException();
 
             _levelPointUpgradeCard += cardForDelete.GetCardDeletePoint();
 
             _increaseLevelPointSlider.UpdateSlider(_levelPointUpgradeCard, _upgradeCard.CardCell.MaxLevelPoint);
 
-            if (_levelPointUpgradeCard >= _maxLevelPointUpgradeCard)
+            while (_levelPointUpgradeCard >= _maxLevelPointUpgradeCard)
             {
                 _howMuchIncreaseLevel++;
                 _possibleIncreaseLevelTextAnimator.LevelUp($"+ {_howMuchIncreaseLevel}");
@@ -73,7 +73,7 @@ namespace Pages.Enhance.Card_Statistic
             _levelPointUpgradeCard -= cardForDelete.GetCardDeletePoint();
             _increaseLevelPointSlider.UpdateSlider(_levelPointUpgradeCard, _upgradeCard.CardCell.MaxLevelPoint);
 
-            if (_levelPointUpgradeCard < _maxLevelPointUpgradeCard - _lastMaxLevelPointUpgradeCard)
+            while (_levelPointUpgradeCard + 0.01f < _maxLevelPointUpgradeCard - _lastMaxLevelPointUpgradeCard)
             {
                 _howMuchIncreaseLevel--;
                 _possibleIncreaseLevelTextAnimator.LevelUp($"+ {_howMuchIncreaseLevel}");

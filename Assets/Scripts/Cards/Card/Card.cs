@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public enum RarityCard
 {
-    Epmpty,
+    Empty,
     Standard,
     Rarity
 }

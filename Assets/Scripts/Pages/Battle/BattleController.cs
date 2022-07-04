@@ -268,7 +268,7 @@ public class BattleController : MonoBehaviour
         {
             var skillValue = 0;
 
-            if (cardCell.Card.Rarity != RarityCard.Epmpty)
+            if (cardCell.Card.Rarity != RarityCard.Empty)
                 skillValue += cardCell.TryUseSkill();
 
             if (skillValue != 0)
@@ -313,7 +313,7 @@ public class BattleController : MonoBehaviour
 
         foreach (var enemyCard in _enemyDefCards)
         {
-            if (Random.Range(1, 100) == 1 && enemyCard.Rarity != RarityCard.Epmpty)
+            if (Random.Range(1, 100) == 1 && enemyCard.Rarity != RarityCard.Empty)
             {
                 amountDef += enemyCard.BonusDefSkill;
                 _battleCardsStatistic.AddEnemyCardWhileUsedSkill(enemyCard.Name, enemyCard.AttackSkillName);

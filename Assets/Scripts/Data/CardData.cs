@@ -13,5 +13,6 @@ namespace Data
         public int Health;
         public int LevelPoint;
         public int MaxLevelPoint;
+        public int AmountIncreaseLevelPoint;
     }
 }
