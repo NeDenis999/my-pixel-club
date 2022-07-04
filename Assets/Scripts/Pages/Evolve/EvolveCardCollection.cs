@@ -6,14 +6,12 @@ using UnityEngine.UI;
 public class EvolveCardCollection : MonoBehaviour
 {
     [SerializeField] private Evolution _evolution;
-
-    private List<CardCollectionCell> _listCardsInCollection = new();
-
     [SerializeField] private EvolutionCardCell _cardCellTemplate;
     [SerializeField] private Transform _container;
-
     [SerializeField] private Button _doneButton;
-
+    [SerializeField] private SelectPanel _selectPanel;
+    
+    private List<CardCollectionCell> _listCardsInCollection = new();
     private CardCollectionCell _exampleCard;
     private CardCollectionCell _selectedCard;
 
@@ -51,6 +49,7 @@ public class EvolveCardCollection : MonoBehaviour
             if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Card.Evolution == 1)
             {
                 var cell = Instantiate(_cardCellTemplate, _container);
+                _cardCellTemplate.Init(this, _selectPanel);
                 cell.Render(_listCardsInCollection[i].CardData);
                 cell.SetLinkOnCardInCollection(_listCardsInCollection[i]);
             }

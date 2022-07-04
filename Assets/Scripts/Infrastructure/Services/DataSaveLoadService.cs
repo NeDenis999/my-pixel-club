@@ -184,103 +184,14 @@ namespace Infrastructure.Services
         private void UpdateAvatar() => 
             _playerData.Avatar = _avatars[_playerData.AvatarId];
 
-        private void UpdateInventoryDeck()
-        {
-            if (_playerData.InventoryDecksData == null)
-            {
-                _playerData.InventoryDecksData = new CardData[0];
-            }
-            else
-            {
-                var inventoryDecks = new Card[_playerData.InventoryDecksData.Length];
+        private void UpdateInventoryDeck() => 
+            UpdateDeck(ref _playerData.InventoryDecksData, ref _playerData.InventoryDecks);
 
-                for (int i = 0; i < _playerData.InventoryDecksData.Length; i++)
-                {
-                    var currentCard = _playerData.InventoryDecksData[i];
-                    
-                    inventoryDecks[i] = Object.Instantiate(_allCards[_playerData.InventoryDecksData[i].Id]);
-                    inventoryDecks[i].Init(
-                        currentCard.Evolution,
-                        currentCard.Level,
-                        currentCard.Id,
-                        currentCard.Attack,
-                        currentCard.Defence,
-                        currentCard.Health,
-                        currentCard.LevelPoint,
-                        currentCard.MaxLevelPoint);
-                    
-                    //if (inventoryDecks[i].LevelPoint > 0)
-                        //Debug.Log($"Работает 3 {inventoryDecks[i].LevelPoint} {inventoryDecks[i].MaxLevelPoint}");
-                        
-                        Debug.Log(currentCard.Id);
-                }
-                
-                _playerData.InventoryDecks = inventoryDecks;
-            }
-        }
+        private void UpdateDefenceDeck() => 
+            UpdateDeck(ref _playerData.DefDecksData, ref _playerData.DefDecks);
 
-        private void UpdateDefenceDeck()
-        {
-            var defenceDecks = new Card[5];
-
-            if (_playerData.DefDecksData == null)
-            {
-                for (int i = 0; i < defenceDecks.Length; i++) 
-                    defenceDecks[i] = _allCards[EmptyCardId];
-            }
-            else
-            {
-                for (int i = 0; i < _playerData.DefDecksData.Length; i++)
-                {
-                    var currentCard = _playerData.DefDecksData[i];
-                    
-                    defenceDecks[i] = Object.Instantiate(_allCards[_playerData.DefDecksData[i].Id]);
-                    defenceDecks[i].Init(
-                        currentCard.Evolution,
-                        currentCard.Level,
-                        currentCard.Id,
-                        currentCard.Attack,
-                        currentCard.Defence,
-                        currentCard.Health,
-                        currentCard.LevelPoint,
-                        currentCard.MaxLevelPoint);
-                }
-            }
-
-            _playerData.DefDecks = defenceDecks;
-        }
-
-        private void UpdateAttackDeck()
-        {
-            //UpdateDeck();
-            var attackDecks = new Card[5];
-
-            if (_playerData.AttackDecksData == null)
-            {
-                for (int i = 0; i < attackDecks.Length; i++) 
-                    attackDecks[i] = _allCards[EmptyCardId];
-            }
-            else
-            {
-                for (int i = 0; i < _playerData.AttackDecksData.Length; i++)
-                {
-                    var currentCard = _playerData.AttackDecksData[i];
-                    
-                    attackDecks[i] = Object.Instantiate(_allCards[_playerData.AttackDecksData[i].Id]);
-                    attackDecks[i].Init(
-                        currentCard.Evolution,
-                        currentCard.Level,
-                        currentCard.Id,
-                        currentCard.Attack,
-                        currentCard.Defence,
-                        currentCard.Health,
-                        currentCard.LevelPoint,
-                        currentCard.MaxLevelPoint);
-                }
-            }
-            
-            _playerData.AttackDecks = attackDecks;
-        }
+        private void UpdateAttackDeck() => 
+            UpdateDeck(ref _playerData.AttackDecksData, ref _playerData.AttackDecks);
 
         private void UpdateDeck(ref CardData[] deckData, ref Card[] decks)
         {

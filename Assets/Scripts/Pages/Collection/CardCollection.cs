@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Data;
@@ -28,7 +29,17 @@ public class CardCollection : CardCollectionSort
         AddCards(_dataSaveLoadService.PlayerData.InventoryDecksData);
     }
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnEnable()
+    {
+        Init();
+    }
+
+    public void Init()
     {
         void a()
         {
@@ -41,25 +52,15 @@ public class CardCollection : CardCollectionSort
 
         _cards = _cards.OrderByDescending(e => e.Card.Rarity).ToList();
         RenderCardsSiblingIndex();
-        //_statisticWindow.gameObject.SetActive(false);
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveCards();
-    }
-
-    private void SaveCards()
-    {
+    private void SaveCards() => 
         _dataSaveLoadService.SetInventoryDecks(_cards);
-    }
 
     public void AddCards(CardData[] newCards)
     {
-        for (int i = 0; i < newCards.Length; i++)
-        {
-            AddCard(newCards[i]);
-        }
+        foreach (var cardData in newCards)
+            AddCard(cardData);
     }
 
     public void AddCard(CardData newCards)
@@ -91,7 +92,6 @@ public class CardCollection : CardCollectionSort
         foreach (var card in cardsForDelete)
         {
             Destroy(card.gameObject);
-
             _cards.Remove(card);
         }
 

@@ -10,11 +10,11 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-        _cardCollection.gameObject.SetActive(true);
+        //_cardCollection.gameObject.SetActive(true);
     }
 
     private void Start()
     {
-        _cardCollection.gameObject.SetActive(false);
+        //_cardCollection.gameObject.SetActive(false);
     }
 }
