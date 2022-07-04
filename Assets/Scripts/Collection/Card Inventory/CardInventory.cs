@@ -9,6 +9,8 @@ public class CardInventory : CardCollectionSort<InventoryCardCell>
     [SerializeField] private Transform _container;
     [SerializeField] private InventoryCardCell _cardCellTemplayte;
 
+    [SerializeField] private InventoryCardStatistic _cardStatistic;
+
     private void OnEnable()
     {
         _cards.Clear();
@@ -29,7 +31,7 @@ public class CardInventory : CardCollectionSort<InventoryCardCell>
             if (card.Card.Rarity != RarityCard.Empty)
             {
                 var cell = Instantiate(_cardCellTemplayte, _container);
-                cell.Render(card.CardData);
+                cell.Render(card.CardData, _cardStatistic);
                 _cards.Add(cell);
             }
         }

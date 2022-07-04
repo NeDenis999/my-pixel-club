@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarketplaceButton : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MarketplaceButton : MonoBehaviour
 
     [SerializeField] private ShopCategoryRendering _shopCategoryRendering;
 
+    [SerializeField] private Image _image;
+
     private void OnMouseDown()
     {
         _hideAndSeekPages.TurnOffAllPages();
@@ -16,5 +19,15 @@ public class MarketplaceButton : MonoBehaviour
 
         if (_shopCategoryRendering != null)
             _shopCategoryRendering.SelectCategore();
+    }
+
+    private void OnMouseOver()
+    {
+        _image.color = Color.HSVToRGB(0, 0, 1);
+    }
+
+    private void OnMouseExit()
+    {
+        _image.color = Color.HSVToRGB(0, 0, 0.56f);
     }
 }

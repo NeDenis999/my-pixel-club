@@ -37,7 +37,7 @@ public class CardCollectionSort<T> : MonoBehaviour where T : CardCell
 
     public void StandartRarity()
     {
-        RaritySort(RarityCard.Standard);
+        RaritySort(RarityCard.Standart);
     }
 
     public void RareRarity()

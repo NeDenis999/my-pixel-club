@@ -48,7 +48,7 @@ public abstract class CardCell : MonoBehaviour, ICard
         return 0;
     }
 
-    public void Render(CardData cardData)
+    public virtual void Render(CardData cardData)
     {
         _cardData = cardData;
         _card = AllServices.AssetProviderService.AllCards[cardData.Id];
