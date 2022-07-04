@@ -41,13 +41,11 @@ public class EvolveCardCollection : MonoBehaviour
 
     private void RenderCard()
     {
-        foreach (Transform card in _container)
-        {
+        foreach (Transform card in _container) 
             Destroy(card.gameObject);
-        }
 
         _exampleCard = _evolution.FirstCard.CardCell == null ? _evolution.SecondeCard.CardCell : _evolution.FirstCard.CardCell;
-
+        
         for (int i = 0; i < _listCardsInCollection.Count; i++)
         {
             if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Card.Evolution == 1)

@@ -252,6 +252,7 @@ namespace Infrastructure.Services
 
         private void UpdateAttackDeck()
         {
+            //UpdateDeck();
             var attackDecks = new Card[5];
 
             if (_playerData.AttackDecksData == null)
@@ -279,6 +280,35 @@ namespace Infrastructure.Services
             }
             
             _playerData.AttackDecks = attackDecks;
+        }
+
+        private void UpdateDeck(ref CardData[] deckData, ref Card[] decks)
+        {
+            decks = new Card[deckData.Length];
+
+            if (deckData == null)
+            {
+                for (int i = 0; i < decks.Length; i++) 
+                    decks[i] = _allCards[EmptyCardId];
+            }
+            else
+            {
+                for (int i = 0; i < deckData.Length; i++)
+                {
+                    var currentCard = deckData[i];
+                    
+                    decks[i] = Object.Instantiate(_allCards[deckData[i].Id]);
+                    decks[i].Init(
+                        currentCard.Evolution,
+                        currentCard.Level,
+                        currentCard.Id,
+                        currentCard.Attack,
+                        currentCard.Defence,
+                        currentCard.Health,
+                        currentCard.LevelPoint,
+                        currentCard.MaxLevelPoint);
+                }
+            }
         }
 
         private CardData[] CreateCardDatas()

@@ -5,9 +5,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class PosibleLevelUpSlider : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _posibleIncreaseLevelText;
+    [SerializeField]
+    private TMP_Text _posibleIncreaseLevelText;
 
-    private Slider _increaseLevelPointSlider;
+    [SerializeField]
+    private SliderAnimator _increaseLevelPointSlider;
 
     private EnchanceUpgradeCard _upgradeCard;
 
@@ -19,11 +21,6 @@ public class PosibleLevelUpSlider : MonoBehaviour
     private int _howMuchIncreaseLevel;
     public int HowMuchIncreaseLevel => _howMuchIncreaseLevel;
 
-    private void Start()
-    {
-        _increaseLevelPointSlider = GetComponent<Slider>();
-    }
-
     private void OnDisable()
     {
         Reset();
@@ -32,7 +29,7 @@ public class PosibleLevelUpSlider : MonoBehaviour
     public void Reset()
     {
         _howMuchIncreaseLevel = 0;
-        _increaseLevelPointSlider.value = 0;
+        _increaseLevelPointSlider.UpdateSlider(0);
         _posibleIncreaseLevelText.text = "";
     }
 
@@ -47,8 +44,7 @@ public class PosibleLevelUpSlider : MonoBehaviour
         _maxLevelPointUpgradeCard = _upgradeCard.CardCell.MaxLevelPoint;
         _lastMaxLevelPointUpgradeCard = _maxLevelPointUpgradeCard;
         
-        _increaseLevelPointSlider.value = _upgradeCard.CardCell.LevelPoint;
-        _increaseLevelPointSlider.maxValue = _upgradeCard.CardCell.MaxLevelPoint;
+        _increaseLevelPointSlider.UpdateSlider(_upgradeCard.CardCell.LevelPoint, _upgradeCard.CardCell.MaxLevelPoint);
     }
 
     public void IncreasePossibleSliderLevelPoints(CardCollectionCell cardForDelete)
@@ -57,7 +53,7 @@ public class PosibleLevelUpSlider : MonoBehaviour
 
         _levelPointUpgradeCard += cardForDelete.GetCardDeletePoint();
 
-        _increaseLevelPointSlider.value = _levelPointUpgradeCard;
+        _increaseLevelPointSlider.UpdateSlider(_levelPointUpgradeCard, _upgradeCard.CardCell.MaxLevelPoint);
 
         if (_levelPointUpgradeCard >= _maxLevelPointUpgradeCard)
         {
@@ -76,8 +72,7 @@ public class PosibleLevelUpSlider : MonoBehaviour
     {
         _levelPointUpgradeCard -= cardForDelete.GetCardDeletePoint();
 
-        if (_levelPointUpgradeCard <= _increaseLevelPointSlider.maxValue)
-            _increaseLevelPointSlider.value = _levelPointUpgradeCard;
+        _increaseLevelPointSlider.UpdateSlider(_levelPointUpgradeCard, _upgradeCard.CardCell.MaxLevelPoint);
 
         if (_levelPointUpgradeCard < _maxLevelPointUpgradeCard - _lastMaxLevelPointUpgradeCard)
         {

@@ -2284,6 +2284,7 @@ GameObject:
   - component: {fileID: 8496753283490394663}
   - component: {fileID: 4732961234097429984}
   - component: {fileID: 5890478057440760359}
+  - component: {fileID: 6853738315983538800}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2416,6 +2417,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &6853738315983538800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242568615405218843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf4be94a96f4670972f993765686504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 3749527196562138032}
 --- !u!1 &3851901573289079419
 GameObject:
   m_ObjectHideFlags: 0
@@ -9117,8 +9131,8 @@ MonoBehaviour:
   _goldText: {fileID: 381713161990602335}
   _nickName: {fileID: 7142938793020624413}
   _avatar: {fileID: 1155031524077875270}
-  _energySlider: {fileID: 3749527196562138032}
-  _xpSlider: {fileID: 343173095666786998}
+  _energySlider: {fileID: 6853738315983538800}
+  _xpSlider: {fileID: 1436729905241657658}
 --- !u!1 &7142938793614882937
 GameObject:
   m_ObjectHideFlags: 0
@@ -10628,6 +10642,7 @@ GameObject:
   - component: {fileID: 3966315621634050159}
   - component: {fileID: 241517022171999676}
   - component: {fileID: 6330019250471011228}
+  - component: {fileID: 1436729905241657658}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -10760,6 +10775,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &1436729905241657658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404176729300474106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf4be94a96f4670972f993765686504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 343173095666786998}
 --- !u!1 &8440042625675592171
 GameObject:
   m_ObjectHideFlags: 0
