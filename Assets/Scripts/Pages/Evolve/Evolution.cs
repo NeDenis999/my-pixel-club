@@ -68,7 +68,7 @@ public class Evolution : MonoBehaviour
         CardData evolvedCard = Evolve(_firstCardForEvolution, _secondeCardForEvolution);
 
         _evolvedCardWindow.SetActive(true);
-        _evolvedCardImage.sprite = _assetProviderService.AllCards[evolvedCard.Id].UIIcon;
+        _evolvedCardImage.sprite = _assetProviderService.AllCards[evolvedCard.Id].ImageSecondeEvolution;
 
         return evolvedCard;
     }
@@ -77,10 +77,10 @@ public class Evolution : MonoBehaviour
     {
         CardData evolvedCard = new CardData();
 
-        evolvedCard.Attack = GetEvolveUpValue(firstCard.CardCell.Attack, secondCard.CardCell.Attack);
-        evolvedCard.Defence = GetEvolveUpValue(firstCard.CardCell.Def, secondCard.CardCell.Def);
-        evolvedCard.Health = GetEvolveUpValue(firstCard.CardCell.Health, secondCard.CardCell.Health);
-        evolvedCard.Id = firstCard.CardCell.Id;
+        evolvedCard.Attack = GetEvolveUpValue(firstCard.CardCell.CardData.Attack, secondCard.CardCell.CardData.Attack);
+        evolvedCard.Defence = GetEvolveUpValue(firstCard.CardCell.CardData.Defence, secondCard.CardCell.CardData.Attack);
+        evolvedCard.Health = GetEvolveUpValue(firstCard.CardCell.CardData.Health, secondCard.CardCell.CardData.Attack);
+        evolvedCard.Id = firstCard.CardCell.CardData.Id;
         evolvedCard.Evolution = 2;
 
         return evolvedCard;

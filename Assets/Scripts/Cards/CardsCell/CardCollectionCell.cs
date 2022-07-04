@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CardCollectionCell : CardCell, IInventory
 {
+    [SerializeField] 
+    private Button _button;
+    
     private AttackDeck _attackDeck;
-    private DefDeck _defDeck;
+    private DefenceDeck _defenceDeck;
 
     public Sprite UIIcon => Card.UIIcon;
 
@@ -14,22 +15,25 @@ public class CardCollectionCell : CardCell, IInventory
     public string Discription => Card.Discription;
 
     public BottleEffects Effect => BottleEffects.None;
-
-
+    
     protected virtual void Awake()
     {
-        var button = GetComponent<Button>();
-        button.onClick.AddListener(SetCardInDeck);
+        _button.onClick.AddListener(SetCardInDeck);
+    }
 
-        _attackDeck = FindObjectOfType<AttackDeck>().gameObject.GetComponent<AttackDeck>();
-      //  _defDeck = FindObjectOfType<DefDeck>().gameObject.GetComponent<DefDeck>();
+    public void InitBase(AttackDeck attackDeck, DefenceDeck defenceDeck)
+    {
+        _attackDeck = attackDeck;
+        _defenceDeck = defenceDeck;
     }
 
     private void SetCardInDeck()    
     {
+        print(_attackDeck);
+        
         if (_attackDeck.WritenDeck == AtackOrDefCardType.Atack)
             _attackDeck.SetCardInDeck(this);
         else
-            _defDeck.SetCardInDeck(this);
+            _defenceDeck.SetCardInDeck(this);
     }
 }

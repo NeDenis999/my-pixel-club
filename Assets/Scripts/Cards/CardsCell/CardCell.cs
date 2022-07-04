@@ -52,7 +52,11 @@ public abstract class CardCell : MonoBehaviour, ICard
     {
         _cardData = cardData;
         _card = AllServices.AssetProviderService.AllCards[cardData.Id];
-        _icon.sprite = _card.UIIcon;
+        
+        if (cardData.Evolution == 1)
+            _icon.sprite = _card.ImageFirstEvolution;
+        else
+            _icon.sprite = _card.ImageSecondeEvolution;
     }
 
     public void LevelUp(CardCell[] cardsForEnhance)

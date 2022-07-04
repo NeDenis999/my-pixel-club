@@ -7,7 +7,7 @@ public class SwitchDeck : MonoBehaviour
     private AttackDeck _attackDeck;
     
     [SerializeField] 
-    private DefDeck _defDeck;
+    private DefenceDeck defenceDeck;
 
     private bool _isToggle = true;
 
@@ -19,7 +19,7 @@ public class SwitchDeck : MonoBehaviour
     public void Toggle()
     {
         _attackDeck.gameObject.SetActive(_isToggle);
-        _defDeck.gameObject.SetActive(!_isToggle);
+        defenceDeck.gameObject.SetActive(!_isToggle);
 
         _isToggle = !_isToggle;
     }

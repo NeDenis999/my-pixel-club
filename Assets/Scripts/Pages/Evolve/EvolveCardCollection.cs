@@ -49,7 +49,7 @@ public class EvolveCardCollection : MonoBehaviour
             if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Card.Evolution == 1)
             {
                 var cell = Instantiate(_cardCellTemplate, _container);
-                _cardCellTemplate.Init(this, _selectPanel);
+                cell.Init(this, _selectPanel);
                 cell.Render(_listCardsInCollection[i].CardData);
                 cell.SetLinkOnCardInCollection(_listCardsInCollection[i]);
             }
@@ -83,7 +83,8 @@ public class EvolveCardCollection : MonoBehaviour
 
     public void SelectCard(CardCollectionCell selectCard)
     {
-        if (selectCard == null) throw new System.ArgumentNullException();
+        if (selectCard == null) 
+            throw new System.ArgumentNullException();
 
         _selectedCard = selectCard;
     }

@@ -1,7 +1,7 @@
 using Data;
 using Infrastructure.Services;
 
-public class DefDeck : Deck
+public class DefenceDeck : Deck
 {
     protected override void InitCards(DataSaveLoadService data)
     {

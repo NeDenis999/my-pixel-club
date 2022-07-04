@@ -7,45 +7,44 @@ namespace Pages.Enhance
     [RequireComponent(typeof(Button))]
     public class EnchanceCardForDeleteCell : CardCollectionCell
     {
-        [SerializeField] private GameObject _selectPanel;
+        [SerializeField] 
+        private GameObject _selectPanel;
 
+        [SerializeField]
+        private Button _selectButton;
+        
+        [SerializeField]
+        private Button _cardButton;
+        
         private EnchanceCardsForDeleteCollection _enchanceCardForDeleteCollection;
         private CardCollectionCell _cardInCollection;
-
         private Enchance _enchance;
-
-        private Button _cardButton;
-        private Button _selectedPanelButton;
-
         private EnhanceCardForDeleteStatistic _cardStatistic;
-
-        override protected void Awake()
-        {
-            _enchanceCardForDeleteCollection = FindObjectOfType<EnchanceCardsForDeleteCollection>().gameObject.GetComponent<EnchanceCardsForDeleteCollection>();
-            _enchance = FindObjectOfType<Enchance>().gameObject.GetComponent<Enchance>();
-
-            _cardStatistic = FindObjectOfType<EnhanceCardForDeleteStatistic>().gameObject.GetComponent<EnhanceCardForDeleteStatistic>();
-
-            _cardButton = GetComponent<Button>();
-            _selectedPanelButton = _selectPanel.GetComponent<Button>();
-        }
 
         private void OnEnable()
         {
             _cardButton.onClick.AddListener(SelectCard);
-            _selectedPanelButton.onClick.AddListener(UnselectCard);
+            _selectButton.onClick.AddListener(UnselectCard);
             _selectPanel.SetActive(false);
         }
 
         private void OnDisable()
         {
             _cardButton.onClick.RemoveListener(SelectCard);
-            _selectedPanelButton.onClick.RemoveListener(UnselectCard);
+            _selectButton.onClick.RemoveListener(UnselectCard);
         }
 
+        public void Init(EnchanceCardsForDeleteCollection enchanceCardsForDeleteCollection, Enchance enchance, EnhanceCardForDeleteStatistic enhanceCardForDeleteStatistic)
+        {
+            _enchanceCardForDeleteCollection = enchanceCardsForDeleteCollection;
+            _enchance = enchance;
+            _cardStatistic = enhanceCardForDeleteStatistic;
+        }
+        
         public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)
         {
-            if (cardInCollection == null) throw new System.NullReferenceException();
+            if (cardInCollection == null) 
+                throw new System.NullReferenceException();
 
             _cardInCollection = cardInCollection;
         }

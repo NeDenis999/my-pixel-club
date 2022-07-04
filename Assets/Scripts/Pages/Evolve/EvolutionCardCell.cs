@@ -7,11 +7,13 @@ public class EvolutionCardCell : CardCell
 {
     [SerializeField] 
     private Button _button;
-    
-    private EvolveCardCollection _evolveCardCollection;
+
     private CardCollectionCell _cardInCollection;
+    private EvolveCardCollection _evolveCardCollection;
     private SelectPanel _selectPanel;
 
+    private bool _isInit;
+    
     private void OnEnable()
     {
         _button.onClick.AddListener(SelectCard);
@@ -27,20 +29,26 @@ public class EvolutionCardCell : CardCell
 
     public void Init(EvolveCardCollection evolveCardCollection, SelectPanel selectPanel)
     {
+        if (evolveCardCollection == null || selectPanel == null)
+            Debug.LogError("Ссылки не указаны");
+        
         _evolveCardCollection = evolveCardCollection;
         _selectPanel = selectPanel;
+
+        _isInit = true;
     }
     
     public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)
     {
-        if (cardInCollection == null) throw new System.NullReferenceException();
+        if (cardInCollection == null) 
+            throw new System.NullReferenceException();
 
         _cardInCollection = cardInCollection;
     }
 
     private void SelectCard()
     {
-        _evolveCardCollection.SelectCard(_cardInCollection);
         _selectPanel.SetPanelAboveSelectCard(this);
+        _evolveCardCollection.SelectCard(_cardInCollection);
     }
 }

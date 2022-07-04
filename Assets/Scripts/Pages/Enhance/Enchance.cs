@@ -12,20 +12,16 @@ namespace Pages.Enhance
         [SerializeField] private CardCollection _cardCollection;
         [SerializeField] private EnchanceCardCollection _enhanceCardForUpgradeCollection;
         [SerializeField] private EnchanceCardsForDeleteCollection _enhanceCardsForDeleteCollection;
-
         [SerializeField] private EnchanceUpgradeCard _upgradeCard;
-        public EnchanceUpgradeCard UpgradeCard => _upgradeCard;
-
         [SerializeField] private EnhanceCardForUpgradeStatistic _upgradeCardStatistic;
-
         [SerializeField] private Button _enhanceButton;
-
         [SerializeField] private GameObject _exeptionWindow;
-
         [SerializeField] private PossibleLevelUpSlider _possibleLevelUpSlider;
 
         private DataSaveLoadService _dataSaveLoadService;
-    
+        
+        public EnchanceUpgradeCard UpgradeCard => _upgradeCard;
+
         [Inject]
         private void Construct(DataSaveLoadService dataSaveLoadService)
         {

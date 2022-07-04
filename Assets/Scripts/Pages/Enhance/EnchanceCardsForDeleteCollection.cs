@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Pages.Enhance.Card_Statistic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Pages.Enhance
 {
@@ -8,10 +9,13 @@ namespace Pages.Enhance
     {
         [SerializeField] private EnchanceCardForDeleteCell _cardCellTemplate;
         [SerializeField] private Transform _container;
-
         [SerializeField] private PossibleLevelUpSlider possibleLevelUpSlider;
+        [SerializeField] private Enchance _enchance;
+        [SerializeField] private EnhanceCardForDeleteStatistic _enhanceCardForDeleteStatistic;
+        [SerializeField] private AttackDeck _attackDeck;
+        [SerializeField] private DefenceDeck _defenceDeck;
+        
         public PossibleLevelUpSlider PossibleLevelUpSlider => possibleLevelUpSlider;
-
         private List<CardCollectionCell> _cardsForDelete = new();
         public List<CardCollectionCell> CardForDelete => _cardsForDelete;
 
@@ -47,6 +51,8 @@ namespace Pages.Enhance
                 for (int i = 0; i < cardsForDelete.Count; i++)
                 {
                     var cell = Instantiate(_cardCellTemplate, _container);
+                    cell.InitBase(_attackDeck, _defenceDeck);
+                    cell.Init(this, _enchance, _enhanceCardForDeleteStatistic);
                     cell.Render(cardsForDelete[i].CardData);
                     cell.SetLinkOnCardInCollection(cardsForDelete[i]);
                     _cards.Add(cell);
