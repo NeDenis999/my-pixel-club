@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class EvolutionCard : MonoBehaviour
 {
@@ -11,12 +13,20 @@ public class EvolutionCard : MonoBehaviour
 
     [SerializeField] private Image _UIIcon;
     [SerializeField] private Sprite _standardSprite;
-
+    [SerializeField] private Image _frame;
+    
     public bool IsSet => _isSet;
     private bool _isSet = false;
-
+    private AssetProviderService _assetProviderService;
+    
     public CardCollectionCell CardCell { get; private set; }
 
+    [Inject]
+    private void Construct(AssetProviderService assetProviderService)
+    {
+        _assetProviderService = assetProviderService;
+    }
+    
     private void OnEnable()
     {
         GetComponent<Button>().onClick.AddListener(OpenCollectionCard);
@@ -40,6 +50,7 @@ public class EvolutionCard : MonoBehaviour
     {
         CardCell = null;
         _UIIcon.sprite = _standardSprite;
+        _frame.gameObject.SetActive(false);
         _isSet = false;
     }
 
@@ -47,6 +58,8 @@ public class EvolutionCard : MonoBehaviour
     {
         CardCell = selectCard;
         _UIIcon.sprite = CardCell.UIIcon;
+        _frame.gameObject.SetActive(true);
+        _frame.sprite = CardCell.Card.GetFrame(_assetProviderService.Frames);
         _isSet = true;
     }
 }

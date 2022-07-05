@@ -8,9 +8,7 @@ using Zenject;
 public class BattleConfirmWindow : MonoBehaviour
 {
     [SerializeField] private BattleController _battle;
-
     [SerializeField] private Player _player;
-
     [SerializeField] private GameObject _exeptionBaner;
     [SerializeField] private TMP_Text _exeptionText;
 

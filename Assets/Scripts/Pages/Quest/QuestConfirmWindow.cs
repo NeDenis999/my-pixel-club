@@ -8,11 +8,8 @@ public class QuestConfirmWindow : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private AttackDeck _attackDeck;
-
     [SerializeField] private int _requiredAmountEnergy;
-
     [SerializeField] private GameObject _questList, _quest, _exeptionBaner;
-
     [SerializeField] private TMP_Text _exeptionBanerText;
 
     public int RequiredAmountEnergy => _requiredAmountEnergy;
@@ -38,6 +35,7 @@ public class QuestConfirmWindow : MonoBehaviour
         if (_player.Health > 0)
         {
             _quest.gameObject.SetActive(true);
+            gameObject.SetActive(false);
             _questList.gameObject.SetActive(false);
         }
         else
