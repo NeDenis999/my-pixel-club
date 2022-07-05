@@ -64,7 +64,7 @@ namespace Roulette
             _previousCurrentCellPosition = _currentCell.transform.localPosition;
             _previousCurrentCellScale = _currentCell.transform.localScale;
             _currentCell.transform.parent = _target;
-            _currentCell.transform.DOLocalMove(Vector3.zero, 1);
+            _currentCell.transform.DOMove(_target.position, 1);
             yield return new WaitForSeconds(1);
             _currentCell.transform.DOScale(new Vector3(30, 30, 1), 1);
             yield return new WaitForSeconds(1);
