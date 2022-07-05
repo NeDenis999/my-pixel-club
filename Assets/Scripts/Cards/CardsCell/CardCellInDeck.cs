@@ -54,8 +54,6 @@ public class CardCellInDeck : CardCell
 
 private void OpenCardCollection()
 {
-    print("press");
-        
     if (Card.Rarity == RarityCard.Empty)
     {
         _deck.RememberCardLocation(transform.GetSiblingIndex(), _deckType);
@@ -69,9 +67,8 @@ private void OpenCardCollection()
 
     public void ResetComponent()
     {
-        _icon.sprite = _emptyCard.Card.UIIcon;
         _deck.RetrieveCardInCollection(this);
-        _card = _emptyCard.Card;
+        Render(_emptyCard.CardData);
     }
 }
 

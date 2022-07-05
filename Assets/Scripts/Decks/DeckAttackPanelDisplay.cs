@@ -13,11 +13,13 @@ namespace Decks
         protected List<CardCellMyPage> _cards;
 
         private DataSaveLoadService _data;
+        private AssetProviderService _assetProviderService;
     
         [Inject]
-        public void Construct(DataSaveLoadService data)
+        public void Construct(DataSaveLoadService data, AssetProviderService assetProviderService)
         {
             _data = data;
+            _assetProviderService = assetProviderService;
         }
 
         private void OnEnable()
@@ -28,7 +30,7 @@ namespace Decks
         private void UpdateCardDisplay()
         {
             for (int i = 0; i < 5; i++) 
-                _cards[i].Render(_data.PlayerData.AttackDecks[i]);
+                _cards[i].Render(_data.PlayerData.AttackDecksData[i], _data.PlayerData.AttackDecks[i]);
         }
     }
 }

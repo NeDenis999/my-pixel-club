@@ -1,4 +1,5 @@
 ﻿using System;
+using Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,17 +35,17 @@ namespace Cards.CardCell
             _defaultIcon = _icon.sprite;
         }
 
-        public void Render(global::Card card)
+        public void Render(CardData cardData, global::Card card)
         {
-            if (card.Name != "Empty")
+            if (cardData.Id != 0)
             {
                 _icon.sprite = card.UIIcon;
                 _icon.transform.localPosition = _startPosition + card.DirectionView;
                 
                 _statsPanel.SetActive(true);
-                _attackText.text = card.Attack.ToString();
-                _defenseText.text = card.Def.ToString();
-                _healthText.text = card.Health.ToString();
+                _attackText.text = cardData.Attack.ToString();
+                _defenseText.text = cardData.Defence.ToString();
+                _healthText.text = cardData.Health.ToString();
                 _skillIcon.sprite = card.SkillIcon;
             }
             else

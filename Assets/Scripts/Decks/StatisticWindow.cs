@@ -8,11 +8,8 @@ public class StatisticWindow : MonoBehaviour
 {
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _atk, _def, _rarity, _race, _name, _health;
-
     [SerializeField] private CardCollection _cardCollection;
-
     [SerializeField] private Sprite _emptyCardSprite;
-
     [SerializeField] private Button _resetButton;
 
     private CardCellInDeck _card; 
