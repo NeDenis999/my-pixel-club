@@ -6,6 +6,4 @@ public abstract class InventoryCategoryRendering : MonoBehaviour
 {
     [SerializeField] protected Transform _container;
     [SerializeField] protected InventoryCell _inventoryItemCellTemplate;
-
-    protected List<ShopItemBottle> _inventoryItems = new();
 }

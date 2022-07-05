@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class Shop : MonoBehaviour
 {
     public event UnityAction<int> OnCristalBuy;
-    public event UnityAction<ShopItemBottle> OnBottleBuy;
 
     private ShopItemCardPack _cardsPack;
 
@@ -16,6 +15,8 @@ public class Shop : MonoBehaviour
     private ShopCategoryRendering _startCategory;
 
     [SerializeField] private CardCollection _cardCollection;
+
+    [SerializeField] private Inventory _inventory;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class Shop : MonoBehaviour
             OnCristalBuy?.Invoke(5);
 
         if (shopItem is ShopItemBottle)
-            OnBottleBuy?.Invoke((ShopItemBottle)shopItem);
+            _inventory.AddItem((ShopItemBottle)shopItem);
     }
 
     public void BuyCard(ShopItemCardPack shopItem)

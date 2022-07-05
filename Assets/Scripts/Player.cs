@@ -48,12 +48,6 @@ public class Player : MonoBehaviour
             foreach (var item in cardInDeck)
                 _amountCardBaseAttack += item.Attack;
         };
-
-        _inventory.OnReestablishEnergy += () =>
-        {
-            _energy = 25;
-            OnEnergyChange?.Invoke(_energy);
-        };
     }
 
     public void SpendEnergy(int energy)

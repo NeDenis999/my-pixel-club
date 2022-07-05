@@ -6,24 +6,19 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryCell : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+[RequireComponent(typeof(Button))]
+public class InventoryCell : MonoBehaviour
 {
     public event UnityAction<InventoryCell, ShopItemBottle> OnUsedEnergyBottle;
 
     [SerializeField] private TMP_Text _amountThisItemText;
 
     [SerializeField] private Image _icon;
-    [SerializeField] private Inventory _inventory;
 
-    [SerializeField] private InventoryItemDiscription _statisticWindowTemplayte;
-
-    private string _statistic;
-    private string _discription;
     private BottleEffects _effects;
 
     private ShopItemBottle _shopItemBottle;
-
-    private InventoryItemDiscription _statisticWindow;
+    private Inventory _inventory;
 
     private int _amountThisItem = 1;
 
@@ -39,40 +34,27 @@ public class InventoryCell : MonoBehaviour, IPointerEnterHandler, IPointerClickH
         }
     }
 
-    public void Render(IInventory item)
+    private void OnEnable()
     {
-        _icon.sprite = item.UIIcon;
-        _statistic = item.Statistic;
-        _discription = item.Discription;
-        _effects = item.Effect;        
+        GetComponent<Button>().onClick.AddListener(UseEffect);
     }
 
-    public void Render(ShopItemBottle shopItem)
+    private void OnDisable()
     {
-        Render(shopItem as IInventory);
+        GetComponent<Button>().onClick.RemoveListener(UseEffect);
+    }
+
+    public void Render(ShopItemBottle shopItem, Inventory inventory)
+    {
+        _icon.sprite = shopItem.UIIcon;
+        _effects = shopItem.Effect;
         _shopItemBottle = shopItem;
+        _inventory = inventory;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        var lastestStatisticWindow = FindObjectOfType<InventoryItemDiscription>();
-        if(lastestStatisticWindow != null)
-            Destroy(lastestStatisticWindow.gameObject);
-
-        _statisticWindow = Instantiate(_statisticWindowTemplayte, gameObject.transform);
-        _statisticWindow.RenderDiscription(_statistic, _discription);
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        UseEffect();
-    }
     private void UseEffect()
     {
         if (_effects == BottleEffects.ReplenishEnergy)
-        {
-            OnUsedEnergyBottle?.Invoke(this, _shopItemBottle);
-            _inventory.UseEnergyBottle();
-        }
+            _inventory.UseEnergyBottle(this);
     }
 }

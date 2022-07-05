@@ -1927,8 +1927,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 298.96994, y: -0.97000444}
-  m_SizeDelta: {x: 1069.1, y: 567.94}
+  m_AnchoredPosition: {x: 292.4, y: 12.27}
+  m_SizeDelta: {x: 1056, y: 504.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5671335690739899746
 CanvasRenderer:
@@ -4617,7 +4617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7274017146470544740
@@ -4847,7 +4847,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasGroup: {fileID: 4044616002947337957}
-  _isZeroPosition: 0
 --- !u!225 &4044616002947337957
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7543,7 +7542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasGroup: {fileID: 353931159}
-  _isZeroPosition: 1
 --- !u!1 &4882793710564705980
 GameObject:
   m_ObjectHideFlags: 0
@@ -7823,6 +7821,7 @@ MonoBehaviour:
   _dropChance: 5
   _startCategory: {fileID: 4882793710308167775}
   _cardCollection: {fileID: 0}
+  _inventory: {fileID: 0}
 --- !u!1 &5031627511282169150
 GameObject:
   m_ObjectHideFlags: 0

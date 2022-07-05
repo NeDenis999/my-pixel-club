@@ -2,27 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class InventoryShopItemRendering : InventoryCategoryRendering, IPointerClickHandler
+[RequireComponent(typeof(Button))]
+public class InventoryShopItemRendering : InventoryCategoryRendering
 {
-    [SerializeField] private Shop _shop;    
-
-    private void Start()
-    {
-        _shop.OnBottleBuy += AddItem;
-    }
+    [SerializeField] private Inventory _inventory;
 
     private void OnEnable()
     {
-        Render(_inventoryItems);
+        Render();
+        GetComponent<Button>().onClick.AddListener(Render);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    private void OnDisable()
     {
-        Render(_inventoryItems);
+        GetComponent<Button>().onClick.RemoveListener(Render);
     }
 
-    private void Render(List<ShopItemBottle> items)
+    private void Render()
     {
         foreach (Transform childs in _container)
             Destroy(childs.gameObject);
@@ -31,7 +29,7 @@ public class InventoryShopItemRendering : InventoryCategoryRendering, IPointerCl
 
         System.Func<ShopItem, bool> itemContainsList = (a) =>
         {
-            foreach(var item in inventoryCellList)
+            foreach (var item in inventoryCellList)
             {
                 if (item.Item.name == a.name)
                 {
@@ -43,27 +41,14 @@ public class InventoryShopItemRendering : InventoryCategoryRendering, IPointerCl
             return false;
         };
 
-        items.ForEach(item =>
+        _inventory.BottleCollection.ForEach(item =>
         {
             if (itemContainsList(item) == false)
             {
                 var cell = Instantiate(_inventoryItemCellTemplate, _container);
-                cell.Render(item);
+                cell.Render(item, _inventory);
                 inventoryCellList.Add(cell);
-                cell.OnUsedEnergyBottle += DestroyItem;
             }
         });
     }
-
-    private void AddItem(ShopItemBottle item)
-    {
-        _inventoryItems.Add(item);
-    }
-
-    private void DestroyItem(InventoryCell item, ShopItemBottle energyBottle)
-    {
-        item.OnUsedEnergyBottle -= DestroyItem;
-        _inventoryItems.Remove(energyBottle);
-        Destroy(item.gameObject);
-    }
-}
+}   
