@@ -176,7 +176,7 @@ public class BattleController : MonoBehaviour
                     yield return new WaitForSeconds(0.5f);
                 }
 
-                var randomNumber = Random.Range(0, myAliveCardNumbers.Count);
+                var randomNumber = myAliveCardNumbers[Random.Range(0, myAliveCardNumbers.Count)];
                 previousRandomNumber = randomNumber;
                 Card randomMyCard = myCards[randomNumber];
 
@@ -201,9 +201,8 @@ public class BattleController : MonoBehaviour
                 {
                     for (int k = 0; k < randomOpponentCardDamageCount; k++)
                     {
-                        var randomOpponentCardNumber = Random.Range(0, opponentAliveCardNumbers.Count);
+                        var randomOpponentCardNumber = opponentAliveCardNumbers[Random.Range(0, opponentAliveCardNumbers.Count)];
                         Card randomEnemyCard = opponentCards[randomOpponentCardNumber];
-
                         CardAnimator opponentCardAnimator = opponentCardAnimators[randomOpponentCardNumber];
 
                         var myAnimatorPosition = myCardAnimator.transform.position;
@@ -291,8 +290,12 @@ public class BattleController : MonoBehaviour
             
         for (int i = 0; i < cards.Length; i++)
         {
-            if (cards[i].Name != "Empty")
+            if (cards[i].Id != 0)
+            {
                 aliveCards.Add(i);
+                print(i);
+            }
+                
         }
 
         return aliveCards;
@@ -302,7 +305,7 @@ public class BattleController : MonoBehaviour
     {
         for (int i = 0; i < cards.Length; i++)
         {
-            if (cards[i].Name == "Empty")
+            if (cards[i].Id != 0)
                 cardAnimators[i].Hide();
         }
     }
