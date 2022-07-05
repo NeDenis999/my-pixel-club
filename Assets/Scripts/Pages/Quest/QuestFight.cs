@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pages.Quest;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,14 +12,10 @@ public class QuestFight : MonoBehaviour
     public event UnityAction OnPlayerLose;
 
     [SerializeField] private Slider _enemyHealthSlider, _playerHealthSlider, _playerExpSlider;
-
     [SerializeField] private Player _player;
     [SerializeField] private Enemy _enemy;
-
     [SerializeField] private TMP_Text _enemyHelthPerProcentText, _playerHealthPerProcentText, _playerExpPerProcentText;
-
     [SerializeField] private QuestConfirmWindow _questConfirmWindow;
-
     [SerializeField] private GameObject _questList;
 
     private bool _isFight;
@@ -48,7 +45,6 @@ public class QuestFight : MonoBehaviour
     private IEnumerator StartFight()
     {
         _player.SpendEnergy(_questConfirmWindow.RequiredAmountEnergy);
-
         _isFight = true;
 
         yield return new WaitForSeconds(0.5f);
@@ -107,7 +103,7 @@ public class QuestFight : MonoBehaviour
 
     private void HitEnemy()
     {
-        _enemy.TakeDamage(_player.Attack);
+        _enemy.TakeDamage(1); //_player.Attack
         _enemyHealthSlider.value = _enemy.Health;
         _enemyHelthPerProcentText.text = (_enemy.Health / _enemy.MaxHealth * 100).ToString() + " %";
     }

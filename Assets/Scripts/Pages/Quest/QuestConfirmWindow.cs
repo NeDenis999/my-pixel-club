@@ -1,63 +1,76 @@
-using System.Collections;
-using System.Collections.Generic;
+using Infrastructure.Services;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using Zenject;
 
-public class QuestConfirmWindow : MonoBehaviour
+namespace Pages.Quest
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private AttackDeck _attackDeck;
-    [SerializeField] private int _requiredAmountEnergy;
-    [SerializeField] private GameObject _questList, _quest, _exeptionBaner;
-    [SerializeField] private TMP_Text _exeptionBanerText;
-
-    public int RequiredAmountEnergy => _requiredAmountEnergy;
-
-    public void StartQuest()
+    public class QuestConfirmWindow : MonoBehaviour
     {
-        if (_requiredAmountEnergy <= _player.Energy)
-        {
-            if (CheckForDeckEmpty() == false)
-                CheckForPlayerAlive();
-            else
-                OpenExeptionBaner("Not card in deck");
-        }
-        else
-        {
-            OpenExeptionBaner("Not enough energy");
-        }
-        gameObject.SetActive(false);
-    }
+        [SerializeField] private Player _player;
+        [SerializeField] private int _requiredAmountEnergy;
+        [SerializeField] private GameObject _questList, _quest, _exeptionBaner;
+        [SerializeField] private TMP_Text _exeptionBanerText;
 
-    private void CheckForPlayerAlive()
-    {
-        if (_player.Health > 0)
+        private DataSaveLoadService _dataSaveLoadService;
+    
+        public int RequiredAmountEnergy => _requiredAmountEnergy;
+
+        [Inject]
+        private void Construct(DataSaveLoadService dataSaveLoadService)
         {
-            _quest.gameObject.SetActive(true);
+            _dataSaveLoadService = dataSaveLoadService;
+        }
+    
+        public void StartQuest()
+        {
+            if (!CheckForPlayerAlive() || !CheckForDeckEmpty() || !CheckForEnergy())
+                return;
+            
+            _quest.SetActive(true);
+            _questList.SetActive(false);
             gameObject.SetActive(false);
-            _questList.gameObject.SetActive(false);
         }
-        else
+
+        private bool CheckForEnergy()
         {
-            OpenExeptionBaner("Not enough health");
-        }
-    }
+            print(_player.Energy);
+        
+            if (_requiredAmountEnergy <= _player.Energy)
+                return true;
 
-    private bool CheckForDeckEmpty()
-    {
-        foreach (var item in _attackDeck.CardsInDeck)
+            OpenExceptionBanner("Not enough energy");
+            return false;
+        }
+
+        private bool CheckForPlayerAlive()
         {
-            if (item.Card.Rarity != RarityCard.Empty)
-                return false;
+            print(_player.Health);
+        
+            if (_player.Health > 0)
+                return true;
+        
+            OpenExceptionBanner("Not enough health");
+            return false;
         }
 
-        return true;
-    }
+        private bool CheckForDeckEmpty()
+        {
+            foreach (var card in _dataSaveLoadService.PlayerData.AttackDecks)
+            {
+                if (card.Id != 0)
+                    return true;
+            }
 
-    private void OpenExeptionBaner(string exeptionName)
-    {
-        _exeptionBaner.SetActive(true);
-        _exeptionBanerText.text = exeptionName;
+            OpenExceptionBanner("Not card in deck");
+            return false;
+        }
+
+        private void OpenExceptionBanner(string exceptionName)
+        {
+            gameObject.SetActive(false);
+            _exeptionBaner.SetActive(true);
+            _exeptionBanerText.text = exceptionName;
+        }
     }
 }

@@ -52,6 +52,7 @@ public class BattleController : MonoBehaviour
     private Card[] _enemyCards;
     private Card[] _playerCards;
     private int previousRandomNumber = -1;
+    private DataSaveLoadService _dataSaveLoadService;
     
     public event UnityAction OnPlayerWin;
     public event UnityAction OnPlayerLose;
@@ -59,7 +60,7 @@ public class BattleController : MonoBehaviour
     [Inject]
     private void Construct(DataSaveLoadService dataSaveLoadService)
     {
-        _playerCards = dataSaveLoadService.PlayerData.AttackDecks;
+        _dataSaveLoadService = dataSaveLoadService;
     }
         
     private void Awake()
@@ -70,6 +71,8 @@ public class BattleController : MonoBehaviour
     private void OnEnable()
     {
         RenderEnemyDefCard();
+        
+        _playerCards = _dataSaveLoadService.PlayerData.AttackDecks;
     }
 
     public void SetEnemyDefCard(List<Card> enemyDefCards, int amountEnemyDefValue)
@@ -290,22 +293,18 @@ public class BattleController : MonoBehaviour
             
         for (int i = 0; i < cards.Length; i++)
         {
-            if (cards[i].Id != 0)
-            {
+            if (cards[i].Id != 0) 
                 aliveCards.Add(i);
-                print(i);
-            }
-                
         }
 
         return aliveCards;
     }
-
+    
     private void HideNonActiveCards(Card[] cards, CardAnimator[] cardAnimators)
     {
         for (int i = 0; i < cards.Length; i++)
         {
-            if (cards[i].Id != 0)
+            if (cards[i].Id == 0)
                 cardAnimators[i].Hide();
         }
     }
