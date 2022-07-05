@@ -25,9 +25,16 @@ public class HideAndSeekPages : MonoBehaviour
     
     private void Start()
     {
+        InitAllPages();
         ShowAllPages();
         TurnOffAllPages();
         _startPage.Show();
+    }
+
+    private void InitAllPages()
+    {
+        foreach (var page in _pages)
+            page.InitStartPosition();
     }
 
     private void ShowAllPages()

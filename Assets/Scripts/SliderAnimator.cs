@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class SliderAnimator : MonoBehaviour
 {
-    private Sequence _sequence;
-
     [SerializeField]
     private Slider _slider;
+
+    private Sequence _sequence;
 
     public void UpdateSlider(float value)
     {
@@ -38,8 +38,6 @@ public class SliderAnimator : MonoBehaviour
         _sequence.Insert(0, DOTween.To(()=> _slider.value, x=> _slider.value = x, value, time)); 
     }
 
-    private void OnApplicationQuit()
-    {
+    private void OnApplicationQuit() => 
         _sequence?.Kill();
-    }
 }

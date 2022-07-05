@@ -7,30 +7,23 @@ public class Page : MonoBehaviour
     [SerializeField] 
     protected CanvasGroup CanvasGroup;
 
-    [SerializeField] 
-    private bool _isZeroPosition;
-    
     protected Vector3 StartPosition;
     protected Sequence Sequence;
-
-
-    private void Start()
-    {
-        InitStartPosition();
-    }
-
-    private void InitStartPosition() => 
-        StartPosition = _isZeroPosition ? Vector3.zero : transform.localPosition;
+    
+    public void InitStartPosition() => 
+        StartPosition = transform.localPosition;
 
     public void Show()
     {
-        Sequence = DOTween.Sequence();
+        Sequence?.Kill();
+        
         gameObject.SetActive(true);
     }
 
     public virtual void Hide()
     {
-        Sequence.Kill();
+        Sequence?.Kill();
+        
         transform.localPosition = StartPosition;
         gameObject.SetActive(false);
     }
@@ -51,6 +44,9 @@ public class Page : MonoBehaviour
 
     protected IEnumerator ShowSmooth()
     {
+        Sequence?.Kill();
+        Sequence = DOTween.Sequence();
+        
         CanvasGroup.alpha = 0;
         transform.localPosition = StartPosition + new Vector3(200, 0, 0);
         Sequence
@@ -62,11 +58,16 @@ public class Page : MonoBehaviour
 
     private IEnumerator HideSmooth()
     {
-        print("HideSmooth");
+        Sequence?.Kill();
+        Sequence = DOTween.Sequence();
+
         CanvasGroup.alpha = 1;
         transform.localPosition = StartPosition;
         DOTween.To(() => CanvasGroup.alpha, x => CanvasGroup.alpha = x, 0, 1);
         transform.DOLocalMove(StartPosition + new Vector3(200, 0, 0), 1);
         yield return new WaitForSeconds(1);
     }
+    
+    private void OnApplicationQuit() => 
+        Sequence?.Kill();
 }
