@@ -22,6 +22,11 @@ public class FarmWindow : MonoBehaviour
         _farm.OnAddNewPrize += AddNewPrize;
     }
 
+    private void OnDisable()
+    {
+        _farm.OnAddNewPrize -= AddNewPrize;
+    }
+
     public void GetPrizes()
     {
         _farm.AccruePrizes();

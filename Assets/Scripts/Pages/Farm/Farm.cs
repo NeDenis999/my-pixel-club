@@ -29,6 +29,7 @@ public class Farm : MonoBehaviour
     {
         _nftImage.sprite = nft.Sprite;
         _isNFTSet = true;
+        _startButton.SetActive(true);
     }
 
     public void StartFarm()
@@ -44,6 +45,8 @@ public class Farm : MonoBehaviour
 
     public void AccruePrizes()
     {
+        if (_prizes.Count != 10) throw new System.InvalidOperationException();
+
         foreach (var prize in _prizes)
         {
             switch (prize.TypePrize)
@@ -61,6 +64,8 @@ public class Farm : MonoBehaviour
 
         _prizes.Clear();
 
+        _getButton.SetActive(false);
+        _startButton.SetActive(true);
     }
 
     private IEnumerator GetPrizes()
@@ -85,8 +90,8 @@ public class Farm : MonoBehaviour
 
     private IEnumerator Timer()
     {
-        _timer.text = ("Left 242 minuts");
-        int maxSeconds = 242;
+        _timer.text = ("Left 242 seconds");
+        int maxSeconds = 272;
 
         while (maxSeconds > 0)
         {

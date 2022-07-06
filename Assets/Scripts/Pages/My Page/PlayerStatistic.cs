@@ -17,7 +17,7 @@ namespace Pages.My_Page
         [SerializeField] private TMP_Text _levelText;
         [SerializeField] private TMP_Text _rankText;
         [SerializeField] private TMP_Text _energyText;
-        [SerializeField] private TMP_Text _xpText;
+        [SerializeField] private TMP_Text _expText;
         [SerializeField] private TMP_Text _heroesText;
         [SerializeField] private TMP_Text _powerText;
         [SerializeField] private TMP_Text _goldText;
@@ -28,7 +28,9 @@ namespace Pages.My_Page
         private SliderAnimator _energySlider;
     
         [SerializeField]
-        private SliderAnimator _xpSlider;
+        private SliderAnimator _expSlider;
+
+        [SerializeField] private AttackDeck _attackDeck;
 
         private DataSaveLoadService _data;
         
@@ -46,16 +48,16 @@ namespace Pages.My_Page
         public void UpdateDisplay()
         {
             _energySlider.UpdateSlider(_data.PlayerData.Energy);
-            _xpSlider.UpdateSlider(_data.PlayerData.XP);
+            _expSlider.UpdateSlider(_data.PlayerData.XP);
             
             _avatar.sprite = _data.PlayerData.Avatar;
             _nickName.text = _data.PlayerData.Nickname;
             _levelText.text = _data.PlayerData.Level.ToString();
             _rankText.text = _data.PlayerData.Rank.ToString();
             _energyText.text = _data.PlayerData.Energy.ToString(CultureInfo.InvariantCulture);
-            _xpText.text = _player.Exp.ToString(CultureInfo.InvariantCulture);
+            _expText.text = _player.Exp.ToString(CultureInfo.InvariantCulture);
             _heroesText.text = (CalculateHerouseCountInDeck(_data.PlayerData.AttackDecks) + CalculateHerouseCountInDeck(_data.PlayerData.DefDecks) + _data.PlayerData.InventoryDecks.Length).ToString() + '/' + 100;
-            _powerText.text = 90.ToString();
+            _powerText.text = _attackDeck.Power.ToString();
             _goldText.text = _data.PlayerData.Coins.ToString();
         }
 

@@ -1,8 +1,21 @@
 using Data;
 using Infrastructure.Services;
 
-public  class AttackDeck : Deck
+public class AttackDeck : Deck
 {
+    public int Power
+    {
+        get
+        {
+            int amountPower = 0;
+
+            foreach (var card in _cardsInDeck)
+                amountPower += card.Power;
+
+            return amountPower;
+        }
+    }
+
     protected override void InitCards(DataSaveLoadService data)
     {
         if (data.PlayerData.AttackDecks == null)

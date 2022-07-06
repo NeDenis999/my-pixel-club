@@ -41,7 +41,7 @@ namespace Pages.Enhance.Card_Statistic
 
             _levelPointUpgradeCard = _upgradeCard.CardCell.LevelPoint;
 
-            _maxLevelPointUpgradeCard = _upgradeCard.CardCell.Card.MaxLevelPoint;
+            _maxLevelPointUpgradeCard = _upgradeCard.CardCell.MaxLevelPoint;
             _lastMaxLevelPointUpgradeCard = _maxLevelPointUpgradeCard;
         
             _increaseLevelPointSlider.UpdateSlider(_upgradeCard.CardCell.LevelPoint, _upgradeCard.CardCell.MaxLevelPoint);

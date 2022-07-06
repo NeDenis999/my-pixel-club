@@ -3557,7 +3557,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: xp
+  m_text: 'EXP
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc385ff70dcf7d847a09cc7e55f2ae62, type: 2}
   m_sharedMaterial: {fileID: -5343837838219752835, guid: bc385ff70dcf7d847a09cc7e55f2ae62, type: 2}
@@ -4094,7 +4096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7670886862411107340}
   m_Layer: 5
-  m_Name: XP
+  m_Name: EXP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9127,14 +9129,15 @@ MonoBehaviour:
   _levelText: {fileID: 7618662492392877522}
   _rankText: {fileID: 7307195293711067827}
   _energyText: {fileID: 7352310314185995106}
-  _xpText: {fileID: 3184436066787620789}
+  _expText: {fileID: 3184436066787620789}
   _heroesText: {fileID: 5713792038193882985}
   _powerText: {fileID: 6334771799079899444}
   _goldText: {fileID: 381713161990602335}
   _nickName: {fileID: 7142938793020624413}
   _avatar: {fileID: 1155031524077875270}
   _energySlider: {fileID: 6853738315983538800}
-  _xpSlider: {fileID: 1436729905241657658}
+  _expSlider: {fileID: 1436729905241657658}
+  _attackDeck: {fileID: 0}
 --- !u!1 &7142938793614882937
 GameObject:
   m_ObjectHideFlags: 0

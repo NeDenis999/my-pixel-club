@@ -23,6 +23,8 @@ public abstract class CardCell : MonoBehaviour, ICard
     public int Def => _cardData.Defence;
     public int Health => _cardData.Health;
 
+    public int Power => Attack + Health;
+
     public int Level => _cardData.Level;
     public int Evolution => _cardData.Evolution;
     public int MaxLevel => _maxLevel;
