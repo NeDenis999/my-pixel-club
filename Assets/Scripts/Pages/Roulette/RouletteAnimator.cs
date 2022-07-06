@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Roulette
+namespace Pages.Roulette
 {
     public class RouletteAnimator : MonoBehaviour
     {

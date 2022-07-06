@@ -9,8 +9,9 @@ namespace Pages.Quest
     {
         [SerializeField] private Player _player;
         [SerializeField] private int _requiredAmountEnergy;
-        [SerializeField] private GameObject _questList, _quest, _exeptionBaner;
+        [SerializeField] private GameObject _questList, _exeptionBaner;
         [SerializeField] private TMP_Text _exeptionBanerText;
+        [SerializeField] private QuestFight _questFight;
 
         private DataSaveLoadService _dataSaveLoadService;
     
@@ -27,7 +28,7 @@ namespace Pages.Quest
             if (!CheckForPlayerAlive() || !CheckForDeckEmpty() || !CheckForEnergy())
                 return;
             
-            _quest.SetActive(true);
+            _questFight.StartFight();
             _questList.SetActive(false);
             gameObject.SetActive(false);
         }
