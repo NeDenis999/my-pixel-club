@@ -18,6 +18,7 @@ public class Prize : ScriptableObject, IRoulette
     public PrizeType TypePrize;
 
     public Sprite UIIcon => Sprite;
+    public string Description => TypePrize.ToString();
 
     public void TakeItem()
     {

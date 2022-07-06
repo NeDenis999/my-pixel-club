@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,12 @@ namespace Pages.Roulette
 
         [SerializeField] 
         private GameObject _protectionFromExitingMenu;
+
+        [SerializeField] 
+        private Image _prizeImage;
+        
+        [SerializeField] 
+        private TextMeshProUGUI _prizeText;
         
         private Transform _currentParrent;
         private Vector3 _previousCurrentCellPosition;
@@ -59,15 +67,17 @@ namespace Pages.Roulette
 
 
             
-            _currentParrent = _currentCell.transform.parent;
+            //_currentParrent = _currentCell.transform.parent;
 
-            _previousCurrentCellPosition = _currentCell.transform.localPosition;
-            _previousCurrentCellScale = _currentCell.transform.localScale;
-            _currentCell.transform.parent = _target;
-            _currentCell.transform.DOMove(_target.position, 1);
-            yield return new WaitForSeconds(1);
-            _currentCell.transform.DOScale(new Vector3(30, 30, 1), 1);
-            yield return new WaitForSeconds(1);
+            //_previousCurrentCellPosition = _currentCell.transform.localPosition;
+            //_previousCurrentCellScale = _currentCell.transform.localScale;
+            //_currentCell.transform.parent = _target;
+            //_currentCell.transform.DOMove(_target.position, 1);
+            //yield return new WaitForSeconds(1);
+            //_currentCell.transform.DOScale(new Vector3(30, 30, 1), 1);
+            //yield return new WaitForSeconds(1);
+            _prizeImage.sprite = _currentCell.RouletteItem.UIIcon;
+            _prizeText.text = _currentCell.RouletteItem.Description;
             DOTween.To(() => _winningPanel.alpha, x => _winningPanel.alpha = x, 1, 1);
             yield return new WaitForSeconds(1);
             _winningPanel.interactable = true;
@@ -76,7 +86,7 @@ namespace Pages.Roulette
 
         public IEnumerator CloseWinningPanel(Button startRoletteButton)
         {
-            _currentCell.transform.parent = _currentParrent;
+            //_currentCell.transform.parent = _currentParrent;
             DOTween.To(() => _winningPanel.alpha, x => _winningPanel.alpha = x, 0, 0.75f)
                 .OnComplete(() =>
                 {
@@ -84,10 +94,10 @@ namespace Pages.Roulette
                     _winningPanel.interactable = false;
                 });
 
-            _currentCell.transform.DOScale(_previousCurrentCellScale, 0.75f);
+            //_currentCell.transform.DOScale(_previousCurrentCellScale, 0.75f);
             _currentCell.Unselect();
             yield return new WaitForSeconds(0.75f);
-            _currentCell.transform.DOLocalMove(_previousCurrentCellPosition, 0.75f);
+            //_currentCell.transform.DOLocalMove(_previousCurrentCellPosition, 0.75f);
             yield return new WaitForSeconds(0.75f);
             startRoletteButton.interactable = true;
             _protectionFromExitingMenu.SetActive(false);

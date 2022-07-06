@@ -69,6 +69,8 @@ public class Card : ScriptableObject, ICard, IRoulette
         }
     }
 
+    public string Description { get; }
+
     public string Name => _name;
 
     public RarityCard Rarity => _rarity;
