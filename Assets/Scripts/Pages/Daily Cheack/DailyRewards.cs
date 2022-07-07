@@ -41,8 +41,8 @@ public class DailyRewards : MonoBehaviour
 
     private bool _canClaimReward;
     private int _maxStreakCount;
-    private float _claimCoolDown = 24f;
-    private float _claimDeadLine = 48f;
+    private float _claimCoolDown = 24f / 24 / 60 / 6 / 2;
+    private float _claimDeadLine = 48f / 24 / 60 / 6 / 2;
 
     private List<RewardPref> _rewardPrefabs = new();
 
@@ -98,7 +98,7 @@ public class DailyRewards : MonoBehaviour
             var nextClaimTime = _lastClaimTime.Value.AddHours(_claimCoolDown);
             var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
 
-            Debug.Log("Left + " + currentClaimCooldown.Hours + currentClaimCooldown.Minutes + currentClaimCooldown.Seconds);
+            Debug.Log($"Left {currentClaimCooldown.Hours} {currentClaimCooldown.Minutes} {currentClaimCooldown.Seconds}");
         }
 
         for (int i = 0; i < _rewardPrefabs.Count; i++)

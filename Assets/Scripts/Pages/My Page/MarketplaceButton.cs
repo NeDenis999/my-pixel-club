@@ -6,16 +6,21 @@ using UnityEngine.UI;
 public class MarketplaceButton : MonoBehaviour
 {
     [SerializeField] private HideAndSeekPages _hideAndSeekPages;
-    [SerializeField] private GameObject _pageToOpen;
+    [SerializeField] private Page _pageToOpen;
 
     [SerializeField] private ShopCategoryRendering _shopCategoryRendering;
 
     [SerializeField] private Image _image;
 
+    private void OnEnable()
+    {
+        _image.color = Color.HSVToRGB(0, 0, 0.56f);
+    }
+
     private void OnMouseDown()
     {
         _hideAndSeekPages.TurnOffAllPages();
-        _pageToOpen.SetActive(true);
+        _pageToOpen.StartShowSmooth();
 
         if (_shopCategoryRendering != null)
             _shopCategoryRendering.SelectCategore();
