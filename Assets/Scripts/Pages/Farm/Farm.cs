@@ -90,8 +90,8 @@ public class Farm : MonoBehaviour
 
     private IEnumerator Timer()
     {
-        _timer.text = ("Left 242 seconds");
         int maxSeconds = 272;
+        _timer.text = "Left " + maxSeconds + " seconds";
 
         while (maxSeconds > 0)
         {
