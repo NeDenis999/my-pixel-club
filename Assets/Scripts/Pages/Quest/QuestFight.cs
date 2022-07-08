@@ -27,6 +27,9 @@ namespace Pages.Quest
         
         [SerializeField] 
         private Shaking _shaking;
+
+        [SerializeField]
+        private ParticleSystem _attackEffect;
         
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
@@ -131,8 +134,8 @@ namespace Pages.Quest
 
         private void HitEnemy()
         {
-            _enemy.TakeDamage(1); //_player.Attack
-            var effect = Instantiate(_player.AttackCards[0].Card.AttackEffect, _enemy.transform.position, Quaternion.identity);
+            _enemy.TakeDamage(_player.Attack); //1
+            var effect = Instantiate(_attackEffect, _enemy.transform.position, Quaternion.identity);
             _shaking.Shake(0.5f, 10);
             Destroy(effect, 4);
             _enemyHealthSlider.value = _enemy.Health;

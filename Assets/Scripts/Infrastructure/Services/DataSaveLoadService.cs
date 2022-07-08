@@ -12,9 +12,9 @@ namespace Infrastructure.Services
         private const string DataKey = "data";
         private const int EmptyCardId = 0;
         private const int SizeDeck = 5;
-        
-        protected Sprite[] _avatars;
-        protected Card[] _allCards;
+
+        private readonly Sprite[] _avatars;
+        private readonly Card[] _allCards;
 
         private PlayerData _playerData;
         public PlayerData PlayerData => _playerData;
@@ -22,10 +22,6 @@ namespace Infrastructure.Services
         public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
         {
             _allCards = allCards;
-            
-            //foreach (var card in _allCards) 
-                //card.Repair();
-
             _avatars = avatars;
         }
 
@@ -33,16 +29,12 @@ namespace Infrastructure.Services
         {
             string jsonString = JsonUtility.ToJson(_playerData);
             PlayerPrefs.SetString(DataKey, jsonString);
-
-            Debug.Log("Save");
         }
 
         public void Load()
         {
-            for (int i = 0; i < _allCards.Length; i++)
-            {
+            for (int i = 0; i < _allCards.Length; i++) 
                 _allCards[i].Id = i;
-            }
 
             if (!PlayerPrefs.HasKey(DataKey))
                 CreatePlayerData();
@@ -69,14 +61,9 @@ namespace Infrastructure.Services
             UpdateDefenceDeck();
             UpdateInventoryDeck();
             UpdateAvatar();
-
-            //Debug.Log(_playerData);
-            
-            Debug.Log("Load");
-            //Debug.Log($"{_playerData.Coins}, \n{_playerData.Crystals}, \n{_playerData.AttackDecks}");
         }
         
-                public void IncreaseEnergy(int energyValue)
+        public void IncreaseEnergy(int energyValue)
         {
             if (_playerData.Energy > 25) throw new ArgumentOutOfRangeException();
 
@@ -155,10 +142,10 @@ namespace Infrastructure.Services
             {
                 Coins = 1000,
                 Crystals = 1000,
-                AttackDecksData = CreateCardDatas(),
-                DefDecksData = CreateCardDatas(),
-                InventoryDecksData = new CardData[0],
-                InventoryDecks = new Card[0],
+                AttackDecksData = CreateCardsData(),
+                DefDecksData = CreateCardsData(),
+                InventoryDecksData = Array.Empty<CardData>(),
+                InventoryDecks = Array.Empty<Card>(),
                 Nickname = RandomNickname(),
                 AvatarId = RandomAvatarId(),
                 FirstDayInGame = DateTime.Now,
@@ -222,7 +209,7 @@ namespace Infrastructure.Services
             }
         }
 
-        private CardData[] CreateCardDatas()
+        private CardData[] CreateCardsData()
         {
             var cards = new CardData[5];
             

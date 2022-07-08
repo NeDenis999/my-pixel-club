@@ -24,40 +24,59 @@ public class Card : ScriptableObject, ICard, IRoulette
     [SerializeField] private Sprite _imageFirstEvolution;
     [SerializeField] private Sprite _imageSecondeEvolution;
     [SerializeField] private string _name;
-
     [SerializeField] private RarityCard _rarity;
     [SerializeField] private RaceCard _race;
-
     [SerializeField] private int _attack;
     [SerializeField] private int _def;
     [SerializeField] private int _health;
-    private int _level = 1;
-
     [SerializeField] private string _attackSillName;
-
     [SerializeField] private string _defSkillName;
     [SerializeField] private int _defSkill;
 
     [Header("Skill Chance Per Procent")]
     [SerializeField] private double _skillChance;
-
     [SerializeField] private string _discription;
-
     [SerializeField] private Vector2 _directionView;
 
     [SerializeField] 
     private ParticleSystem _attackEffect;
 
     [SerializeField] 
+    private ParticleSystem _skillEffect;
+    
+    [SerializeField] 
     private Sprite _skillIcon;
 
+    private int _level = 1;
     private int _currentLevelPoint;
     private int _maxLevelPoint = 1000;
     private int _evolution = 1;
+    
     public int Evolution => _evolution;
     public int LevelPoint => _currentLevelPoint;
     public int MaxLevelPoint => _maxLevelPoint;
-    
+    public string Description { get; }
+    public string Name => _name;
+    public RarityCard Rarity => _rarity;
+    public RaceCard Race => _race;
+    public int Attack => _attack;
+    public int Def => _def;
+    public int Health => _health;
+    public int Level => _level;
+    public Vector2 DirectionView => _directionView;
+    public ParticleSystem AttackEffect => _attackEffect;
+    public ParticleSystem SkillEffect => _skillEffect;
+    public Sprite SkillIcon => _skillIcon;
+    public int BonusAttackSkill => (int)(_attack * 0.17f);
+    public int Id { get; set; }
+    public void TakeDamage(int damage) => _health -= damage;
+    public string AttackSkillName => _attackSillName;
+    public int BonusDefSkill => _defSkill;
+    public string DefSkillName => _defSkillName;
+    public float SkillChance => (float)_skillChance;
+    public string Discription => _discription;
+    public Sprite ImageFirstEvolution => _imageFirstEvolution;
+    public Sprite ImageSecondeEvolution => _imageSecondeEvolution;
     public Sprite UIIcon
     {
         get
@@ -68,37 +87,6 @@ public class Card : ScriptableObject, ICard, IRoulette
                 return _imageSecondeEvolution;
         }
     }
-
-    public string Description { get; }
-
-    public string Name => _name;
-
-    public RarityCard Rarity => _rarity;
-    public RaceCard Race => _race;
-
-    public int Attack => _attack;
-    public int Def => _def;
-    public int Health => _health;
-    public int Level => _level;
-    public Vector2 DirectionView => _directionView;
-    public ParticleSystem AttackEffect => _attackEffect;
-    public Sprite SkillIcon => _skillIcon;
-
-    public int BonusAttackSkill => (int)(_attack * 0.17f);
-    public int Id { get; set; }
-    public void TakeDamage(int damage) => _health -= damage;
-
-    public string AttackSkillName => _attackSillName;
-
-    public int BonusDefSkill => _defSkill;
-    public string DefSkillName => _defSkillName;
-
-    public float SkillChance => (float)_skillChance;
-
-    public string Discription => _discription;
-
-    public Sprite ImageFirstEvolution => _imageFirstEvolution;
-    public Sprite ImageSecondeEvolution => _imageSecondeEvolution;
     
     Card ICard.Card => this;
 

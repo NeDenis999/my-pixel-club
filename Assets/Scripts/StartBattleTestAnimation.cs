@@ -1,5 +1,6 @@
 ﻿using System;
 using Battle;
+using Pages.Battle;
 using UnityEngine;
 
 public class StartBattleTestAnimation : MonoBehaviour

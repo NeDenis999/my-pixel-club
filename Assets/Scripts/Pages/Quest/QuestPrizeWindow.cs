@@ -1,6 +1,7 @@
 using TMPro;
 using System.Collections.Generic;
 using Battle;
+using Pages.Battle;
 using Pages.Quest;
 using UnityEngine;
 using UnityEngine.Events;

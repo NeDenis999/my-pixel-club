@@ -4,6 +4,8 @@ namespace Infrastructure.Services
 {
     public class AssetProviderService
     {
+        public const string MainThemePath = "";
+        
         public readonly Sprite[] Frames;
         public readonly Card[] AllCards;
         

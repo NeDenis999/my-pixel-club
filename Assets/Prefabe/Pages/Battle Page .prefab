@@ -1834,6 +1834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1350219965537620637}
   - component: {fileID: 1350219965537620639}
+  - component: {fileID: 5952276928839674408}
   m_Layer: 5
   m_Name: Player Avatar
   m_TagString: Untagged
@@ -1871,6 +1872,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350219965537620636}
   m_CullTransparentMesh: 1
+--- !u!114 &5952276928839674408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350219965537620636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4617b62040714b4c8c76f49984843cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 7294392049055167064}
 --- !u!1 &1350219965569995597
 GameObject:
   m_ObjectHideFlags: 0
@@ -10830,6 +10844,10 @@ PrefabInstance:
       propertyPath: _battleConfirmWindow
       value: 
       objectReference: {fileID: 1350219965414464652}
+    - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c035776f9b5c954ca1256ba074a364e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
 --- !u!224 &5070229563518940558 stripped
@@ -11410,6 +11428,14 @@ PrefabInstance:
       propertyPath: _battleConfirmWindow
       value: 
       objectReference: {fileID: 1350219965414464652}
+    - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c035776f9b5c954ca1256ba074a364e, type: 3}
+    - target: {fileID: 7167680834735657746, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5204615664265637248, guid: bb618e6f39532fa47915aa3244b83786, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
 --- !u!224 &7933875128381461174 stripped
