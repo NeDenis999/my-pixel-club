@@ -19,7 +19,7 @@ namespace Pages.Quest
         [SerializeField] private TMP_Text _enemyHelthPerProcentText, _playerHealthPerProcentText, _playerExpPerProcentText;
         [SerializeField] private QuestConfirmWindow _questConfirmWindow;
         [SerializeField] private GameObject _questList;
-        [SerializeField] private GameObject _winWindow;
+        [SerializeField] private QuestPrizeWindow _winOrLoseWindow;
         [SerializeField] private Image _playerIcon;
 
         [SerializeField]
@@ -42,24 +42,17 @@ namespace Pages.Quest
             _assetProviderService = assetProviderService;
         }
         
-        private void Start()
+        private void OnEnable()
         {
             _playerHealthSlider.maxValue = _player.MaxHealth;        
             _enemyHealthSlider.maxValue = _enemy.MaxHealth;
-        }
-
-        public void StartFight()
-        {
-            gameObject.SetActive(true);
-            InitFight();
-            StartCoroutine(Fight());
         }
 
         private void InitFight()
         {
             _playerIcon.sprite = _dataSaveLoadService.PlayerData.Avatar;
             _playerExpSlider.maxValue = _player.MaxExp;
-            _playerExpSlider.value = _player.Exp;
+            _playerExpSlider.value = _dataSaveLoadService.PlayerData.EXP;
 
             _playerHealthSlider.value = _player.Health;
             _playerHealthPerProcentText.text = (_player.Health / _player.MaxHealth * 100).ToString() + " %"; ;
@@ -67,9 +60,9 @@ namespace Pages.Quest
             _enemyHealthSlider.value = _enemy.MaxHealth;
             _enemyHelthPerProcentText.text = "100 %";
 
-            _playerExpPerProcentText.text = (_player.Exp / _player.MaxExp * 100).ToString() + " %";
+            _playerExpPerProcentText.text = (_dataSaveLoadService.PlayerData.EXP / _player.MaxExp * 100).ToString() + " %";
         
-            _player.SpendEnergy(_questConfirmWindow.RequiredAmountEnergy);
+            _dataSaveLoadService.DecreaseEnergy(_questConfirmWindow.RequiredAmountEnergy);
         }
         
         private IEnumerator Fight()
@@ -94,12 +87,12 @@ namespace Pages.Quest
 
             if (_player.Health > 0)
             {
-                //OnPlayerWin?.Invoke();
-                _player.GetExp(25);
-                _playerExpPerProcentText.text = (_player.Exp / _player.MaxExp * 100).ToString() + " %";
-                _experienceSliderAnimator.UpdateSlider(_player.Exp, _player.MaxExp);
+                _dataSaveLoadService.IncreaseEXP(25);
+                _playerExpPerProcentText.text = (_dataSaveLoadService.PlayerData.EXP / _player.MaxExp * 100).ToString() + " %";
+                _experienceSliderAnimator.UpdateSlider(_dataSaveLoadService.PlayerData.EXP, _player.MaxExp);
                 yield return new WaitForSeconds(2f);
-                _winWindow.SetActive(true);
+
+                _winOrLoseWindow.OpenPrizeWindow();
             }
 
             gameObject.SetActive(false);
@@ -107,20 +100,16 @@ namespace Pages.Quest
             _player.RevertHealth();
         }
 
-        private int GenerateEnemyAttackValue(EnemyType enemyType)
+        public void StartFight()
         {
-            if (enemyType == EnemyType.Enemy)
-                return Random.Range(1, 5);
-
-            if (enemyType == EnemyType.Boss)
-                return Random.Range(15, 25);
-
-            throw new System.ArgumentException();
-        }  
-
+            gameObject.SetActive(true);
+            InitFight();
+            StartCoroutine(Fight());
+        }
+        
         private void HitPlayer()
         {
-            _player.TakeDamage(GenerateEnemyAttackValue(_enemy.TypeEnemy));
+            _player.TakeDamage(_enemy.Damage());
             _shaking.Shake(0.5f, 10);
             _playerHealthSlider.value = _player.Health;
             _playerHealthPerProcentText.text = (_player.Health / _player.MaxHealth * 100).ToString() + " %";
@@ -128,7 +117,6 @@ namespace Pages.Quest
             if (_player.Health <= 0)
             {
                 _isFight = false;
-                OnPlayerLose?.Invoke();
             }
         }
 

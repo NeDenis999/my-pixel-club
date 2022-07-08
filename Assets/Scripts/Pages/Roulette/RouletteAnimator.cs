@@ -81,7 +81,6 @@ namespace Pages.Roulette
 
         public IEnumerator CloseWinningPanel(Button startRoletteButton)
         {
-            _prizeImage.transform.DOScale(Vector3.zero, 0.5f);
             //yield return new WaitForSeconds(0.5f);
             //_currentCell.transform.parent = _currentParrent;
             DOTween.To(() => _winningPanel.alpha, x => _winningPanel.alpha = x, 0, 0.75f)

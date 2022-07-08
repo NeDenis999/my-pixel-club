@@ -755,8 +755,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5714374845541448892}
   - component: {fileID: 5714374845541448895}
-  - component: {fileID: 5714374845541448866}
   - component: {fileID: 5714374845541448893}
+  - component: {fileID: 4318625405242415796}
   m_Layer: 5
   m_Name: Daily Cheack Page
   m_TagString: Untagged
@@ -796,19 +796,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5714374845541448889}
   m_CullTransparentMesh: 1
---- !u!114 &5714374845541448866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5714374845541448889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanvasGroup: {fileID: 5714374845541448893}
 --- !u!225 &5714374845541448893
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -821,6 +808,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4318625405242415796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714374845541448889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430c251eede544f193b3167a1385bcfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 5714374845541448893}
 --- !u!1 &6479006884015348389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,6 +1388,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4318625405242415796}
+        m_TargetAssemblyTypeName: Pages.Farm.FarmPage, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -45,8 +45,8 @@ public class Player : MonoBehaviour
         {
             _amountCardBaseAttack = 0;
 
-            foreach (var item in cardInDeck)
-                _amountCardBaseAttack += item.Attack;
+            foreach (var card in cardInDeck)
+                _amountCardBaseAttack += card.Attack;
         };
     }
 
@@ -70,12 +70,6 @@ public class Player : MonoBehaviour
     public void RevertHealth()
     {
         _health = _maxHealth;
-    }
-
-    public void GetExp(int exp)
-    {
-        _exp += exp;
-        CheckLevelUp();
     }
 
     private void CheakAlive()

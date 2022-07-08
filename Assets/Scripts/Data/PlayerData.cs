@@ -17,7 +17,7 @@ namespace Data
         public string Nickname;
         public Sprite Avatar;
         public int AvatarId;
-        public float XP;
+        public float EXP;
         public int Energy;
         public int Level;
         public int Rank;

@@ -17,7 +17,7 @@ namespace Pages.Quest
         [SerializeField] private QuestFight _quest;
         [SerializeField] private EnemyType _enemyType;
     
-        [SerializeField, Range(10, 100)] 
+        [SerializeField, Range(100, 1000)] 
         private int _maxHealth;
     
         [SerializeField] 
@@ -27,11 +27,31 @@ namespace Pages.Quest
 
         public float MaxHealth => _maxHealth;
         public float Health => _health;
-        public EnemyType TypeEnemy => _enemyType;
 
         private void OnEnable()
         {
             _health = _maxHealth;
+        }
+
+        private void CheckAlive()
+        {
+            if (_health <= 0)
+            {
+                _health = 0;
+                OnEnemyDead?.Invoke();
+                Debug.Log("Enemy Dead");
+            }
+        }
+
+        private int GenerateEnemyAttackValue(EnemyType enemyType)
+        {
+            if (enemyType == EnemyType.Enemy)
+                return Random.Range(10, 50);
+
+            if (enemyType == EnemyType.Boss)
+                return Random.Range(15, 25);
+
+            throw new System.ArgumentException();
         }
 
         public void TakeDamage(int amountDamage)
@@ -43,14 +63,16 @@ namespace Pages.Quest
 
             CheckAlive();
         }
-        private void CheckAlive()
+
+        public int Damage()
         {
-            if (_health <= 0)
-            {
-                _health = 0;
-                OnEnemyDead?.Invoke();
-                Debug.Log("Enemy Dead");
-            }
+            if (_enemyType == EnemyType.Enemy)
+                return Random.Range(10, 25);
+
+            if (_enemyType == EnemyType.Boss)
+                return Random.Range(25, 50);
+
+            throw new System.ArgumentException();
         }
     }
 }

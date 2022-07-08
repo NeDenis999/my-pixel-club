@@ -5,6 +5,7 @@ using Pages.Battle;
 using Pages.Quest;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class QuestPrizeWindow : MonoBehaviour
 {
@@ -12,46 +13,31 @@ public class QuestPrizeWindow : MonoBehaviour
     public event UnityAction<int> OnAcceruCristal;
 
     [SerializeField] private List<Prize> _variationPrizes;
-    [SerializeField] private PrizeCell _farmPrizeCellTemplate;
+    [SerializeField] private PrizeCell _prizeCellTemplate;
     [SerializeField] private Transform _container;
 
-    [SerializeField] private QuestFight _quest;
     [SerializeField] private BattleController _battle;
 
-    [SerializeField] private TMP_Text _winOrLoseText;
+    [SerializeField] private Button _collectButton;
 
     private List<PrizeCell> _prizes = new();
 
     private void Start()
     {
-        _quest.OnPlayerWin += OpenPrizeWindow;
         _battle.OnPlayerWin += OpenPrizeWindow;
+    }
 
-        _quest.OnPlayerLose += OpenLoseWindow;
-        _battle.OnPlayerLose += OpenLoseWindow;
-
-        gameObject.SetActive(false);
+    private void OnEnable()
+    {
+        _collectButton.onClick.AddListener(AccruePrizes);
     }
 
     private void OnDisable()
     {
         foreach (Transform child in _container)
             Destroy(child.gameObject);
-    }
 
-    private void OpenLoseWindow()
-    {
-        gameObject.SetActive(true);
-        _winOrLoseText.text = "You lose!";
-    }
-
-    private void OpenPrizeWindow()
-    {
-        gameObject.SetActive(true);
-        GeneratePrizes();
-        AccruePrizes();
-        _winOrLoseText.text = @"YOU WIN 
-You have received";
+        _collectButton.onClick.RemoveListener(AccruePrizes);
     }
 
     private void GeneratePrizes()
@@ -64,7 +50,7 @@ You have received";
 
     private PrizeCell AddNewPrize()
     {
-        var cell = Instantiate(_farmPrizeCellTemplate, _container);
+        var cell = Instantiate(_prizeCellTemplate, _container);
         cell.Render(GetRandomPrize());
         return cell;
     }
@@ -99,5 +85,11 @@ You have received";
         }
 
         _prizes.Clear();
+    }
+
+    public void OpenPrizeWindow()
+    {
+        gameObject.SetActive(true);
+        GeneratePrizes();
     }
 }

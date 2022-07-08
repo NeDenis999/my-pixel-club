@@ -51,7 +51,18 @@ public class DailyRewards : MonoBehaviour
         _maxStreakCount = _rewards.Count;
 
         InitPrefabs();
-        StartCoroutine(RewardsStateUpdater());
+        UpdateRewardsState();
+
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(RewardsStateUpdater());        
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private void InitPrefabs()

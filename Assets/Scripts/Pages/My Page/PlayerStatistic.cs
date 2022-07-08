@@ -48,14 +48,14 @@ namespace Pages.My_Page
         public void UpdateDisplay()
         {
             _energySlider.UpdateSlider(_data.PlayerData.Energy);
-            _expSlider.UpdateSlider(_data.PlayerData.XP);
+            _expSlider.UpdateSlider(_data.PlayerData.EXP);
             
             _avatar.sprite = _data.PlayerData.Avatar;
             _nickName.text = _data.PlayerData.Nickname;
             _levelText.text = _data.PlayerData.Level.ToString();
             _rankText.text = _data.PlayerData.Rank.ToString();
             _energyText.text = _data.PlayerData.Energy.ToString(CultureInfo.InvariantCulture);
-            _expText.text = _player.Exp.ToString(CultureInfo.InvariantCulture);
+            _expText.text = _data.PlayerData.EXP.ToString(CultureInfo.InvariantCulture);
             _heroesText.text = (CalculateHerouseCountInDeck(_data.PlayerData.AttackDecks) + CalculateHerouseCountInDeck(_data.PlayerData.DefDecks) + _data.PlayerData.InventoryDecks.Length).ToString() + '/' + 100;
             _powerText.text = _attackDeck.Power.ToString();
             _goldText.text = _data.PlayerData.Coins.ToString();

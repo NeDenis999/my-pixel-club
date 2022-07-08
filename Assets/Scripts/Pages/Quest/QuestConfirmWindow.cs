@@ -25,34 +25,18 @@ namespace Pages.Quest
     
         public void StartQuest()
         {
-            if (!CheckForPlayerAlive() || !CheckForDeckEmpty() || !CheckForEnergy())
+            if (_requiredAmountEnergy > _dataSaveLoadService.PlayerData.Energy)
+            {
+                OpenExceptionBanner("Not enough energy");
                 return;
-            
+            }
+
+            if (CheckForDeckEmpty() == false)
+                return;
+
             _questFight.StartFight();
             _questList.SetActive(false);
             gameObject.SetActive(false);
-        }
-
-        private bool CheckForEnergy()
-        {
-            print(_player.Energy);
-        
-            if (_requiredAmountEnergy <= _player.Energy)
-                return true;
-
-            OpenExceptionBanner("Not enough energy");
-            return false;
-        }
-
-        private bool CheckForPlayerAlive()
-        {
-            print(_player.Health);
-        
-            if (_player.Health > 0)
-                return true;
-        
-            OpenExceptionBanner("Not enough health");
-            return false;
         }
 
         private bool CheckForDeckEmpty()
