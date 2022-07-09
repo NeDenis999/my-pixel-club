@@ -19,6 +19,107 @@ namespace Infrastructure.Services
         private Data.PlayerData _playerData;
         public Data.PlayerData PlayerData => _playerData;
 
+        public void Save()
+        {
+            string jsonString = JsonUtility.ToJson(_playerData);
+            PlayerPrefs.SetString(DataKey, jsonString);
+        }
+
+        public void Load()
+        {
+            for (int i = 0; i < _allCards.Length; i++) 
+                _allCards[i].Id = i;
+
+            if (!PlayerPrefs.HasKey(DataKey))
+                CreatePlayerData();
+            
+            var jsonString = PlayerPrefs.GetString(DataKey);
+            
+            if (jsonString == "")
+                CreatePlayerData();
+            
+            try
+            {
+                Debug.Log(jsonString);
+                _playerData = JsonUtility.FromJson<Data.PlayerData>(jsonString);
+            }
+            catch (Exception e)
+            {
+                CreatePlayerData();
+
+                Debug.LogWarning("Error");
+                Debug.LogWarning(e);
+            }
+
+            UpdateAttackDeck();
+            UpdateDefenceDeck();
+            UpdateInventoryDeck();
+            UpdateAvatar();
+        }
+        
+        public void IncreaseEnergy(int energyValue)
+        {
+            if (_playerData.Energy > 25) throw new ArgumentOutOfRangeException();
+
+            _playerData.Energy += energyValue;
+            Save();
+        }
+
+        public void DecreaseEnergy(int energyValue)
+        {
+            if (energyValue > _playerData.Energy) throw new ArgumentOutOfRangeException();
+
+            _playerData.Energy -= energyValue;
+            Save();
+        }
+
+        public void IncreaseEXP(int amountExp)
+        {
+            if (amountExp <= 0) throw new ArgumentOutOfRangeException();
+
+            _playerData.EXP += amountExp;
+            
+            if (_playerData.EXP >= _playerData.MaxExp)
+            {
+                _playerData.Level++;
+                _playerData.EXP = 0;
+                _playerData.MaxExp = PlayerData.Level * 100;
+            }
+        }
+
+        public void SetCoinCount(int count)
+        {
+            _playerData.Coins = count;
+            Save();
+        }
+        
+        public void SetCrystalsCount(int count)
+        {
+            _playerData.Crystals = count;
+            Save();
+        }
+
+        public void SetInventoryDecks(List<CardCollectionCell> cardsCardCollectionCells)
+        {
+            var cards = new CardData[cardsCardCollectionCells.Count];
+
+            for (int i = 0; i < cards.Length; i++) 
+                cards[i] = cardsCardCollectionCells[i].CardData;
+
+            SetInventoryDecks(cards);
+        }
+
+        public void SetInventoryDecks(CardData[] cards) => 
+            SetDecks(cards, ref _playerData.InventoryDecksData, ref _playerData.InventoryDecks);
+        
+        public void SetDefDecks(CardData[] cards) => 
+            SetDecks(cards, ref _playerData.DefDecksData, ref _playerData.DefDecks);
+
+        public void SetAttackDecks(CardData[] cards) => 
+            SetDecks(cards, ref _playerData.AttackDecksData, ref _playerData.AttackDecks);
+
+        public void SetSpecies(Species species) => 
+            _playerData.Species = species;
 
         private void SetDecks(CardData[] cards, ref CardData[] deckData, ref Card[] deck)
         {
@@ -138,100 +239,5 @@ namespace Infrastructure.Services
             _allCards = allCards;
             _avatars = avatars;
         }
-
-        public void Save()
-        {
-            string jsonString = JsonUtility.ToJson(_playerData);
-            PlayerPrefs.SetString(DataKey, jsonString);
-        }
-
-        public void Load()
-        {
-            for (int i = 0; i < _allCards.Length; i++) 
-                _allCards[i].Id = i;
-
-            if (!PlayerPrefs.HasKey(DataKey))
-                CreatePlayerData();
-            
-            var jsonString = PlayerPrefs.GetString(DataKey);
-            
-            if (jsonString == "")
-                CreatePlayerData();
-            
-            try
-            {
-                Debug.Log(jsonString);
-                _playerData = JsonUtility.FromJson<Data.PlayerData>(jsonString);
-            }
-            catch (Exception e)
-            {
-                CreatePlayerData();
-
-                Debug.LogWarning("Error");
-                Debug.LogWarning(e);
-            }
-
-            UpdateAttackDeck();
-            UpdateDefenceDeck();
-            UpdateInventoryDeck();
-            UpdateAvatar();
-        }
-        
-        public void IncreaseEnergy(int energyValue)
-        {
-            if (_playerData.Energy > 25) throw new ArgumentOutOfRangeException();
-
-            _playerData.Energy += energyValue;
-            Save();
-        }
-
-        public void DecreaseEnergy(int energyValue)
-        {
-            if (energyValue > _playerData.Energy) throw new ArgumentOutOfRangeException();
-
-            _playerData.Energy -= energyValue;
-            Save();
-        }
-
-        public void IncreaseEXP(int amountExp)
-        {
-            if (amountExp <= 0) throw new ArgumentOutOfRangeException();
-
-            _playerData.EXP += amountExp;
-        }
-
-        public void SetCoinCount(int count)
-        {
-            _playerData.Coins = count;
-            Save();
-        }
-        
-        public void SetCrystalsCount(int count)
-        {
-            _playerData.Crystals = count;
-            Save();
-        }
-
-        public void SetInventoryDecks(List<CardCollectionCell> cardsCardCollectionCells)
-        {
-            var cards = new CardData[cardsCardCollectionCells.Count];
-
-            for (int i = 0; i < cards.Length; i++) 
-                cards[i] = cardsCardCollectionCells[i].CardData;
-
-            SetInventoryDecks(cards);
-        }
-
-        public void SetInventoryDecks(CardData[] cards) => 
-            SetDecks(cards, ref _playerData.InventoryDecksData, ref _playerData.InventoryDecks);
-        
-        public void SetDefDecks(CardData[] cards) => 
-            SetDecks(cards, ref _playerData.DefDecksData, ref _playerData.DefDecks);
-
-        public void SetAttackDecks(CardData[] cards) => 
-            SetDecks(cards, ref _playerData.AttackDecksData, ref _playerData.AttackDecks);
-
-        public void SetSpecies(Species species) => 
-            _playerData.Species = species;
     }
 }

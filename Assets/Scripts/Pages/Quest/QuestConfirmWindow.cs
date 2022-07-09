@@ -24,7 +24,7 @@ namespace Pages.Quest
             _localDataService = localDataService;
         }
     
-        public void StartQuest()
+        public void StartQuest(Chapter chapter)
         {
             if (_requiredAmountEnergy > _dataSaveLoadService.PlayerData.Energy)
             {
@@ -35,7 +35,7 @@ namespace Pages.Quest
             if (CheckForDeckEmpty() == false)
                 return;
 
-            _questFight.StartFight();
+            _questFight.StartFight(chapter.Enemy);
             _questList.SetActive(false);
             gameObject.SetActive(false);
         }

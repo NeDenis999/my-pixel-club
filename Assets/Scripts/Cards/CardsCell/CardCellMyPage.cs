@@ -26,14 +26,8 @@ namespace Cards.CardCell
         [SerializeField] 
         private GameObject _statsPanel;
 
-        private Sprite _defaultIcon;
-        private Vector2 _startPosition;
-        
-        private void Awake()
-        {
-            _startPosition = _icon.transform.localPosition;
-            _defaultIcon = _icon.sprite;
-        }
+        [SerializeField] private Sprite _defaultIcon;
+        private Vector2 _startPosition = Vector2.zero;
 
         public void Render(CardData cardData, global::Card card)
         {

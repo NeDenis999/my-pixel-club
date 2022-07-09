@@ -30,14 +30,12 @@ namespace Pages.My_Page
 
         [SerializeField] private AttackDeck _attackDeck;
 
-        private LocalDataService _localDataService;
         private DataSaveLoadService _data;
         
         [Inject]
-        private void Construct(DataSaveLoadService data, LocalDataService localDataService)
+        private void Construct(DataSaveLoadService data)
         {
             _data = data;
-            _localDataService = localDataService;
         }        
 
         private void OnEnable()
@@ -48,7 +46,7 @@ namespace Pages.My_Page
         public void UpdateDisplay()
         {
             _energySlider.UpdateSlider(_data.PlayerData.Energy);
-            _expSlider.UpdateSlider(_data.PlayerData.EXP);
+            _expSlider.UpdateSlider(_data.PlayerData.EXP, _data.PlayerData.MaxExp);
             
             _avatar.sprite = _data.PlayerData.Avatar;
             _nickName.text = _data.PlayerData.Nickname;

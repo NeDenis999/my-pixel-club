@@ -15,42 +15,33 @@ public class LocalDataService
     private int _health = 100;
     private int _level = 1;
     private int _energy = 25;
-    private int _exp = 0;
 
     private int _amountCardBaseAttack;
-    private int _amountCardBaseDef;
     private DataSaveLoadService _dataSaveLoadService;
     
     public float MaxHealth => _maxHealth;
     public float Health => _health;
 
-    public float MaxExp => _level * 100;
-    public float Exp => _exp;
-
     public int Energy => _energy;
 
-    public int Attack => _amountCardBaseAttack;
-    public int Def => _amountCardBaseDef;
+    public int Attack
+    {
+        get
+        {
+            _amountCardBaseAttack = 0;
+
+            foreach (var item in AttackCards)
+                _amountCardBaseAttack += item.Attack;
+
+            return _amountCardBaseAttack;
+        }
+    }
 
     public Card[] AttackCards => _dataSaveLoadService.PlayerData.AttackDecks;
 
     public LocalDataService(DataSaveLoadService dataSaveLoadService)
     {
         _dataSaveLoadService = dataSaveLoadService;
-    }
-    
-    private void OnEnable()
-    {
-        foreach (var item in _attackDeck.CardsInDeck)
-            _amountCardBaseAttack += item.Attack;
-
-        _attackDeck.OnCardChanged += (List<CardCellInDeck> cardInDeck) =>
-        {
-            _amountCardBaseAttack = 0;
-
-            foreach (var card in cardInDeck)
-                _amountCardBaseAttack += card.Attack;
-        };
     }
 
     public void SpendEnergy(int energy)
@@ -81,16 +72,6 @@ public class LocalDataService
         {
             _health = 0;
             Debug.Log("You Dead");
-        }
-    }
-
-    private void CheckLevelUp()
-    {
-        if (_exp >= MaxExp)
-        {
-            _level++;
-            _exp = 0;
-            OnLevelChange?.Invoke(_level);
         }
     }
 }

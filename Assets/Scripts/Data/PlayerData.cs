@@ -18,6 +18,7 @@ namespace Data
         public Sprite Avatar;
         public int AvatarId;
         public float EXP;
+        public float MaxExp;
         public int Energy;
         public int Level;
         public int Rank;
