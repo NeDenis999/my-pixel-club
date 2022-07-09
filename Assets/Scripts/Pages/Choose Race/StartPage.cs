@@ -24,8 +24,6 @@ namespace Pages.Choose_Race
 
         public void StartGame()
         {
-            print(_dataSaveLoadService);
-            
             if (_dataSaveLoadService.PlayerData.Species == Species.None)
             {
                 _currentPage.Hide();

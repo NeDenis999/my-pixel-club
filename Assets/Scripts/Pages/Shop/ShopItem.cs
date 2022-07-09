@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum ShopItemType
@@ -45,3 +46,5 @@ public abstract class ShopItem : ScriptableObject, IShopItem
         return Color.red;
     }
 }
+
+

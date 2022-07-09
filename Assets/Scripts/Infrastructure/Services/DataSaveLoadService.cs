@@ -11,14 +11,22 @@ namespace Infrastructure.Services
     {
         private const string DataKey = "data";
         private const int EmptyCardId = 0;
-        private const int SizeDeck = 5;
 
         private readonly Sprite[] _avatars;
         private readonly Card[] _allCards;
+        private readonly ShopItemBottle[] _allItems;
 
-        private Data.PlayerData _playerData;
-        public Data.PlayerData PlayerData => _playerData;
+        private PlayerData _playerData;
+        
+        public PlayerData PlayerData => _playerData;
 
+        public DataSaveLoadService(Card[] allCards, Sprite[] avatars, ShopItemBottle[] allItems)
+        {
+            _allCards = allCards;
+            _avatars = avatars;
+            _allItems = allItems;
+        }
+        
         public void Save()
         {
             string jsonString = JsonUtility.ToJson(_playerData);
@@ -29,6 +37,9 @@ namespace Infrastructure.Services
         {
             for (int i = 0; i < _allCards.Length; i++) 
                 _allCards[i].Id = i;
+            
+            for (int i = 0; i < _allItems.Length; i++) 
+                _allItems[i].Id = i;
 
             if (!PlayerPrefs.HasKey(DataKey))
                 CreatePlayerData();
@@ -55,11 +66,13 @@ namespace Infrastructure.Services
             UpdateDefenceDeck();
             UpdateInventoryDeck();
             UpdateAvatar();
+            UpdateShopItem();
         }
-        
+
         public void IncreaseEnergy(int energyValue)
         {
-            if (_playerData.Energy > 25) throw new ArgumentOutOfRangeException();
+            if (_playerData.Energy > 25) 
+                throw new ArgumentOutOfRangeException();
 
             _playerData.Energy += energyValue;
             Save();
@@ -67,7 +80,8 @@ namespace Infrastructure.Services
 
         public void DecreaseEnergy(int energyValue)
         {
-            if (energyValue > _playerData.Energy) throw new ArgumentOutOfRangeException();
+            if (energyValue > _playerData.Energy) 
+                throw new ArgumentOutOfRangeException();
 
             _playerData.Energy -= energyValue;
             Save();
@@ -75,7 +89,8 @@ namespace Infrastructure.Services
 
         public void IncreaseEXP(int amountExp)
         {
-            if (amountExp <= 0) throw new ArgumentOutOfRangeException();
+            if (amountExp <= 0) 
+                throw new ArgumentOutOfRangeException();
 
             _playerData.EXP += amountExp;
             
@@ -87,6 +102,16 @@ namespace Infrastructure.Services
             }
         }
 
+        public void UpdateItemsData()
+        {
+            _playerData.ItemsId = new int[_playerData.Items.Count];
+            
+            for (int i = 0; i < _playerData.Items.Count; i++) 
+                _playerData.ItemsId[i] = _playerData.Items[i].Id;
+            
+            Save();
+        }
+        
         public void SetCoinCount(int count)
         {
             _playerData.Coins = count;
@@ -146,10 +171,10 @@ namespace Infrastructure.Services
 
             Save();
         }
-        
+
         private void CreatePlayerData()
         {
-            _playerData = new Data.PlayerData
+            _playerData = new PlayerData
             {
                 Coins = 1000,
                 Crystals = 1000,
@@ -162,7 +187,8 @@ namespace Infrastructure.Services
                 FirstDayInGame = DateTime.Now,
                 Rank = 1,
                 Level = 1,
-                Energy = 25
+                Energy = 25,
+                ItemsId = new int[0]
             };
 
             Save();
@@ -220,6 +246,14 @@ namespace Infrastructure.Services
             }
         }
 
+        private void UpdateShopItem()
+        {
+            _playerData.Items = new List<ShopItemBottle>();
+
+            foreach (var itemId in _playerData.ItemsId) 
+                _playerData.Items.Add(_allItems[itemId]);
+        }
+        
         private CardData[] CreateCardsData()
         {
             var cards = new CardData[5];
@@ -233,11 +267,6 @@ namespace Infrastructure.Services
             }
 
             return cards;
-        }
-        public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
-        {
-            _allCards = allCards;
-            _avatars = avatars;
         }
     }
 }

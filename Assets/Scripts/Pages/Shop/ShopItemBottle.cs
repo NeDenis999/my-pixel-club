@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,4 +18,5 @@ public class ShopItemBottle : ShopItem, IInventory
     public BottleEffects Effect => _bottleEffects;
 
     public string Discription => "";
+    public int Id;
 }

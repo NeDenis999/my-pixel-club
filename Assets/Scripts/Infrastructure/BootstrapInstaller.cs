@@ -15,6 +15,9 @@ namespace Infrastructure
         
         [SerializeField]
         private Sprite[] _frames;
+
+        [SerializeField] 
+        private ShopItemBottle[] _items;
         
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
@@ -30,7 +33,7 @@ namespace Infrastructure
 
         private void BindAssetProvider()
         {
-            _assetProviderService = new AssetProviderService(_frames, _allCards);
+            _assetProviderService = new AssetProviderService(_frames, _allCards, _items);
             
             Container
                 .Bind<AssetProviderService>()
@@ -40,7 +43,7 @@ namespace Infrastructure
 
         private void BindDataSaveLoad()
         {
-            _dataSaveLoadService = new DataSaveLoadService(_allCards, _avatars);
+            _dataSaveLoadService = new DataSaveLoadService(_allCards, _avatars, _items);
             
             Container
                 .Bind<DataSaveLoadService>()
