@@ -40,16 +40,6 @@ public abstract class CardCell : MonoBehaviour, ICard
     public virtual Card Card => _card;
     public virtual CardData CardData => _cardData;
 
-    public int TryUseSkill()
-    {
-        Debug.Log(Mathf.RoundToInt(100 / Card.SkillChance).ToString());
-
-        if (Random.Range(1, Mathf.RoundToInt(100 / Card.SkillChance)) == 1)
-            return BonusAttackSkill;
-
-        return 0;
-    }
-
     public virtual void Render(CardData cardData)
     {
         _cardData = cardData;

@@ -18,9 +18,6 @@ namespace Pages.Battle
         private static readonly int Effect = Animator.StringToHash("Effect");
 
         [SerializeField] 
-        private Player _player;
-        
-        [SerializeField] 
         private BattleCardsStatistic _battleCardsStatistic;
 
         [SerializeField]
@@ -50,14 +47,16 @@ namespace Pages.Battle
         private Card[] _playerCards;
         private int previousRandomNumber = -1;
         private DataSaveLoadService _dataSaveLoadService;
-    
+        private LocalDataService _localDataService;
+
         public event UnityAction OnPlayerWin;
         public event UnityAction OnPlayerLose;
 
         [Inject]
-        private void Construct(DataSaveLoadService dataSaveLoadService)
+        private void Construct(DataSaveLoadService dataSaveLoadService, LocalDataService localDataService)
         {
             _dataSaveLoadService = dataSaveLoadService;
+            _localDataService = localDataService;
         }
         
         private void Awake()
@@ -264,21 +263,21 @@ namespace Pages.Battle
         {
             int amountDamage = 0;
 
-            foreach (CardCellInDeck cardCell in _player.AttackCards)
+            foreach (Card cardCell in _localDataService.AttackCards)
             {
                 var skillValue = 0;
 
-                if (cardCell.Card.Rarity != RarityCard.Empty)
+                if (cardCell.Rarity != RarityCard.Empty)
                     skillValue += cardCell.TryUseSkill();
 
                 if (skillValue != 0)
                 {
                     amountDamage += skillValue;
-                    _battleCardsStatistic.AddPlayerCardWhileUsedSkill(cardCell.Card.Name, cardCell.Card.AttackSkillName);
+                    _battleCardsStatistic.AddPlayerCardWhileUsedSkill(cardCell.Name, cardCell.AttackSkillName);
                 }
             }
 
-            amountDamage += _player.Attack;
+            amountDamage += _localDataService.Attack;
 
             _battleCardsStatistic.AddAmountDamage(amountDamage.ToString());
 

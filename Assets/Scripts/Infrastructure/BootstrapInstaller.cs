@@ -18,10 +18,12 @@ namespace Infrastructure
         
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
+        private LocalDataService _localDataService;
         
         public override void InstallBindings()
         {
             BindAssetProvider();
+            BindDataSaveLoad();
             BindPlayerData();
             InitAllService();
         }
@@ -36,7 +38,7 @@ namespace Infrastructure
                 .AsSingle();
         }
 
-        private void BindPlayerData()
+        private void BindDataSaveLoad()
         {
             _dataSaveLoadService = new DataSaveLoadService(_allCards, _avatars);
             
@@ -47,11 +49,22 @@ namespace Infrastructure
             
             _dataSaveLoadService.Load();
         }
-        
+
+        private void BindPlayerData()
+        {
+            _localDataService = new LocalDataService(_dataSaveLoadService);
+            
+            Container
+                .Bind<LocalDataService>()
+                .FromInstance(_localDataService)
+                .AsSingle();
+        }
+
         private void InitAllService()
         {
             AllServices.AssetProviderService = _assetProviderService;
             AllServices.DataSaveLoadService = _dataSaveLoadService;
+            AllServices.LocalDataService = _localDataService;
         }
     }
 }

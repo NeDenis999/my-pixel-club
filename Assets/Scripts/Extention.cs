@@ -57,4 +57,14 @@ public static class Extention
 
         return result;
     }
+    
+    public static int TryUseSkill(this Card card)
+    {
+        Debug.Log(Mathf.RoundToInt(100 / card.SkillChance).ToString());
+
+        if (Random.Range(1, Mathf.RoundToInt(100 / card.SkillChance)) == 1)
+            return card.BonusAttackSkill;
+
+        return 0;
+    }
 }

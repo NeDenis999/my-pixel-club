@@ -9,7 +9,6 @@ using Zenject;
 public class BattleConfirmWindow : MonoBehaviour
 {
     [SerializeField] private BattleController _battle;
-    [SerializeField] private Player _player;
     [SerializeField] private GameObject _exeptionBaner;
     [SerializeField] private TMP_Text _exeptionText;
 
@@ -19,16 +18,19 @@ public class BattleConfirmWindow : MonoBehaviour
     [SerializeField] 
     private GameObject _battleChouse;
 
+
     private Vector3 _startPosition;
     private Sequence _sequence;
     private List<Card> _enemyDefCards;
     private int _amountEnemyDefValue;
+    private LocalDataService _localDataService;
     private DataSaveLoadService _dataSaveLoadService;
     
     [Inject]
-    private void Construct(DataSaveLoadService dataSaveLoadService)
+    private void Construct(DataSaveLoadService dataSaveLoadService, LocalDataService localDataService)
     {
         _dataSaveLoadService = dataSaveLoadService;
+        _localDataService = localDataService;
     }
     
     private void Start()

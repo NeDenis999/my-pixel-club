@@ -4,5 +4,6 @@
     {
         public static AssetProviderService AssetProviderService;
         public static DataSaveLoadService DataSaveLoadService;
+        public static LocalDataService LocalDataService;
     }
 }

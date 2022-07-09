@@ -16,8 +16,8 @@ namespace Infrastructure.Services
         private readonly Sprite[] _avatars;
         private readonly Card[] _allCards;
 
-        private PlayerData _playerData;
-        public PlayerData PlayerData => _playerData;
+        private Data.PlayerData _playerData;
+        public Data.PlayerData PlayerData => _playerData;
 
 
         private void SetDecks(CardData[] cards, ref CardData[] deckData, ref Card[] deck)
@@ -48,7 +48,7 @@ namespace Infrastructure.Services
         
         private void CreatePlayerData()
         {
-            _playerData = new PlayerData
+            _playerData = new Data.PlayerData
             {
                 Coins = 1000,
                 Crystals = 1000,
@@ -161,7 +161,7 @@ namespace Infrastructure.Services
             try
             {
                 Debug.Log(jsonString);
-                _playerData = JsonUtility.FromJson<PlayerData>(jsonString);
+                _playerData = JsonUtility.FromJson<Data.PlayerData>(jsonString);
             }
             catch (Exception e)
             {

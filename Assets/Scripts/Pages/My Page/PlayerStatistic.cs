@@ -12,8 +12,6 @@ namespace Pages.My_Page
 {
     public class PlayerStatistic : MonoBehaviour
     {
-        [SerializeField] private Player _player;
-
         [SerializeField] private TMP_Text _levelText;
         [SerializeField] private TMP_Text _rankText;
         [SerializeField] private TMP_Text _energyText;
@@ -32,12 +30,14 @@ namespace Pages.My_Page
 
         [SerializeField] private AttackDeck _attackDeck;
 
+        private LocalDataService _localDataService;
         private DataSaveLoadService _data;
         
         [Inject]
-        private void Construct(DataSaveLoadService data)
+        private void Construct(DataSaveLoadService data, LocalDataService localDataService)
         {
             _data = data;
+            _localDataService = localDataService;
         }        
 
         private void OnEnable()
