@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 5714374845541448892}
   - component: {fileID: 5714374845541448895}
   - component: {fileID: 5714374845541448893}
-  - component: {fileID: 4318625405242415796}
+  - component: {fileID: 4318625405242415798}
   m_Layer: 5
   m_Name: Daily Cheack Page
   m_TagString: Untagged
@@ -808,7 +808,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4318625405242415796
+--- !u!114 &4318625405242415798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5714374845541448889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430c251eede544f193b3167a1385bcfd, type: 3}
+  m_Script: {fileID: 11500000, guid: ecd088e4bd9e49f3b164b19e40ab525e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasGroup: {fileID: 5714374845541448893}
@@ -1396,7 +1396,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 4318625405242415796}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pages.Farm.FarmPage, Assembly-CSharp
         m_MethodName: Hide
         m_Mode: 1

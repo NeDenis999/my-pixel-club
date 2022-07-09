@@ -35,6 +35,7 @@ namespace Pages.Quest
         private bool _isFight;
 
         private Enemy _enemy;
+        private Chapter _chapter;
 
         [Inject]
         private void Construct(DataSaveLoadService dataSaveLoadService, AssetProviderService assetProviderService, LocalDataService localDataService)
@@ -50,9 +51,10 @@ namespace Pages.Quest
             _enemyHealthSlider.maxValue = _enemy.MaxHealth;
         }
 
-        public void StartFight(Enemy enemy)
+        public void StartFight(Chapter chapter)
         {
-            _enemy = enemy;
+            _chapter = chapter;
+            _enemy = chapter.Enemy;
 
             gameObject.SetActive(true);
             InitFight();
@@ -105,6 +107,7 @@ namespace Pages.Quest
                 yield return new WaitForSeconds(2f);
 
                 _winOrLoseWindow.OpenPrizeWindow();
+                _chapter.NextChapter.UnlockedChapter();
             }
 
             gameObject.SetActive(false);
