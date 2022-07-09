@@ -230,5 +230,8 @@ namespace Infrastructure.Services
 
         public void SetAttackDecks(CardData[] cards) => 
             SetDecks(cards, ref _playerData.AttackDecksData, ref _playerData.AttackDecks);
+
+        public void SetSpecies(Species species) => 
+            _playerData.Species = species;
     }
 }

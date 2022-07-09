@@ -23,5 +23,6 @@ namespace Data
         public int Rank;
         public DateTime FirstDayInGame;
         public DateTime FirstDayInGame1;
+        public Species Species;
     }
 }
