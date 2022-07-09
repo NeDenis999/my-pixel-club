@@ -22,14 +22,25 @@ namespace Pages.Quest
 
         [SerializeField] private Enemy _enemy;
 
+        [SerializeField] private Chapter _nextChapter;
+        public Chapter NextChapter => _nextChapter;
+
         [SerializeField] private bool _isLocked;
+        [SerializeField] private GameObject _lockedImage;
         private bool _isOpen;
 
         public Enemy Enemy => _enemy;
 
+        private void OnEnable()
+        {
+            if (_isLocked == false)
+                _lockedImage.SetActive(false);
+        }
+
         public void UnlockedChapter()
         {
             _isLocked = false;
+            _lockedImage.SetActive(false);
         }
 
         private void Toggle()

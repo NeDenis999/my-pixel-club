@@ -35,7 +35,7 @@ namespace Pages.Quest
             if (CheckForDeckEmpty() == false)
                 return;
 
-            _questFight.StartFight(chapter.Enemy);
+            _questFight.StartFight(chapter);
             _questList.SetActive(false);
             gameObject.SetActive(false);
         }

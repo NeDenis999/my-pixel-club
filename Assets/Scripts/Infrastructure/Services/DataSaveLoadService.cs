@@ -121,6 +121,12 @@ namespace Infrastructure.Services
         public void SetSpecies(Species species) => 
             _playerData.Species = species;
 
+        public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
+        {
+            _allCards = allCards;
+            _avatars = avatars;
+        }
+
         private void SetDecks(CardData[] cards, ref CardData[] deckData, ref Card[] deck)
         {
             deck = new Card[cards.Length];
@@ -162,7 +168,9 @@ namespace Infrastructure.Services
                 FirstDayInGame = DateTime.Now,
                 Rank = 1,
                 Level = 1,
-                Energy = 25
+                Energy = 25,
+                EXP = 0,
+                MaxExp = 100
             };
 
             Save();
@@ -233,11 +241,6 @@ namespace Infrastructure.Services
             }
 
             return cards;
-        }
-        public DataSaveLoadService(Card[] allCards, Sprite[] avatars)
-        {
-            _allCards = allCards;
-            _avatars = avatars;
         }
     }
 }
