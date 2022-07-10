@@ -22,8 +22,11 @@ namespace Pages.Quest
         [SerializeField] private Image _playerIcon;
 
         [SerializeField]
+        private Slider _experienceBeforeSlider;
+
+        [SerializeField]
         private SliderAnimator _experienceSliderAnimator;
-        
+
         [SerializeField]
         private SliderAnimator _enemyHealthSliderAnimator;
         
@@ -69,7 +72,7 @@ namespace Pages.Quest
                 _enemies[i].Init(chapter.EnemyQuestsData[i]);
             }
             
-            _healthSliderAnimator.Slider.maxValue = _localDataService.MaxHealth;        
+            _healthSliderAnimator.Slider.maxValue = _localDataService.MaxHealth();        
             _enemyHealthSliderAnimator.Slider.maxValue = EnemiesMaxHealth();
             gameObject.SetActive(true);
             InitFight();
@@ -83,9 +86,11 @@ namespace Pages.Quest
             _experienceSliderAnimator.Slider.maxValue = _dataSaveLoadService.PlayerData.MaxExp;
             _experienceSliderAnimator.Slider.value = _dataSaveLoadService.PlayerData.EXP;
             _playerExpPerProcentText.text = (_dataSaveLoadService.PlayerData.EXP / _dataSaveLoadService.PlayerData.MaxExp * 100).ToString() + " %";
-
+            _experienceBeforeSlider.maxValue = _dataSaveLoadService.PlayerData.MaxExp;
+            _experienceBeforeSlider.value = 0;
+            
             _healthSliderAnimator.Slider.value = _localDataService.Health;
-            _playerHealthPerProcentText.text = (_localDataService.Health / _localDataService.MaxHealth * 100).ToString() + " %"; ;
+            _playerHealthPerProcentText.text = (_localDataService.Health / _localDataService.MaxHealth() * 100).ToString() + " %"; ;
 
             _enemyHealthSliderAnimator.Slider.value = EnemiesMaxHealth();
             _enemyHelthPerProcentText.text = "100 %";
@@ -128,7 +133,7 @@ namespace Pages.Quest
                 yield return new WaitForSeconds(0.5f);
             }
 
-            yield return new WaitForSeconds(0.5f);
+            //yield return new WaitForSeconds(0.5f);
 
             if (IsAlive())
                 yield return PlayerWin();
@@ -161,8 +166,30 @@ namespace Pages.Quest
             _dataSaveLoadService.IncreaseEXP(EnemiesExp());
             _playerExpPerProcentText.text =
                 (_dataSaveLoadService.PlayerData.EXP / _dataSaveLoadService.PlayerData.MaxExp * 100).ToString() + " %";
-            _experienceSliderAnimator.UpdateSlider(_dataSaveLoadService.PlayerData.EXP, _dataSaveLoadService.PlayerData.MaxExp,
-                1, _experienceSliderAnimator.Slider.value);
+
+            if (_dataSaveLoadService.PlayerData.EXP > _experienceSliderAnimator.Slider.value)
+            {
+                _experienceBeforeSlider.value = _dataSaveLoadService.PlayerData.EXP;
+                yield return new WaitForSeconds(0.5f);
+                
+                _experienceSliderAnimator.UpdateSlider(_dataSaveLoadService.PlayerData.EXP, 
+                    _dataSaveLoadService.PlayerData.MaxExp, 1, _experienceSliderAnimator.Slider.value);
+            }
+            else
+            {
+                print("Exp > Slider exp");
+                _playerExpPerProcentText.text = "Level Up";
+                _experienceBeforeSlider.value = _dataSaveLoadService.PlayerData.MaxExp;
+                yield return new WaitForSeconds(0.5f);
+                
+                _experienceSliderAnimator.UpdateSlider(_dataSaveLoadService.PlayerData.MaxExp,
+                    _dataSaveLoadService.PlayerData.MaxExp, 1, _experienceSliderAnimator.Slider.value);
+                //yield return new WaitForSeconds(1f);
+
+                /*_experienceSliderAnimator.UpdateSlider(_dataSaveLoadService.PlayerData.EXP,
+                    _dataSaveLoadService.PlayerData.MaxExp, 1, 0);*/
+            }
+
             yield return new WaitForSeconds(2f);
             _winWindow.OpenPrizeWindow();
             _chapter.NextChapter.UnlockedChapter();
@@ -178,7 +205,7 @@ namespace Pages.Quest
             enemy.TakeDamage(_localDataService.Attack); //1
             var effect = Instantiate(_attackEffect, enemy.transform.position, Quaternion.identity);
             _shaking.Shake(0.5f, 10);
-            Destroy(effect, 4);
+            Destroy(effect.gameObject, 4);
             _enemyHealthSliderAnimator.UpdateSlider(EnemiesHealth(), EnemiesMaxHealth(), 1, _enemyHealthSliderAnimator.Slider.value);
             _enemyHelthPerProcentText.text = (EnemiesHealth() / EnemiesMaxHealth() * 100).ToString() + " %";
         }
@@ -187,8 +214,8 @@ namespace Pages.Quest
         {
             _localDataService.TakeDamage(EnemiesDamage());
             _shaking.Shake(0.5f, 10);
-            _healthSliderAnimator.UpdateSlider(_localDataService.Health, _localDataService.MaxHealth, 1, _healthSliderAnimator.Slider.value);
-            _playerHealthPerProcentText.text = (_localDataService.Health / _localDataService.MaxHealth * 100).ToString() + " %";
+            _healthSliderAnimator.UpdateSlider(_localDataService.Health, _localDataService.MaxHealth(), 1, _healthSliderAnimator.Slider.value);
+            _playerHealthPerProcentText.text = (_localDataService.Health / _localDataService.MaxHealth() * 100).ToString() + " %";
 
             if (_localDataService.Health <= 0) 
                 _isFight = false;
@@ -231,7 +258,7 @@ namespace Pages.Quest
             foreach (var enemy in _enemies) 
                 damage += enemy.Damage();
 
-            return damage;
+            return damage / _enemies.Length;
         }
     }
 }

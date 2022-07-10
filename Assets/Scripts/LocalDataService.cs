@@ -8,10 +8,9 @@ public class LocalDataService
     public event UnityAction<int> OnLevelChange;
     public event UnityAction<int> OnEnergyChange;
 
-    [SerializeField] private Inventory _inventory;
-    [SerializeField] private AttackDeck _attackDeck;
-    [SerializeField] private int _maxHealth = 100;
-    
+    private Inventory _inventory;
+    private AttackDeck _attackDeck;
+
     private int _health = 100;
     private int _level = 1;
     private int _energy = 25;
@@ -19,7 +18,6 @@ public class LocalDataService
     private int _amountCardBaseAttack;
     private DataSaveLoadService _dataSaveLoadService;
     
-    public float MaxHealth => _maxHealth;
     public float Health => _health;
 
     public int Energy => _energy;
@@ -30,8 +28,8 @@ public class LocalDataService
         {
             _amountCardBaseAttack = 0;
 
-            foreach (var item in AttackCards)
-                _amountCardBaseAttack += item.Attack;
+            foreach (var card in _dataSaveLoadService.PlayerData.AttackDecksData)
+                _amountCardBaseAttack += card.Attack;
 
             return _amountCardBaseAttack;
         }
@@ -63,9 +61,19 @@ public class LocalDataService
 
     public void RevertHealth()
     {
-        _health = _maxHealth;
+        _health = MaxHealth();
     }
 
+    public int MaxHealth()
+    {
+        var maxHealth = 0;
+
+        foreach (var cardData in _dataSaveLoadService.PlayerData.AttackDecksData) 
+            maxHealth += cardData.Health;
+
+        return maxHealth;
+    }
+    
     private void CheakAlive()
     {
         if (_health <= 0)

@@ -28,6 +28,7 @@ namespace Pages.Quest
             _enemyQuestData = enemyQuestData;
             _health = _enemyQuestData.MaxHealth;
             _view.sprite = enemyQuestData.View;
+            _view.color = Color.white;
         }
 
         public void TakeDamage(int amountDamage)
@@ -38,7 +39,13 @@ namespace Pages.Quest
             _health -= amountDamage;
 
             CheckAlive();
+
+            if (!Alive())
+                Dead();
         }
+
+        private void Dead() => 
+            _view.color = new Color(0.5f, 0.5f, 0.5f, 1);
 
         public bool Alive() => 
             _health > 0;

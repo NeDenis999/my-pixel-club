@@ -9,13 +9,13 @@ namespace Pages.Quest
         public EnemyType EnemyType;
         public Sprite View;
 
-        [Range(100, 1000)] 
+        [Range(100, 2000)] 
         public int MaxHealth;
 
-        [Range(25, 100)] 
+        [Range(50, 500)] 
         public int Damage;
 
-        [Range(10, 1000)] 
+        [Range(100, 2000)] 
         public int Exp;
     }
 }
