@@ -6,9 +6,11 @@ public class SliderAnimator : MonoBehaviour
 {
     [SerializeField]
     private Slider _slider;
-
+    
     private Sequence _sequence;
 
+    public Slider Slider => _slider;
+    
     public void UpdateSlider(float value)
     {
         _sequence?.Kill();
@@ -34,6 +36,16 @@ public class SliderAnimator : MonoBehaviour
         _sequence = DOTween.Sequence();
             
         _slider.value = 0;
+        _slider.maxValue = maxValue;
+        _sequence.Insert(0, DOTween.To(()=> _slider.value, x=> _slider.value = x, value, time)); 
+    }
+    
+    public void UpdateSlider(float value, float maxValue, float time, float minValue)
+    {
+        _sequence?.Kill();
+        _sequence = DOTween.Sequence();
+            
+        _slider.value = minValue;
         _slider.maxValue = maxValue;
         _sequence.Insert(0, DOTween.To(()=> _slider.value, x=> _slider.value = x, value, time)); 
     }

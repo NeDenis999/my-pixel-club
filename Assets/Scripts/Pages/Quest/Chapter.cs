@@ -5,8 +5,8 @@ namespace Pages.Quest
 {
     public class Chapter : MonoBehaviour
     {
-        private const float _openSize = 471.36f;
-        private const float _closeSize = 100f;
+        private const float OpenSize = 471.36f;
+        private const float CloseSize = 100f;
 
         [SerializeField]
         private RectTransform _rectTransform;
@@ -20,16 +20,21 @@ namespace Pages.Quest
         [SerializeField]
         private ChapterList _chapterList;
 
-        [SerializeField] private Enemy _enemy;
+        [SerializeField] 
+        private Chapter _nextChapter;
 
-        [SerializeField] private Chapter _nextChapter;
+        [SerializeField] 
+        private EnemyQuestData[] _enemyQuestsData;
         public Chapter NextChapter => _nextChapter;
 
-        [SerializeField] private bool _isLocked;
-        [SerializeField] private GameObject _lockedImage;
+        [SerializeField] 
+        private bool _isLocked;
+        
+        [SerializeField] 
+        private GameObject _lockedImage;
+        
         private bool _isOpen;
-
-        public Enemy Enemy => _enemy;
+        public EnemyQuestData[] EnemyQuestsData => _enemyQuestsData;
 
         private void OnEnable()
         {
@@ -63,7 +68,7 @@ namespace Pages.Quest
         private void Open()
         {
             _info.SetActive(true);
-            _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, _openSize);
+            _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, OpenSize);
             _verticalLayoutGroup.spacing += 0.01f;
             _isOpen = true;
         }
@@ -71,7 +76,7 @@ namespace Pages.Quest
         public void Close()
         {
             _info.SetActive(false);
-            _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, _closeSize);
+            _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, CloseSize);
             _verticalLayoutGroup.spacing -= 0.01f;
             _isOpen = false;
         }

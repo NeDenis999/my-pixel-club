@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Pages.Quest
 {
@@ -12,22 +13,21 @@ namespace Pages.Quest
 
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private EnemyType _enemyType;
-    
-        [SerializeField, Range(100, 1000)] 
-        private int _maxHealth;
-    
         [SerializeField] 
         private Image _view;
-    
+        
+        private EnemyQuestData _enemyQuestData;
         private int _health;
 
-        public float MaxHealth => _maxHealth;
+        public float MaxHealth => _enemyQuestData.MaxHealth;
         public float Health => _health;
-
-        private void OnEnable()
+        public int Exp => _enemyQuestData.Exp;
+        
+        public void Init(EnemyQuestData enemyQuestData)
         {
-            _health = _maxHealth;
+            _enemyQuestData = enemyQuestData;
+            _health = _enemyQuestData.MaxHealth;
+            _view.sprite = enemyQuestData.View;
         }
 
         public void TakeDamage(int amountDamage)
@@ -40,15 +40,20 @@ namespace Pages.Quest
             CheckAlive();
         }
 
+        public bool Alive() => 
+            _health > 0;
+
         public int Damage()
         {
+            return Random.Range(_enemyQuestData.Damage / 2, _enemyQuestData.Damage);
+            /*
             if (_enemyType == EnemyType.Enemy)
-                return Random.Range(10, 25);
+                return Random.Range(_damage / 2, _damage);
 
             if (_enemyType == EnemyType.Boss)
                 return Random.Range(25, 50);
 
-            throw new System.ArgumentException();
+            throw new System.ArgumentException();*/
         }
 
         private void CheckAlive()

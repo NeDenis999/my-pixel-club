@@ -56,5 +56,11 @@ public class AdminTools : MonoBehaviour
             PlayerPrefs.SetString(DataKey, "");
             print("DeleteAllSave");
         }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            _data.IncreaseEnergy(25);
+            print("ResetEnergy");
+        }
     }
 }
