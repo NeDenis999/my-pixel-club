@@ -6646,6 +6646,7 @@ MonoBehaviour:
   _exeptionBaner: {fileID: 7789439700741643480}
   _exeptionBanerText: {fileID: 1437381817556043612}
   _questFight: {fileID: 5335273565447679488}
+  _upPanel: {fileID: 0}
 --- !u!1 &7424097798004515290
 GameObject:
   m_ObjectHideFlags: 0
@@ -8707,7 +8708,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e7a3821b1029fec4c889927ca0701749, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
-      value: 50
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].EnemyType
@@ -9542,27 +9543,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d08d1dca940bd9e43b09f8c444ca0fd5, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].Damage
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[2].Damage
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].MaxHealth
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[2].MaxHealth
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9901,11 +9902,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 66902d1ad3882ab4486a8ebe3b3c0c44, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
-      value: 80
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
-      value: 250
+      value: 550
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10166,19 +10167,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 32120488430d7374e82eb8237e9e776e, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].Damage
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].MaxHealth
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y

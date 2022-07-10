@@ -27,6 +27,9 @@ namespace Pages.Roulette
         [SerializeField] 
         private TextMeshProUGUI _prizeText;
         
+        [SerializeField] 
+        private UpPanel _upPanel;
+        
         private Transform _currentParrent;
         private Vector3 _previousCurrentCellPosition;
         private Vector3 _previousCurrentCellScale;
@@ -34,6 +37,8 @@ namespace Pages.Roulette
 
         public IEnumerator Spine(int prize, RouletteCell[] rouletteCells)
         {
+            _upPanel.Block();
+            
             _protectionFromExitingMenu.SetActive(true);
             float rotationSpeed = 0.1f;
 
@@ -97,6 +102,7 @@ namespace Pages.Roulette
             yield return new WaitForSeconds(0.75f);
             startRoletteButton.interactable = true;
             _prizeImage.color = Color.clear;
+            _upPanel.Unblock();
             _protectionFromExitingMenu.SetActive(false);
         }        
     }

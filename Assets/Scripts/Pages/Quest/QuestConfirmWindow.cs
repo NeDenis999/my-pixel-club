@@ -11,7 +11,8 @@ namespace Pages.Quest
         [SerializeField] private GameObject _questList, _exeptionBaner;
         [SerializeField] private TMP_Text _exeptionBanerText;
         [SerializeField] private QuestFight _questFight;
-
+        [SerializeField] private UpPanel _upPanel;
+        
         private DataSaveLoadService _dataSaveLoadService;
         private LocalDataService _localDataService;
         
@@ -36,6 +37,7 @@ namespace Pages.Quest
                 return;
 
             _questFight.StartFight(chapter);
+            _upPanel.Block();
             _questList.SetActive(false);
             gameObject.SetActive(false);
         }

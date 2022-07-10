@@ -15,11 +15,10 @@ public class QuestPrizeWindow : MonoBehaviour
     [SerializeField] private List<Prize> _variationPrizes;
     [SerializeField] private PrizeCell _prizeCellTemplate;
     [SerializeField] private Transform _container;
-
     [SerializeField] private BattleController _battle;
-
     [SerializeField] private Button _collectButton;
-
+    [SerializeField] private UpPanel _upPanel;
+    
     private List<PrizeCell> _prizes = new();
 
     private void Start()
@@ -38,6 +37,7 @@ public class QuestPrizeWindow : MonoBehaviour
             Destroy(child.gameObject);
 
         _collectButton.onClick.RemoveListener(AccruePrizes);
+        _upPanel.Unblock();
     }
 
     private void GeneratePrizes()

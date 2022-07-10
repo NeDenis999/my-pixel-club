@@ -41,6 +41,9 @@ namespace Pages.Battle
         [SerializeField] 
         private GameObject _battleChouse;
 
+        [SerializeField] 
+        private UpPanel _upPanel;
+        
         private List<Card> _enemyDefCards = new();
         private int _baseEnemyDefValue;
         private Card[] _enemyCards;
@@ -80,7 +83,8 @@ namespace Pages.Battle
         public void StartFight()
         {
             gameObject.SetActive(true);
-        
+            _upPanel.Block();
+            
             foreach (var playerCard in _playerCardAnimators) 
                 playerCard.Hide();
 
@@ -136,6 +140,7 @@ namespace Pages.Battle
             else
                 OnPlayerLose?.Invoke();
 
+            _upPanel.Unblock();
             gameObject.SetActive(false);
             _battleChouse.SetActive(true);
         }
