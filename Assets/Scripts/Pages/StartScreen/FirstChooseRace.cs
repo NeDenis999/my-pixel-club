@@ -9,11 +9,13 @@ namespace Pages.Choose_Race
     public class FirstChooseRace : MonoBehaviour
     {
         private DataSaveLoadService _dataSaveLoadService;
+        private SceneLoadService _sceneLoadService;
         
         [Inject]
-        private void Construct(DataSaveLoadService dataSaveLoadService)
+        private void Construct(DataSaveLoadService dataSaveLoadService, SceneLoadService sceneLoadService)
         {
             _dataSaveLoadService = dataSaveLoadService;
+            _sceneLoadService = sceneLoadService;
         }
 
         public void ChooseHuman() => 
@@ -28,7 +30,7 @@ namespace Pages.Choose_Race
         private void ChooseSpecies(Species species)
         {
             _dataSaveLoadService.SetSpecies(species);
-            SceneManager.LoadScene(1);
+            _sceneLoadService.WaitLoadScene.allowSceneActivation = true;
         }
     }
 }

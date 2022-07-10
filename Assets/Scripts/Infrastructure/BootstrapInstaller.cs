@@ -18,17 +18,31 @@ namespace Infrastructure
 
         [SerializeField] 
         private ShopItemBottle[] _items;
-        
+
+        private CoroutineStarterService _coroutineStarterService;
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
         private LocalDataService _localDataService;
+        private SceneLoadService _sceneLoadService;
         
         public override void InstallBindings()
         {
+            BindCoroutineStarter();
             BindAssetProvider();
             BindDataSaveLoad();
             BindPlayerData();
+            BindSceneLoad();
             InitAllService();
+        }
+
+        private void BindCoroutineStarter()
+        {
+            _coroutineStarterService = new CoroutineStarterService(this);
+            
+            Container
+                .Bind<CoroutineStarterService>()
+                .FromInstance(_coroutineStarterService)
+                .AsSingle();
         }
 
         private void BindAssetProvider()
@@ -63,11 +77,23 @@ namespace Infrastructure
                 .AsSingle();
         }
 
+        private void BindSceneLoad()
+        {
+            _sceneLoadService = new SceneLoadService(_coroutineStarterService);
+            
+            Container
+                .Bind<SceneLoadService>()
+                .FromInstance(_sceneLoadService)
+                .AsSingle();
+        }
+
         private void InitAllService()
         {
             AllServices.AssetProviderService = _assetProviderService;
             AllServices.DataSaveLoadService = _dataSaveLoadService;
             AllServices.LocalDataService = _localDataService;
+            AllServices.SceneLoadService = _sceneLoadService;
+            AllServices.CoroutineStarterService = _coroutineStarterService;
         }
     }
 }

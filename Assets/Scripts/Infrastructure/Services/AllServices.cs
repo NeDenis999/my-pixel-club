@@ -5,5 +5,7 @@
         public static AssetProviderService AssetProviderService;
         public static DataSaveLoadService DataSaveLoadService;
         public static LocalDataService LocalDataService;
+        public static SceneLoadService SceneLoadService;
+        public static CoroutineStarterService CoroutineStarterService;
     }
 }
