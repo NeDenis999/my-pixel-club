@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class InventoryCardStatistic : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _atk, _maxAtk, _skillChance, _skillName, _effectName, _def, _health, _power, _cardName, _rare;
+    [SerializeField] private TMP_Text _level, _maxAtk, _skillChance, _skillName, _effectName, _def, _health, _power, _cardName, _rare;
     [SerializeField] private Image _cardImage;
 
     public void Render(InventoryCardCell cardCell)
     {
-        _atk.text = cardCell.Attack.ToString();
+        _level.text = cardCell.Level.ToString();
         _def.text = cardCell.Def.ToString();
         _health.text = cardCell.Health.ToString();
         _skillChance.text = cardCell.Card.SkillChance.ToString() + " %";

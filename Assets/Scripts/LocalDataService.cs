@@ -14,8 +14,7 @@ public class LocalDataService
     private int _health = 100;
     private int _level = 1;
     private int _energy = 25;
-
-    private int _amountCardBaseAttack;
+    
     private DataSaveLoadService _dataSaveLoadService;
     
     public float Health => _health;
@@ -26,15 +25,27 @@ public class LocalDataService
     {
         get
         {
-            _amountCardBaseAttack = 0;
+            var amountCardBaseAttack = 0;
 
             foreach (var card in _dataSaveLoadService.PlayerData.AttackDecksData)
-                _amountCardBaseAttack += card.Attack;
+                amountCardBaseAttack += card.Attack;
 
-            return _amountCardBaseAttack;
+            return amountCardBaseAttack;
         }
     }
 
+    public int Defence    
+    {
+        get
+        {
+            var amountCardBaseDefence = 0;
+
+            foreach (var card in _dataSaveLoadService.PlayerData.AttackDecksData) //замени на DefenceDecksData
+                amountCardBaseDefence += card.Defence;
+
+            return amountCardBaseDefence;
+        }
+    }
     public Card[] AttackCards => _dataSaveLoadService.PlayerData.AttackDecks;
 
     public LocalDataService(DataSaveLoadService dataSaveLoadService)

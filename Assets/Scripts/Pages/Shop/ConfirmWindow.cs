@@ -1,11 +1,15 @@
 using TMPro;
 using UnityEngine;
 using System;
+using Infrastructure.Services;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Zenject;
 
 public class ConfirmWindow : MonoBehaviour 
 {
+    private const int MaxCountCard = 50;
+    
     public event UnityAction<int> OnWithdrawMoney;
 
     [SerializeField] private TMP_Text _quantityMoneyToBuy, _itemType;
@@ -21,9 +25,18 @@ public class ConfirmWindow : MonoBehaviour
 
     [SerializeField] private TMP_Dropdown _amountItems;
 
+    [SerializeField] 
+    private GameObject _errorWindow;
+    
     private ShopItem _shopItem;
+    private DataSaveLoadService _dataSaveLoadService;
 
-
+    [Inject]
+    private void Construct(DataSaveLoadService dataSaveLoadService)
+    {
+        _dataSaveLoadService = dataSaveLoadService;
+    }
+    
     public void Render(ShopItem item)
     {
         _amountItems.value = 0;
@@ -41,12 +54,18 @@ public class ConfirmWindow : MonoBehaviour
     {
         for (int i = 0; i <= _amountItems.value; i++)
         {
-            OnWithdrawMoney?.Invoke(_shopItem.Price);
-
             if (_shopItem.Item is ShopItemCardPack)
-                _shop.BuyCard((ShopItemCardPack)_shopItem);
+                if(_dataSaveLoadService.PlayerData.InventoryDecksData.Length + _shopItem.Count <= MaxCountCard)
+                    _shop.BuyCard((ShopItemCardPack)_shopItem);
+                else
+                {
+                    _errorWindow.SetActive(transform);
+                    break;
+                }
             else        
                 _shop.BuyItem(_shopItem);
+            
+            OnWithdrawMoney?.Invoke(_shopItem.Price);
         }
 
         gameObject.SetActive(false);
