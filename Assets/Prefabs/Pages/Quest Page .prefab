@@ -637,7 +637,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1325679680970489495}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5905935
+  m_Size: 0.59059346
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4882,6 +4882,7 @@ MonoBehaviour:
   _attackEffect: {fileID: 3121847219011696122, guid: f5fbdd99fba33c94cba4f486a2490313, type: 3}
   _container: {fileID: 8808730842914035572}
   _enemyPrefab: {fileID: 468535583237164748, guid: aa341fb99afefd7478eece9d8c1363e7, type: 3}
+  _avatar: {fileID: 2174587017141975230}
 --- !u!225 &6293028558592754043
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5085,6 +5086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5335273565690566005}
   - component: {fileID: 5335273565690566007}
+  - component: {fileID: 2174587017141975230}
   m_Layer: 5
   m_Name: Player Avatar
   m_TagString: Untagged
@@ -5122,6 +5124,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5335273565690565994}
   m_CullTransparentMesh: 1
+--- !u!114 &2174587017141975230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335273565690565994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc17d47dea943d8bb929468e51f1e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _view: {fileID: 5727767133318583895}
+  _frame: {fileID: 5335273564867487141}
 --- !u!1 &5335273565790324404
 GameObject:
   m_ObjectHideFlags: 0

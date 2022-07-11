@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
+  m_Name: Bard Card
+  m_EditorClassIdentifier: 
+  _imageFirstEvolution: {fileID: 21300000, guid: 6208211f79ca5064ab9c852718672a29, type: 3}
+  _imageSecondeEvolution: {fileID: 21300000, guid: bc98b3276da4eac4893c8f001228f4a2, type: 3}
+  _name: Prinz
+  _rarity: 1
+  _race: 0
+  _attack: 100
+  _def: 100
+  _health: 100
+  _effectName: effect
+  _attackSillName: dog
+  _defSkillName: god
+  _defSkill: 2
+  _skillChance: 0.4
+  _discription: prinz option
+  _directionView: {x: 0, y: 0}
+  _attackEffect: {fileID: 5373061118796645098, guid: 2e860dbf01010ba428d8b4e12f164bec, type: 3}
+  _skillEffect: {fileID: 5373061118796645098, guid: 2e860dbf01010ba428d8b4e12f164bec, type: 3}
+  _skillIcon: {fileID: 21300000, guid: 1fee5645082e04c998a470d7e98bd1bf, type: 3}

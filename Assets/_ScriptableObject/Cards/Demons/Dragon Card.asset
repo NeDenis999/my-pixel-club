@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
+  m_Name: Dragon Card
+  m_EditorClassIdentifier: 
+  _imageFirstEvolution: {fileID: 21300000, guid: 3c7c5c1f71aaf2941858453af762296f, type: 3}
+  _imageSecondeEvolution: {fileID: 21300000, guid: ea2b62f098fffa84a8cd40e7e5c54f74, type: 3}
+  _name: Drag
+  _rarity: 2
+  _race: 2
+  _attack: 100
+  _def: 100
+  _health: 100
+  _effectName: effect
+  _attackSillName: drag
+  _defSkillName: eeb
+  _defSkill: 4
+  _skillChance: 0.1
+  _discription: drag option
+  _directionView: {x: -45, y: 0}
+  _attackEffect: {fileID: 3121847219011696122, guid: f5fbdd99fba33c94cba4f486a2490313, type: 3}
+  _skillEffect: {fileID: 3121847219011696122, guid: f5fbdd99fba33c94cba4f486a2490313, type: 3}
+  _skillIcon: {fileID: 21300000, guid: 3b7ed903b4c0842739c371a85ad4740b, type: 3}

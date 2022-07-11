@@ -35,6 +35,7 @@ namespace Pages.Quest
         
         private bool _isOpen;
         public EnemyQuestData[] EnemyQuestsData => _enemyQuestsData;
+        public int Id;
 
         private void OnEnable()
         {
@@ -42,6 +43,7 @@ namespace Pages.Quest
             {
                 _lockedImage.SetActive(false);
 
+                _chapterList.InitAllChapter();
                 _chapterList.CloseAllChapters();
                 Open();
             }

@@ -10,22 +10,25 @@ namespace Pages.StartScreen
         [SerializeField] 
         private Page _currentPage;
         
-        [SerializeField] 
-        private Page _chooseRacePage;
+        [SerializeField]
+        private ChooseNickname _chooseNickname;
         
         private DataSaveLoadService _dataSaveLoadService;
         private SceneLoadService _sceneLoadService;
+        private SoundService _soundService;
 
         [Inject]
-        private void Construct(DataSaveLoadService dataSaveLoadService, SceneLoadService sceneLoadService)
+        private void Construct(DataSaveLoadService dataSaveLoadService, SceneLoadService sceneLoadService, SoundService soundService)
         {
             _dataSaveLoadService = dataSaveLoadService;
             _sceneLoadService = sceneLoadService;
+            _soundService = soundService;
         }
 
         private void Start()
         {
             _sceneLoadService.StartAsyncLoadScene(1);
+            _soundService.PlayMainTheme();
         }
 
         public void StartGame()
@@ -38,7 +41,7 @@ namespace Pages.StartScreen
             if (_dataSaveLoadService.PlayerData.Species == Species.None)
             {
                 _currentPage.Hide();
-                _chooseRacePage.StartShowSmooth();
+                _chooseNickname.gameObject.SetActive(true);
             }
             else
             {

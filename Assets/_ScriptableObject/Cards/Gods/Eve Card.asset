@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e605e93726703bd4b8b31a213035e474, type: 3}
+  m_Name: Eve Card
+  m_EditorClassIdentifier: 
+  _imageFirstEvolution: {fileID: 21300000, guid: 4835dc3581ee1dd49a43b17c108b1c45, type: 3}
+  _imageSecondeEvolution: {fileID: 21300000, guid: 787e7f42f77476441acaeb5b98c210b8, type: 3}
+  _name: Genie
+  _rarity: 1
+  _race: 1
+  _attack: 100
+  _def: 100
+  _health: 100
+  _effectName: effect
+  _attackSillName: cat
+  _defSkillName: tac
+  _defSkill: 6
+  _skillChance: 2
+  _discription: genie option
+  _directionView: {x: 0, y: 0}
+  _attackEffect: {fileID: 8558445127854203552, guid: 35c17a2f042ed5844bda8d109e88d805, type: 3}
+  _skillEffect: {fileID: 3626259152316059807, guid: 8cb364e09697dcd43b410fe6ed742c66, type: 3}
+  _skillIcon: {fileID: 21300000, guid: ac7456e3afd164ecea1d7e776efb9be1, type: 3}

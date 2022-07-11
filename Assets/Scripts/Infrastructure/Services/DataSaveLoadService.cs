@@ -146,6 +146,18 @@ namespace Infrastructure.Services
             Save();
         }
 
+        public void SetNickname(string text)
+        {
+            _playerData.Nickname = text;
+            Save();
+        }
+
+        public void SetCountQuestPassed(int count)
+        {
+            _playerData.CountQuestPassed = count;
+            Save();
+        }
+        
         public void SetInventoryDecks(List<CardCollectionCell> cardsCardCollectionCells)
         {
             var cards = new CardData[cardsCardCollectionCells.Count];

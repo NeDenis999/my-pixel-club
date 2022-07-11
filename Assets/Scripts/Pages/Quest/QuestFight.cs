@@ -44,6 +44,9 @@ namespace Pages.Quest
         
         [SerializeField] 
         private Enemy _enemyPrefab;
+
+        [SerializeField]
+        private PlayerAvatarQuest _avatar;
         
         private LocalDataService _localDataService;
         private DataSaveLoadService _dataSaveLoadService;
@@ -156,6 +159,7 @@ namespace Pages.Quest
 
         private IEnumerator PlayerLose()
         {
+            _avatar.Darkening();
             yield return new WaitForSeconds(1f);
             _loseWindow.SetActive(true);
 
@@ -194,7 +198,7 @@ namespace Pages.Quest
             yield return new WaitForSeconds(2f);
             _winWindow.OpenPrizeWindow();
             _chapter.NextChapter.UnlockedChapter();
-            
+            _dataSaveLoadService.SetCountQuestPassed(_chapter.NextChapter.Id);
             //OnPlayerWin?.Invoke();
         }
 
@@ -214,7 +218,9 @@ namespace Pages.Quest
         private void TurnEnemies()
         {
             _localDataService.TakeDamage(EnemiesDamage());
+            var effect = Instantiate(_attackEffect, _avatar.transform.position, Quaternion.identity);
             _shaking.Shake(0.5f, 10);
+            Destroy(effect.gameObject, 4);
             _healthSliderAnimator.UpdateSlider(_localDataService.Health, _localDataService.MaxHealth(), 1, _healthSliderAnimator.Slider.value);
             _playerHealthPerProcentText.text = (_localDataService.Health / _localDataService.MaxHealth() * 100).ToString() + " %";
 

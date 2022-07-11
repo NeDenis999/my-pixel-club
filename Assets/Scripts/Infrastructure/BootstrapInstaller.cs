@@ -19,11 +19,18 @@ namespace Infrastructure
         [SerializeField] 
         private ShopItemBottle[] _items;
 
+        [SerializeField] 
+        private AudioSource _audioSource;
+
+        [SerializeField] 
+        private AudioClip[] _audioClips;
+        
         private CoroutineStarterService _coroutineStarterService;
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
         private LocalDataService _localDataService;
         private SceneLoadService _sceneLoadService;
+        private SoundService _soundService;
         
         public override void InstallBindings()
         {
@@ -32,6 +39,7 @@ namespace Infrastructure
             BindDataSaveLoad();
             BindPlayerData();
             BindSceneLoad();
+            BindSound();
             InitAllService();
         }
 
@@ -87,6 +95,16 @@ namespace Infrastructure
                 .AsSingle();
         }
 
+        private void BindSound()
+        {
+            _soundService = new SoundService(_audioSource, _audioClips);
+            
+            Container
+                .Bind<SoundService>()
+                .FromInstance(_soundService)
+                .AsSingle();
+        }
+        
         private void InitAllService()
         {
             AllServices.AssetProviderService = _assetProviderService;
@@ -94,6 +112,7 @@ namespace Infrastructure
             AllServices.LocalDataService = _localDataService;
             AllServices.SceneLoadService = _sceneLoadService;
             AllServices.CoroutineStarterService = _coroutineStarterService;
+            AllServices.SoundService = _soundService;
         }
     }
 }

@@ -62,10 +62,8 @@ public class QuestPrizeWindow : MonoBehaviour
         return prize;
     }
 
-    private int GetRandomPrizeValue()
-    {
-        return Random.Range(1, 8);
-    }
+    private int GetRandomPrizeValue() => 
+        Random.Range(1, 8);
 
     private void AccruePrizes()
     {

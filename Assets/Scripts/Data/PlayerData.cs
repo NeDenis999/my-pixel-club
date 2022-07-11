@@ -29,5 +29,6 @@ namespace Data
         public Species Species;
         public int[] ItemsId;
         public List<ShopItemBottle> Items;
+        public int CountQuestPassed;
     }
 }
