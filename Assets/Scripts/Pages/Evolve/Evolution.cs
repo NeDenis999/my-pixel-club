@@ -16,6 +16,7 @@ public class Evolution : MonoBehaviour
     [SerializeField] private EvolutionCard _firstCardForEvolution, _secondeCardForEvolution;    
 
     [SerializeField] private Button _evolveButton;
+    [SerializeField] private Button _resetButton;
 
     [SerializeField] private GameObject _exeptionWindow;
 
@@ -40,12 +41,22 @@ public class Evolution : MonoBehaviour
     {
         _evolveCardCollection.SetCardCollection(_cardCollection.Cards);
 
+        _resetButton.onClick.AddListener(Reset);
         _evolveButton.onClick.AddListener(EvolveCard);
     }
 
     private void OnDisable()
     {
+        _resetButton.onClick.RemoveListener(Reset);
         _evolveButton.onClick.RemoveListener(EvolveCard);
+    }
+
+    public void Reset()
+    {
+        _firstCardForEvolution.Reset();
+        _secondeCardForEvolution.Reset();
+
+        _evolveCardCollection.SetCardCollection(_cardCollection.Cards);
     }
 
     private void EvolveCard()

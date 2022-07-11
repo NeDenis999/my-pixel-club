@@ -37,6 +37,14 @@ public class EvolveCardCollection : MonoBehaviour
         _listCardsInCollection.AddRange(cardCollectionCells);
     }
 
+    public void SelectCard(CardCollectionCell selectCard)
+    {
+        if (selectCard == null) 
+            throw new System.ArgumentNullException();
+
+        _selectedCard = selectCard;
+    }
+
     private void RenderCard()
     {
         foreach (Transform card in _container) 
@@ -79,13 +87,5 @@ public class EvolveCardCollection : MonoBehaviour
             OneOfCardInEvolutioin.SetCard(_selectedCard);
             _selectedCard = null;
         }
-    }
-
-    public void SelectCard(CardCollectionCell selectCard)
-    {
-        if (selectCard == null) 
-            throw new System.ArgumentNullException();
-
-        _selectedCard = selectCard;
     }
 }

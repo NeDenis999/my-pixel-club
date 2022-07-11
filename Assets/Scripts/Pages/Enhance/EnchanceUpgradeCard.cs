@@ -26,9 +26,17 @@ namespace Pages.Enhance
 
         private void OnEnable()
         {
+            _cardCell = null;
+            _UIIcon.sprite = _standardSprite;
             _resetButton.onClick.AddListener(Reset);
             GetComponent<Button>().onClick.AddListener(OpenCardCollection);
-            Reset();
+
+        }
+
+        private void OnDisable()
+        {
+            _resetButton.onClick.RemoveListener(Reset);
+            GetComponent<Button>().onClick.RemoveListener(OpenCardCollection);
         }
 
         public void SetCardForUpgrade(CardCollectionCell card)
@@ -42,11 +50,6 @@ namespace Pages.Enhance
             print(card.LevelPoint);
         }
 
-        private void OnDisable()
-        {
-            _resetButton.onClick.RemoveListener(Reset);
-            GetComponent<Button>().onClick.RemoveListener(OpenCardCollection);
-        }
 
         private void OpenCardCollection()
         {
