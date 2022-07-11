@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ public class DailyRewards : MonoBehaviour
     [SerializeField] Transform _rewardsGrid;
 
     [SerializeField] private List<Reward> _rewards = new();
+
+    [SerializeField] private TMP_Text _status;
 
     private int _currentStreak
     {
@@ -41,8 +44,8 @@ public class DailyRewards : MonoBehaviour
 
     private bool _canClaimReward;
     private int _maxStreakCount;
-    private float _claimCoolDown = 24f / 24 / 60 / 6 / 2;
-    private float _claimDeadLine = 48f / 24 / 60 / 6 / 2;
+    private float _claimCoolDown = 24f;
+    private float _claimDeadLine = 48f;
 
     private List<RewardPref> _rewardPrefabs = new();
 
@@ -57,66 +60,17 @@ public class DailyRewards : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(RewardsStateUpdater());        
+        _claimButton.onClick.AddListener(ClaimReward);
+        StartCoroutine(RewardsStateUpdater());
     }
 
     private void OnDisable()
     {
+        _claimButton.onClick.RemoveAllListeners();
         StopAllCoroutines();
     }
 
-    private void InitPrefabs()
-    {
-        for (int i = 0; i < _maxStreakCount; i++)
-            _rewardPrefabs.Add(Instantiate(_rewardPref, _rewardsGrid, false));
-    }
-
-    private IEnumerator RewardsStateUpdater()
-    {
-        while (true)
-        {
-            UpdateRewardsState();
-            yield return new WaitForSeconds(1);
-        }
-    }
-
-    private void UpdateRewardsState()
-    {
-        _canClaimReward = true;
-
-        if (_lastClaimTime.HasValue)
-        {
-            var timeSpan = DateTime.UtcNow - _lastClaimTime.Value;
-
-            if (timeSpan.TotalHours > _claimDeadLine)
-            {
-                _lastClaimTime = null;
-                _currentStreak = 0;
-            }
-            else if (timeSpan.TotalHours < _claimCoolDown)
-                _canClaimReward = false;
-        }
-
-        UpdateRewardsUI();   
-    }
-
-    private void UpdateRewardsUI()
-    {
-        _claimButton.interactable = _canClaimReward;
-
-        if (_canClaimReward == false)
-        {
-            var nextClaimTime = _lastClaimTime.Value.AddHours(_claimCoolDown);
-            var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
-
-            Debug.Log($"Left {currentClaimCooldown.Hours} {currentClaimCooldown.Minutes} {currentClaimCooldown.Seconds}");
-        }
-
-        for (int i = 0; i < _rewardPrefabs.Count; i++)
-            _rewardPrefabs[i].SetRewardData(i, _currentStreak, _rewards[i]);
-    }
-
-    public void ClaimReward()
+    private void ClaimReward()
     {
         if (_canClaimReward == false)
             return;
@@ -133,6 +87,67 @@ public class DailyRewards : MonoBehaviour
         }
 
         _lastClaimTime = DateTime.UtcNow;
-        _currentStreak = (_currentStreak + 1) % _maxStreakCount;
+        _currentStreak += 1;
+
+        if (_currentStreak >= _maxStreakCount)
+            _currentStreak = _maxStreakCount - 1;
+    }
+
+    private void InitPrefabs()
+    {
+        for (int i = 0; i < _maxStreakCount; i++)
+            _rewardPrefabs.Add(Instantiate(_rewardPref, _rewardsGrid, false));
+    }
+
+    private IEnumerator RewardsStateUpdater()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            UpdateRewardsState();
+        }
+    }
+
+    private void UpdateRewardsState()
+    {
+        _canClaimReward = true;
+
+        if (_lastClaimTime.HasValue)
+        {
+            var timeSpan = DateTime.UtcNow - _lastClaimTime.Value;
+
+            if (timeSpan.TotalHours > _claimDeadLine)
+            {
+                _lastClaimTime = null;
+                _currentStreak = 0;
+            }
+            else
+            {
+                if (timeSpan.TotalHours < _claimCoolDown)
+                    _canClaimReward = false;
+            }
+        }
+
+        UpdateRewardsUI();   
+    }
+
+    private void UpdateRewardsUI()
+    {
+        _claimButton.interactable = _canClaimReward;
+
+        if (_canClaimReward == false)
+        {
+            var nextClaimTime = _lastClaimTime.Value.AddHours(_claimCoolDown);
+            var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
+
+            _status.text = $"Left {currentClaimCooldown.Hours}:{currentClaimCooldown.Minutes}:{currentClaimCooldown.Seconds}";
+        }
+        else
+        {
+            _status.text = "Claim your rewards";
+        }
+
+        for (int i = 0; i < _rewardPrefabs.Count; i++)
+            _rewardPrefabs[i].SetRewardData(i, _currentStreak, _rewards[i], _canClaimReward);
     }
 }

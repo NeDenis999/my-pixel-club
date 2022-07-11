@@ -20,6 +20,28 @@ namespace Infrastructure.Services
         
         public PlayerData PlayerData => _playerData;
 
+        public int AmountCards 
+        {
+            get
+            {
+                int amountCard = 0;
+
+                foreach (var card in _playerData.AttackDecks)
+                {
+                    if (card.Id != 0)
+                        amountCard++;
+                }
+
+                foreach (var card in _playerData.DefDecks)
+                {
+                    if (card.Id != 0)
+                        amountCard++;
+                }
+
+                return amountCard += _playerData.InventoryDecksData.Length;
+            }
+        }
+
         public DataSaveLoadService(Card[] allCards, Sprite[] avatars, ShopItemBottle[] allItems)
         {
             _allCards = allCards;
@@ -187,7 +209,10 @@ namespace Infrastructure.Services
                 FirstDayInGame = DateTime.Now,
                 Rank = 1,
                 Level = 1,
+                EXP = 0,
+                MaxExp = 100,
                 Energy = 25,
+                MaxEnergy = 25,
                 ItemsId = new int[0]
             };
 

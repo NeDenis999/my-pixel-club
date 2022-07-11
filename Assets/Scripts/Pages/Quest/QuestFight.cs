@@ -85,15 +85,16 @@ namespace Pages.Quest
 
             _experienceSliderAnimator.Slider.maxValue = _dataSaveLoadService.PlayerData.MaxExp;
             _experienceSliderAnimator.Slider.value = _dataSaveLoadService.PlayerData.EXP;
-            _playerExpPerProcentText.text = (_dataSaveLoadService.PlayerData.EXP / _dataSaveLoadService.PlayerData.MaxExp * 100).ToString() + " %";
             _experienceBeforeSlider.maxValue = _dataSaveLoadService.PlayerData.MaxExp;
             _experienceBeforeSlider.value = 0;
             
             _healthSliderAnimator.Slider.value = _localDataService.Health;
-            _playerHealthPerProcentText.text = (_localDataService.Health / _localDataService.MaxHealth() * 100).ToString() + " %"; ;
 
             _enemyHealthSliderAnimator.Slider.value = EnemiesMaxHealth();
+
             _enemyHelthPerProcentText.text = "100 %";
+            _playerExpPerProcentText.text = (_dataSaveLoadService.PlayerData.EXP / _dataSaveLoadService.PlayerData.MaxExp * 100).ToString() + " %";
+            _playerHealthPerProcentText.text = "100 %";
                     
             _dataSaveLoadService.DecreaseEnergy(_questConfirmWindow.RequiredAmountEnergy);
         }

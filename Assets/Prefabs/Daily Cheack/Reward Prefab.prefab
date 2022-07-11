@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5930158102443925423}
-  - component: {fileID: -875700130356478304}
+  - component: {fileID: 152062395263988191}
   m_Layer: 5
   m_Name: Reward Prefab
   m_TagString: Untagged
@@ -41,7 +41,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-875700130356478304
+--- !u!114 &152062395263988191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,16 +50,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 511615355376083770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d2fd9c572c98b049bf97b4621d95ebf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cde55eee9c3a2f49a31aeeb2eec7d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _backGround: {fileID: 7257315289048032868}
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _currentStreakColor: {r: 0.33276975, g: 1, b: 0.25, a: 1}
+  _currentStreakColor: {r: 0.33333334, g: 1, b: 0.2509804, a: 1}
+  _takenColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   _dayText: {fileID: 4820275451802409790}
   _rewardValue: {fileID: 2582565137933070655}
   _rewardIcon: {fileID: 1536699882216706376}
-  _rewardGold: {fileID: 3291909554632205204, guid: 71a6f8da833210d46900c6705e88cbdb, type: 3}
+  _rewardGold: {fileID: 4316662806695148514, guid: bc99127719e1ef043b530d284fff8cec, type: 3}
   _rewardCristal: {fileID: 3150084610149199809, guid: cf20d0fe892770145976b65515b4fb99, type: 3}
 --- !u!1 &707048020894409674
 GameObject:

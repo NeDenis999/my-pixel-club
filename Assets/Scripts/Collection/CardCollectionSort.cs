@@ -27,12 +27,17 @@ public class CardCollectionSort<T> : MonoBehaviour where T : CardCell
     public void HumansSort()
     {
         RaceSort(RaceCard.Humans);
-
     }
 
     public void DemonsSort()
     {
         RaceSort(RaceCard.Demons);
+    }
+
+    public void AllCard()
+    {
+        foreach (var cardCell in _cards)
+            cardCell.gameObject.SetActive(true);
     }
 
     public void StandartRarity()

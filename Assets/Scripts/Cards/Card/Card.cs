@@ -29,6 +29,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     [SerializeField] private int _attack;
     [SerializeField] private int _def;
     [SerializeField] private int _health;
+    [SerializeField] private string _effectName;
     [SerializeField] private string _attackSillName;
     [SerializeField] private string _defSkillName;
     [SerializeField] private int _defSkill;
@@ -71,6 +72,7 @@ public class Card : ScriptableObject, ICard, IRoulette
     public int Id { get; set; }
     public void TakeDamage(int damage) => _health -= damage;
     public string AttackSkillName => _attackSillName;
+    public string EffectName => _effectName;
     public int BonusDefSkill => _defSkill;
     public string DefSkillName => _defSkillName;
     public float SkillChance => (float)_skillChance;

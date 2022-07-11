@@ -33,12 +33,19 @@ namespace Pages.Enhance
             _doneButton.onClick.RemoveListener(DoneChange);
         }
 
-        public void SetCardCollection(List<CardCollectionCell> cardCollectionCells)
+        public void InitCardCollection(List<CardCollectionCell> cardCollectionCells)
         {
             if (cardCollectionCells == null) throw new System.InvalidOperationException();
 
             _listCardsInCollection.Clear();
             _listCardsInCollection.AddRange(cardCollectionCells);
+        }
+
+        public void SelectCard(CardCollectionCell selectCard)
+        {
+            if (selectCard == null) throw new System.ArgumentNullException();
+
+            _selectedCard = selectCard;
         }
 
         private void RenderCards()
@@ -71,13 +78,6 @@ namespace Pages.Enhance
 
                 _enchanceCardsForDeleteCollection.DisplayCardsForDelete(_listCardsInCollection);
             }
-        }
-
-        public void SelectCard(CardCollectionCell selectCard)
-        {
-            if (selectCard == null) throw new System.ArgumentNullException();
-
-            _selectedCard = selectCard;
         }
     }
 }

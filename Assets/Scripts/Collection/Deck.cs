@@ -37,21 +37,16 @@ public abstract class Deck : MonoBehaviour
         OnCardChanged?.Invoke(_cardsInDeck);
     }
 
-    private void OnDisable()
-    {
-        SaveDecks(); 
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveDecks();
-    }
-
     public void RememberCardLocation(int cardPositionInDeck, AtackOrDefCardType fromDeck)
     {
         _cardCollection.gameObject.SetActive(true);
         _cardPositionInDeck = cardPositionInDeck;
         _deckType = fromDeck;
+    }
+
+    public void TurnOffCardCollection()
+    {
+        _cardCollection.gameObject.SetActive(false);
     }
 
     public void SetCardInDeck(CardCollectionCell card)
@@ -68,5 +63,15 @@ public abstract class Deck : MonoBehaviour
     public void RetrieveCardInCollection(CardCell card)
     {
         _cardCollection.AddCardCell(card);
+    }
+
+    private void OnDisable()
+    {
+        SaveDecks(); 
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveDecks();
     }
 }

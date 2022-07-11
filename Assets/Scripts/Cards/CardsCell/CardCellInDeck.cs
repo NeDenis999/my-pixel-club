@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Infrastructure.Services;
 using TMPro;
 using UnityEngine;
@@ -60,6 +61,7 @@ private void OpenCardCollection()
     }
     else
     {
+        _deck.TurnOffCardCollection();
         _statisticCardWindow.gameObject.SetActive(true);
         _statisticCardWindow.Render(this);
     }

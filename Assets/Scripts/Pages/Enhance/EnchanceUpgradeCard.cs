@@ -6,7 +6,8 @@ namespace Pages.Enhance
 {
     public class EnchanceUpgradeCard : MonoBehaviour
     {    
-        [SerializeField] private EnchanceCardCollection _enhanceCardCollection;    
+        [SerializeField] private EnchanceCardCollection _enhanceCardCollection;
+        [SerializeField] private Enchance _enhance;
 
         [SerializeField] private Image _UIIcon;
         [SerializeField] private Sprite _standardSprite;
@@ -16,19 +17,34 @@ namespace Pages.Enhance
         private CardCollectionCell _cardCell;
         public CardCollectionCell CardCell => _cardCell;
 
+        [SerializeField] private Button _resetButton;
+
         private void Start()
         {
             _cardStatistic = FindObjectOfType<EnhanceCardForUpgradeStatistic>().gameObject.GetComponent<EnhanceCardForUpgradeStatistic>();
         }
 
         private void OnEnable()
-        {        
+        {
+            _resetButton.onClick.AddListener(Reset);
             GetComponent<Button>().onClick.AddListener(OpenCardCollection);
             Reset();
         }
 
+        public void SetCardForUpgrade(CardCollectionCell card)
+        {
+            if (card == null) throw new System.ArgumentNullException();
+
+            _cardCell = card;
+            _UIIcon.sprite = CardCell.Icon.sprite;
+            _cardStatistic.Render(this);
+        
+            print(card.LevelPoint);
+        }
+
         private void OnDisable()
         {
+            _resetButton.onClick.RemoveListener(Reset);
             GetComponent<Button>().onClick.RemoveListener(OpenCardCollection);
         }
 
@@ -42,17 +58,8 @@ namespace Pages.Enhance
         {
             _cardCell = null;
             _UIIcon.sprite = _standardSprite;
-        }
-
-        public void SetCardForUpgrade(CardCollectionCell card)
-        {
-            if (card == null) throw new System.ArgumentNullException();
-
-            _cardCell = card;
-            _UIIcon.sprite = CardCell.Icon.sprite;
-            _cardStatistic.Render(this);
-        
-            print(card.LevelPoint);
+            _enhance.gameObject.SetActive(false);
+            _enhance.gameObject.SetActive(true);
         }
     }
 }

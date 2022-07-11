@@ -55,22 +55,9 @@ namespace Pages.My_Page
             _rankText.text = _data.PlayerData.Rank.ToString();
             _energyText.text = _data.PlayerData.Energy.ToString(CultureInfo.InvariantCulture);
             _expText.text = _data.PlayerData.EXP.ToString(CultureInfo.InvariantCulture);
-            _heroesText.text = (CalculateHerouseCountInDeck(_data.PlayerData.AttackDecks) + CalculateHerouseCountInDeck(_data.PlayerData.DefDecks) + _data.PlayerData.InventoryDecks.Length).ToString() + '/' + 100;
+            _heroesText.text = _data.AmountCards.ToString() + '/' + 50;
             _powerText.text = _attackDeck.Power.ToString();
             _goldText.text = _data.PlayerData.Coins.ToString();
-        }
-
-        private int CalculateHerouseCountInDeck(Card[] deck)
-        {
-            int herouseCount = 0;
-
-            foreach (var cardInDeck in deck)
-            {
-                if (cardInDeck.Rarity != RarityCard.Empty)
-                    herouseCount++;
-            }
-
-            return herouseCount;
         }
     }
 }

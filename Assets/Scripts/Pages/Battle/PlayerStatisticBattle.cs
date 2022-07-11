@@ -38,7 +38,7 @@ namespace Pages.Battle
         private void UpdateDisplay()
         {
             _levelText.text = $"LEVEL: {_dataSaveLoadService.PlayerData.Level}";
-            _energyText.text = $"ENERGY: {_dataSaveLoadService.PlayerData.Energy}/{35}";
+            _energyText.text = $"ENERGY: {_dataSaveLoadService.PlayerData.Energy}/{25}";
             _defenceText.text = $"DEFENCE: {_localDataService.Defence}";
             _attackText.text = $"ATTACK: {_localDataService.Attack}";
         }

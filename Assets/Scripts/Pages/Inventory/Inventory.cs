@@ -16,30 +16,26 @@ public class Inventory : MonoBehaviour
     {
         _dataSaveLoadService = dataSaveLoadService;
     }
-    private void DestroyItem(InventoryCell item)
-    {
-        if (item.AmountThisItem > 0)
-        {
-            item.AmountThisItem--;
-        }
-        else
-        {
-            BottleCollection.Remove(item.Item);
-            Destroy(item.gameObject);
-            _dataSaveLoadService.UpdateItemsData();
-        }
-    }
-
     public void AddItem(ShopItemBottle bottle)
     {
         BottleCollection.Add(bottle);
         _dataSaveLoadService.UpdateItemsData();
     }
 
-
     public void UseEnergyBottle(InventoryCell item)
     {
-        _dataSaveLoadService.IncreaseEnergy(25 - _dataSaveLoadService.PlayerData.Energy);
+        _dataSaveLoadService.IncreaseEnergy(_dataSaveLoadService.PlayerData.MaxEnergy);
         DestroyItem(item);
+    }
+
+    private void DestroyItem(InventoryCell bottel)
+    {
+        if (bottel.AmountThisItem > 0)
+            bottel.AmountThisItem--;
+        else
+            Destroy(bottel.gameObject);
+
+        BottleCollection.Remove(bottel.Item);
+        _dataSaveLoadService.UpdateItemsData();
     }
 }

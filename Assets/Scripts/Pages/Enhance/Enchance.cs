@@ -30,7 +30,7 @@ namespace Pages.Enhance
     
         private void OnEnable()
         {
-            _enhanceCardForUpgradeCollection.SetCardCollection(_cardCollection.Cards);
+            _enhanceCardForUpgradeCollection.InitCardCollection(_cardCollection.Cards);
 
             _enhanceButton.onClick.AddListener(Enhance);
         }
@@ -61,7 +61,7 @@ namespace Pages.Enhance
             currentEnhanceCardList.AddRange(_cardCollection.Cards);
             currentEnhanceCardList.Remove(_upgradeCard.CardCell);
 
-            _enhanceCardForUpgradeCollection.SetCardCollection(currentEnhanceCardList);
+            _enhanceCardForUpgradeCollection.InitCardCollection(currentEnhanceCardList);
             _enhanceCardsForDeleteCollection.DisplayCardsForDelete(currentEnhanceCardList);
 
             _dataSaveLoadService.SetInventoryDecks(_cardCollection.Cards);

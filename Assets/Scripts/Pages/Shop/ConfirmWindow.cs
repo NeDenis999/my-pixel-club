@@ -55,7 +55,7 @@ public class ConfirmWindow : MonoBehaviour
         for (int i = 0; i <= _amountItems.value; i++)
         {
             if (_shopItem.Item is ShopItemCardPack)
-                if(_dataSaveLoadService.PlayerData.InventoryDecksData.Length + _shopItem.Count <= MaxCountCard)
+                if(_dataSaveLoadService.AmountCards <= MaxCountCard)
                     _shop.BuyCard((ShopItemCardPack)_shopItem);
                 else
                 {

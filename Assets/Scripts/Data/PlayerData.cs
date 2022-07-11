@@ -21,6 +21,7 @@ namespace Data
         public float EXP;
         public float MaxExp;
         public int Energy;
+        public int MaxEnergy;
         public int Level;
         public int Rank;
         public DateTime FirstDayInGame;

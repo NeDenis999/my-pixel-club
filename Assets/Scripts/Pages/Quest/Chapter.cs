@@ -39,13 +39,20 @@ namespace Pages.Quest
         private void OnEnable()
         {
             if (_isLocked == false)
+            {
                 _lockedImage.SetActive(false);
+
+                _chapterList.CloseAllChapters();
+                Open();
+            }
         }
 
         public void UnlockedChapter()
         {
             _isLocked = false;
             _lockedImage.SetActive(false);
+
+            Toggle();
         }
 
         private void Toggle()

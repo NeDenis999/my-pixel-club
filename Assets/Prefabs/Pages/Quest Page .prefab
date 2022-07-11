@@ -360,7 +360,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -637,7 +637,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1325679680970489495}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5862839
+  m_Size: 0.5905935
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1442,7 +1442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.0048, y: 362.38}
+  m_AnchoredPosition: {x: 0.000013828, y: 368.1}
   m_SizeDelta: {x: 268.09, y: 63.175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1987174684576598292
@@ -2976,7 +2976,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 5172358846485033658}
   m_HandleRect: {fileID: 0}
@@ -3178,8 +3178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.008956909, y: -0.46}
-  m_SizeDelta: {x: 1053.8, y: 692.46}
+  m_AnchoredPosition: {x: 0.008956909, y: -3.01}
+  m_SizeDelta: {x: 1053.8, y: 697.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1075549059361649150
 CanvasRenderer:
@@ -4529,7 +4529,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4605,7 +4605,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4727,7 +4727,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 5335273564976498014}
   m_HandleRect: {fileID: 0}
@@ -4843,8 +4843,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.72, y: -41.86}
-  m_SizeDelta: {x: 1796.42, y: 852.38}
+  m_AnchoredPosition: {x: -4.72, y: -21.798}
+  m_SizeDelta: {x: 1796.42, y: 892.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5335273565447679489
 CanvasRenderer:
@@ -4928,7 +4928,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5050,7 +5050,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 5335273565136947673}
   m_HandleRect: {fileID: 0}
@@ -5356,7 +5356,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 5335273565449881751}
   m_HandleRect: {fileID: 0}
@@ -5643,10 +5643,10 @@ RectTransform:
   m_Father: {fileID: 5335273564139736999}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 362.38025}
-  m_SizeDelta: {x: 268.09, y: 63.175}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 377.36}
+  m_SizeDelta: {x: -806.41003, y: -691.84143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5780760507913686750
 GameObject:
@@ -6692,7 +6692,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0000047683716}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6798157937315102704
@@ -6708,11 +6708,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 25
+    m_Left: 0
     m_Right: 0
     m_Top: 20
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 17.9
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -7072,8 +7072,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Chapters
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bc385ff70dcf7d847a09cc7e55f2ae62, type: 2}
+  m_sharedMaterial: {fileID: -5343837838219752835, guid: bc385ff70dcf7d847a09cc7e55f2ae62, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7097,8 +7097,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
-  m_fontSizeBase: 21
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7400,10 +7400,10 @@ RectTransform:
   m_Father: {fileID: 630299595898414659}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.22000122, y: 1.2462997}
-  m_SizeDelta: {x: -6.92, y: -10.68}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.22000122, y: 1.2462921}
+  m_SizeDelta: {x: 261.16998, y: 52.494987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7774203207583682864
 CanvasRenderer:
@@ -7536,8 +7536,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
-  m_fontSizeBase: 21
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7919,6 +7919,26 @@ PrefabInstance:
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8187,6 +8207,26 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8457,6 +8497,26 @@ PrefabInstance:
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8682,6 +8742,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4660914991448158461}
     m_Modifications:
+    - target: {fileID: 5296527651524536, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 28.400208
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899393106445472842, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _chapterList
       value: 
@@ -8717,6 +8785,58 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 221.24168
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 125.94834
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8962,6 +9082,26 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].MaxHealth
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9264,6 +9404,26 @@ PrefabInstance:
       propertyPath: _enemyQuestsData.Array.data[2].MaxHealth
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9564,6 +9724,26 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[2].MaxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9908,6 +10088,26 @@ PrefabInstance:
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
       value: 550
       objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10181,6 +10381,26 @@ PrefabInstance:
       propertyPath: _enemyQuestsData.Array.data[1].MaxHealth
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10441,6 +10661,26 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].MaxHealth
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568049017104565166, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591733848870556038, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828865572925812462, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.654999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586861699787516167, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.960022
       objectReference: {fileID: 0}
     - target: {fileID: 4841063281107168327, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: m_AnchorMax.y
