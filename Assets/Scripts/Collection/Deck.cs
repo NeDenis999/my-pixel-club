@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Data;
 using Infrastructure.Services;
@@ -7,7 +8,7 @@ using Zenject;
 
 public abstract class Deck : MonoBehaviour
 {
-    public event UnityAction<List<CardCellInDeck>> OnCardChanged;
+    public event Action<List<CardCellInDeck>> OnCardChanged;
 
     [SerializeField] protected List<CardCellInDeck> _cardsInDeck;
 

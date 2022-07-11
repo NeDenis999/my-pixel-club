@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Collection;
 using Pages.Enhance.Card_Statistic;
 using UnityEngine;
 using UnityEngine.UI;

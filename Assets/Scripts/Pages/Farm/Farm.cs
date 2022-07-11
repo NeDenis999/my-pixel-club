@@ -91,7 +91,8 @@ public class Farm : MonoBehaviour
     private IEnumerator Timer()
     {
         int maxSeconds = 272;
-        _timer.text = "Left " + maxSeconds + " seconds";
+        _timer.gameObject.SetActive(true);
+        _timer.text = "Left: " + maxSeconds + " seconds";
 
         while (maxSeconds > 0)
         {

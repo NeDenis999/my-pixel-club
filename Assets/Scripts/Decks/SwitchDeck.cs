@@ -1,4 +1,5 @@
 using System;
+using Collection;
 using UnityEngine;
 
 public class SwitchDeck : MonoBehaviour
@@ -7,8 +8,8 @@ public class SwitchDeck : MonoBehaviour
     private AttackDeck _attackDeck;
     
     [SerializeField] 
-    private DefenceDeck defenceDeck;
-
+    private DefenceDeck _defenceDeck;
+    
     private bool _isToggle = true;
 
     private void Start()
@@ -16,10 +17,10 @@ public class SwitchDeck : MonoBehaviour
         Toggle();
     }
 
-    public void Toggle()
+    private void Toggle()
     {
         _attackDeck.gameObject.SetActive(_isToggle);
-        defenceDeck.gameObject.SetActive(!_isToggle);
+        _defenceDeck.gameObject.SetActive(!_isToggle);
 
         _isToggle = !_isToggle;
     }

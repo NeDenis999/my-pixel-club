@@ -1,3 +1,4 @@
+using Collection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,6 @@ public class CardCollectionCell : CardCell, IInventory
 
     public string Statistic => "Name: " + Card.Name + "\nLevel: " + Level + "\nAtk: " + Attack.ToString() + "\nDef: " + Def + "\nRace: " + Card.Race + "\nSkill: " + Card.AttackSkillName + "\nSkill chance: " + Card.SkillChance + " %";
     public string Discription => Card.Discription;
-
     public BottleEffects Effect => BottleEffects.None;
     
     protected virtual void Awake()
@@ -29,11 +29,9 @@ public class CardCollectionCell : CardCell, IInventory
 
     private void SetCardInDeck()    
     {
-        print(_attackDeck);
-        
-        if (_attackDeck.WritenDeck == AtackOrDefCardType.Atack)
+        if (_attackDeck.gameObject.activeSelf)
             _attackDeck.SetCardInDeck(this);
-        else
+        else if (_defenceDeck.gameObject.activeSelf)
             _defenceDeck.SetCardInDeck(this);
     }
 }

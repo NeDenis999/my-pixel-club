@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Collection;
 using Data;
 using Infrastructure.Services;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class CardCollection : CardCollectionSort<CardCollectionCell>
     
     [SerializeField] 
     private DefenceDeck _defenceDeck;
-    
+
     private DataSaveLoadService _dataSaveLoadService;
 
     public List<CardCollectionCell> Cards => _cards;

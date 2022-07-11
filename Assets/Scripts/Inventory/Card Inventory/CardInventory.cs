@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Collection;
 using UnityEngine;
 
 public class CardInventory : CardCollectionSort<InventoryCardCell>
