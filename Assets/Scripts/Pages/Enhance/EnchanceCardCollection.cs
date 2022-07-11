@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Pages.Enhance
 {
@@ -17,10 +19,20 @@ namespace Pages.Enhance
 
         [SerializeField] private Button _doneButton;
 
+        [SerializeField] 
+        private SelectPanel _selectPanel;
+        
         private CardCollectionCell _selectedCard;
+        private AssetProviderService _assetProviderService;
 
         [HideInInspector] public EnchanceUpgradeCard UpgradeCard;
 
+        [Inject]
+        private void Construct(AssetProviderService assetProviderService)
+        {
+            _assetProviderService = assetProviderService;
+        }
+        
         private void OnEnable()
         {
             _doneButton.onClick.AddListener(DoneChange);
@@ -58,6 +70,7 @@ namespace Pages.Enhance
             for (int i = 0; i < _listCardsInCollection.Count; i++)
             {
                 EnchanceCardCell cell = Instantiate(_cardCellTemplate, _container);
+                cell.Init(_assetProviderService, this, _selectPanel);
                 cell.Render(_listCardsInCollection[i].CardData);
                 cell.SetLinkOnCardInCollection(_listCardsInCollection[i]);
             }

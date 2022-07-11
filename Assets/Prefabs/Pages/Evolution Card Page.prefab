@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 1590167109625750481}
   - component: {fileID: 1590167109625750480}
   - component: {fileID: 1590167109625750483}
+  - component: {fileID: 3519571819453946595}
   m_Layer: 5
   m_Name: First Card Button
   m_TagString: Untagged
@@ -661,6 +662,18 @@ MonoBehaviour:
   _UIIcon: {fileID: 1590167109625750481}
   _standardSprite: {fileID: 21300000, guid: be26f94d07f07ac4298bf5bb97341da8, type: 3}
   _frame: {fileID: 4316864724862389312}
+--- !u!114 &3519571819453946595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590167109625750494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1590167109791784046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1031,7 @@ GameObject:
   - component: {fileID: 1590167110182196650}
   - component: {fileID: 1590167110182196649}
   - component: {fileID: 1590167110182196648}
+  - component: {fileID: 662888777235088001}
   m_Layer: 5
   m_Name: Evolution Button
   m_TagString: Untagged
@@ -1129,6 +1143,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &662888777235088001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590167110182196630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1590167110288781318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1303,7 @@ GameObject:
   - component: {fileID: 1590167110455936329}
   - component: {fileID: 1590167110455936328}
   - component: {fileID: 1590167110455936331}
+  - component: {fileID: 5201084928296702949}
   m_Layer: 5
   m_Name: Seconde Card Button
   m_TagString: Untagged
@@ -1404,6 +1431,18 @@ MonoBehaviour:
   _UIIcon: {fileID: 1590167110455936329}
   _standardSprite: {fileID: 21300000, guid: be26f94d07f07ac4298bf5bb97341da8, type: 3}
   _frame: {fileID: 6235015758708866870}
+--- !u!114 &5201084928296702949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590167110455936438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1590167110894274227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,6 +3085,7 @@ GameObject:
   - component: {fileID: 7661921076378716234}
   - component: {fileID: 4405772215895669406}
   - component: {fileID: 2288378722060504184}
+  - component: {fileID: 1689236754786041235}
   m_Layer: 5
   m_Name: Reset Button
   m_TagString: Untagged
@@ -3157,6 +3197,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1689236754786041235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154630954094782607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5389439200764938630
 GameObject:
   m_ObjectHideFlags: 0

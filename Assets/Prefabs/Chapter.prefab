@@ -1874,6 +1874,7 @@ MonoBehaviour:
   _enemyQuestsData: []
   _isLocked: 0
   _lockedImage: {fileID: 7045513437446980422}
+  Id: 0
 --- !u!1 &8388921904478271243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,8 +2069,9 @@ GameObject:
   - component: {fileID: 8388921905364768412}
   - component: {fileID: 8388921905364768415}
   - component: {fileID: 8388921905364768413}
+  - component: {fileID: 6839877729236446615}
   m_Layer: 5
-  m_Name: Start Button
+  m_Name: Start_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2162,6 +2164,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &6839877729236446615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8388921905364768411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8388921905413948574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,6 +2456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4830508239053369265}
   - component: {fileID: 7387998175332788876}
+  - component: {fileID: 2782814525153428459}
   m_Layer: 5
   m_Name: Chapter
   m_TagString: Untagged
@@ -2529,3 +2544,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2782814525153428459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047477586064813066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

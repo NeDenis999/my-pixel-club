@@ -936,7 +936,6 @@ MonoBehaviour:
   _statisticWindow: {fileID: 307284307622513469}
   _attackDeck: {fileID: 1157326746721627471}
   _defenceDeck: {fileID: 7952034879290697761}
-  _switchDeck: {fileID: 4650307949872202842}
 --- !u!1 &1522034486956399830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,6 +2700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2277676438680119608}
   - component: {fileID: 7253205261542993711}
+  - component: {fileID: 802750036497712890}
   m_Layer: 5
   m_Name: Attack_button
   m_TagString: Untagged
@@ -2799,6 +2799,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &802750036497712890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689564104309087092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3927820060778436853
 GameObject:
   m_ObjectHideFlags: 0
@@ -5013,6 +5025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1779897522359007397}
   - component: {fileID: 5357763603017237589}
+  - component: {fileID: 1453096482650176577}
   m_Layer: 5
   m_Name: Defence_button
   m_TagString: Untagged
@@ -5111,6 +5124,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1453096482650176577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636998276754111076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6688347822068133794
 GameObject:
   m_ObjectHideFlags: 0
@@ -7187,6 +7212,7 @@ GameObject:
   - component: {fileID: 8498209408917583452}
   - component: {fileID: 8498209408917583459}
   - component: {fileID: 8498209408917583458}
+  - component: {fileID: 5685896622810012849}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -7211,9 +7237,9 @@ RectTransform:
   m_Father: {fileID: 6402190263016305699}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 630.64996, y: -114.11}
   m_SizeDelta: {x: 172.7, y: 225.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8498209408917583453
@@ -7316,6 +7342,18 @@ MonoBehaviour:
   _deckType: 0
   _statisticCardWindow: {fileID: 307284307622513469}
   _frameImage: {fileID: 8304768290449856681}
+--- !u!114 &5685896622810012849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498209408917583456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8498209408934364987
 GameObject:
   m_ObjectHideFlags: 0
@@ -7732,6 +7770,7 @@ GameObject:
   - component: {fileID: 8498209409106181793}
   - component: {fileID: 8498209409106181788}
   - component: {fileID: 8498209409106181794}
+  - component: {fileID: 690062282144644409}
   m_Layer: 5
   m_Name: Reset Card
   m_TagString: Untagged
@@ -7826,6 +7865,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &690062282144644409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498209409106181792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8498209409136835873
 GameObject:
   m_ObjectHideFlags: 0
@@ -8115,6 +8166,7 @@ GameObject:
   - component: {fileID: 8498209409560069067}
   - component: {fileID: 8498209409560069066}
   - component: {fileID: 8498209409560069065}
+  - component: {fileID: 7112895170050606257}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -8139,9 +8191,9 @@ RectTransform:
   m_Father: {fileID: 6402190263016305699}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 810.74994, y: -114.11}
   m_SizeDelta: {x: 172.7, y: 225.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8498209409560069060
@@ -8244,6 +8296,18 @@ MonoBehaviour:
   _deckType: 0
   _statisticCardWindow: {fileID: 307284307622513469}
   _frameImage: {fileID: 8050850161325419858}
+--- !u!114 &7112895170050606257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498209409560069071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8498209409578013943
 GameObject:
   m_ObjectHideFlags: 0
@@ -8257,6 +8321,7 @@ GameObject:
   - component: {fileID: 8498209409578013939}
   - component: {fileID: 8498209409578013938}
   - component: {fileID: 8498209409578013937}
+  - component: {fileID: 3791711589568708614}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -8281,9 +8346,9 @@ RectTransform:
   m_Father: {fileID: 6402190263016305699}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 270.44998, y: -114.11}
   m_SizeDelta: {x: 172.7, y: 225.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8498209409578013932
@@ -8386,6 +8451,18 @@ MonoBehaviour:
   _deckType: 0
   _statisticCardWindow: {fileID: 307284307622513469}
   _frameImage: {fileID: 5167197028923047042}
+--- !u!114 &3791711589568708614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498209409578013943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8498209409636316951
 GameObject:
   m_ObjectHideFlags: 0
@@ -8669,6 +8746,7 @@ GameObject:
   - component: {fileID: 8498209409774391618}
   - component: {fileID: 8498209409774391617}
   - component: {fileID: 8498209409774391616}
+  - component: {fileID: 2207191806823119565}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -8693,9 +8771,9 @@ RectTransform:
   m_Father: {fileID: 6402190263016305699}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450.55, y: -114.11}
   m_SizeDelta: {x: 172.7, y: 225.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8498209409774391619
@@ -8798,6 +8876,18 @@ MonoBehaviour:
   _deckType: 0
   _statisticCardWindow: {fileID: 307284307622513469}
   _frameImage: {fileID: 1851327721875614708}
+--- !u!114 &2207191806823119565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498209409774391622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8498209409775591300
 GameObject:
   m_ObjectHideFlags: 0
@@ -9774,6 +9864,7 @@ GameObject:
   - component: {fileID: 8498209410681157572}
   - component: {fileID: 8498209410681157579}
   - component: {fileID: 8498209410681157578}
+  - component: {fileID: 2596632737839820687}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -9798,9 +9889,9 @@ RectTransform:
   m_Father: {fileID: 6402190263016305699}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90.35, y: -114.11}
   m_SizeDelta: {x: 172.7, y: 225.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8498209410681157573
@@ -9903,6 +9994,18 @@ MonoBehaviour:
   _deckType: 0
   _statisticCardWindow: {fileID: 307284307622513469}
   _frameImage: {fileID: 650834352109846424}
+--- !u!114 &2596632737839820687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498209410681157576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8498209410681726339
 GameObject:
   m_ObjectHideFlags: 0

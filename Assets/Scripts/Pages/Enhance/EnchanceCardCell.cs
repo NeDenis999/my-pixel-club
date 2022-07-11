@@ -1,19 +1,17 @@
+using Infrastructure.Services;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Pages.Enhance
 {
     public class EnchanceCardCell : CardCell
     {
+        [SerializeField] 
+        private ChangingCursorHover _changingCursorHover;
+
         private EnchanceCardCollection _enchanceCardCollection;
         private CardCollectionCell _cardInCollection;
-
         private SelectPanel _selectPanel;
-
-        private void Start()
-        {
-            _enchanceCardCollection = FindObjectOfType<EnchanceCardCollection>().gameObject.GetComponent<EnchanceCardCollection>();
-            _selectPanel = FindObjectOfType<SelectPanel>().gameObject.GetComponent<SelectPanel>();
-        }
 
         private void OnEnable()
         {
@@ -26,6 +24,14 @@ namespace Pages.Enhance
             _selectPanel.Reset();
         }
 
+        public void Init(AssetProviderService assetProviderService, EnchanceCardCollection enchanceCardCollection, SelectPanel selectPanel)
+        {
+            _enchanceCardCollection = enchanceCardCollection;
+            _selectPanel = selectPanel;
+            
+            _changingCursorHover.Init(assetProviderService);
+        }
+        
         public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)
         {
             if (cardInCollection == null) throw new System.NullReferenceException();

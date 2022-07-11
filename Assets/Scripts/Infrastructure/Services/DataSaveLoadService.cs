@@ -93,10 +93,10 @@ namespace Infrastructure.Services
 
         public void IncreaseEnergy(int energyValue)
         {
-            if (_playerData.Energy > 25) 
+            if (energyValue > _playerData.MaxEnergy) 
                 throw new ArgumentOutOfRangeException();
 
-            _playerData.Energy += energyValue;
+            _playerData.Energy = energyValue;
             Save();
         }
 
@@ -219,7 +219,7 @@ namespace Infrastructure.Services
                 Nickname = RandomNickname(),
                 AvatarId = RandomAvatarId(),
                 FirstDayInGame = DateTime.Now,
-                Rank = 1,
+                Rank = 0,
                 Level = 1,
                 EXP = 0,
                 MaxExp = 100,

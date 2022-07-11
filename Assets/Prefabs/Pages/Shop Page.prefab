@@ -1226,6 +1226,7 @@ GameObject:
   - component: {fileID: 593320522810489134}
   - component: {fileID: 484488850528673548}
   - component: {fileID: 4477715895515335681}
+  - component: {fileID: 9157927823854296753}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -1291,6 +1292,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9157927823854296753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925023591224413998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &930079404936359560
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,6 +6386,7 @@ GameObject:
   - component: {fileID: 6441570700828276519}
   - component: {fileID: 4806207745641694987}
   - component: {fileID: 203543240175593933}
+  - component: {fileID: 1176410932702964625}
   m_Layer: 5
   m_Name: Spin Button
   m_TagString: Untagged
@@ -6456,6 +6470,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1176410932702964625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4822584492459343306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4855247367871063511
 GameObject:
   m_ObjectHideFlags: 0
@@ -6625,6 +6651,7 @@ GameObject:
   - component: {fileID: 4882793709371743267}
   - component: {fileID: 4882793709371743277}
   - component: {fileID: 1254882314}
+  - component: {fileID: 6399256291233857620}
   m_Layer: 5
   m_Name: 'Other Button '
   m_TagString: Untagged
@@ -6761,6 +6788,18 @@ MonoBehaviour:
   _shopItemCellTemplate: {fileID: 2221598872861624821, guid: cf7201f29f94c7e4d8fbf25d681ee51f, type: 3}
   _container: {fileID: 4367835409327318032}
   _confirmWindow: {fileID: 4882793709819092538}
+--- !u!114 &6399256291233857620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882793709371743279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4882793709459774161
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,6 +7098,7 @@ GameObject:
   - component: {fileID: 4882793709939914388}
   - component: {fileID: 4882793709939914391}
   - component: {fileID: 4882793709939914390}
+  - component: {fileID: 8844096362617503721}
   m_Layer: 5
   m_Name: Buy_button
   m_TagString: Untagged
@@ -7182,6 +7222,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8844096362617503721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882793709939914384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4882793710131633348
 GameObject:
   m_ObjectHideFlags: 0
@@ -7405,6 +7457,7 @@ GameObject:
   - component: {fileID: 4882793710308167774}
   - component: {fileID: 4882793710308167768}
   - component: {fileID: 4882793710308167775}
+  - component: {fileID: 4885657745954965588}
   m_Layer: 5
   m_Name: Cards Button
   m_TagString: Untagged
@@ -7545,6 +7598,18 @@ MonoBehaviour:
   _shopItemCellTemplate: {fileID: 2221598872861624821, guid: cf7201f29f94c7e4d8fbf25d681ee51f, type: 3}
   _container: {fileID: 4367835409327318032}
   _confirmWindow: {fileID: 4882793709819092538}
+--- !u!114 &4885657745954965588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882793710308167770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4882793710342793945
 GameObject:
   m_ObjectHideFlags: 0
@@ -7692,6 +7757,7 @@ GameObject:
   - component: {fileID: 4882793710415449881}
   - component: {fileID: 4882793710415449883}
   - component: {fileID: 4882793710415449886}
+  - component: {fileID: 6982846434770168745}
   m_Layer: 5
   m_Name: Cristal Button
   m_TagString: Untagged
@@ -7827,6 +7893,18 @@ MonoBehaviour:
   _shopItemCellTemplate: {fileID: 2221598872861624821, guid: cf7201f29f94c7e4d8fbf25d681ee51f, type: 3}
   _container: {fileID: 4367835409327318032}
   _confirmWindow: {fileID: 4882793709819092538}
+--- !u!114 &6982846434770168745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882793710415449957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4882793710468129499
 GameObject:
   m_ObjectHideFlags: 0
@@ -8404,6 +8482,7 @@ GameObject:
   - component: {fileID: 4924556168056569352}
   - component: {fileID: 4924556168056569353}
   - component: {fileID: 4196218298021193617}
+  - component: {fileID: 8798761584848682574}
   m_Layer: 5
   m_Name: Count DropDown
   m_TagString: Untagged
@@ -8536,6 +8615,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &8798761584848682574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924556168056569364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4956099331935334150
 GameObject:
   m_ObjectHideFlags: 0
@@ -8965,6 +9056,7 @@ GameObject:
   - component: {fileID: 1777350355624980401}
   - component: {fileID: 3495500575316047494}
   - component: {fileID: 2078025796979574847}
+  - component: {fileID: 2426024018210530108}
   m_Layer: 5
   m_Name: CollectWinnings_button
   m_TagString: Untagged
@@ -9059,6 +9151,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2426024018210530108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356692095453295794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5457223174347425372
 GameObject:
   m_ObjectHideFlags: 0
@@ -11617,6 +11721,7 @@ GameObject:
   - component: {fileID: 4995850967489047434}
   - component: {fileID: 1962296724199762887}
   - component: {fileID: 7126752681528199302}
+  - component: {fileID: 1228256816921710074}
   m_Layer: 5
   m_Name: Event Button
   m_TagString: Untagged
@@ -11735,6 +11840,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1228256816921710074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8450644697359872488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8477634598177663521
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ public class AdminTools : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            _data.IncreaseEnergy(25);
+            _data.IncreaseEnergy(_data.PlayerData.MaxEnergy);
             print("ResetEnergy");
         }
     }

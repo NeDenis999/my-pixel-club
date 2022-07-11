@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using Collection;
+using Infrastructure.Services;
 using Pages.Enhance.Card_Statistic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Pages.Enhance
 {
@@ -15,11 +17,19 @@ namespace Pages.Enhance
         [SerializeField] private EnhanceCardForDeleteStatistic _enhanceCardForDeleteStatistic;
         [SerializeField] private AttackDeck _attackDeck;
         [SerializeField] private DefenceDeck _defenceDeck;
+
+        private AssetProviderService _assetProviderService;
         
         public PossibleLevelUpSlider PossibleLevelUpSlider => possibleLevelUpSlider;
         private List<CardCollectionCell> _cardsForDelete = new();
         public List<CardCollectionCell> CardForDelete => _cardsForDelete;
 
+        [Inject]
+        private void Construct(AssetProviderService assetProviderService)
+        {
+            _assetProviderService = assetProviderService;
+        }
+        
         private void OnEnable()
         {
             _cards.Clear();
@@ -52,7 +62,7 @@ namespace Pages.Enhance
                 for (int i = 0; i < cardsForDelete.Count; i++)
                 {
                     var cell = Instantiate(_cardCellTemplate, _container);
-                    cell.InitBase(_attackDeck, _defenceDeck);
+                    cell.InitBase(_attackDeck, _defenceDeck, _assetProviderService);
                     cell.Init(this, _enchance, _enhanceCardForDeleteStatistic);
                     cell.Render(cardsForDelete[i].CardData);
                     cell.SetLinkOnCardInCollection(cardsForDelete[i]);

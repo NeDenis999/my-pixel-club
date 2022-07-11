@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Infrastructure.Services;
+using Pages.Evolve;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +10,9 @@ public class EvolutionCardCell : CardCell
     [SerializeField] 
     private Button _button;
 
+    [SerializeField] 
+    private ChangingCursorHover _changingCursorHover;
+    
     private CardCollectionCell _cardInCollection;
     private EvolveCardCollection _evolveCardCollection;
     private SelectPanel _selectPanel;
@@ -27,13 +32,14 @@ public class EvolutionCardCell : CardCell
             _selectPanel.Reset();
     }
 
-    public void Init(EvolveCardCollection evolveCardCollection, SelectPanel selectPanel)
+    public void Init(EvolveCardCollection evolveCardCollection, SelectPanel selectPanel, AssetProviderService assetProviderService)
     {
         if (evolveCardCollection == null || selectPanel == null)
             Debug.LogError("Ссылки не указаны");
         
         _evolveCardCollection = evolveCardCollection;
         _selectPanel = selectPanel;
+        _changingCursorHover.Init(assetProviderService);
 
         _isInit = true;
     }

@@ -25,6 +25,12 @@ namespace Infrastructure
         [SerializeField] 
         private AudioClip[] _audioClips;
         
+        [SerializeField] 
+        private Texture2D _cursorImage;
+        
+        [SerializeField] 
+        private Texture2D _cursorClickImage;
+        
         private CoroutineStarterService _coroutineStarterService;
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
@@ -55,7 +61,7 @@ namespace Infrastructure
 
         private void BindAssetProvider()
         {
-            _assetProviderService = new AssetProviderService(_frames, _allCards, _items);
+            _assetProviderService = new AssetProviderService(_frames, _allCards, _items, _cursorImage, _cursorClickImage);
             
             Container
                 .Bind<AssetProviderService>()

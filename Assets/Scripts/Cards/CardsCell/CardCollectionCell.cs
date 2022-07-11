@@ -1,4 +1,5 @@
 using Collection;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,9 @@ public class CardCollectionCell : CardCell, IInventory
 {
     [SerializeField] 
     private Button _button;
+
+    [SerializeField] 
+    private ChangingCursorHover _changingCursorHover;
     
     private AttackDeck _attackDeck;
     private DefenceDeck _defenceDeck;
@@ -21,10 +25,12 @@ public class CardCollectionCell : CardCell, IInventory
         _button.onClick.AddListener(SetCardInDeck);
     }
 
-    public void InitBase(AttackDeck attackDeck, DefenceDeck defenceDeck)
+    public void InitBase(AttackDeck attackDeck, DefenceDeck defenceDeck, AssetProviderService assetProviderService)
     {
         _attackDeck = attackDeck;
         _defenceDeck = defenceDeck;
+        
+        _changingCursorHover.Init(assetProviderService);
     }
 
     private void SetCardInDeck()    

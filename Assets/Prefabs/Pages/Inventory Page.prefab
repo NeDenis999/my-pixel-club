@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 3531060826702367748}
   - component: {fileID: 462680059}
   - component: {fileID: 2069181489538071279}
+  - component: {fileID: 6227545516093435884}
   m_Layer: 5
   m_Name: 'Dust Button '
   m_TagString: Untagged
@@ -223,6 +224,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6227545516093435884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3531060826702367768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3531060826721424078
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +650,7 @@ GameObject:
   - component: {fileID: 3531060827904170366}
   - component: {fileID: 3531060827904170352}
   - component: {fileID: 2061547780}
+  - component: {fileID: 5018232208803149018}
   m_Layer: 5
   m_Name: Bottle Button
   m_TagString: Untagged
@@ -734,6 +748,18 @@ MonoBehaviour:
   _container: {fileID: 3531060826899770014}
   _inventoryItemCellTemplate: {fileID: 5611593678388867605, guid: 7252dcb575ac04b40b15f7a54854cd34, type: 3}
   _inventory: {fileID: 7590609148555455615}
+--- !u!114 &5018232208803149018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3531060827904170354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3531060827905819635
 GameObject:
   m_ObjectHideFlags: 0
