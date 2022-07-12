@@ -1,3 +1,4 @@
+using Cards;
 using Data;
 using Infrastructure.Services;
 using UnityEngine;
@@ -9,7 +10,12 @@ public abstract class CardCell : MonoBehaviour, ICard
 {
     public event UnityAction OnLevelUp;
 
-    [SerializeField] protected Image _icon;
+    [SerializeField] 
+    protected Image _icon;
+    
+    [SerializeField] 
+    private CardStatsPanel _cardStatsPanel;
+    
     protected Card _card;
     protected CardData _cardData;
     
@@ -38,13 +44,24 @@ public abstract class CardCell : MonoBehaviour, ICard
     public int AmountIncreaseLevelPoint { get; private set; }
 
     public virtual Card Card => _card;
-    public virtual CardData CardData => _cardData;
+    public CardData CardData => _cardData;
 
-    public virtual void Render(CardData cardData)
+    public void Render(CardData cardData)
     {
         _cardData = cardData;
         _card = AllServices.AssetProviderService.AllCards[cardData.Id];
-        
+
+        if (_cardStatsPanel)
+        {
+            if (_cardData.Id != 0)
+            {
+                _cardStatsPanel.gameObject.SetActive(true);
+                _cardStatsPanel.Init(_cardData.Attack.ToString(), _cardData.Defence.ToString(), _cardData.Health.ToString(), _card.SkillIcon);
+            }
+            else
+                _cardStatsPanel.gameObject.SetActive(false);
+        }
+
         if (cardData.Evolution == 1)
             _icon.sprite = _card.ImageFirstEvolution;
         else

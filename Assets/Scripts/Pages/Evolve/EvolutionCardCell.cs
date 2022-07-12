@@ -17,8 +17,6 @@ public class EvolutionCardCell : CardCell
     private EvolveCardCollection _evolveCardCollection;
     private SelectPanel _selectPanel;
 
-    private bool _isInit;
-    
     private void OnEnable()
     {
         _button.onClick.AddListener(SelectCard);
@@ -40,8 +38,6 @@ public class EvolutionCardCell : CardCell
         _evolveCardCollection = evolveCardCollection;
         _selectPanel = selectPanel;
         _changingCursorHover.Init(assetProviderService);
-
-        _isInit = true;
     }
     
     public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)

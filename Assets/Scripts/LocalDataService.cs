@@ -13,7 +13,6 @@ public class LocalDataService
     private AttackDeck _attackDeck;
 
     private int _health = 100;
-    private int _level = 1;
     private int _energy = 25;
     
     private DataSaveLoadService _dataSaveLoadService;

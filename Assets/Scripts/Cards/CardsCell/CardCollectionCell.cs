@@ -1,3 +1,4 @@
+using Cards;
 using Collection;
 using Infrastructure.Services;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class CardCollectionCell : CardCell, IInventory
     {
         _attackDeck = attackDeck;
         _defenceDeck = defenceDeck;
-        
+
         _changingCursorHover.Init(assetProviderService);
     }
 
