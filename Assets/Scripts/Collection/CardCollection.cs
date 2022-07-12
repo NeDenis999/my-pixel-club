@@ -46,7 +46,7 @@ public class CardCollection : CardCollectionSort<CardCollectionCell>
     {
         ActiveAllCards();
 
-        _cards = _cards.OrderByDescending(e => e.Card.Rarity).ThenByDescending(e => e.Power).ToList();
+        _cards = _cards.OrderByDescending(e => e.Power).ThenByDescending(e => e.Card.Rarity).ToList();
         RenderCardsSiblingIndex();
     }
 

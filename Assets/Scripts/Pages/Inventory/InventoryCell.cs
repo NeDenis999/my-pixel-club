@@ -18,7 +18,7 @@ public class InventoryCell : MonoBehaviour
     private BottleEffects _effects;
 
     private ShopItemBottle _shopItemBottle;
-    private Inventory _inventory;
+    private InventoryConfirmWindow _confirmWindow;
 
     private int _amountThisItem = 1;
 
@@ -49,12 +49,12 @@ public class InventoryCell : MonoBehaviour
         _icon.sprite = shopItem.UIIcon;
         _effects = shopItem.Effect;
         _shopItemBottle = shopItem;
-        _inventory = inventory;
+        _confirmWindow = inventory.ConfirmWindow;
     }
 
     private void UseEffect()
     {
         if (_effects == BottleEffects.ReplenishEnergy)
-            _inventory.UseEnergyBottle(this);
+            _confirmWindow.Open(this);
     }
 }

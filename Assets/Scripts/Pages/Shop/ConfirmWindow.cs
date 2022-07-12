@@ -52,22 +52,20 @@ public class ConfirmWindow : MonoBehaviour
 
     public void Buy()
     {
+        if (_shopItem.Item is ShopItemCardPack && _dataSaveLoadService.AmountCards + (int)_shopItem.TypeItem * (_amountItems.value + 1) > MaxCountCard)
+        {
+            _errorWindow.SetActive(transform);
+            return;
+        }
+
         for (int i = 0; i <= _amountItems.value; i++)
         {
             if (_shopItem.Item is ShopItemCardPack)
-                if(_dataSaveLoadService.AmountCards <= MaxCountCard)
-                    _shop.BuyCard((ShopItemCardPack)_shopItem);
-                else
-                {
-                    _errorWindow.SetActive(transform);
-                    break;
-                }
-            else        
+                _shop.BuyCard((ShopItemCardPack)_shopItem);
+            else
                 _shop.BuyItem(_shopItem);
             
             OnWithdrawMoney?.Invoke(_shopItem.Price);
         }
-
-        gameObject.SetActive(false);
     }
 }

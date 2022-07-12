@@ -91,7 +91,7 @@ namespace Pages.Quest
             _experienceBeforeSlider.maxValue = _dataSaveLoadService.PlayerData.MaxExp;
             _experienceBeforeSlider.value = 0;
             
-            _healthSliderAnimator.Slider.value = _localDataService.Health;
+            _healthSliderAnimator.Slider.value = _localDataService.MaxHealth();
 
             _enemyHealthSliderAnimator.Slider.value = EnemiesMaxHealth();
 

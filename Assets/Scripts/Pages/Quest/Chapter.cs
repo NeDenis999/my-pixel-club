@@ -54,7 +54,7 @@ namespace Pages.Quest
             _isLocked = false;
             _lockedImage.SetActive(false);
 
-            Toggle();
+           // Toggle();
         }
 
         private void Toggle()

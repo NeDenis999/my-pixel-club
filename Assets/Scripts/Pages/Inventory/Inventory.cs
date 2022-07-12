@@ -7,9 +7,11 @@ using Zenject;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private InventoryConfirmWindow _confirmWindow;
     private DataSaveLoadService _dataSaveLoadService;
 
     public List<ShopItemBottle> BottleCollection => _dataSaveLoadService.PlayerData.Items;
+    public InventoryConfirmWindow ConfirmWindow => _confirmWindow;
 
     [Inject]
     private void Construct(DataSaveLoadService dataSaveLoadService)
