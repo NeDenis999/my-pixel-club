@@ -93,6 +93,8 @@ public abstract class CardCell : MonoBehaviour, ICard
 
             Debug.Log("CardCell Current Level Point: " + MaxLevelPoint);
         }
+
+        Render(CardData);
     }
 
     public int GetCardDeletePoint()
