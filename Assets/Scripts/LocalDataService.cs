@@ -12,7 +12,7 @@ public class LocalDataService
     private Inventory _inventory;
     private AttackDeck _attackDeck;
 
-    private int _health = 100;
+    private int _health;
     private int _energy = 25;
     
     private DataSaveLoadService _dataSaveLoadService;
@@ -51,14 +51,6 @@ public class LocalDataService
     public LocalDataService(DataSaveLoadService dataSaveLoadService)
     {
         _dataSaveLoadService = dataSaveLoadService;
-    }
-
-    public void SpendEnergy(int energy)
-    {
-        if (energy > _energy)
-            throw new System.ArgumentOutOfRangeException();
-
-        _energy -= energy;
     }
 
     public void TakeDamage(int amountDamage)

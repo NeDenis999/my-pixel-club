@@ -39,9 +39,10 @@ public class Shop : MonoBehaviour
     public void BuyCard(ShopItemCardPack shopItem)
     {
         _cardsPack = shopItem;
-        var randomCardsData = GetRandomCards((int) shopItem.TypeItem);
+        Card[] randomCardsData = GetRandomCards((int) shopItem.TypeItem);
         _cardCollection.AddCards(randomCardsData.ToCardsData());
-        _purchaseWindow.StartOpen(shopItem, randomCardsData);
+        if(randomCardsData.Length > 0)
+            _purchaseWindow.StartOpen(shopItem, randomCardsData);
     }
 
     private Card[] GetRandomCards(int amountCard)

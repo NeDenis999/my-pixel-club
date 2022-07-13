@@ -17,7 +17,7 @@ public class QuestPrizeWindow : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private BattleController _battle;
     [SerializeField] private Button _collectButton;
-    [SerializeField] private UpPanel _upPanel;
+    
     
     private List<PrizeCell> _prizes = new();
 
@@ -31,13 +31,18 @@ public class QuestPrizeWindow : MonoBehaviour
         _collectButton.onClick.AddListener(AccruePrizes);
     }
 
+    public void OpenPrizeWindow()
+    {
+        gameObject.SetActive(true);
+        GeneratePrizes();
+    }
+
     private void OnDisable()
     {
         foreach (Transform child in _container)
             Destroy(child.gameObject);
 
         _collectButton.onClick.RemoveListener(AccruePrizes);
-        _upPanel.Unblock();
     }
 
     private void GeneratePrizes()
@@ -83,11 +88,5 @@ public class QuestPrizeWindow : MonoBehaviour
         }
 
         _prizes.Clear();
-    }
-
-    public void OpenPrizeWindow()
-    {
-        gameObject.SetActive(true);
-        GeneratePrizes();
     }
 }

@@ -47,7 +47,9 @@ namespace Pages.Quest
 
         [SerializeField]
         private PlayerAvatarQuest _avatar;
-        
+
+        [SerializeField] private UpPanel _upPanel;
+
         private LocalDataService _localDataService;
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
@@ -100,6 +102,7 @@ namespace Pages.Quest
             _playerHealthPerProcentText.text = "100 %";
                     
             _dataSaveLoadService.DecreaseEnergy(_questConfirmWindow.RequiredAmountEnergy);
+            _localDataService.RevertHealth();
         }
         
         private IEnumerator Fight()
@@ -148,7 +151,8 @@ namespace Pages.Quest
             
             gameObject.SetActive(false);
             _questList.SetActive(true);
-            _localDataService.RevertHealth();
+
+            _upPanel.Unblock();
         }
 
         private void DestroyAlllEnemies()
