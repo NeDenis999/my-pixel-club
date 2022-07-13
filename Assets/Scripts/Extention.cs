@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Data;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public static class Extention
 {
@@ -66,5 +68,15 @@ public static class Extention
             return card.BonusAttackSkill;
 
         return 0;
+    }
+
+    public static CardData[] ToCardsData(this Card[] cards)
+    {
+        var cardsData = new CardData[cards.Length];
+
+        for (int i = 0; i < cards.Length; i++) 
+            cardsData[i] = cards[i].GetCardData();
+
+        return cardsData;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cards.CardCell;
+using Cards.CardsCell;
 using Data;
-using Decks.CardCell;
 using Infrastructure.Services;
 using UnityEngine;
 using Zenject;

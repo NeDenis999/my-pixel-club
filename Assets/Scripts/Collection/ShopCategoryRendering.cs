@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Infrastructure.Services;
+using Pages.Shop;
 using UnityEngine;
 using Zenject;
 

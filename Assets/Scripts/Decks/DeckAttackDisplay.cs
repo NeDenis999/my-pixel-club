@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Decks.CardCell;
+using Cards.CardsCell;
 using Infrastructure.Services;
 using UnityEngine;
 using Zenject;

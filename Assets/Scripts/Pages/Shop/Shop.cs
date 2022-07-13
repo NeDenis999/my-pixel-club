@@ -1,4 +1,5 @@
 using Data;
+using Pages.Shop;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +18,10 @@ public class Shop : MonoBehaviour
     [SerializeField] private CardCollection _cardCollection;
 
     [SerializeField] private Inventory _inventory;
-
+        
+    [SerializeField] 
+    private PurchaseWindow _purchaseWindow;
+    
     private void Start()
     {
         _startCategory.SelectCategore();
@@ -35,19 +39,21 @@ public class Shop : MonoBehaviour
     public void BuyCard(ShopItemCardPack shopItem)
     {
         _cardsPack = shopItem;
-        _cardCollection.AddCards(GetRandomCardDatas((int)shopItem.TypeItem));
+        var randomCardsData = GetRandomCards((int) shopItem.TypeItem);
+        _cardCollection.AddCards(randomCardsData.ToCardsData());
+        _purchaseWindow.StartOpen(shopItem, randomCardsData);
     }
 
-    private CardData[] GetRandomCardDatas(int amountCard)
+    private Card[] GetRandomCards(int amountCard)
     {
-        CardData[] cards = new CardData[amountCard];
+        Card[] cards = new Card[amountCard];
 
         for (int i = 0; i < amountCard; i++)
         {
             if (Random.Range(0, Mathf.RoundToInt(1 / (_dropChance / 100))) == 1)
-                cards[i] = GetRandomCard(_cardsPack.AllRarityCards).GetCardData();
+                cards[i] = GetRandomCard(_cardsPack.AllRarityCards);
             else
-                cards[i] = GetRandomCard(_cardsPack.AllStandardCards).GetCardData();
+                cards[i] = GetRandomCard(_cardsPack.AllStandardCards);
         }
 
         return cards;

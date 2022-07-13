@@ -1,111 +1,113 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Infrastructure.Services;
-using Pages.Battle;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class BattleConfirmWindow : MonoBehaviour
+namespace Pages.Battle
 {
-    [SerializeField] private BattleController _battle;
-    [SerializeField] private GameObject _exeptionBaner;
-    [SerializeField] private TMP_Text _exeptionText;
+    public class BattleConfirmWindow : MonoBehaviour
+    {
+        [SerializeField] private BattleController _battle;
+        [SerializeField] private GameObject _exeptionBaner;
+        [SerializeField] private TMP_Text _exeptionText;
 
-    [SerializeField] 
-    private CanvasGroup _canvasGroup;
+        [SerializeField] 
+        private CanvasGroup _canvasGroup;
 
-    [SerializeField] 
-    private GameObject _battleChouse;
+        [SerializeField] 
+        private GameObject _battleChouse;
 
 
-    private Vector3 _startPosition;
-    private Sequence _sequence;
-    private List<Card> _enemyDefCards;
-    private int _amountEnemyDefValue;
-    private LocalDataService _localDataService;
-    private DataSaveLoadService _dataSaveLoadService;
+        private Vector3 _startPosition;
+        private Sequence _sequence;
+        private List<Card> _enemyDefCards;
+        private int _amountEnemyDefValue;
+        private LocalDataService _localDataService;
+        private DataSaveLoadService _dataSaveLoadService;
     
-    [Inject]
-    private void Construct(DataSaveLoadService dataSaveLoadService, LocalDataService localDataService)
-    {
-        _dataSaveLoadService = dataSaveLoadService;
-        _localDataService = localDataService;
-    }
+        [Inject]
+        private void Construct(DataSaveLoadService dataSaveLoadService, LocalDataService localDataService)
+        {
+            _dataSaveLoadService = dataSaveLoadService;
+            _localDataService = localDataService;
+        }
     
-    private void Start()
-    {
-        _startPosition = transform.localPosition;
-    }
+        private void Start()
+        {
+            _startPosition = transform.localPosition;
+        }
 
-    public void OpenConfirmWindow(List<Card> enemyDefCards, int amountEnemyDefValue)
-    {
-        _enemyDefCards = enemyDefCards;
-        _amountEnemyDefValue = amountEnemyDefValue;
+        public void OpenConfirmWindow(List<Card> enemyDefCards, int amountEnemyDefValue)
+        {
+            _enemyDefCards = enemyDefCards;
+            _amountEnemyDefValue = amountEnemyDefValue;
 
-        gameObject.SetActive(true);
-        ShowSmooth();
-    }
+            gameObject.SetActive(true);
+            ShowSmooth();
+        }
 
-    public void OpenBattleWindow()
-    {
-        var isPlayerCardAlive = false;
+        public void OpenBattleWindow()
+        {
+            var isPlayerCardAlive = false;
                 
-        foreach (var playerCard in _dataSaveLoadService.PlayerData.AttackDecks)
-        {
-            if (playerCard.Name != "Empty")
-                isPlayerCardAlive = true;
-        }
-
-        if (!isPlayerCardAlive)
-        {
-            _exeptionBaner.SetActive(true);
-            _exeptionText.text = "You don't have any heroes in your deck";
-        }
-        else
-        {
-            if (_dataSaveLoadService.PlayerData.Energy > 0)
+            foreach (var playerCard in _dataSaveLoadService.PlayerData.AttackDecks)
             {
-                _battleChouse.SetActive(false);
+                if (playerCard.Name != "Empty")
+                    isPlayerCardAlive = true;
+            }
 
-                _dataSaveLoadService.DecreaseEnergy(5);
-                _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
-                _battle.StartFight();
+            if (!isPlayerCardAlive)
+            {
+                _exeptionBaner.SetActive(true);
+                _exeptionText.text = "You don't have any heroes in your deck";
             }
             else
             {
-                _exeptionBaner.SetActive(true);
-                _exeptionText.text = "Not enough energy";
-                _dataSaveLoadService.IncreaseEnergy(25);
-            }
-        }
-        
-        gameObject.SetActive(false);
-    }
+                if (_dataSaveLoadService.PlayerData.Energy > 0)
+                {
+                    _battleChouse.SetActive(false);
 
-    public void HideSmooth()
-    {
-        _sequence?.Kill();
-        _sequence = DOTween.Sequence();
+                    _dataSaveLoadService.DecreaseEnergy(5);
+                    _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
+                    _battle.StartFight();
+                }
+                else
+                {
+                    _exeptionBaner.SetActive(true);
+                    _exeptionText.text = "Not enough energy";
+                    _dataSaveLoadService.IncreaseEnergy(25);
+                }
+            }
         
-        _sequence
-            .Insert(0, DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, 0.3f))
-            .Insert(0, transform.DOLocalMove(_startPosition + new Vector3(0, -120, 0), 0.3f))
-            .OnComplete(() => gameObject.SetActive(false));
-    }
-    
-    private void ShowSmooth()
-    {
-        _sequence?.Kill();
-        _sequence = DOTween.Sequence();
+            gameObject.SetActive(false);
+        }
+
+        public void HideSmooth()
+        {
+            _sequence?.Kill();
+            _sequence = DOTween.Sequence();
         
-        _canvasGroup.alpha = 0;
-        transform.localPosition = _startPosition + new Vector3(0, 120, 0);
-        _sequence
-            .Insert(0, DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, 0.6f))
-            .Insert(0, transform.DOLocalMove(_startPosition, 0.5f));
-    }
+            _sequence
+                .Insert(0, DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, 0.3f))
+                .Insert(0, transform.DOLocalMove(_startPosition + new Vector3(0, -120, 0), 0.3f))
+                .OnComplete(() => gameObject.SetActive(false));
+        }
     
-    private void OnApplicationQuit() => 
-        _sequence?.Kill();
+        private void ShowSmooth()
+        {
+            _sequence?.Kill();
+            _sequence = DOTween.Sequence();
+        
+            _canvasGroup.alpha = 0;
+            transform.localPosition = _startPosition + new Vector3(0, 120, 0);
+            _sequence
+                .Insert(0, DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, 0.6f))
+                .Insert(0, transform.DOLocalMove(_startPosition, 0.5f));
+        }
+    
+        private void OnApplicationQuit() => 
+            _sequence?.Kill();
+    }
 }

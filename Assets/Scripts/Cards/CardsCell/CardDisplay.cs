@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Decks.CardCell
+namespace Cards.CardsCell
 {
     public class CardDisplay : MonoBehaviour
     {
@@ -20,8 +20,13 @@ namespace Decks.CardCell
         {
             _frames = assetProviderService.Frames;
         }
+
+        public void Init(AssetProviderService assetProviderService)
+        {
+            _frames = assetProviderService.Frames;
+        }
         
-        public void UpdateDisplay(Card card)
+        public void UpdateDisplay(global::Card card)
         {
             _icon.sprite = card.UIIcon;
 
