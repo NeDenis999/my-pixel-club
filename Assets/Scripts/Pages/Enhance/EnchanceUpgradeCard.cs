@@ -1,4 +1,5 @@
 using Pages.Enhance.Card_Statistic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ namespace Pages.Enhance
         [SerializeField] private Enchance _enhance;
 
         [SerializeField] private Image _UIIcon;
+        [SerializeField] private Image _frameImage;
         [SerializeField] private Sprite _standardSprite;
 
         private EnhanceCardForUpgradeStatistic _cardStatistic;
@@ -28,6 +30,7 @@ namespace Pages.Enhance
         {
             _cardCell = null;
             _UIIcon.sprite = _standardSprite;
+            _frameImage.gameObject.SetActive(false);
             _resetButton.onClick.AddListener(Reset);
             GetComponent<Button>().onClick.AddListener(OpenCardCollection);
 
@@ -45,6 +48,8 @@ namespace Pages.Enhance
 
             _cardCell = card;
             _UIIcon.sprite = CardCell.Icon.sprite;
+            _frameImage.gameObject.SetActive(true);
+            _frameImage.sprite = CardCell.Card.GetFrame();
             _cardStatistic.Render(this);
         
             print(card.LevelPoint);
@@ -61,6 +66,7 @@ namespace Pages.Enhance
         {
             _cardCell = null;
             _UIIcon.sprite = _standardSprite;
+            _frameImage.gameObject.SetActive(false);
             _enhance.gameObject.SetActive(false);
             _enhance.gameObject.SetActive(true);
         }

@@ -37,7 +37,6 @@ public class EvolutionCardCell : CardCell
         
         _evolveCardCollection = evolveCardCollection;
         _selectPanel = selectPanel;
-        _changingCursorHover.Init(assetProviderService);
     }
     
     public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)

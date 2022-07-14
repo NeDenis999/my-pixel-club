@@ -128,8 +128,10 @@ public class Card : ScriptableObject, ICard, IRoulette
         roulettePage.AccrueCard(GetCardData());
     }
 
-    public Sprite GetFrame(Sprite[] _frames)
+    public Sprite GetFrame()
     {
+        var _frames = AllServices.AssetProviderService.Frames;
+        
         switch (_race)
         {
             case RaceCard.Demons:

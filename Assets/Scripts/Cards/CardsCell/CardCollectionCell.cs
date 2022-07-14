@@ -30,8 +30,6 @@ public class CardCollectionCell : CardCell, IInventory
     {
         _attackDeck = attackDeck;
         _defenceDeck = defenceDeck;
-
-        _changingCursorHover.Init(assetProviderService);
     }
 
     private void SetCardInDeck()    

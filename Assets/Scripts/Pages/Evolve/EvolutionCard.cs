@@ -46,7 +46,7 @@ public class EvolutionCard : MonoBehaviour
         CardCell = selectCard;
         _UIIcon.sprite = CardCell.UIIcon;
         _frame.gameObject.SetActive(true);
-        _frame.sprite = CardCell.Card.GetFrame(_assetProviderService.Frames);
+        _frame.sprite = CardCell.Card.GetFrame();
         _isSet = true;
     }
 

@@ -12,27 +12,14 @@ namespace Cards.CardsCell
 
         [SerializeField] 
         private Image _frame;
-        
-        private Sprite[] _frames;
 
-        [Inject]
-        private void Construct(AssetProviderService assetProviderService)
-        {
-            _frames = assetProviderService.Frames;
-        }
-
-        public void Init(AssetProviderService assetProviderService)
-        {
-            _frames = assetProviderService.Frames;
-        }
-        
         public void UpdateDisplay(global::Card card)
         {
             _icon.sprite = card.UIIcon;
 
             if (card.Name != "Empty")
             {
-                _frame.sprite = card.GetFrame(_frames);
+                _frame.sprite = card.GetFrame();
                 _frame.color = Color.white;
             }
             else

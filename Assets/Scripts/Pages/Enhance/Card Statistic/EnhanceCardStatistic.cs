@@ -7,12 +7,14 @@ namespace Pages.Enhance.Card_Statistic
     public abstract class EnhanceCardStatistic : MonoBehaviour
     {
         [SerializeField] private Image _icon;
+        [SerializeField] private Image _frameImage;
         [SerializeField] private Sprite _standartImage;
         [SerializeField] private TMP_Text _atk, _def, _rarity, _race, _name, _health, _level;
 
         protected virtual void OnDisable()
         {
             _icon.sprite = _standartImage;
+            _frameImage.gameObject.SetActive(false);
 
             _atk.text = "";
             _def.text = "";
@@ -26,6 +28,8 @@ namespace Pages.Enhance.Card_Statistic
         public void Render(CardCell cardForDelete)
         {
             _icon.sprite = cardForDelete.Icon.sprite;
+            _frameImage.sprite = cardForDelete.Card.GetFrame();
+            _frameImage.gameObject.SetActive(true);
 
             _atk.text = "ATK: " + cardForDelete.Attack;
             _def.text = "DEF: " + cardForDelete.Def;

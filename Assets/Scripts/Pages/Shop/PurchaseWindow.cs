@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using Cards.CardsCell;
 using DG.Tweening;
-using Infrastructure.Services;
 using UnityEngine;
-using Zenject;
 
 namespace Pages.Shop
 {
@@ -19,13 +17,6 @@ namespace Pages.Shop
         private CardDisplay _cardDisplay;
 
         private Sequence _sequence;
-        private AssetProviderService _assetProviderService;
-
-        [Inject]
-        private void Construct(AssetProviderService assetProviderService)
-        {
-            _assetProviderService = assetProviderService;
-        }
 
         public void StartOpen(ShopItem amountItems, Card[] cards)
         {
@@ -52,7 +43,6 @@ namespace Pages.Shop
             for (int i = 0; i < cards.Length; i++)
             {
                 var cardCell = Instantiate(_cardDisplay, _container);
-                cardCell.Init(_assetProviderService);
                 cardCell.UpdateDisplay(cards[i]);
             }
         }

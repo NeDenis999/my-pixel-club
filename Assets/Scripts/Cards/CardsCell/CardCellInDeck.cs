@@ -16,14 +16,6 @@ public class CardCellInDeck : CardCell
 
     [SerializeField] private Image _frameImage;
 
-    private Sprite[] _frames;
-
-    [Inject]
-    private void Construct(AssetProviderService assetProviderService)
-    {
-        _frames = assetProviderService.Frames;
-    }
-        
     private void OnEnable()
     {
         GetComponent<Button>().onClick.AddListener(OpenCardCollection);
@@ -44,7 +36,7 @@ public class CardCellInDeck : CardCell
             _frameImage.color = Color.white;
 
             if (_frameImage)
-                _frameImage.sprite = _card.GetFrame(_frames);
+                _frameImage.sprite = _card.GetFrame();
         }
         else
         {

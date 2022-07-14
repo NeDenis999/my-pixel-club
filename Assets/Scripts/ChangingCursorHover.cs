@@ -7,22 +7,10 @@ public class ChangingCursorHover : MonoBehaviour, IPointerEnterHandler, IPointer
 {
     private Texture2D _cursorTexture;
     private CursorMode _cursorMode = CursorMode.Auto;
-    private AssetProviderService _assetProviderService;
-    
-    [Inject]
-    private void Construct(AssetProviderService assetProviderService)
-    {
-        _assetProviderService = assetProviderService;
-    }
 
-    public void Init(AssetProviderService assetProviderService)
-    {
-        _assetProviderService = assetProviderService;
-    }
-    
     public void OnPointerEnter(PointerEventData eventData) => 
-        Cursor.SetCursor(_assetProviderService.CursorClickImage, Vector2.zero, _cursorMode);
+        Cursor.SetCursor(AllServices.AssetProviderService.CursorClickImage, Vector2.zero, _cursorMode);
 
     public void OnPointerExit(PointerEventData eventData) => 
-        Cursor.SetCursor(_assetProviderService.CursorImage, Vector2.zero, _cursorMode);
+        Cursor.SetCursor(AllServices.AssetProviderService.CursorImage, Vector2.zero, _cursorMode);
 }

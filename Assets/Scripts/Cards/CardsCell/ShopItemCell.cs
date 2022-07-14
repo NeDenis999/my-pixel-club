@@ -19,10 +19,7 @@ public class ShopItemCell : MonoBehaviour
     
     [SerializeField]
     private TextMeshProUGUI _priceText;
-    
-    [SerializeField] 
-    private ChangingCursorHover _changingCursorHover;
-    
+
     private ConfirmWindow _confirmWindow;
 
     private ShopItem _shopItem;
@@ -33,7 +30,6 @@ public class ShopItemCell : MonoBehaviour
     public void Init(ConfirmWindow confirmWindow, AssetProviderService assetProviderService)
     {
         _confirmWindow = confirmWindow;
-        _changingCursorHover.Init(assetProviderService);
     }
     
     public void Render(IShopItem item)

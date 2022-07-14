@@ -28,8 +28,6 @@ namespace Pages.Enhance
         {
             _enchanceCardCollection = enchanceCardCollection;
             _selectPanel = selectPanel;
-            
-            _changingCursorHover.Init(assetProviderService);
         }
         
         public void SetLinkOnCardInCollection(CardCollectionCell cardInCollection)
