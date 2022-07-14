@@ -43,9 +43,14 @@ namespace Pages.Battle
 
         [SerializeField] 
         private UpPanel _upPanel;
+
+        [SerializeField] 
+        private Window _winWindow;
+        
+        [SerializeField]
+        private Window _loseWindow;
         
         private List<Card> _enemyDefCards = new();
-        private int _baseEnemyDefValue;
         private Card[] _enemyCards;
         private Card[] _playerCards;
         private int previousRandomNumber = -1;
@@ -67,10 +72,9 @@ namespace Pages.Battle
             //gameObject.SetActive(false);
         }
 
-        public void SetEnemyDefCard(List<Card> enemyDefCards, int amountEnemyDefValue)
+        public void SetEnemyDefCard(List<Card> enemyDefCards)
         {
             _enemyDefCards = enemyDefCards;
-            _baseEnemyDefValue = amountEnemyDefValue;
         }
 
         public void StartFight()
@@ -122,7 +126,7 @@ namespace Pages.Battle
             yield return _battleAnimator.AppearanceCards(_enemyCardAnimators, _playerCardAnimators, 
                 GetAliveCards(_playerCards), GetAliveCards(_enemyCards));
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 1; i++)
             {
                 yield return _battleIntro.PlayerTurn();
                 yield return new WaitForSeconds(0.5f);
@@ -131,15 +135,11 @@ namespace Pages.Battle
                 yield return new WaitForSeconds(0.5f);
                 yield return EnemyTurn();
             }
-
-            yield return _battleIntro.EndIntro();
-
-            yield return new WaitForSeconds(1);
-        
-            if (GetAmountPlayerCardsDamage() > GetAmountEnemyCardsDef())
-                OnPlayerWin?.Invoke();
+            
+            if (GetAmountPlayerCardsDamage() >= GetAmountEnemyCardsDef())
+                yield return PlayerWin();
             else
-                OnPlayerLose?.Invoke();
+                yield return PlayerLose();
 
             _upPanel.Unblock();
             gameObject.SetActive(false);
@@ -171,7 +171,7 @@ namespace Pages.Battle
         {
             for (int i = 0; i < 3; i++)
             {
-                var randomMyCardDamageCount = Random.Range(1, _enemyCardAnimators.Length);
+                var randomMyCardDamageCount = _enemyCardAnimators.Length < 3 ? Random.Range(1, _enemyCardAnimators.Length) : 3;
 
                 for (int j = 0; j < randomMyCardDamageCount; j++)
                 {
@@ -186,7 +186,7 @@ namespace Pages.Battle
                     Card randomMyCard = myCards[randomNumber];
 
                     var myCardAnimator = myCardAnimators[randomNumber];
-                    myCardAnimator.transform.parent = myCardAnimator.transform.parent;
+                    //myCardAnimator.transform.parent = myCardAnimator.transform.parent;
                     myCardAnimator.Selected();
                     yield return new WaitForSeconds(0.2f);
 
@@ -322,6 +322,8 @@ namespace Pages.Battle
 
             foreach (var enemyCard in _enemyDefCards)
             {
+                amountDef += enemyCard.Def;
+                
                 if (Random.Range(1, 100) == 1 && enemyCard.Rarity != RarityCard.Empty)
                 {
                     amountDef += enemyCard.BonusDefSkill;
@@ -329,7 +331,23 @@ namespace Pages.Battle
                 }
             }
 
-            return amountDef + _baseEnemyDefValue;
+            return amountDef;
+        }
+
+        private IEnumerator PlayerWin()
+        {
+            yield return _battleIntro.EndIntro("You Win");
+            yield return new WaitForSeconds(1);
+            OnPlayerWin?.Invoke();
+            _winWindow.ShowSmooth();
+        }
+
+        private IEnumerator PlayerLose()
+        {
+            yield return _battleIntro.EndIntro("You Lose");
+            yield return new WaitForSeconds(1);
+            OnPlayerLose?.Invoke();
+            _loseWindow.ShowSmooth();
         }
     }
 }

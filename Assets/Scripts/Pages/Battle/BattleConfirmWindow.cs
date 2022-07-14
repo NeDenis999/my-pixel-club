@@ -23,7 +23,6 @@ namespace Pages.Battle
         private Vector3 _startPosition;
         private Sequence _sequence;
         private List<Card> _enemyDefCards;
-        private int _amountEnemyDefValue;
         private LocalDataService _localDataService;
         private DataSaveLoadService _dataSaveLoadService;
     
@@ -39,10 +38,9 @@ namespace Pages.Battle
             _startPosition = transform.localPosition;
         }
 
-        public void OpenConfirmWindow(List<Card> enemyDefCards, int amountEnemyDefValue)
+        public void OpenConfirmWindow(List<Card> enemyDefCards)
         {
             _enemyDefCards = enemyDefCards;
-            _amountEnemyDefValue = amountEnemyDefValue;
 
             gameObject.SetActive(true);
             ShowSmooth();
@@ -70,7 +68,7 @@ namespace Pages.Battle
                     _battleChouse.SetActive(false);
 
                     _dataSaveLoadService.DecreaseEnergy(5);
-                    _battle.SetEnemyDefCard(_enemyDefCards, _amountEnemyDefValue);
+                    _battle.SetEnemyDefCard(_enemyDefCards);
                     _battle.StartFight();
                 }
                 else

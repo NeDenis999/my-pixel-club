@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class EnemyBattle : MonoBehaviour
 {
     [SerializeField] private List<Card> _enemyDefCards;
-    [SerializeField] private int _amountEnemyDefValue;
 
     [SerializeField] private BattleConfirmWindow _battleConfirmWindow;
 
@@ -18,5 +17,5 @@ public class EnemyBattle : MonoBehaviour
     }
 
     private void OpenConfirmWindow() => 
-        _battleConfirmWindow.OpenConfirmWindow(_enemyDefCards, _amountEnemyDefValue);
+        _battleConfirmWindow.OpenConfirmWindow(_enemyDefCards);
 }

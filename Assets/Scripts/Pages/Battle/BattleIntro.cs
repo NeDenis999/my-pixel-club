@@ -84,7 +84,7 @@ namespace Battle
         public IEnumerator OpponentTurn() => 
             Intro("Opponent Turn", _enemyObstacle);
         
-        public IEnumerator EndIntro() => 
-            Intro("You Win", _playerObstacle);
+        public IEnumerator EndIntro(string text) => 
+            Intro(text, _playerObstacle);
     }
 }
