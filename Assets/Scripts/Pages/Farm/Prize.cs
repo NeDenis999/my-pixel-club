@@ -11,7 +11,7 @@ public enum PrizeType
 }
 
 [System.Serializable]
-public class Prize : ScriptableObject
+public class Prize 
 {
     public Sprite Sprite;
     public int MinNumberPrize;

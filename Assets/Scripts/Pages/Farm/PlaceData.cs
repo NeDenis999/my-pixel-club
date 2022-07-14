@@ -10,4 +10,5 @@ public class PlaceData
     [Multiline(7)]
     public string Discription;
     public Prize[] Prizes;
+    public PlaceCharacterType CharacterType;
 }
