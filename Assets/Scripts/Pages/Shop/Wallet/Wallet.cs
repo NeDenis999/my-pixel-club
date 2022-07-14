@@ -9,8 +9,6 @@ public abstract class Wallet : MonoBehaviour
 {    
     [SerializeField] private TMP_Text _textMoney;
     [SerializeField] protected int _amountMoney;
-
-    [SerializeField] protected Farm _farm;
     [SerializeField] protected QuestPrizeWindow _questPrizeWindow;
     [SerializeField] protected RoulettePage roulettePage;
     

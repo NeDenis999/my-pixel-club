@@ -11,7 +11,6 @@ public class CristalWallet : Wallet
         _amountMoney = _data.PlayerData.Crystals;
         
         _shop.OnCristalBuy += AddСurrency;
-        _farm.OnAcceruCristal += AddСurrency;
         _questPrizeWindow.OnAcceruCristal += AddСurrency;
         roulettePage.OnReceivedCristal += AddСurrency;
         roulettePage.OnBuyRouletteSpin += WithdrawСurrency;

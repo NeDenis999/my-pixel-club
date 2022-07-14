@@ -78,7 +78,7 @@ namespace Pages.Quest
         {
             _info.SetActive(true);
             _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, OpenSize);
-            _verticalLayoutGroup.spacing += 0.01f;
+            _verticalLayoutGroup.spacing += 0.1f;
             _isOpen = true;
         }
 
@@ -87,6 +87,7 @@ namespace Pages.Quest
             _info.SetActive(false);
             _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, CloseSize);
             _verticalLayoutGroup.spacing -= 0.01f;
+            _verticalLayoutGroup.spacing = 17.9f;
             _isOpen = false;
         }
     }

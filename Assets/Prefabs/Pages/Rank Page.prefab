@@ -2385,7 +2385,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2089377509731916424}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999998
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2635,6 +2635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RankPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8191865446978018729, guid: 03634bc991728b448af799b3e4035f87, type: 3}
+      propertyPath: m_text
+      value: '-'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03634bc991728b448af799b3e4035f87, type: 3}
 --- !u!224 &4459034935307135115 stripped
@@ -2737,6 +2741,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RankPlayer (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6968247047766482753, guid: 03634bc991728b448af799b3e4035f87, type: 3}
+      propertyPath: m_text
+      value: 3.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191865446978018729, guid: 03634bc991728b448af799b3e4035f87, type: 3}
+      propertyPath: m_text
+      value: '-'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03634bc991728b448af799b3e4035f87, type: 3}
 --- !u!224 &5417646455370580192 stripped
@@ -2838,6 +2850,14 @@ PrefabInstance:
     - target: {fileID: 3629879264705840330, guid: 03634bc991728b448af799b3e4035f87, type: 3}
       propertyPath: m_Name
       value: RankPlayer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968247047766482753, guid: 03634bc991728b448af799b3e4035f87, type: 3}
+      propertyPath: m_text
+      value: 2.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191865446978018729, guid: 03634bc991728b448af799b3e4035f87, type: 3}
+      propertyPath: m_text
+      value: '-'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03634bc991728b448af799b3e4035f87, type: 3}
