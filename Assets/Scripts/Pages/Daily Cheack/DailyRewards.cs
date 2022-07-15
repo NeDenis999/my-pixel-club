@@ -55,7 +55,6 @@ public class DailyRewards : MonoBehaviour
 
         InitPrefabs();
         UpdateRewardsState();
-
     }
 
     private void OnEnable()
@@ -70,34 +69,12 @@ public class DailyRewards : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void ClaimReward()
-    {
-        if (_canClaimReward == false)
-            return;
-
-        var reward = _rewards[_currentStreak];
-        switch (reward.Type)
-        {
-            case Reward.RewardType.Gold:
-                Debug.Log("Gold");
-                break;
-            case Reward.RewardType.Cristal:
-                Debug.Log("Cristal");
-                break;
-        }
-
-        _lastClaimTime = DateTime.UtcNow;
-        _currentStreak += 1;
-
-        if (_currentStreak >= _maxStreakCount)
-            _currentStreak = _maxStreakCount - 1;
-    }
-
     private void InitPrefabs()
     {
         for (int i = 0; i < _maxStreakCount; i++)
             _rewardPrefabs.Add(Instantiate(_rewardPref, _rewardsGrid, false));
     }
+
 
     private IEnumerator RewardsStateUpdater()
     {
@@ -149,5 +126,28 @@ public class DailyRewards : MonoBehaviour
 
         for (int i = 0; i < _rewardPrefabs.Count; i++)
             _rewardPrefabs[i].SetRewardData(i, _currentStreak, _rewards[i], _canClaimReward);
+    }
+
+    private void ClaimReward()
+    {
+        if (_canClaimReward == false)
+            return;
+
+        var reward = _rewards[_currentStreak];
+        switch (reward.Type)
+        {
+            case Reward.RewardType.Gold:
+                Debug.Log("Gold");
+                break;
+            case Reward.RewardType.Cristal:
+                Debug.Log("Cristal");
+                break;
+        }
+
+        _lastClaimTime = DateTime.UtcNow;
+        _currentStreak += 1;
+
+        if (_currentStreak >= _maxStreakCount)
+            _currentStreak = _maxStreakCount - 1;
     }
 }

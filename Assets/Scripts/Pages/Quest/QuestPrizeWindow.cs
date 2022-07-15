@@ -56,19 +56,9 @@ public class QuestPrizeWindow : MonoBehaviour
     private PrizeCell AddNewPrize()
     {
         var cell = Instantiate(_prizeCellTemplate, _container);
-        cell.Render(GetRandomPrize());
+        cell.RenderGetingPrize(_variationPrizes[Random.Range(0, _variationPrizes.Count)]);
         return cell;
     }
-
-    private Prize GetRandomPrize()
-    {
-        var prize = _variationPrizes[Random.Range(0, _variationPrizes.Count)];
-        prize.AmountPrize = GetRandomPrizeValue(prize);
-        return prize;
-    }
-
-    private int GetRandomPrizeValue(Prize prize) => 
-        Random.Range(prize.MinNumberPrize, prize.MaxNumberPrize);
 
     private void AccruePrizes()
     {

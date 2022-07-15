@@ -15,12 +15,21 @@ public class PrizeCell : MonoBehaviour
     public int AmountPrize => _amountPrize;
     public PrizeType TypePrize => _typePrize;
 
-    public void Render(Prize card)
+    public void RenderGetingPrize(Prize prize)
     {
-        _amountPrize = card.AmountPrize;
-        _icon.sprite = card.Sprite;
-        _typePrize = card.TypePrize;
+        _icon.sprite = prize.Sprite;
+        _typePrize = prize.TypePrize;
 
-        _amountPrizeText.text = _amountPrize.ToString();
+        _amountPrize = prize.AmountPrize;
+
+        _amountPrizeText.text = $"{_amountPrize}";
+    }
+
+    public void RenderPosiblePrize(Prize prize)
+    {
+        _icon.sprite = prize.Sprite;
+        _typePrize = prize.TypePrize;
+
+        _amountPrizeText.text = $"{prize.MinNumberPrize} - {prize.MaxNumberPrize}";
     }
 }

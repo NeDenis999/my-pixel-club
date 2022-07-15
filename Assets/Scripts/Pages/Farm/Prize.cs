@@ -16,7 +16,7 @@ public class Prize
     public Sprite Sprite;
     public int MinNumberPrize;
     public int MaxNumberPrize;
-    public int AmountPrize { get; set; }
+    public int AmountPrize => Random.Range(MinNumberPrize, MaxNumberPrize);
     public PrizeType TypePrize;
 
     public Sprite UIIcon => Sprite;

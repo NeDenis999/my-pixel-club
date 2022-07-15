@@ -32,7 +32,6 @@ public class ListCharacterForSet : MonoBehaviour
 
     public void OpenCharacterList(Place place)
     {
-        gameObject.SetActive(false);
         gameObject.SetActive(true);
 
         _place = place;

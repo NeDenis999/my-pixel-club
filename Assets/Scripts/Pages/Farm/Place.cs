@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(Button), typeof(Farm))]
 public class Place : MonoBehaviour
 {
     [SerializeField] private PlaceData _data;
 
-    [SerializeField] private PlaceInformationWindow _informationWindow;
-    [SerializeField] private ListCharacterForSet _characterList;
+    [SerializeField] private PlaceInformationWindow _informationWindow;    
 
     [SerializeField] private Image _characterImage;
 
@@ -17,20 +16,20 @@ public class Place : MonoBehaviour
     [SerializeField] private Color _setCharacterColor;
     [SerializeField] private Color _unSetCharacterColor;
 
-    public PlaceData Data => _data;
-
     private bool _isSet;
+    private Farm _farm;
+
+    public PlaceData Data => _data;
+    public bool IsSet => _isSet;
+
+    private void Start()
+    {
+        _farm = GetComponent<Farm>();
+    }
 
     private void OnEnable()
     {
-        GetComponent<Button>().onClick.AddListener(() =>
-        {
-            if (_isSet)
-                _informationWindow.Render(this);
-            else
-                OpenCharacterList();
-        });
-
+        GetComponent<Button>().onClick.AddListener(() => _informationWindow.Render(this));
     }
 
     private void OnDisable()
@@ -43,10 +42,18 @@ public class Place : MonoBehaviour
         _maskImage.color = _setCharacterColor;
         _characterImage.sprite = character.CharacterSprite;
         _isSet = true;
+
+        _farm.StartFarm();
+
+        _informationWindow.gameObject.SetActive(false);
     }
 
-    private void OpenCharacterList()
+    public void UnsetCharacter()
     {
-        _characterList.OpenCharacterList(this);
+        _isSet = false;
+        _maskImage.color = _unSetCharacterColor;
+
+        _informationWindow.gameObject.SetActive(false);
+        _farm.StatusWindow.SetActive(false);
     }
 }

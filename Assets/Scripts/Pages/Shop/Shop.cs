@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class Shop : MonoBehaviour
 {
-    public event UnityAction<int> OnCristalBuy;
-
     private ShopItemCardPack _cardsPack;
 
     [Header("Chance per procent")]
@@ -21,6 +19,8 @@ public class Shop : MonoBehaviour
         
     [SerializeField] 
     private PurchaseWindow _purchaseWindow;
+
+    [SerializeField] private CristalWallet _cristalWallet;
     
     private void Start()
     {
@@ -30,7 +30,7 @@ public class Shop : MonoBehaviour
     public void BuyItem(ShopItem shopItem)
     {
         if (shopItem.TypeItem == ShopItemType.Cristal)
-            OnCristalBuy?.Invoke(5);
+            _cristalWallet.Add—urrency(5);
 
         if (shopItem is ShopItemBottle)
             _inventory.AddItem((ShopItemBottle)shopItem);

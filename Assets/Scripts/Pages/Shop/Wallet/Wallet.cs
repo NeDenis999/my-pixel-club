@@ -25,7 +25,7 @@ public abstract class Wallet : MonoBehaviour
     protected void RefreshText() => 
         _textMoney.text = _amountMoney.ToString();
 
-    virtual protected void WithdrawСurrency(int money)
+    virtual public void WithdrawСurrency(int money)
     {
         if (money > _amountMoney)
             throw new InvalidOperationException();
@@ -34,7 +34,7 @@ public abstract class Wallet : MonoBehaviour
         UpdateСurrencyText();
     }
 
-    virtual protected void AddСurrency(int countMoney)
+    virtual public void AddСurrency(int countMoney)
     {
         _amountMoney += countMoney;
         UpdateСurrencyText();

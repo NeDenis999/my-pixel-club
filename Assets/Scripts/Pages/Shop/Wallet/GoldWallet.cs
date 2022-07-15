@@ -22,14 +22,14 @@ public class GoldWallet : Wallet
         RefreshText();
     }
 
-    protected override void AddСurrency(int countMoney)
+    public override void AddСurrency(int countMoney)
     {
         base.AddСurrency(countMoney);
 
         _data.SetCoinCount(_amountMoney);
     }
 
-    protected override void WithdrawСurrency(int money)
+    public override void WithdrawСurrency(int money)
     {
         base.WithdrawСurrency(money);
 
