@@ -8,9 +8,9 @@ public class RouletteCell : MonoBehaviour
 {
     [SerializeField] private Image _icon;
 
-    [SerializeField] private ScriptableObject _rouletteItem;
+    [SerializeField] private Prize _rouletteItem;
     
-    public IRoulette RouletteItem => _rouletteItem as IRoulette;
+    public IRoulette RouletteItem => _rouletteItem;
 
     private void Start()
     {

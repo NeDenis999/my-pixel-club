@@ -31,7 +31,7 @@ namespace Pages.Evolve
         {
             _doneButton.onClick.AddListener(DoneChange);
             _selectedCard = null;
-            RenderCard();
+            RenderCards();
         }
 
         private void OnDisable()
@@ -55,7 +55,7 @@ namespace Pages.Evolve
             _selectedCard = selectCard;
         }
 
-        private void RenderCard()
+        private void RenderCards()
         {
             foreach (Transform card in _container) 
                 Destroy(card.gameObject);
@@ -64,7 +64,7 @@ namespace Pages.Evolve
         
             for (int i = 0; i < _listCardsInCollection.Count; i++)
             {
-                if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Card.Evolution == 1)
+                if (CheckCardSimilarityWhithExample(_listCardsInCollection[i].Card) && _listCardsInCollection[i].Evolution == 1)
                 {
                     var cell = Instantiate(_cardCellTemplate, _container);
                     cell.Init(this, _selectPanel, _assetProviderService);

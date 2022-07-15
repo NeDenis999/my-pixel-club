@@ -121,10 +121,8 @@ public class Card : ScriptableObject, ICard, IRoulette
         return cardData;
     }
     
-    public void TakeItem()
+    public void TakeItem(RoulettePage roulettePage)
     {
-        var roulettePage = FindObjectOfType<RoulettePage>().gameObject.GetComponent<RoulettePage>();
-
         roulettePage.AccrueCard(GetCardData());
     }
 

@@ -94,6 +94,8 @@ public class Evolution : MonoBehaviour
         evolvedCard.Health = GetEvolveUpValue(firstCard.CardCell.CardData.Health, secondCard.CardCell.CardData.Attack);
         evolvedCard.Id = firstCard.CardCell.CardData.Id;
         evolvedCard.Evolution = 2;
+        evolvedCard.Level = 1;
+        evolvedCard.MaxLevelPoint = 1000;
 
         return evolvedCard;
     }

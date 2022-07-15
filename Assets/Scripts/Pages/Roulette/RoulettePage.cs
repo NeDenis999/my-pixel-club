@@ -74,7 +74,7 @@ public class RoulettePage : MonoBehaviour
     private void TakeItem(IRoulette rouletteItem)
     {
         var taker = rouletteItem;
-        taker.TakeItem();
+        taker.TakeItem(this);
     }
 
     private void StartCloseWinningPanel()

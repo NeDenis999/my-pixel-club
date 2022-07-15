@@ -17,7 +17,7 @@ public class PrizeCell : MonoBehaviour
 
     public void RenderGetingPrize(Prize prize)
     {
-        _icon.sprite = prize.Sprite;
+        _icon.sprite = prize.UIIcon;
         _typePrize = prize.TypePrize;
 
         _amountPrize = prize.AmountPrize;
@@ -27,7 +27,7 @@ public class PrizeCell : MonoBehaviour
 
     public void RenderPosiblePrize(Prize prize)
     {
-        _icon.sprite = prize.Sprite;
+        _icon.sprite = prize.UIIcon;
         _typePrize = prize.TypePrize;
 
         _amountPrizeText.text = $"{prize.MinNumberPrize} - {prize.MaxNumberPrize}";

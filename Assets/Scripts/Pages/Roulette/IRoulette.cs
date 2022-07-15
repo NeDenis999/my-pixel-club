@@ -7,5 +7,5 @@ public interface IRoulette
     public Sprite UIIcon { get; }
     public string Description { get; }
 
-    void TakeItem();
+    void TakeItem(RoulettePage roulettePage);
 }
