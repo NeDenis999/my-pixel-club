@@ -10,9 +10,6 @@ public class EvolutionCardCell : CardCell
     [SerializeField] 
     private Button _button;
 
-    [SerializeField] 
-    private ChangingCursorHover _changingCursorHover;
-    
     private CardCollectionCell _cardInCollection;
     private EvolveCardCollection _evolveCardCollection;
     private SelectPanel _selectPanel;

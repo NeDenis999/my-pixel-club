@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Content: {fileID: 3924015747087191311}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 552361630680686357}
   - component: {fileID: 1334643415800978507}
   - component: {fileID: 6363755138180942396}
+  - component: {fileID: 1154841141311080656}
   m_Layer: 5
   m_Name: Close Button
   m_TagString: Untagged
@@ -667,6 +668,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1154841141311080656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2901828744866882702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3477933616987945277
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +692,7 @@ GameObject:
   - component: {fileID: 669750976939492274}
   - component: {fileID: 5176371244624326134}
   - component: {fileID: 2056432055649215423}
+  - component: {fileID: 2699328351905078134}
   m_Layer: 5
   m_Name: Prize
   m_TagString: Untagged
@@ -768,6 +782,18 @@ MonoBehaviour:
   m_Spacing: {x: 15, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &2699328351905078134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477933616987945277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3483239309135276909
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,6 +805,7 @@ GameObject:
   - component: {fileID: 4514285443487488844}
   - component: {fileID: 8504341616127017994}
   - component: {fileID: 4959554452810842130}
+  - component: {fileID: 8162609738225323064}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -903,6 +930,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8162609738225323064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483239309135276909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3549839648476864698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1194,7 @@ GameObject:
   - component: {fileID: 2288296665090823082}
   - component: {fileID: 4324395920106510963}
   - component: {fileID: 7820069884285933657}
+  - component: {fileID: 2433751558863138294}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1281,6 +1321,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2433751558863138294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806241346711042829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5024827013315368484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,7 +1995,7 @@ MonoBehaviour:
   m_Content: {fileID: 5132451078998800901}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -2674,7 +2726,7 @@ MonoBehaviour:
   m_Content: {fileID: 4507716115058176078}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -2785,6 +2837,7 @@ GameObject:
   - component: {fileID: 8893436622603237350}
   - component: {fileID: 550475340512400223}
   - component: {fileID: 5784118670448901004}
+  - component: {fileID: 3515132785740741419}
   m_Layer: 5
   m_Name: Prize Window
   m_TagString: Untagged
@@ -2866,6 +2919,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 961754651727651430}
   _prizeCellTamplate: {fileID: -5363183370605077544, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
+  _cristalWallet: {fileID: 0}
+  _goldWallet: {fileID: 0}
 --- !u!114 &5784118670448901004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2922,6 +2977,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3515132785740741419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8713558928706372680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8750268325098153273
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3171,7 @@ GameObject:
   - component: {fileID: 9046321857724379700}
   - component: {fileID: 2027245736479219582}
   - component: {fileID: 110957524338275216}
+  - component: {fileID: 6474873328558829107}
   m_Layer: 5
   m_Name: Set Or Remove Button
   m_TagString: Untagged
@@ -3214,6 +3282,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6474873328558829107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057774145456992760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63678de63e44794bf4bf96bf0504fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &755507349701959621
 PrefabInstance:
   m_ObjectHideFlags: 0
