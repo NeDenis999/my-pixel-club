@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RouletteCell : MonoBehaviour
 {
     [SerializeField] private Image _icon;
+    [SerializeField] private TMP_Text _amountPrize;
 
     [SerializeField] private Prize _rouletteItem;
     
@@ -33,5 +35,7 @@ public class RouletteCell : MonoBehaviour
     private void Render(IRoulette item)
     {
         _icon.sprite = item.UIIcon;
+        if(item is Prize)
+            _amountPrize.text = (item as Prize).AmountPrize.ToString();
     }    
 }

@@ -50,11 +50,11 @@ public class RoulettePage : MonoBehaviour
         _cardCollection.AddCard(card);
     }
 
-    public void AccrueCristal() => 
-        OnReceivedCristal?.Invoke(Random.Range(1, 6));
+    public void AccrueCristal(int amountCristal) => 
+        OnReceivedCristal?.Invoke(amountCristal);
 
-    public void AccrueGold() => 
-        OnReceivedGold?.Invoke(Random.Range(1,6));
+    public void AccrueGold(int amountGold) => 
+        OnReceivedGold?.Invoke(amountGold);
 
     private void StartSpine()
     {

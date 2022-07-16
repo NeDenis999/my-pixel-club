@@ -9,6 +9,6 @@ public class PlaceData
     public string LocationName;
     [Multiline(7)]
     public string Discription;
-    public Prize[] Prizes;
+    public RandomPrize[] RandomPrizes;
     public PlaceCharacterType CharacterType;
 }

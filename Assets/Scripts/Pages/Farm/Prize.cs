@@ -14,9 +14,9 @@ public enum PrizeType
 public class Prize : IRoulette
 {
     [SerializeField] private Sprite GoldSprite, CristalSprite;
-    public int MinNumberPrize;
-    public int MaxNumberPrize;
-    public int AmountPrize => Random.Range(MinNumberPrize, MaxNumberPrize);
+
+    [SerializeField] private int _amountPrize;
+    public virtual int AmountPrize => _amountPrize;
     public PrizeType TypePrize;
 
     public Sprite UIIcon 
@@ -31,9 +31,9 @@ public class Prize : IRoulette
     public void TakeItem(RoulettePage roulettePage)
     {
         if (TypePrize == PrizeType.Cristal)
-            roulettePage.AccrueCristal();
+            roulettePage.AccrueCristal(AmountPrize);
 
         if (TypePrize == PrizeType.Gold)
-            roulettePage.AccrueGold();
+            roulettePage.AccrueGold(AmountPrize);
     }
 }

@@ -25,7 +25,7 @@ public class PrizeCell : MonoBehaviour
         _amountPrizeText.text = $"{_amountPrize}";
     }
 
-    public void RenderPosiblePrize(Prize prize)
+    public void RenderPosiblePrize(RandomPrize prize)
     {
         _icon.sprite = prize.UIIcon;
         _typePrize = prize.TypePrize;

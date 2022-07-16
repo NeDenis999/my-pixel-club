@@ -29,7 +29,7 @@ public class PlaceInformationWindow : MonoBehaviour
         _locationImage.sprite = place.Data.LocationImage;
         _locationName.text = place.Data.LocationName;
         _locationDiscription.text = place.Data.Discription;
-        RenderPrize(place.Data.Prizes);
+        RenderPrize(place.Data.RandomPrizes);
         RenderButton(place);
         if (place.IsSet)
             _status.text = place.GetComponent<Farm>().Status;
@@ -37,7 +37,7 @@ public class PlaceInformationWindow : MonoBehaviour
             _status.text = "";
     }
 
-    private void RenderPrize(Prize[] prizes)
+    private void RenderPrize(RandomPrize[] prizes)
     {
         foreach (Transform child in _container)
             Destroy(child.gameObject);
@@ -55,7 +55,7 @@ public class PlaceInformationWindow : MonoBehaviour
         {
             _setOrUnsetCharacterButton.onClick.AddListener(() =>
             {
-                _prizeWindow.Render(place.Data.Prizes);
+                _prizeWindow.Render(place.Data.RandomPrizes);
                 place.UnsetCharacter();
 
             });
