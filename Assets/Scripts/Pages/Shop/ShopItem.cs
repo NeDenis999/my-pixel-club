@@ -39,7 +39,7 @@ public abstract class ShopItem : ScriptableObject, IShopItem
                 return Color.gray;
             case RarityCard.Standart:
                 return Color.yellow;
-            case RarityCard.Rarity:
+            case RarityCard.Rare:
                 return Color.cyan;
         }
 

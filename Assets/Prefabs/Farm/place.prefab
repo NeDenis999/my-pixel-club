@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Left 10 H. 59 Min.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 7393538789031664700}
   - component: {fileID: 6258384933913923176}
   m_Layer: 5
-  m_Name: place
+  m_Name: Place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,21 +386,13 @@ MonoBehaviour:
       \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u044E\u0442 \u0448\u0435\u043B\u0435\u0441
       \u043B\u0438\u0441\u044C\u0435\u0432 \u0437\u0430 \u0448\u0451\u043F\u043E\u0442
       \u0432\u0435\u0442\u0440\u0430."
-    Prizes:
-    - Sprite: {fileID: 0}
-      MinNumberPrize: 1
-      MaxNumberPrize: 5
-      TypePrize: 1
-    - Sprite: {fileID: 0}
-      MinNumberPrize: 5
-      MaxNumberPrize: 8
-      TypePrize: 0
+    RandomPrizes: []
     CharacterType: 0
   _informationWindow: {fileID: 0}
   _characterImage: {fileID: 6139378432547552028}
   _maskImage: {fileID: 432761161424907448}
   _setCharacterColor: {r: 1, g: 1, b: 1, a: 1}
-  _unSetCharacterColor: {r: 1, g: 1, b: 1, a: 0}
+  _unsetCharacterColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &7393538789031664700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _status: {fileID: 6837815738903968611}
-  _statusWindow: {fileID: 7426681544533497092}
+  _statusWindow: {fileID: 7692371765327206104}
+  _farmColor: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
+  _finishFarmColor: {r: 0.6, g: 1, b: 0.44313726, a: 1}
 --- !u!114 &6258384933913923176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  m_Color: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

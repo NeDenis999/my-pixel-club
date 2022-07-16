@@ -14,7 +14,7 @@ public class Place : MonoBehaviour
 
     [SerializeField] private Image _maskImage;
     [SerializeField] private Color _setCharacterColor;
-    [SerializeField] private Color _unSetCharacterColor;
+    [SerializeField] private Color _unsetCharacterColor;
 
     private bool _isSet;
     private Farm _farm;
@@ -44,16 +44,14 @@ public class Place : MonoBehaviour
         _isSet = true;
 
         _farm.StartFarm();
-
-        _informationWindow.gameObject.SetActive(false);
+        _informationWindow.Render(this);
     }
 
     public void UnsetCharacter()
     {
         _isSet = false;
-        _maskImage.color = _unSetCharacterColor;
-
-        _informationWindow.gameObject.SetActive(false);
-        _farm.StatusWindow.SetActive(false);
+        _maskImage.color = _unsetCharacterColor;
+        _farm.ClaimRewards();
+        _informationWindow.Render(this);
     }
 }

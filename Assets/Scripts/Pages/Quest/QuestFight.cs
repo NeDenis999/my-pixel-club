@@ -57,6 +57,7 @@ namespace Pages.Quest
 
         private Enemy[] _enemies;
         private Chapter _chapter;
+        private RandomPrize[] _prizes;
 
         [Inject]
         private void Construct(DataSaveLoadService dataSaveLoadService, AssetProviderService assetProviderService, LocalDataService localDataService)
@@ -69,6 +70,7 @@ namespace Pages.Quest
         public void StartFight(Chapter chapter)
         {
             _chapter = chapter;
+            _prizes = chapter.PosiblePrizes;
             _enemies = new Enemy[chapter.EnemyQuestsData.Length];
 
             for (int i = 0; i < _enemies.Length; i++)
@@ -200,7 +202,7 @@ namespace Pages.Quest
             }
 
             yield return new WaitForSeconds(2f);
-            _winWindow.OpenPrizeWindow();
+            _winWindow.OpenPrizeWindow(_prizes);
             _chapter.NextChapter.UnlockedChapter();
             _dataSaveLoadService.SetCountQuestPassed(_chapter.NextChapter.Id);
             //OnPlayerWin?.Invoke();

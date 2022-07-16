@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Services;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Pages.Quest
@@ -8,6 +9,8 @@ namespace Pages.Quest
     {
         [SerializeField] 
         private Chapter[] _chapters;
+
+        [SerializeField] private Scrollbar _srollbar;
 
         private DataSaveLoadService _dataSaveLoadService;
         
@@ -19,10 +22,15 @@ namespace Pages.Quest
 
         public void InitAllChapter()
         {
+            _srollbar.value = 1;
+
             for (int i = 0; i < _chapters.Length; i++)
             {
                 if (_dataSaveLoadService.PlayerData.CountQuestPassed >= i)
                     _chapters[i].UnlockedChapter();
+
+                if(_dataSaveLoadService.PlayerData.CountQuestPassed > i)
+                    _srollbar.value -= 0.15f;
 
                 _chapters[i].Id = i;
             }

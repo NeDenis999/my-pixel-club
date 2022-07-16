@@ -8,7 +8,10 @@ public enum RarityCard
 {
     Empty,
     Standart,
-    Rarity
+    Rare,
+    HightRare,
+    Epic,
+    Legendary
 }
 
 public enum RaceCard

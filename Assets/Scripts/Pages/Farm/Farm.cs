@@ -3,12 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Farm : MonoBehaviour
 {
+    public event UnityAction OnTimerChanged;
+    public event UnityAction OnFarmFinished;
+
     [SerializeField] private TMP_Text _status;
-    [SerializeField] private GameObject _statusWindow;
-    public GameObject StatusWindow => _statusWindow;
+    [SerializeField] private Image _statusWindow;
+    [SerializeField] private Color _farmColor, _finishFarmColor;
+
     private Place _place;
 
     private DateTime? _startFarmTime
@@ -38,6 +44,7 @@ public class Farm : MonoBehaviour
 
     public string Status => _status.text;
     public bool CanClaimRewared => _canClaimReward;
+    public Place Place => _place;
 
     private void Awake()
     {
@@ -46,12 +53,12 @@ public class Farm : MonoBehaviour
 
     private void OnEnable()
     {
-        _statusWindow.SetActive(true);
+        _statusWindow.gameObject.SetActive(true);
 
         if (_place.IsSet)
             StartCoroutine(Farming());
         else
-            _statusWindow.SetActive(false);
+            _statusWindow.gameObject.SetActive(false);
     }
 
     private void OnDisable()
@@ -61,13 +68,15 @@ public class Farm : MonoBehaviour
 
     public void ClaimRewards()
     {
+        StopAllCoroutines();
         _startFarmTime = null;
-        _statusWindow.SetActive(false);
+        _canClaimReward = false;
+        _statusWindow.gameObject.SetActive(false);
     }
 
     public void StartFarm()
     {
-        _statusWindow.SetActive(true);
+        _statusWindow.gameObject.SetActive(true);
         _startFarmTime = DateTime.UtcNow;
         StartCoroutine(Farming());
     }
@@ -100,14 +109,26 @@ public class Farm : MonoBehaviour
     {
         if (_canClaimReward == false)
         {
-            var nextClaimTime = _startFarmTime.Value.AddHours(_claimCoolDown);
+            TimeSpan lastCurrentClaimCoolDown = _currentClaimCooldown;
+            DateTime nextClaimTime = _startFarmTime.Value.AddHours(_claimCoolDown);
+
             _currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
 
-            _status.text = $"Left {_currentClaimCooldown.Seconds} S. {_currentClaimCooldown.Minutes} Min.";
+            _status.text = $"Left " +
+                //$"{_currentClaimCooldown.Hours} H. " +
+                $"{_currentClaimCooldown.Minutes} Min. " +
+                $"{_currentClaimCooldown.Seconds} Sec.";
+
+            if (_currentClaimCooldown.Seconds != lastCurrentClaimCoolDown.Seconds)
+                OnTimerChanged?.Invoke();
+
+            _statusWindow.color = _farmColor;
         }
         else
         {
             _status.text = "Claim your rewards";
+            OnFarmFinished?.Invoke();
+            _statusWindow.color = _finishFarmColor;
         }        
     }
 }

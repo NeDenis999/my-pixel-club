@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,7 +8,11 @@ using UnityEngine.UI;
 public class PlaceInformationWindow : MonoBehaviour
 {
     [SerializeField] private Image _locationImage;
-    [SerializeField] private TMP_Text _locationDiscription, _locationName, _status;
+    [SerializeField] private TMP_Text _locationDiscription, _locationName;
+
+    [SerializeField] private Image _status;
+    [SerializeField] private TMP_Text _statusText;
+    [SerializeField] private Color _farmColor, _finishColor, _notfarmColor;
 
     [SerializeField] private Button _setOrUnsetCharacterButton;
     [SerializeField] private TMP_Text _setOrUnsetCharacterButtonText;
@@ -19,9 +24,27 @@ public class PlaceInformationWindow : MonoBehaviour
 
     [SerializeField] private PrizeWindow _prizeWindow;
 
+    private Farm _farm;
+
     public void Render(Place place)
     {
-        _setOrUnsetCharacterButton.onClick.RemoveAllListeners();
+        void RenderButton()
+        {
+            this.RenderButton(place);
+        }
+
+        if (_farm != null)
+        {
+            _farm.OnTimerChanged -= RenderStatusText;
+            _farm.OnFarmFinished -= RenderStatusText;
+            _farm.OnFarmFinished -= RenderButton;
+        }
+
+        _farm = place.GetComponent<Farm>();
+
+        _farm.OnTimerChanged += RenderStatusText;
+        _farm.OnFarmFinished += RenderStatusText;
+        _farm.OnFarmFinished += RenderButton;
 
         _characterList.gameObject.SetActive(false);
         gameObject.SetActive(true);
@@ -30,11 +53,8 @@ public class PlaceInformationWindow : MonoBehaviour
         _locationName.text = place.Data.LocationName;
         _locationDiscription.text = place.Data.Discription;
         RenderPrize(place.Data.RandomPrizes);
-        RenderButton(place);
-        if (place.IsSet)
-            _status.text = place.GetComponent<Farm>().Status;
-        else
-            _status.text = "";
+        this.RenderButton(place);
+        RenderStatusText();        
     }
 
     private void RenderPrize(RandomPrize[] prizes)
@@ -51,7 +71,9 @@ public class PlaceInformationWindow : MonoBehaviour
 
     private void RenderButton(Place place)
     {
-        if (place.GetComponent<Farm>().CanClaimRewared)
+        _setOrUnsetCharacterButton.onClick.RemoveAllListeners();
+
+        if (_farm.CanClaimRewared)
         {
             _setOrUnsetCharacterButton.onClick.AddListener(() =>
             {
@@ -72,6 +94,23 @@ public class PlaceInformationWindow : MonoBehaviour
         {
             _setOrUnsetCharacterButtonText.text = "Set";
             _setOrUnsetCharacterButton.onClick.AddListener(() => _characterList.OpenCharacterList(place));
+        }
+    }
+
+    private void RenderStatusText()
+    {
+        if (_farm.Place.IsSet)
+        {
+            _status.color = _farmColor;
+            _statusText.text = _farm.Status;
+
+            if (_farm.CanClaimRewared == true)
+                _status.color = _finishColor;
+        }
+        else
+        {
+            _status.color = _notfarmColor;
+            _statusText.text = "";
         }
     }
 }

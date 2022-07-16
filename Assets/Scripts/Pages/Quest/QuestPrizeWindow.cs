@@ -23,18 +23,12 @@ public class QuestPrizeWindow : MonoBehaviour
 
     private void Start()
     {
-        _battle.OnPlayerWin += OpenPrizeWindow;
+        //_battle.OnPlayerWin += OpenPrizeWindow;
     }
 
     private void OnEnable()
     {
         _collectButton.onClick.AddListener(AccruePrizes);
-    }
-
-    public void OpenPrizeWindow()
-    {
-        gameObject.SetActive(true);
-        GeneratePrizes();
     }
 
     private void OnDisable()
@@ -45,18 +39,26 @@ public class QuestPrizeWindow : MonoBehaviour
         _collectButton.onClick.RemoveListener(AccruePrizes);
     }
 
-    private void GeneratePrizes()
+    public void OpenPrizeWindow(RandomPrize[] prizes)
     {
-        for (int i = 0; i < 3; i++)
+        if (prizes == null) throw new System.NullReferenceException();
+
+        gameObject.SetActive(true);
+        GeneratePrizes(prizes);
+    }
+
+    private void GeneratePrizes(RandomPrize[] prizes)
+    {
+        for (int i = 0; i < prizes.Length; i++)
         {
-            _prizes.Add(AddNewPrize());
+            _prizes.Add(AddNewPrize(prizes[i]));
         }
     }
 
-    private PrizeCell AddNewPrize()
+    private PrizeCell AddNewPrize(RandomPrize prizes)
     {
         var cell = Instantiate(_prizeCellTemplate, _container);
-        cell.RenderGetingPrize(_variationPrizes[Random.Range(0, _variationPrizes.Count)]);
+        cell.RenderGetingPrize(prizes);
         return cell;
     }
 

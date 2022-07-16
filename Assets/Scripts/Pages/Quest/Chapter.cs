@@ -25,6 +25,8 @@ namespace Pages.Quest
 
         [SerializeField] 
         private EnemyQuestData[] _enemyQuestsData;
+
+        [SerializeField] private RandomPrize[] _posiblePrizes;
         public Chapter NextChapter => _nextChapter;
 
         [SerializeField] 
@@ -35,6 +37,7 @@ namespace Pages.Quest
         
         private bool _isOpen;
         public EnemyQuestData[] EnemyQuestsData => _enemyQuestsData;
+        public RandomPrize[] PosiblePrizes => _posiblePrizes;
         public int Id;
 
         private void OnEnable()

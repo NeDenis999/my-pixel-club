@@ -34,6 +34,16 @@ public class CardCollectionSort<T> : MonoBehaviour where T : CardCell
         RaceSort(RaceCard.Demons);
     }
 
+    private void RaceSort(RaceCard race)
+    {
+        foreach (var cardCell in _cards)
+        {
+            cardCell.gameObject.SetActive(false);
+            if (cardCell.Card.Race == race)
+                cardCell.gameObject.SetActive(true);
+        }
+    }
+
     public void AllCard()
     {
         foreach (var cardCell in _cards)
@@ -47,17 +57,22 @@ public class CardCollectionSort<T> : MonoBehaviour where T : CardCell
 
     public void RareRarity()
     {
-        RaritySort(RarityCard.Rarity);
+        RaritySort(RarityCard.Rare);
     }
 
-    private void RaceSort(RaceCard race)
+    public void HightRareRarity()
     {
-        foreach (var cardCell in _cards)
-        {
-            cardCell.gameObject.SetActive(false);
-            if (cardCell.Card.Race == race)
-                cardCell.gameObject.SetActive(true);
-        }
+        RaritySort(RarityCard.HightRare);
+    }
+
+    public void EpicRarity()
+    {
+        RaritySort(RarityCard.Epic);
+    }
+
+    public void LegendaryRarity()
+    {
+        RaritySort(RarityCard.Legendary);
     }
 
     private void RaritySort(RarityCard rarity)
