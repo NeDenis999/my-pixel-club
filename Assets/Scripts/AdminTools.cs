@@ -1,6 +1,7 @@
 ﻿using Data;
 using Infrastructure.Services;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class AdminTools : MonoBehaviour
@@ -61,6 +62,12 @@ public class AdminTools : MonoBehaviour
         {
             _data.IncreaseEnergy(_data.PlayerData.MaxEnergy);
             print("ResetEnergy");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            SceneManager.LoadScene(SceneManager.sceneCount);
+            print("Reload");
         }
     }
 }

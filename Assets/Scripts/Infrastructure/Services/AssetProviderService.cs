@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Infrastructure.Services
 {
@@ -9,14 +10,16 @@ namespace Infrastructure.Services
         public readonly ShopItemBottle[] ShopItemBottles;
         public readonly Texture2D CursorImage;
         public readonly Texture2D CursorClickImage;
-        
-        public AssetProviderService(Sprite[] frames, Card[] allCards, ShopItemBottle[] shopItemBottles, Texture2D cursorImage, Texture2D cursorClickImage)
+        public readonly Sprite[] AllNFT;
+
+        public AssetProviderService(Sprite[] frames, Card[] allCards, ShopItemBottle[] shopItemBottles, Texture2D cursorImage, Texture2D cursorClickImage, Sprite[] allNFT)
         {
             Frames = frames;
             AllCards = allCards;
             ShopItemBottles = shopItemBottles;
             CursorImage = cursorImage;
             CursorClickImage = cursorClickImage;
+            AllNFT = allNFT;
         }
     }
 }

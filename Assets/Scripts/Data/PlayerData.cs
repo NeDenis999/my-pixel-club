@@ -30,5 +30,6 @@ namespace Data
         public int[] ItemsId;
         public List<ShopItemBottle> Items;
         public int CountQuestPassed;
+        public int[] FarmCharacterCellIndex;
     }
 }

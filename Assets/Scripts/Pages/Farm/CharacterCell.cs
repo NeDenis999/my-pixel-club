@@ -11,6 +11,8 @@ public class CharacterCell : MonoBehaviour
 
     [SerializeField] private Image _image;
 
+    private int _index;
+    
     public Sprite CharacterSprite => _image.sprite;
 
     private void OnEnable()

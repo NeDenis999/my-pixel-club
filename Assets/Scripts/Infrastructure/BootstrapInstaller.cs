@@ -31,6 +31,9 @@ namespace Infrastructure
         [SerializeField] 
         private Texture2D _cursorClickImage;
         
+        [SerializeField] 
+        private Sprite[] _allNFT;
+        
         private CoroutineStarterService _coroutineStarterService;
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
@@ -61,7 +64,7 @@ namespace Infrastructure
 
         private void BindAssetProvider()
         {
-            _assetProviderService = new AssetProviderService(_frames, _allCards, _items, _cursorImage, _cursorClickImage);
+            _assetProviderService = new AssetProviderService(_frames, _allCards, _items, _cursorImage, _cursorClickImage, _allNFT);
             
             Container
                 .Bind<AssetProviderService>()

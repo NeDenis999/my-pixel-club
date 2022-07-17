@@ -177,8 +177,23 @@ namespace Infrastructure.Services
         public void SetAttackDecks(CardData[] cards) => 
             SetDecks(cards, ref _playerData.AttackDecksData, ref _playerData.AttackDecks);
 
-        public void SetSpecies(Species species) => 
+        public void SetSpecies(Species species)
+        {
             _playerData.Species = species;
+            Save();
+        }
+
+        public void SetFarmCharacterCellIndex(int index, int characterIndex)
+        {
+            _playerData.FarmCharacterCellIndex[index] = characterIndex;
+            Save();
+        }
+        
+        public void SetFarmCharacterCellIndex(int[] indexes)
+        {
+            _playerData.FarmCharacterCellIndex = indexes;
+            Save();
+        }
 
         private void SetDecks(CardData[] cards, ref CardData[] deckData, ref Card[] deck)
         {
@@ -225,12 +240,13 @@ namespace Infrastructure.Services
                 MaxExp = 100,
                 Energy = 25,
                 MaxEnergy = 25,
-                ItemsId = new int[0]
+                ItemsId = new int[0],
+                FarmCharacterCellIndex = new [] {-1, -1, -1, -1, -1, -1}
             };
 
             Save();
         }
-        
+
         private string RandomNickname()
         {
             var nickNames = new[]
@@ -238,10 +254,10 @@ namespace Infrastructure.Services
 
             return nickNames[Random.Range(0, nickNames.Length)];
         }
-        
+
         private int RandomAvatarId() =>
             Random.Range(0, _avatars.Length);
-        
+
         private void UpdateAvatar() => 
             _playerData.Avatar = _avatars[_playerData.AvatarId];
 
@@ -290,7 +306,7 @@ namespace Infrastructure.Services
             foreach (var itemId in _playerData.ItemsId) 
                 _playerData.Items.Add(_allItems[itemId]);
         }
-        
+
         private CardData[] CreateCardsData()
         {
             var cards = new CardData[5];
