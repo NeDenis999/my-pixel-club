@@ -59,7 +59,7 @@ public abstract class CardCell : MonoBehaviour, ICard
             if (_cardData.Id != 0)
             {
                 _cardStatsPanel.gameObject.SetActive(true);
-                _cardStatsPanel.Init(_cardData.Attack.ToString(), _cardData.Defence.ToString(), _cardData.Health.ToString(), _card.Rarity.ToString(), _card.Level.ToString());
+                _cardStatsPanel.Init(_cardData.Attack.ToString(), _cardData.Defence.ToString(), _cardData.Health.ToString(), _card.Rarity.ToString(), _cardData.Level.ToString());
             }
             else
                 _cardStatsPanel.gameObject.SetActive(false);

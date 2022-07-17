@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace Pages.Farm
 {
-    [RequireComponent(typeof(Button))]
     public class PlaceAnimator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private const float ScalingFactor = 1.2f;
@@ -14,18 +13,10 @@ namespace Pages.Farm
 
         [SerializeField] 
         private Transform _transform;
-
-        [SerializeField] 
-        private Button _button;
         
         private Sequence _sequence;
         private Vector3 _selectSize;
         private Vector3 _normalSize;
-
-        private void OnEnable()
-        {
-            //_button.onClick.AddListener(Pressed);
-        }
 
         private void Awake()
         {
@@ -33,11 +24,6 @@ namespace Pages.Farm
             
             _normalSize = localScale;
             _selectSize = localScale * ScalingFactor;
-        }
-
-        private void OnDisable()
-        {
-            //_button.onClick.RemoveListener(Pressed);
         }
         
         public void OnPointerEnter(PointerEventData eventData) => 

@@ -26,8 +26,18 @@ namespace Cards
             _attackText.text = attack;
             _defenseText.text = defence;
             _healthText.text = health;
-            _rarityText.text = rarity;
             _levelText.text = level;
+            _rarityText.text = GetShortNameRarity(rarity);
+        }
+
+        private string GetShortNameRarity(string rarity)
+        {
+            int i = 0;
+            char[] chars = new char[rarity.Length];
+            foreach (char c in rarity)
+                if (char.IsUpper(c))
+                    chars[i++] = c;
+            return new string(chars, 0, i);
         }
     }
 }

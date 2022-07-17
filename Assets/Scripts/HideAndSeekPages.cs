@@ -1,5 +1,6 @@
 using Data;
 using Infrastructure.Services;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -38,8 +39,15 @@ public class HideAndSeekPages : MonoBehaviour
 
     private void ShowAllPages()
     {
-        foreach (var page in _pages)
-            page.Show();
+        try
+        {
+            foreach (var page in _pages)
+                page.Show();
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log(e);
+        }
     }
 
     public void TurnOffAllPages()

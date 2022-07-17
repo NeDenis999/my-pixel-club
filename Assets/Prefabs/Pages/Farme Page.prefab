@@ -1095,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5565128026051602482
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3356,70 +3356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Place
       objectReference: {fileID: 0}
-    - target: {fileID: 6473866723095471787, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067022405895077423, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 55fb2ceb86218c34d8a600f320a9c021, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _characterList
-      value: 
-      objectReference: {fileID: 5765169361286492469}
     - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
       propertyPath: _informationWindow
       value: 
       objectReference: {fileID: 3032636020827637862}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.CharacterType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MaxNumberPrize
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MinNumberPrize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MaxNumberPrize
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].GoldSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].CristalSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MaxNumberPrize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
 --- !u!224 &1641513731767645307 stripped
@@ -3522,78 +3462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Place
       objectReference: {fileID: 0}
-    - target: {fileID: 8067022405895077423, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 55fb2ceb86218c34d8a600f320a9c021, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _characterList
-      value: 
-      objectReference: {fileID: 5765169361286492469}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Discription
-      value: "\u041F\u0443\u0441\u0442\u044B\u043D\u044F"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.LocationName
-      value: Dust
-      objectReference: {fileID: 0}
     - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
       propertyPath: _informationWindow
       value: 
       objectReference: {fileID: 3032636020827637862}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.CharacterType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.LocationImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 08a2755e7be4f1e4d87463fba9eb2db9, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MaxNumberPrize
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MinNumberPrize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MaxNumberPrize
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].GoldSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].CristalSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MaxNumberPrize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
 --- !u!224 &1255519440349191991 stripped
@@ -3696,66 +3568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Place
       objectReference: {fileID: 0}
-    - target: {fileID: 6473866723095471787, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067022405895077423, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 55fb2ceb86218c34d8a600f320a9c021, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _characterList
-      value: 
-      objectReference: {fileID: 5765169361286492469}
     - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
       propertyPath: _informationWindow
       value: 
       objectReference: {fileID: 3032636020827637862}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MaxNumberPrize
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MinNumberPrize
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MaxNumberPrize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MinNumberPrize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].GoldSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].CristalSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MaxNumberPrize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
 --- !u!224 &3035347179805207662 stripped
@@ -3858,72 +3674,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Place
       objectReference: {fileID: 0}
-    - target: {fileID: 6473866723095471787, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067022405895077423, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 55fb2ceb86218c34d8a600f320a9c021, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _characterList
-      value: 
-      objectReference: {fileID: 5765169361286492469}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Discription
-      value: "\u041D\u0435\u0431\u043E\u043B\u044C\u0448\u0430\u044F \u0442\u0440\u043E\u043F\u0438y\u043A\u0430
-        \u0441\u0440\u0435\u0434\u0438 \u0433\u0443\u0442\u0441\u044B\u0445 \u0434\u0435\u0440\u0435\u0432\u044C\u0432.
-        \u041F\u0420\u043E\u0445\u043E\u0434\u044F\u0449\u0438\u0435 \u0437\u0434\u0435\u0441\u044C
-        \u043F\u0443\u0442\u043D\u0438\u043A\u0438 \u0437\u0430\u0447\u0430\u0441\u0442\u0443\u044E
-        \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u044E\u0442 \u0448\u0435\u043B\u0435\u0441
-        \u043B\u0438\u0441\u044C\u0435\u0432 \u0437\u0430 \u0448\u0451\u043F\u043E\u0442
-        \u0432\u0435\u0442\u0440\u0430."
-      objectReference: {fileID: 0}
     - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
       propertyPath: _informationWindow
       value: 
       objectReference: {fileID: 3032636020827637862}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MaxNumberPrize
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].MinNumberPrize
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MinNumberPrize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].GoldSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].CristalSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MaxNumberPrize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
 --- !u!224 &6281304473340067234 stripped
@@ -3956,7 +3710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3964,15 +3718,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4008,7 +3762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 4866111126803120628, guid: 626c5e30ad32bad47b2edbc12654918e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4132,58 +3886,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Place
       objectReference: {fileID: 0}
-    - target: {fileID: 6473866723095471787, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067022405895077423, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 55fb2ceb86218c34d8a600f320a9c021, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _characterList
-      value: 
-      objectReference: {fileID: 5765169361286492469}
     - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
       propertyPath: _informationWindow
       value: 
       objectReference: {fileID: 3032636020827637862}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[0].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MaxNumberPrize
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.Prizes.Array.data[1].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].GoldSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].CristalSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MaxNumberPrize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8889249908446351534, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
-      propertyPath: _data.RandomPrizes.Array.data[0].MinNumberPrize
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cba0e30ed15e614889743921bf4f43a, type: 3}
 --- !u!224 &8219274279129644224 stripped

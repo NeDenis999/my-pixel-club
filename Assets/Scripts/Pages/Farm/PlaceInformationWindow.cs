@@ -29,23 +29,16 @@ public class PlaceInformationWindow : MonoBehaviour
 
     public void Render(Place place)
     {
-        void RenderButton()
-        {
-            this.RenderButton(place);
-        }
-
         if (_farm != null)
         {
             _farm.OnTimerChanged -= RenderStatusText;
-            _farm.OnFarmFinished -= RenderStatusText;
-            _farm.OnFarmFinished -= RenderButton;
+            _farm.OnFarmFinished -= Render;
         }
 
         _farm = place.GetComponent<Farm>();
 
         _farm.OnTimerChanged += RenderStatusText;
-        _farm.OnFarmFinished += RenderStatusText;
-        _farm.OnFarmFinished += RenderButton;
+        _farm.OnFarmFinished += Render;
 
         _characterList.gameObject.SetActive(false);
         gameObject.SetActive(true);
@@ -54,7 +47,7 @@ public class PlaceInformationWindow : MonoBehaviour
         _locationName.text = place.Data.LocationName;
         _locationDiscription.text = place.Data.Discription;
         RenderPrize(place.Data.RandomPrizes);
-        this.RenderButton(place);
+        RenderButton(place);
         RenderStatusText();        
     }
 
