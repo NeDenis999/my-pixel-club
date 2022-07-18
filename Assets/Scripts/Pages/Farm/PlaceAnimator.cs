@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Pages.Farm
 {
@@ -13,19 +12,23 @@ namespace Pages.Farm
 
         [SerializeField] 
         private Transform _transform;
-        
+
+        [SerializeField]
+        private RectTransform _selectRectTransform;
+
         private Sequence _sequence;
         private Vector3 _selectSize;
         private Vector3 _normalSize;
+        private bool _pressed;
 
         private void Awake()
         {
             var localScale = _transform.localScale;
-            
+
             _normalSize = localScale;
             _selectSize = localScale * ScalingFactor;
         }
-        
+
         public void OnPointerEnter(PointerEventData eventData) => 
             Selected();
 
@@ -38,8 +41,11 @@ namespace Pages.Farm
             _sequence.Insert(WaitBeforeScale, _transform.DOScale(_selectSize, DurationScaling));
         }
 
-        private void UnSelected()
+        public void UnSelected()
         {
+            if (_pressed)
+                return;
+            
             UpdateSequence();
             _sequence.Insert(0, _transform.DOScale(_normalSize, DurationScaling));
         }
@@ -50,9 +56,18 @@ namespace Pages.Farm
             _sequence = DOTween.Sequence();
         }
 
-        private void Pressed()
+        public void Pressed()
         {
-            
+            _selectRectTransform.gameObject.SetActive(true);
+            UpdateSequence();
+            _pressed = true;
+        }
+        
+        public void Unpressed()
+        {
+            _selectRectTransform.gameObject.SetActive(false);
+            UpdateSequence();
+            _pressed = false;
         }
     }
 }

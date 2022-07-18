@@ -25,10 +25,20 @@ public class PlaceInformationWindow : MonoBehaviour
 
     [SerializeField] private PrizeWindow _prizeWindow;
 
+    [SerializeField] 
+    private PlaceAnimator[] _placeAnimators;
+    
     private Farm _farm;
 
     public void Render(Place place)
     {
+        foreach (var placeAnimator in _placeAnimators)
+        {
+            placeAnimator.Unpressed();
+            placeAnimator.UnSelected();
+        }
+            
+
         if (_farm != null)
         {
             _farm.OnTimerChanged -= RenderStatusText;
@@ -36,6 +46,7 @@ public class PlaceInformationWindow : MonoBehaviour
         }
 
         _farm = place.GetComponent<Farm>();
+        place.PlaceAnimator.Pressed();
 
         _farm.OnTimerChanged += RenderStatusText;
         _farm.OnFarmFinished += Render;

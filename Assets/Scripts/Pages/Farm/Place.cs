@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Pages.Farm
 {
-    [RequireComponent(typeof(Button), typeof(global::Farm))]
+    [RequireComponent(typeof(Button), typeof(global::Farm), typeof(PlaceAnimator))]
     public class Place : MonoBehaviour
     {
         [SerializeField] private PlaceData _data;
@@ -15,7 +15,9 @@ namespace Pages.Farm
         [SerializeField] private Image _maskImage;
         [SerializeField] private Color _setCharacterColor;
         [SerializeField] private Color _unsetCharacterColor;
-
+        
+        public PlaceAnimator PlaceAnimator;
+        
         private bool _isSet;
         private global::Farm _farm;
 
@@ -49,6 +51,8 @@ namespace Pages.Farm
 
         public void UnsetCharacter()
         {
+            print("UnsetCharacter");
+            
             _isSet = false;
             _maskImage.color = _unsetCharacterColor;
             _farm.ClaimRewards();
