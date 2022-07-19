@@ -8,7 +8,7 @@ namespace Pages.StartScreen
 {
     public class ChooseNickname : MonoBehaviour
     {
-        private const int MinLength = 5;
+        private const int MinLength = 3;
         private const int MaxLength = 20;
         
         [SerializeField] 

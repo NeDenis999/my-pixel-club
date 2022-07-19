@@ -664,7 +664,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1325679680970489495}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5905934
+  m_Size: 0.59059346
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: -38
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
@@ -6154,7 +6154,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8252180395605808348}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.00000016167824
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8006,7 +8006,7 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: 34bca97d5e8c6d34aadc9627c49e40ed, type: 3}
+      objectReference: {fileID: 21300000, guid: 9ad6f8d33a2d4dc4e9b97cf733329bbe, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 120
@@ -8443,7 +8443,7 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: dc362de9d617bb043a672bc2c782079b, type: 3}
+      objectReference: {fileID: 21300000, guid: be9a1729ff3235642a0d2cf1fa6aee2b, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 100
@@ -8880,7 +8880,7 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: 34b28e30900c20041bccae0fdc858f3b, type: 3}
+      objectReference: {fileID: 21300000, guid: e048263ea48089d459c4abca25f87962, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 150
@@ -9295,6 +9295,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
+      propertyPath: _enemyQuestsData.Array.data[0].View
+      value: 
+      objectReference: {fileID: 21300000, guid: 9ad6f8d33a2d4dc4e9b97cf733329bbe, type: 3}
+    - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _posiblePrizes.Array.data[1].TypePrize
       value: 1
       objectReference: {fileID: 0}
@@ -9642,11 +9646,11 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: 21505ef74ae85334a866c757afe86288, type: 3}
+      objectReference: {fileID: 21300000, guid: 9ad6f8d33a2d4dc4e9b97cf733329bbe, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].View
       value: 
-      objectReference: {fileID: 21300000, guid: 34b28e30900c20041bccae0fdc858f3b, type: 3}
+      objectReference: {fileID: 21300000, guid: be9a1729ff3235642a0d2cf1fa6aee2b, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 120
@@ -10099,15 +10103,15 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: 21505ef74ae85334a866c757afe86288, type: 3}
+      objectReference: {fileID: 21300000, guid: be9a1729ff3235642a0d2cf1fa6aee2b, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].View
       value: 
-      objectReference: {fileID: 21300000, guid: 34b28e30900c20041bccae0fdc858f3b, type: 3}
+      objectReference: {fileID: 21300000, guid: 9ad6f8d33a2d4dc4e9b97cf733329bbe, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[2].View
       value: 
-      objectReference: {fileID: 21300000, guid: 34bca97d5e8c6d34aadc9627c49e40ed, type: 3}
+      objectReference: {fileID: 21300000, guid: e048263ea48089d459c4abca25f87962, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 150
@@ -10568,15 +10572,15 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: d1bdc123bd5f4c74e8491418719ecb4c, type: 3}
+      objectReference: {fileID: 21300000, guid: 9ad6f8d33a2d4dc4e9b97cf733329bbe, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].View
       value: 
-      objectReference: {fileID: 21300000, guid: 63191e8c25466354b8236670a87df531, type: 3}
+      objectReference: {fileID: 21300000, guid: e048263ea48089d459c4abca25f87962, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[2].View
       value: 
-      objectReference: {fileID: 21300000, guid: 9a20206c77550344a9e70b87e475eb70, type: 3}
+      objectReference: {fileID: 21300000, guid: be9a1729ff3235642a0d2cf1fa6aee2b, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 100
@@ -11103,7 +11107,7 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: d1bdc123bd5f4c74e8491418719ecb4c, type: 3}
+      objectReference: {fileID: 21300000, guid: e048263ea48089d459c4abca25f87962, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 120
@@ -11532,11 +11536,11 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: 63191e8c25466354b8236670a87df531, type: 3}
+      objectReference: {fileID: 21300000, guid: 9ad6f8d33a2d4dc4e9b97cf733329bbe, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[1].View
       value: 
-      objectReference: {fileID: 21300000, guid: d1bdc123bd5f4c74e8491418719ecb4c, type: 3}
+      objectReference: {fileID: 21300000, guid: be9a1729ff3235642a0d2cf1fa6aee2b, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 70
@@ -11969,7 +11973,7 @@ PrefabInstance:
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].View
       value: 
-      objectReference: {fileID: 21300000, guid: ea2b62f098fffa84a8cd40e7e5c54f74, type: 3}
+      objectReference: {fileID: 21300000, guid: e048263ea48089d459c4abca25f87962, type: 3}
     - target: {fileID: 3364930382114485178, guid: 328c250efd1449742aed40a81043b9b8, type: 3}
       propertyPath: _enemyQuestsData.Array.data[0].Damage
       value: 500
