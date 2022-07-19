@@ -1,8 +1,10 @@
+using Infrastructure.Services;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public enum PrizeType
 {
@@ -13,17 +15,25 @@ public enum PrizeType
 [System.Serializable]
 public class Prize : IRoulette
 {
-    [SerializeField] private Sprite GoldSprite, CristalSprite;
+    [Inject]
+    private void Construct(AssetProviderService assetProviderService)
+    {
+        _goldSprite = assetProviderService.GoldSprite;
+        _cristalSprite = assetProviderService.CristalSprite;
+    }
 
-    [SerializeField] private int _amountPrize;
-    public virtual int AmountPrize => _amountPrize;
+    [SerializeField] protected int _minPrizeValue;
+    public virtual int AmountPrize => _minPrizeValue;
+
     public PrizeType TypePrize;
+
+    private Sprite _goldSprite, _cristalSprite;
 
     public Sprite UIIcon 
     {
         get 
         {
-            return TypePrize == PrizeType.Gold ? GoldSprite : CristalSprite;
+            return TypePrize == PrizeType.Gold ? _goldSprite : _cristalSprite;
         }
     }
     public string Description => TypePrize.ToString();

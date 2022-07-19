@@ -203,9 +203,10 @@ namespace Pages.Quest
 
             yield return new WaitForSeconds(2f);
             _winWindow.OpenPrizeWindow(_prizes);
+
+            
             _chapter.NextChapter.UnlockedChapter();
             _dataSaveLoadService.SetCountQuestPassed(_chapter.NextChapter.Id);
-            //OnPlayerWin?.Invoke();
         }
 
         private bool IsAlive() => 

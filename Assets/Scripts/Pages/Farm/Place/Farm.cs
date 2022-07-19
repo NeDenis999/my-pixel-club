@@ -39,7 +39,7 @@ public class Farm : MonoBehaviour
     }
 
     private bool _canClaimReward;
-    private float _claimCoolDown = 24f / 24 / 60 / 6;
+    private float _claimCooldown = 24f / 24 / 60 / 6;
 
     private TimeSpan _currentClaimCooldown;
 
@@ -75,6 +75,11 @@ public class Farm : MonoBehaviour
         _statusWindow.gameObject.SetActive(false);
     }
 
+    public void SetCooldown(float cooldown)
+    {
+        _claimCooldown = cooldown / 24 / 60 / 6;
+    }
+
     public void StartFarm()
     {
         _statusWindow.gameObject.SetActive(true);
@@ -99,7 +104,7 @@ public class Farm : MonoBehaviour
         {
             var timeSpan = DateTime.UtcNow - _startFarmTime.Value;
         
-            if (timeSpan.TotalHours > _claimCoolDown)
+            if (timeSpan.TotalHours > _claimCooldown)
                 _canClaimReward = true;
         }
 
@@ -111,7 +116,7 @@ public class Farm : MonoBehaviour
         if (_canClaimReward == false)
         {
             TimeSpan lastCurrentClaimCoolDown = _currentClaimCooldown;
-            DateTime nextClaimTime = _startFarmTime.Value.AddHours(_claimCoolDown);
+            DateTime nextClaimTime = _startFarmTime.Value.AddHours(_claimCooldown);
 
             _currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
 

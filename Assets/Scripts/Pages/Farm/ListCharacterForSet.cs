@@ -4,6 +4,7 @@ using System.Linq;
 using Infrastructure.Services;
 using Pages.Farm;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Zenject;
 
@@ -15,6 +16,8 @@ public enum PlaceCharacterType
 
 public class ListCharacterForSet : MonoBehaviour
 {
+    public event UnityAction OnCharacterSelected;
+
     [SerializeField] private Transform _container;
     [SerializeField] private CharacterCell _characterCellTamplate;
     [SerializeField] private List<Sprite> _cardSprite;
@@ -58,6 +61,7 @@ public class ListCharacterForSet : MonoBehaviour
     {
         _place.SetCharacter(character);
         _ = _nftSprites.Contains(character.CharacterSprite) ? _nftSprites.Remove(character.CharacterSprite) : _cardSprite.Remove(character.CharacterSprite);
+        OnCharacterSelected?.Invoke();
         gameObject.SetActive(false);
     }
 

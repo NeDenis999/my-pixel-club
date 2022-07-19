@@ -11,8 +11,10 @@ namespace Infrastructure.Services
         public readonly Texture2D CursorImage;
         public readonly Texture2D CursorClickImage;
         public readonly Sprite[] AllNFT;
+        public readonly Sprite GoldSprite;
+        public readonly Sprite CristalSprite;
 
-        public AssetProviderService(Sprite[] frames, Card[] allCards, ShopItemBottle[] shopItemBottles, Texture2D cursorImage, Texture2D cursorClickImage, Sprite[] allNFT)
+        public AssetProviderService(Sprite[] frames, Card[] allCards, ShopItemBottle[] shopItemBottles, Texture2D cursorImage, Texture2D cursorClickImage, Sprite[] allNFT, Sprite goldSprite, Sprite cristalSprite)
         {
             Frames = frames;
             AllCards = allCards;
@@ -20,6 +22,8 @@ namespace Infrastructure.Services
             CursorImage = cursorImage;
             CursorClickImage = cursorClickImage;
             AllNFT = allNFT;
+            GoldSprite = goldSprite;
+            CristalSprite = cristalSprite;
         }
     }
 }

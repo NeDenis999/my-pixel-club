@@ -3,24 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PosiblePrizesList : MonoBehaviour
+namespace Quest
 {
-    [SerializeField] private Transform _container;
-    [SerializeField] private PrizeCell _prizeCellTamplate;
-
-    [SerializeField] private Chapter _chapter;
-
-    private void Start()
+    public class PosiblePrizesList : MonoBehaviour
     {
-        Render();
-    }
+        [SerializeField] private Transform _container;
+        [SerializeField] private PrizeCell _prizeCellTamplate;
 
-    public void Render()
-    {
-        foreach (var posiblePrize in _chapter.PosiblePrizes)
+        [SerializeField] private Chapter _chapter;
+
+        private void Start()
         {
-            var cell = Instantiate(_prizeCellTamplate, _container);
-            cell.RenderPosiblePrize(posiblePrize);
+            Render();
+        }
+
+        public void Render()
+        {
+            foreach (var posiblePrize in _chapter.PosiblePrizes)
+            {
+                var cell = Instantiate(_prizeCellTamplate, _container);
+                cell.RenderPosiblePrize(posiblePrize);
+            }
         }
     }
 }

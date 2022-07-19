@@ -5,8 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class RandomPrize : Prize
 {
-    public int MinNumberPrize;
-    public int MaxNumberPrize;
+    [SerializeField] private  int _maxPrizeValue;
 
-    public override int AmountPrize => Random.Range(MinNumberPrize, MaxNumberPrize);
+    public override int AmountPrize => Random.Range(_minPrizeValue, _maxPrizeValue);
+    public int MinNumberPrize => _maxPrizeValue;
+    public int MaxNumberPrize => _minPrizeValue;
+
+    public RandomPrize(int minNumberPrize, int maxNumberPrize, PrizeType prizeType)
+    {
+        _minPrizeValue = minNumberPrize;
+        _maxPrizeValue = maxNumberPrize;
+        TypePrize = prizeType;
+    }
 }

@@ -33,7 +33,9 @@ namespace Infrastructure
         
         [SerializeField] 
         private Sprite[] _allNFT;
-        
+
+        [SerializeField] private Sprite _cristalSprite, _goldSprite;
+
         private CoroutineStarterService _coroutineStarterService;
         private DataSaveLoadService _dataSaveLoadService;
         private AssetProviderService _assetProviderService;
@@ -64,7 +66,7 @@ namespace Infrastructure
 
         private void BindAssetProvider()
         {
-            _assetProviderService = new AssetProviderService(_frames, _allCards, _items, _cursorImage, _cursorClickImage, _allNFT);
+            _assetProviderService = new AssetProviderService(_frames, _allCards, _items, _cursorImage, _cursorClickImage, _allNFT, _goldSprite, _cristalSprite);
             
             Container
                 .Bind<AssetProviderService>()

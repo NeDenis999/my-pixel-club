@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Pages.Farm;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlaceInformationWindow : MonoBehaviour
@@ -18,17 +19,25 @@ public class PlaceInformationWindow : MonoBehaviour
     [SerializeField] private Button _setOrUnsetCharacterButton;
     [SerializeField] private TMP_Text _setOrUnsetCharacterButtonText;
 
-    [SerializeField] private ListCharacterForSet _characterList;
-
-    [SerializeField] private Transform _container;
-    [SerializeField] private PrizeCell _prizeCellTamplate;
+    [SerializeField] private ListCharacterForSet _characterList;    
 
     [SerializeField] private PrizeWindow _prizeWindow;
+    [SerializeField] private PlaceAnimator[] _placeAnimators;
 
-    [SerializeField] 
-    private PlaceAnimator[] _placeAnimators;
+    [SerializeField] private PosiblePrizesWindow _posiblePrizesWindow;
+    [SerializeField] private CooldownSelector _cooldownSelector;  
     
     private Farm _farm;
+
+    private void OnEnable()
+    {
+        _cooldownSelector.OnCooldownChanged += SetCooldownMultiplyer;
+    }
+
+    private void OnDisable()
+    {
+        _cooldownSelector.OnCooldownChanged -= SetCooldownMultiplyer;
+    }
 
     public void Render(Place place)
     {
@@ -36,8 +45,7 @@ public class PlaceInformationWindow : MonoBehaviour
         {
             placeAnimator.Unpressed();
             placeAnimator.UnSelected();
-        }
-            
+        }            
 
         if (_farm != null)
         {
@@ -54,37 +62,32 @@ public class PlaceInformationWindow : MonoBehaviour
         _characterList.gameObject.SetActive(false);
         gameObject.SetActive(true);
 
+        RenderLocation(place);
+        _posiblePrizesWindow.RenderPrize(place);
+        RenderButton(place);
+        RenderStatusText();        
+    }    
+
+    private void RenderLocation(Place place)
+    {
         _locationImage.sprite = place.Data.LocationImage;
         _locationName.text = place.Data.LocationName;
         _locationDiscription.text = place.Data.Discription;
-        RenderPrize(place.Data.RandomPrizes);
-        RenderButton(place);
-        RenderStatusText();        
-    }
-
-    private void RenderPrize(RandomPrize[] prizes)
-    {
-        foreach (Transform child in _container)
-            Destroy(child.gameObject);
-
-        foreach (var prize in prizes)
-        {
-            var cell = Instantiate(_prizeCellTamplate, _container);
-            cell.RenderPosiblePrize(prize);
-        }
     }
 
     private void RenderButton(Place place)
     {
         _setOrUnsetCharacterButton.onClick.RemoveAllListeners();
+        _cooldownSelector.gameObject.SetActive(false);
 
         if (_farm.CanClaimRewared)
         {
             _setOrUnsetCharacterButton.onClick.AddListener(() =>
             {
-                _prizeWindow.Render(place.Data.RandomPrizes);
                 place.UnsetCharacter();
-
+                _cooldownSelector.gameObject.SetActive(true);
+                
+                _prizeWindow.Render(_posiblePrizesWindow.CurrentRandomPrizes);
             });
             _setOrUnsetCharacterButtonText.text = "Claim";
             return;
@@ -98,9 +101,14 @@ public class PlaceInformationWindow : MonoBehaviour
         else
         {
             _setOrUnsetCharacterButtonText.text = "Set";
-            _setOrUnsetCharacterButton.onClick.AddListener(() => _characterList.OpenCharacterList(place));
+            _setOrUnsetCharacterButton.onClick.AddListener(() =>
+            {
+                _characterList.OpenCharacterList(place);
+                _farm.SetCooldown(_cooldownSelector.Cooldown);                
+            });
+            _cooldownSelector.gameObject.SetActive(true);
         }
-    }
+    }   
 
     private void RenderStatusText()
     {
@@ -117,5 +125,10 @@ public class PlaceInformationWindow : MonoBehaviour
             _status.color = _notfarmColor;
             _statusText.text = "";
         }
+    }
+
+    private void SetCooldownMultiplyer()
+    {
+        _posiblePrizesWindow.RenderPrize(_farm.Place);
     }
 }

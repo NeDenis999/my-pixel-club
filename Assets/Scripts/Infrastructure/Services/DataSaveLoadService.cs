@@ -154,6 +154,9 @@ namespace Infrastructure.Services
 
         public void SetCountQuestPassed(int count)
         {
+            if (count <= _playerData.CountQuestPassed)
+                return; 
+                
             _playerData.CountQuestPassed = count;
             Save();
         }

@@ -38,6 +38,7 @@ namespace Pages.Quest
         private bool _isOpen;
         public EnemyQuestData[] EnemyQuestsData => _enemyQuestsData;
         public RandomPrize[] PosiblePrizes => _posiblePrizes;
+        public bool IsLocked => _isLocked;
         public int Id;
 
         private void OnEnable()
