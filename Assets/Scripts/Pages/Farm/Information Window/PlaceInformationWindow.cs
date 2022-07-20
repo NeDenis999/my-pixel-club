@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Pages.Farm;
+using FarmPage;
+using FarmPage.Farm;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;

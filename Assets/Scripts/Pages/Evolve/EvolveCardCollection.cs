@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.Evolve
+namespace FarmPage.Evolve
 {
     public class EvolveCardCollection : MonoBehaviour
     {

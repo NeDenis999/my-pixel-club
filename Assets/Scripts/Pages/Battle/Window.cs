@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Pages.Battle
+namespace FarmPage.Battle
 {
     public class Window : MonoBehaviour
     {

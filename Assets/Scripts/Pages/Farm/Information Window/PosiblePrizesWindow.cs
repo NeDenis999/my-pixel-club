@@ -1,4 +1,4 @@
-using Pages.Farm;
+using FarmPage.Farm;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +35,7 @@ public class PosiblePrizesWindow : MonoBehaviour
         for (int i = 0; i < randomPrizes.Length; i++)
             randomPrizes[i] = new RandomPrize(place.Data.RandomPrizes[i].MinNumberPrize * _cooldownSelector.PrizeMultiplyer, 
                                               place.Data.RandomPrizes[i].MaxNumberPrize * _cooldownSelector.PrizeMultiplyer, 
-                                              place.Data.RandomPrizes[i].RoulettePrize);
+                                              place.Data.RandomPrizes[i].PrizeAsInterface);
 
         _currentRandomPrizes = randomPrizes;
     }

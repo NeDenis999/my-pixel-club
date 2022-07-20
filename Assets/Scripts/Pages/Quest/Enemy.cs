@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Pages.Quest
+namespace FarmPage.Quest
 {
     public enum EnemyType
     {

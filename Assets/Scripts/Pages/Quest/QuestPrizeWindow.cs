@@ -1,8 +1,8 @@
 using TMPro;
 using System.Collections.Generic;
 using Battle;
-using Pages.Battle;
-using Pages.Quest;
+using FarmPage.Battle;
+using FarmPage.Quest;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,23 +10,16 @@ using Data;
 
 public class QuestPrizeWindow : MonoBehaviour, IIncreaserWalletValueAndCardsCount
 {
-    [SerializeField] private List<Prize> _variationPrizes;
     [SerializeField] private PrizeCell _prizeCellTemplate;
     [SerializeField] private Transform _container;
     [SerializeField] private BattleController _battle;
     [SerializeField] private Button _collectButton;
 
-    [SerializeField] private CardCollection _cardCollection;
     [SerializeField] private CristalWallet _cristalWallet;
     [SerializeField] private GoldWallet _goldWallet;
     
     
     private List<PrizeCell> _prizeCells = new();
-
-    private void Start()
-    {
-        //_battle.OnPlayerWin += OpenPrizeWindow;
-    }
 
     private void OnEnable()
     {
@@ -53,11 +46,11 @@ public class QuestPrizeWindow : MonoBehaviour, IIncreaserWalletValueAndCardsCoun
     {
         for (int i = 0; i < prizes.Length; i++)
         {
-            _prizeCells.Add(AddNewPrize(prizes[i]));
+            _prizeCells.Add(CreateNewPrize(prizes[i]));
         }
     }
 
-    private PrizeCell AddNewPrize(RandomPrize prizes)
+    private PrizeCell CreateNewPrize(RandomPrize prizes)
     {
         var cell = Instantiate(_prizeCellTemplate, _container);
         cell.RenderGetingPrize(prizes);
@@ -68,7 +61,7 @@ public class QuestPrizeWindow : MonoBehaviour, IIncreaserWalletValueAndCardsCoun
     {
         foreach (var prizeCell in _prizeCells)
         {
-            prizeCell.Prize.TakeItem(this, prizeCell.AmountPrize);
+            prizeCell.Prize.TakeItemAsPrize(this, prizeCell.AmountPrize);
         }
 
         _prizeCells.Clear();
@@ -84,4 +77,9 @@ public class QuestPrizeWindow : MonoBehaviour, IIncreaserWalletValueAndCardsCoun
 
     public void AccrueGold(int amountGold) =>
         _goldWallet.Add—urrency(amountGold);
+
+    public void AccrueBottle(ShopItemBottle bottle, int amountBottle)
+    {
+        throw new System.NotImplementedException();
+    }
 }

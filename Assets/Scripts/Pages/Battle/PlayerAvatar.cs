@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.Battle
+namespace FarmPage.Battle
 {
     public class PlayerAvatar : MonoBehaviour
     {

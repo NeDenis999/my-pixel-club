@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Pages.Battle
+namespace FarmPage.Battle
 {
     public class PlayerStatisticBattle : MonoBehaviour
     {

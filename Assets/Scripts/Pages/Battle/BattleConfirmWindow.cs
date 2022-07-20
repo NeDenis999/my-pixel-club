@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Pages.Battle
+namespace FarmPage.Battle
 {
     public class BattleConfirmWindow : MonoBehaviour
     {
@@ -25,6 +25,8 @@ namespace Pages.Battle
         private List<Card> _enemyDefCards;
         private LocalDataService _localDataService;
         private DataSaveLoadService _dataSaveLoadService;
+
+        private RandomPrize[] _randomPrizes;
     
         [Inject]
         private void Construct(DataSaveLoadService dataSaveLoadService, LocalDataService localDataService)
@@ -38,9 +40,10 @@ namespace Pages.Battle
             _startPosition = transform.localPosition;
         }
 
-        public void OpenConfirmWindow(List<Card> enemyDefCards)
+        public void OpenConfirmWindow(List<Card> enemyDefCards, RandomPrize[] randomPrize)
         {
             _enemyDefCards = enemyDefCards;
+            _randomPrizes = randomPrize;
 
             gameObject.SetActive(true);
             ShowSmooth();
@@ -68,7 +71,7 @@ namespace Pages.Battle
                     _battleChouse.SetActive(false);
 
                     _dataSaveLoadService.DecreaseEnergy(5);
-                    _battle.SetEnemyDefCard(_enemyDefCards);
+                    _battle.InitBattle(_enemyDefCards, _randomPrizes);
                     _battle.StartFight();
                 }
                 else

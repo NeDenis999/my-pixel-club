@@ -124,7 +124,7 @@ public class Card : ScriptableObject, ICard, IPrize
         return cardData;
     }
 
-    public void TakeItem(IIncreaserWalletValueAndCardsCount increaser, int amountValue)
+    public void TakeItemAsPrize(IIncreaserWalletValueAndCardsCount increaser, int amountValue)
     {
         increaser.AccrueCard(GetCardData(), amountValue);
     }

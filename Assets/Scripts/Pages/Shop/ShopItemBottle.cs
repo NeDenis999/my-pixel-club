@@ -11,15 +11,20 @@ public enum BottleEffects
 }
 
 [CreateAssetMenu(fileName = "Bottle", menuName = "ScriptableObjects/Shop/Bottle")]
-public class ShopItemBottle : ShopItem, IInventory
+public class ShopItemBottle : ShopItem, IInventory, IPrize
 {
     [SerializeField] private BottleEffects _bottleEffects;
 
     public BottleEffects Effect => _bottleEffects;
     public int Id;
 
-    public void UseEffect()
+    public void TakeItemAsPrize(IIncreaserWalletValueAndCardsCount increaser, int amountValue)
     {
-        throw new NotImplementedException();
+        increaser.AccrueBottle(this, amountValue);
+    }
+
+    public void UseEffect(Inventory inventory, InventoryCell inventoryCell)
+    {
+        inventory.UseEnergyBottle(inventoryCell);
     }
 }

@@ -1,5 +1,5 @@
 using Data;
-using Pages.Shop;
+using FarmPage.Shop;
 using UnityEngine;
 using UnityEngine.Events;
 

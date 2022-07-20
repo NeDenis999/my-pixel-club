@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pages.Enhance.Card_Statistic
+namespace FarmPage.Enhance.Card_Statistic
 {
     [RequireComponent(typeof(SliderAnimator))]
     public class PossibleLevelUpSlider : MonoBehaviour

@@ -4460,6 +4460,7 @@ MonoBehaviour:
   _rouletteAnimator: {fileID: 2678674065988981243}
   _cristalWallet: {fileID: 0}
   _goldWallet: {fileID: 0}
+  _inventory: {fileID: 0}
 --- !u!114 &2678674065988981243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6244,6 +6245,7 @@ MonoBehaviour:
   _amountItems: {fileID: 4196218298021193617}
   _errorWindow: {fileID: 6838373031279883528}
   _confirmWindowAnimator: {fileID: 8444490752855703846}
+  _goldWallet: {fileID: 0}
 --- !u!114 &8444490752855703846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11229,6 +11231,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem._amountPrize
       value: 4
       objectReference: {fileID: 0}
@@ -11373,6 +11379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem.TypePrize
       value: 1
@@ -11523,6 +11533,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem.TypePrize
       value: 1
       objectReference: {fileID: 0}
@@ -11672,6 +11686,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem._amountPrize
       value: 5
       objectReference: {fileID: 0}
@@ -11804,6 +11822,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem._amountPrize
       value: 2
@@ -11949,6 +11971,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem.TypePrize
       value: 1
@@ -12099,6 +12125,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem.TypePrize
       value: 1
       objectReference: {fileID: 0}
@@ -12247,6 +12277,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem._amountPrize
       value: 5
@@ -12528,6 +12562,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!114 &2868828047868055686 stripped
@@ -12657,6 +12695,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem.TypePrize
       value: 1
@@ -12807,6 +12849,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem._amountPrize
       value: 4
       objectReference: {fileID: 0}
@@ -12951,6 +12997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: _rouletteItem.TypePrize
       value: 1

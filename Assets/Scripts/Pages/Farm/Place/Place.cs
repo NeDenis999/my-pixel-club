@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Farm
+namespace FarmPage.Farm
 {
     [RequireComponent(typeof(Button), typeof(global::Farm), typeof(PlaceAnimator))]
     public class Place : MonoBehaviour

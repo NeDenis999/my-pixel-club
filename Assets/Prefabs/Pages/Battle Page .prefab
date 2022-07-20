@@ -4401,6 +4401,8 @@ MonoBehaviour:
   _upPanel: {fileID: 0}
   _winWindow: {fileID: 530219563662515041}
   _loseWindow: {fileID: 3558496281763722592}
+  _prizeWindow: {fileID: 0}
+  _randomPrizes: []
 --- !u!114 &1350219966936058296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10845,6 +10847,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: c8f1cd1f042a155458c320df4d2d924c, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11108,6 +11114,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 515f12d6bd134ba4a8a7c3e33e7dc933, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11579,6 +11589,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: ef6d0caeb33560e41b59c6c659b2783e, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11955,6 +11969,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: e4611258600a3f54c8d2e697afb49a41, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -12105,6 +12123,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 3aa00b14c5ab4d448a5fd5605ebed388, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -12368,6 +12390,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: c0bcd002c27842745a44b6bad85a3620, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -12859,6 +12885,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 77f51069bd21fce42a46ade300a6eff9, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -13013,6 +13043,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: c8f1cd1f042a155458c320df4d2d924c, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -13159,6 +13193,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: e2cbffd8f60d3834390e924a35af6bcb, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -13508,6 +13546,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 77f51069bd21fce42a46ade300a6eff9, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752651, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -13658,6 +13700,10 @@ PrefabInstance:
       propertyPath: _enemyDefCards.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: c8f1cd1f042a155458c320df4d2d924c, type: 2}
+    - target: {fileID: 1035302703220118039, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
+      propertyPath: _randomPrizes.Array.data[0]._prize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     - target: {fileID: 1035302703581752648, guid: 9a355b8af74c74e448c1d3ff1f274530, type: 3}
       propertyPath: m_SizeDelta.x
       value: -3.6599998

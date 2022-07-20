@@ -37,7 +37,7 @@ public class Inventory : MonoBehaviour
         else
             Destroy(bottel.gameObject);
 
-        BottleCollection.Remove(bottel.Item);
+        BottleCollection.Remove(bottel.Bottel);
         _dataSaveLoadService.UpdateItemsData();
     }
 }

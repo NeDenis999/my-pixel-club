@@ -14,28 +14,21 @@ public enum PrizeType
 [System.Serializable]
 public class Prize 
 {
-    [SerializeField] private ScriptableObject _prizeScriptableObject;
+    [SerializeField] private ScriptableObject _prize;
 
-    protected IPrize _prize;
+    public virtual IPrize PrizeAsInterface => _prize as IPrize;
 
     [SerializeField] protected int _minPrizeValue;
     public virtual int AmountPrize => _minPrizeValue;
     public Sprite UIIcon
-    { 
+    {
         get
         {
-            if (_prizeScriptableObject is not IPrize) throw new System.InvalidOperationException("ScriptableObject is not realize IPrize");
-            _prize = (_prizeScriptableObject as IPrize);
-
-            return _prize.UIIcon;
+            return (_prize as IPrize).UIIcon;
         }
     }
-
     public void TakeItem(IIncreaserWalletValueAndCardsCount increaser)
     {
-        if (_prize is not IPrize) throw new System.InvalidOperationException("ScriptableObject is not realize IPrize");
-        _prize = (_prizeScriptableObject as IPrize);
-
-        _prize.TakeItem(increaser, AmountPrize);
+        PrizeAsInterface.TakeItemAsPrize(increaser, AmountPrize);
     }
 }

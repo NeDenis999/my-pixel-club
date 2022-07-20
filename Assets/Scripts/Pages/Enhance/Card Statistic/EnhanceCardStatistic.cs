@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Enhance.Card_Statistic
+namespace FarmPage.Enhance.Card_Statistic
 {
     public abstract class EnhanceCardStatistic : MonoBehaviour
     {

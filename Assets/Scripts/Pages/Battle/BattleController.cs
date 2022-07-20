@@ -11,10 +11,13 @@ using Zenject;
 using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
-namespace Pages.Battle
+namespace FarmPage.Battle
 {
     public class BattleController : MonoBehaviour
     {
+        public event UnityAction OnPlayerWin;
+        public event UnityAction OnPlayerLose;
+
         private static readonly int Effect = Animator.StringToHash("Effect");
 
         [SerializeField] 
@@ -49,7 +52,9 @@ namespace Pages.Battle
         
         [SerializeField]
         private Window _loseWindow;
-        
+
+        [SerializeField] private QuestPrizeWindow _prizeWindow;
+
         private List<Card> _enemyDefCards = new();
         private Card[] _enemyCards;
         private Card[] _playerCards;
@@ -57,8 +62,7 @@ namespace Pages.Battle
         private DataSaveLoadService _dataSaveLoadService;
         private LocalDataService _localDataService;
 
-        public event UnityAction OnPlayerWin;
-        public event UnityAction OnPlayerLose;
+        public RandomPrize[] _randomPrizes;
 
         [Inject]
         private void Construct(DataSaveLoadService dataSaveLoadService, LocalDataService localDataService)
@@ -72,9 +76,10 @@ namespace Pages.Battle
             //gameObject.SetActive(false);
         }
 
-        public void SetEnemyDefCard(List<Card> enemyDefCards)
+        public void InitBattle(List<Card> enemyDefCards, RandomPrize[] randomPrizes)
         {
             _enemyDefCards = enemyDefCards;
+            _randomPrizes = randomPrizes;
         }
 
         public void StartFight()
@@ -338,7 +343,7 @@ namespace Pages.Battle
         {
             yield return _battleIntro.EndIntro("You Win");
             yield return new WaitForSeconds(1);
-            OnPlayerWin?.Invoke();
+            _prizeWindow.OpenPrizeWindow(_randomPrizes);
             _winWindow.ShowSmooth();
         }
 
@@ -346,7 +351,6 @@ namespace Pages.Battle
         {
             yield return _battleIntro.EndIntro("You Lose");
             yield return new WaitForSeconds(1);
-            OnPlayerLose?.Invoke();
             _loseWindow.ShowSmooth();
         }
     }

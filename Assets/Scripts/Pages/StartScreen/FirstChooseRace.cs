@@ -3,7 +3,7 @@ using Infrastructure.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Pages.StartScreen
+namespace FarmPage.StartScreen
 {
     public class FirstChooseRace : MonoBehaviour
     {

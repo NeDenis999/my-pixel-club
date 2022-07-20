@@ -9,15 +9,15 @@ public class PrizeCell : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _amountPrizeText;
 
-    private int _amountPrize; 
-    private IPrize _prize; 
-
+    private int _amountPrize;
     public int AmountPrize => _amountPrize;
-    public IPrize Prize => _prize;
+    public IPrize Prize { get; private set; }
 
 
     public void RenderGetingPrize(Prize prize)
     {
+        Prize = prize.PrizeAsInterface;
+
         _icon.sprite = prize.UIIcon;
 
         _amountPrize = prize.AmountPrize;
@@ -27,6 +27,8 @@ public class PrizeCell : MonoBehaviour
 
     public void RenderPosiblePrize(RandomPrize prize)
     {
+        Prize = prize.PrizeAsInterface;
+
         _icon.sprite = prize.UIIcon;
 
         _amountPrizeText.text = $"{prize.MinNumberPrize} - {prize.MaxNumberPrize}";

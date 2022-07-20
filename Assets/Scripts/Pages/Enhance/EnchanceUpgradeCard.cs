@@ -1,9 +1,9 @@
-using Pages.Enhance.Card_Statistic;
+using FarmPage.Enhance.Card_Statistic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Enhance
+namespace FarmPage.Enhance
 {
     public class EnchanceUpgradeCard : MonoBehaviour
     {    

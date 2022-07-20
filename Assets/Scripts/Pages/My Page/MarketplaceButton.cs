@@ -8,7 +8,7 @@ public class MarketplaceButton : MonoBehaviour
     [SerializeField] private HideAndSeekPages _hideAndSeekPages;
     [SerializeField] private Page _pageToOpen;
 
-    [SerializeField] private ShopCategoryRendering _shopCategoryRendering;
+    [SerializeField] private Button _eventRenderingButton;
 
     [SerializeField] private Image _image;
 
@@ -22,8 +22,8 @@ public class MarketplaceButton : MonoBehaviour
         _hideAndSeekPages.TurnOffAllPages();
         _pageToOpen.StartShowSmooth();
 
-        if (_shopCategoryRendering != null)
-            _shopCategoryRendering.SelectCategore();
+        if (_eventRenderingButton != null)
+            _eventRenderingButton.onClick?.Invoke();
     }
 
     private void OnMouseOver()

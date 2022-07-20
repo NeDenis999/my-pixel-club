@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Quest
+namespace FarmPage.Quest
 {
     public class PlayerAvatarQuest : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Shop
+namespace FarmPage.Shop
 {
     public class ConfirmWindowAnimator : MonoBehaviour 
     {

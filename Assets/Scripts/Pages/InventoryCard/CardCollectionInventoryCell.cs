@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.InventoryCard
+namespace FarmPage.InventoryCard
 {
     public class CardCollectionInventoryCell : CardCell
     {

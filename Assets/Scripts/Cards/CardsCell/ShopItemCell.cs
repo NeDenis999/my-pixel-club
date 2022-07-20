@@ -1,5 +1,5 @@
 using Infrastructure.Services;
-using Pages.Shop;
+using FarmPage.Shop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,10 +39,8 @@ public class ShopItemCell : MonoBehaviour
         _shopItem = item.Item;
         
         _descriptionText.text = item.Item.name;
-        _descriptionText.color = item.Item.NameColor();
 
         _countText.text = $"x{item.Item.Count} {item.Item.name}";
-        _countText.color = item.Item.NameColor();
         
         _priceText.text = item.Item.Price + " MPC";
     }

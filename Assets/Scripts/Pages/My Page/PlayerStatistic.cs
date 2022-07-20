@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.My_Page
+namespace FarmPage.My_Page
 {
     public class PlayerStatistic : MonoBehaviour
     {

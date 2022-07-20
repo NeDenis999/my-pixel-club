@@ -1,8 +1,8 @@
-using Pages.Enhance.Card_Statistic;
+using FarmPage.Enhance.Card_Statistic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Enhance
+namespace FarmPage.Enhance
 {
     [RequireComponent(typeof(Button))]
     public class EnchanceCardForDeleteCell : CardCollectionCell

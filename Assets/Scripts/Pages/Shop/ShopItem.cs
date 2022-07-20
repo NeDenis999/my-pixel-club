@@ -18,31 +18,13 @@ public abstract class ShopItem : ScriptableObject, IShopItem
     [SerializeField] private int _price;
 
     [SerializeField] 
-    private int _count = 1;
-    
-    [SerializeField] 
-    private RarityCard _rarityCard;
+    private int _count;
     
     public Sprite UIIcon => _image;
     public ShopItemType TypeItem => _itemType;    
     public int Price => _price;
     public int Count => _count;
     public ShopItem Item => this;
-
-    public Color NameColor()
-    {
-        switch (_rarityCard)
-        {
-            case RarityCard.Empty:
-                return Color.gray;
-            case RarityCard.Standart:
-                return Color.yellow;
-            case RarityCard.Rare:
-                return Color.cyan;
-        }
-
-        return Color.red;
-    }
 }
 
 

@@ -7,12 +7,10 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.Quest
+namespace FarmPage.Quest
 {
     public class QuestFight : MonoBehaviour
-    {
-        public event UnityAction OnPlayerWin;
-        public event UnityAction OnPlayerLose;
+    { 
         
         [SerializeField] private TMP_Text _enemyHelthPerProcentText, _playerHealthPerProcentText, _playerExpPerProcentText;
         [SerializeField] private QuestConfirmWindow _questConfirmWindow;

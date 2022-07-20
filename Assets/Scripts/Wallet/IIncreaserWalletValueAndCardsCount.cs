@@ -8,4 +8,6 @@ public interface IIncreaserWalletValueAndCardsCount
 
     public void AccrueGold(int amountGold);
 
+    public void AccrueBottle(ShopItemBottle bottle, int amountBottle);
+
 }

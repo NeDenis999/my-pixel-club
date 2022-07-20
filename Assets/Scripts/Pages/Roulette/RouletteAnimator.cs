@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Roulette
+namespace FarmPage.Roulette
 {
     public class RouletteAnimator : MonoBehaviour
     {

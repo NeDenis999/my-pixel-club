@@ -1,5 +1,5 @@
 using Data;
-using Pages.Roulette;
+using FarmPage.Roulette;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -20,6 +20,7 @@ public class RoulettePage : MonoBehaviour, IIncreaserWalletValueAndCardsCount
 
     [SerializeField] private CristalWallet _cristalWallet;
     [SerializeField] private GoldWallet _goldWallet;
+    [SerializeField] private Inventory _inventory;
 
     private int _numbmerPrize;
 
@@ -46,6 +47,12 @@ public class RoulettePage : MonoBehaviour, IIncreaserWalletValueAndCardsCount
 
     public void AccrueGold(int amountGold) =>
         _goldWallet.Add—urrency(amountGold);
+
+    public void AccrueBottle(ShopItemBottle bottle, int amountBottle)
+    {
+        for (int i = 0; i < amountBottle; i++)
+            _inventory.AddItem(bottle);
+    }
 
     private void StartSpine()
     {

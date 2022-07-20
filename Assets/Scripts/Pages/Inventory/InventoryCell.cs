@@ -9,8 +9,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class InventoryCell : MonoBehaviour
 {
-    public event UnityAction<InventoryCell, ShopItemBottle> OnUsedEnergyBottle;
-
     [SerializeField] private TMP_Text _amountThisItemText;
 
     [SerializeField] private Image _icon;
@@ -22,7 +20,7 @@ public class InventoryCell : MonoBehaviour
 
     private int _amountThisItem = 1;
 
-    public ShopItemBottle Item => _shopItemBottle;
+    public ShopItemBottle Bottel => _shopItemBottle;
 
     public int AmountThisItem
     {
@@ -54,7 +52,6 @@ public class InventoryCell : MonoBehaviour
 
     private void UseEffect()
     {
-        if (_effects == BottleEffects.ReplenishEnergy)
-            _confirmWindow.Open(this);
+        _confirmWindow.Open(this);
     }
 }

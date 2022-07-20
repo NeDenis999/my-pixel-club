@@ -7,5 +7,5 @@ public interface IInventory
     public Sprite UIIcon { get; }
     public BottleEffects Effect { get; }
 
-    void UseEffect();
+    void UseEffect(Inventory inventory, InventoryCell inventoryCell);
 }

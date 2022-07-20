@@ -8,7 +8,7 @@ public class InventoryConfirmWindow : MonoBehaviour
     [SerializeField] private Button _yesButton;
     [SerializeField] private Inventory _inventory;
 
-    private InventoryCell _bottel;
+    private InventoryCell _bottelCell;
 
     private void OnEnable()
     {
@@ -20,15 +20,15 @@ public class InventoryConfirmWindow : MonoBehaviour
         _yesButton.onClick.RemoveAllListeners();
     }
 
-    public void Open(InventoryCell bottel)
+    public void Open(InventoryCell bottelCell)
     {
         gameObject.SetActive(true);
-        _bottel = bottel;
+        _bottelCell = bottelCell;
     }
 
     private void UseEffect()
     {
-        _inventory.UseEnergyBottle(_bottel);
+        _bottelCell.Bottel.UseEffect(_inventory, _bottelCell);
         gameObject.SetActive(false);
     }
 }

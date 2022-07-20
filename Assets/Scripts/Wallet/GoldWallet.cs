@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Data;
 using Infrastructure.Services;
-using Pages.Shop;
+using FarmPage.Shop;
 using UnityEngine;
 using Zenject;
 
@@ -14,8 +14,6 @@ public class GoldWallet : Wallet
     private void OnEnable()
     {
         _amountMoney = _data.PlayerData.Coins;
-
-        _confirmWindow.OnWithdrawMoney += WithdrawСurrency;
         
         RefreshText();
     }

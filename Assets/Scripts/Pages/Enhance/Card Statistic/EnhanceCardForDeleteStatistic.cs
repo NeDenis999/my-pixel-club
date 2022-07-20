@@ -1,4 +1,4 @@
-namespace Pages.Enhance.Card_Statistic
+namespace FarmPage.Enhance.Card_Statistic
 {
     public class EnhanceCardForDeleteStatistic : EnhanceCardStatistic
     {

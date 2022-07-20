@@ -6,5 +6,5 @@ public interface IPrize
 {
     public Sprite UIIcon { get; }
 
-    void TakeItem(IIncreaserWalletValueAndCardsCount increaser, int amountValue);
+    void TakeItemAsPrize(IIncreaserWalletValueAndCardsCount increaser, int amountValue);
 }

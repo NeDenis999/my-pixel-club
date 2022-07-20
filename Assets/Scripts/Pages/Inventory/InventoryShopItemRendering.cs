@@ -31,7 +31,7 @@ public class InventoryShopItemRendering : InventoryCategoryRendering
         {
             foreach (var item in inventoryCellList)
             {
-                if (item.Item.name == a.name)
+                if (item.Bottel.name == a.name)
                 {
                     item.AmountThisItem++;
                     return true;

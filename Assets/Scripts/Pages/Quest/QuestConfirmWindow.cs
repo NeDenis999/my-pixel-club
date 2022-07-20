@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Pages.Quest
+namespace FarmPage.Quest
 {
     public class QuestConfirmWindow : MonoBehaviour
     {

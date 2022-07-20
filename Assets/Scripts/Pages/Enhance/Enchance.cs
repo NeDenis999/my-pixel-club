@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Infrastructure.Services;
-using Pages.Enhance.Card_Statistic;
+using FarmPage.Enhance.Card_Statistic;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.Enhance
+namespace FarmPage.Enhance
 {
     public class Enchance : MonoBehaviour
     {

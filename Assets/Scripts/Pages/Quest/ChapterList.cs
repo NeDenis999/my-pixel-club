@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.Quest
+namespace FarmPage.Quest
 {
     public class ChapterList : MonoBehaviour
     {

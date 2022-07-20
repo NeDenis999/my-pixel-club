@@ -2,7 +2,7 @@ using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pages.Enhance
+namespace FarmPage.Enhance
 {
     public class EnchanceCardCell : CardCell
     {

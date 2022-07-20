@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.Enhance
+namespace FarmPage.Enhance
 {
     public class EnchanceCardCollection : MonoBehaviour
     {

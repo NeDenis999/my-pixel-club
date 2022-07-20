@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Pages.Shop
+namespace FarmPage.Shop
 {
     public class ConfirmWindow : MonoBehaviour 
     {
@@ -38,10 +38,12 @@ namespace Pages.Shop
         [SerializeField] 
         private ConfirmWindowAnimator _confirmWindowAnimator;
 
+        [SerializeField] private GoldWallet _goldWallet;
+
         private ShopItem _shopItem;
         private DataSaveLoadService _dataSaveLoadService;
         
-        public event UnityAction<int> OnWithdrawMoney;
+        
 
         [Inject]
         private void Construct(DataSaveLoadService dataSaveLoadService)
@@ -58,7 +60,6 @@ namespace Pages.Shop
             _itemType.text = item.name;
             _iconImage.sprite = item.UIIcon;
             _descriptionText.text = item.name;
-            _descriptionText.color = item.NameColor();
             _countText.text = $"x1";
         }
 
@@ -77,7 +78,7 @@ namespace Pages.Shop
                 else
                     _shop.BuyItem(_shopItem);
             
-                OnWithdrawMoney?.Invoke(_shopItem.Price);
+                _goldWallet.Withdraw—urrency(_shopItem.Price);
             }
 
             _confirmWindowAnimator.PlayBuyAnimation();

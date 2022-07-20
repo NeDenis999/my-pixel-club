@@ -885,8 +885,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3aa00b14c5ab4d448a5fd5605ebed388, type: 2}
   - {fileID: 11400000, guid: ef6d0caeb33560e41b59c6c659b2783e, type: 2}
   - {fileID: 11400000, guid: ef6d0caeb33560e41b59c6c659b2783e, type: 2}
-  _amountEnemyDefValue: 4
   _battleConfirmWindow: {fileID: 0}
+  _randomPrizes:
+  - _prizeScriptableObject: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    _minPrizeValue: 5
+    _maxPrizeValue: 10
 --- !u!114 &1953188537789945391
 MonoBehaviour:
   m_ObjectHideFlags: 0

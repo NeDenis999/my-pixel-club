@@ -3,7 +3,7 @@ using Cards.CardsCell;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Pages.Shop
+namespace FarmPage.Shop
 {
     public class PurchaseWindow : MonoBehaviour
     {

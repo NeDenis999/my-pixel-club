@@ -4,7 +4,7 @@ using UnityEngine;
 using Image = UnityEngine.UI.Image;
 using Sequence = DG.Tweening.Sequence;
 
-namespace Pages.Enhance.Card_Statistic
+namespace FarmPage.Enhance.Card_Statistic
 {
     public class PossibleIncreaseLevelTextAnimator : MonoBehaviour
     {
