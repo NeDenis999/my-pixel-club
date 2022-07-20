@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IRoulette
+public interface IPrize
 {
     public Sprite UIIcon { get; }
-    public string Description { get; }
 
-    void TakeItem(RoulettePage roulettePage);
+    void TakeItem(IIncreaserWalletValueAndCardsCount increaser, int amountValue);
 }

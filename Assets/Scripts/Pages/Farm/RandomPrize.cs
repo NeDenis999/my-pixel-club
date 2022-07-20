@@ -10,11 +10,12 @@ public class RandomPrize : Prize
     public override int AmountPrize => Random.Range(_minPrizeValue, _maxPrizeValue);
     public int MinNumberPrize => _maxPrizeValue;
     public int MaxNumberPrize => _minPrizeValue;
+    public IPrize RoulettePrize => _prize;
 
-    public RandomPrize(int minNumberPrize, int maxNumberPrize, PrizeType prizeType)
+    public RandomPrize(int minNumberPrize, int maxNumberPrize, IPrize roulettePrize)
     {
         _minPrizeValue = minNumberPrize;
         _maxPrizeValue = maxNumberPrize;
-        TypePrize = prizeType;
+        _prize = roulettePrize;
     }
 }

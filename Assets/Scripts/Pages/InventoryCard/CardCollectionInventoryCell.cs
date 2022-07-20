@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Pages.InventoryCard
 {
-    public class CardCollectionInventoryCell : CardCell, IInventory
+    public class CardCollectionInventoryCell : CardCell
     {
         [SerializeField]
         private CardCellInDeck _cellInDeck;

@@ -4,7 +4,7 @@ using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardCollectionCell : CardCell, IInventory
+public class CardCollectionCell : CardCell
 {
     [SerializeField] 
     private Button _button;

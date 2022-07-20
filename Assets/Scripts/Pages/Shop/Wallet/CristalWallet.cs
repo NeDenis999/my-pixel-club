@@ -9,10 +9,6 @@ public class CristalWallet : Wallet
     private void Start()
     {
         _amountMoney = _data.PlayerData.Crystals;
-        
-        _questPrizeWindow.OnAcceruCristal += AddСurrency;
-        roulettePage.OnReceivedCristal += AddСurrency;
-        roulettePage.OnBuyRouletteSpin += WithdrawСurrency;
 
         RefreshText();
     }

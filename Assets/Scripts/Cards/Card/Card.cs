@@ -22,7 +22,7 @@ public enum RaceCard
 }
 
 [CreateAssetMenu(fileName = "Card", menuName = "ScriptableObjects/Card")]
-public class Card : ScriptableObject, ICard, IRoulette
+public class Card : ScriptableObject, ICard, IPrize
 {
     [SerializeField] private Sprite _imageFirstEvolution;
     [SerializeField] private Sprite _imageSecondeEvolution;
@@ -123,10 +123,10 @@ public class Card : ScriptableObject, ICard, IRoulette
 
         return cardData;
     }
-    
-    public void TakeItem(RoulettePage roulettePage)
+
+    public void TakeItem(IIncreaserWalletValueAndCardsCount increaser, int amountValue)
     {
-        roulettePage.AccrueCard(GetCardData());
+        increaser.AccrueCard(GetCardData(), amountValue);
     }
 
     public Sprite GetFrame()

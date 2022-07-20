@@ -35,7 +35,7 @@ public class PosiblePrizesWindow : MonoBehaviour
         for (int i = 0; i < randomPrizes.Length; i++)
             randomPrizes[i] = new RandomPrize(place.Data.RandomPrizes[i].MinNumberPrize * _cooldownSelector.PrizeMultiplyer, 
                                               place.Data.RandomPrizes[i].MaxNumberPrize * _cooldownSelector.PrizeMultiplyer, 
-                                              place.Data.RandomPrizes[i].TypePrize);
+                                              place.Data.RandomPrizes[i].RoulettePrize);
 
         _currentRandomPrizes = randomPrizes;
     }

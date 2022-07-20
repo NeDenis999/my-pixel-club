@@ -15,8 +15,7 @@ public abstract class ShopItem : ScriptableObject, IShopItem
 {
     [SerializeField] private Sprite _image;
     [SerializeField] private ShopItemType _itemType;
-    [SerializeField] private int _price;    
-    [SerializeField] private string _discription;
+    [SerializeField] private int _price;
 
     [SerializeField] 
     private int _count = 1;
@@ -28,7 +27,6 @@ public abstract class ShopItem : ScriptableObject, IShopItem
     public ShopItemType TypeItem => _itemType;    
     public int Price => _price;
     public int Count => _count;
-    public string Statistic => _discription;
     public ShopItem Item => this;
 
     public Color NameColor()

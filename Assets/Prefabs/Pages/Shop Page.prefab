@@ -4459,6 +4459,7 @@ MonoBehaviour:
   _collectButton: {fileID: 2078025796979574847}
   _rouletteAnimator: {fileID: 2678674065988981243}
   _cristalWallet: {fileID: 0}
+  _goldWallet: {fileID: 0}
 --- !u!114 &2678674065988981243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8712,7 +8713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11231,6 +11232,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &7032191267287920672 stripped
@@ -11368,6 +11381,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &8065182110545492124 stripped
@@ -11505,6 +11530,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!114 &7763193657685797884 stripped
@@ -11638,6 +11675,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!114 &8012225008917780745 stripped
@@ -11759,6 +11808,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &5498990048689237146 stripped
@@ -11896,6 +11957,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &5609726260551583066 stripped
@@ -12033,6 +12106,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e85928ac02c6f1458740841d7df748e, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!114 &5184729891893188123 stripped
@@ -12166,6 +12251,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 515f12d6bd134ba4a8a7c3e33e7dc933, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &2963137355607210528 stripped
@@ -12343,10 +12440,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6467202136019222124}
     m_Modifications:
-    - target: {fileID: 451018898083042250, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5892639039252034865, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: m_Name
       value: Roulette Cell
@@ -12386,18 +12479,6 @@ PrefabInstance:
     - target: {fileID: 7351147306111133483, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: m_SizeDelta.y
       value: 9.823
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351147306111133483, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2652
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351147306111133483, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2652
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351147306111133483, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2652
       objectReference: {fileID: 0}
     - target: {fileID: 7351147306111133483, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12584,6 +12665,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &530985225075577659 stripped
@@ -12717,6 +12810,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 53c00ec94480f234caac40d5acaefc0c, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &396108270129278126 stripped
@@ -12854,6 +12959,18 @@ PrefabInstance:
       propertyPath: _rouletteItem._amountPrize
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._minPrizeValue
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._prizeScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    - target: {fileID: 8934013636350569253, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
+      propertyPath: _rouletteItem._scriptableWhichRealizeIPrize
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8bfbcdfe4889c4d8cc59965895c1c5, type: 3}
 --- !u!224 &177951904489839953 stripped

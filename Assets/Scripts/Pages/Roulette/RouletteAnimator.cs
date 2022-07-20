@@ -71,7 +71,7 @@ namespace Pages.Roulette
 
             _prizeImage.color = Color.white;
             _prizeImage.sprite = _currentCell.RouletteItem.UIIcon;
-            _prizeText.text = _currentCell.RouletteItem.Description;
+            _prizeText.text = _currentCell.Name;
             var prizeView = _prizeImage.transform;
             _currentParrent = prizeView.transform.parent;
             _previousCurrentCellScale = prizeView.localScale;

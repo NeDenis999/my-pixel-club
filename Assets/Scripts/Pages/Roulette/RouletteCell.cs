@@ -11,12 +11,14 @@ public class RouletteCell : MonoBehaviour
     [SerializeField] private TMP_Text _amountPrize;
 
     [SerializeField] private Prize _rouletteItem;
-    
-    public IRoulette RouletteItem => _rouletteItem;
+    public Prize RouletteItem => _rouletteItem;
+
+    [SerializeField] private string _name;
+    public string Name => _name;
 
     private void Start()
     {
-        Render(RouletteItem);
+        Render(_rouletteItem);
         Unselect();
     }
 
@@ -32,10 +34,9 @@ public class RouletteCell : MonoBehaviour
         _icon.color = new Color(0.5f, 0.5f, 0.5f,1);
     }
 
-    private void Render(IRoulette item)
+    private void Render(Prize prize)
     {
-        _icon.sprite = item.UIIcon;
-        if(item is Prize)
-            _amountPrize.text = (item as Prize).AmountPrize.ToString();
+        _icon.sprite = prize.UIIcon;
+        _amountPrize.text = prize.AmountPrize.ToString();
     }    
 }

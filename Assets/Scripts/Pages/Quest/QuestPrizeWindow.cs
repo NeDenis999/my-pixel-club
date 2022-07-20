@@ -6,20 +6,22 @@ using Pages.Quest;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Data;
 
-public class QuestPrizeWindow : MonoBehaviour
+public class QuestPrizeWindow : MonoBehaviour, IIncreaserWalletValueAndCardsCount
 {
-    public event UnityAction<int> OnAcceruGold;
-    public event UnityAction<int> OnAcceruCristal;
-
     [SerializeField] private List<Prize> _variationPrizes;
     [SerializeField] private PrizeCell _prizeCellTemplate;
     [SerializeField] private Transform _container;
     [SerializeField] private BattleController _battle;
     [SerializeField] private Button _collectButton;
+
+    [SerializeField] private CardCollection _cardCollection;
+    [SerializeField] private CristalWallet _cristalWallet;
+    [SerializeField] private GoldWallet _goldWallet;
     
     
-    private List<PrizeCell> _prizes = new();
+    private List<PrizeCell> _prizeCells = new();
 
     private void Start()
     {
@@ -51,7 +53,7 @@ public class QuestPrizeWindow : MonoBehaviour
     {
         for (int i = 0; i < prizes.Length; i++)
         {
-            _prizes.Add(AddNewPrize(prizes[i]));
+            _prizeCells.Add(AddNewPrize(prizes[i]));
         }
     }
 
@@ -64,21 +66,22 @@ public class QuestPrizeWindow : MonoBehaviour
 
     private void AccruePrizes()
     {
-        foreach (var prize in _prizes)
+        foreach (var prizeCell in _prizeCells)
         {
-            switch (prize.TypePrize)
-            {
-                case PrizeType.Gold:
-                    OnAcceruGold?.Invoke(prize.AmountPrize);
-                    break;
-                case PrizeType.Cristal:
-                    OnAcceruCristal?.Invoke(prize.AmountPrize);
-                    break;
-                default:
-                    throw new System.ArgumentException();
-            }
+            prizeCell.Prize.TakeItem(this, prizeCell.AmountPrize);
         }
 
-        _prizes.Clear();
+        _prizeCells.Clear();
     }
+
+    public void AccrueCard(CardData card, int count)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AccrueCristal(int amountCristal) =>
+        _cristalWallet.Add—urrency(amountCristal);
+
+    public void AccrueGold(int amountGold) =>
+        _goldWallet.Add—urrency(amountGold);
 }

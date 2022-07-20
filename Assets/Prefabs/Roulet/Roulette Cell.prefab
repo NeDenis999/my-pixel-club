@@ -429,10 +429,9 @@ MonoBehaviour:
   _icon: {fileID: 8040631933473356517}
   _amountPrize: {fileID: 4858670736856469521}
   _rouletteItem:
-    GoldSprite: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-    CristalSprite: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-    _amountPrize: 1
-    TypePrize: 0
+    _prizeScriptableObject: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+    _minPrizeValue: 5
+  _name: Cristal
 --- !u!1 &6206167470235170814
 GameObject:
   m_ObjectHideFlags: 0

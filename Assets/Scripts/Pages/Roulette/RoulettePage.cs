@@ -5,33 +5,23 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 
-public class RoulettePage : MonoBehaviour
+public class RoulettePage : MonoBehaviour, IIncreaserWalletValueAndCardsCount
 {
-    public event UnityAction<int> OnReceivedCristal;
-    public event UnityAction<int> OnReceivedGold;
-    public event UnityAction<int> OnBuyRouletteSpin;
-
     [SerializeField] private CardCollection _cardCollection;
 
     [SerializeField]
     private RouletteCell[] _rouletteCells;
 
-    [SerializeField]
-    private int _spinePrise;
+    [SerializeField] private int _spinePrise;
 
-    [SerializeField]
-    private Button _startRoletteButton;
+    [SerializeField] private Button _startRoletteButton, _collectButton;
 
-    [SerializeField]
-    private Button _collectButton;
+    [SerializeField] private RouletteAnimator _rouletteAnimator;
 
-    [SerializeField]
-    private RouletteAnimator _rouletteAnimator;
+    [SerializeField] private CristalWallet _cristalWallet;
+    [SerializeField] private GoldWallet _goldWallet;
 
-    [SerializeField]
-    private CristalWallet _cristalWallet;
-
-    private int _prize;
+    private int _numbmerPrize;
 
     private void OnEnable()
     {
@@ -45,42 +35,42 @@ public class RoulettePage : MonoBehaviour
         _collectButton.onClick.RemoveListener(StartCloseWinningPanel);
     }
 
-    public void AccrueCard(CardData card)
+    public void AccrueCard(CardData card, int count)
     {
-        _cardCollection.AddCard(card);
+        for (int i = 0; i < count; i++)
+            _cardCollection.AddCard(card);
     }
 
-    public void AccrueCristal(int amountCristal) => 
-        OnReceivedCristal?.Invoke(amountCristal);
+    public void AccrueCristal(int amountCristal) =>
+        _cristalWallet.AddÑurrency(amountCristal);
 
-    public void AccrueGold(int amountGold) => 
-        OnReceivedGold?.Invoke(amountGold);
+    public void AccrueGold(int amountGold) =>
+        _goldWallet.AddÑurrency(amountGold);
 
     private void StartSpine()
     {
         if (_cristalWallet.AmountMoney >= _spinePrise)
         {
-            _prize = RandomCell();
+            _numbmerPrize = RandomCell();
                 
             _startRoletteButton.interactable = false;
-            StartCoroutine(_rouletteAnimator.Spine(_prize, _rouletteCells));
-            OnBuyRouletteSpin?.Invoke(_spinePrise);
+            StartCoroutine(_rouletteAnimator.Spine(_numbmerPrize, _rouletteCells));
+            _cristalWallet.WithdrawÑurrency(_spinePrise);
         }
     }
         
     private int RandomCell() => 
         Random.Range(0, _rouletteCells.Length);
     
-    private void TakeItem(IRoulette rouletteItem)
+    private void TakeItem(Prize rouletteItem)
     {
-        var taker = rouletteItem;
-        taker.TakeItem(this);
+       rouletteItem.TakeItem(this);
     }
 
     private void StartCloseWinningPanel()
     {
         StartCoroutine(_rouletteAnimator.CloseWinningPanel(_startRoletteButton));
-        TakeItem(_rouletteCells[_prize].RouletteItem);
+        TakeItem(_rouletteCells[_numbmerPrize].RouletteItem);
     }
 }
 

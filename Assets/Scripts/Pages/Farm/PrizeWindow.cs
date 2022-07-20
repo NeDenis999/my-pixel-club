@@ -1,8 +1,9 @@
+using Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrizeWindow : MonoBehaviour
+public class PrizeWindow : MonoBehaviour, IIncreaserWalletValueAndCardsCount
 {
     [SerializeField] private Transform _container;
     [SerializeField] private PrizeCell _prizeCellTamplate;
@@ -27,10 +28,22 @@ public class PrizeWindow : MonoBehaviour
             var cell = Instantiate(_prizeCellTamplate, _container);
             cell.RenderGetingPrize(prize);
 
-            if (cell.TypePrize == PrizeType.Cristal)
-                _cristalWallet.Add—urrency(cell.AmountPrize);
-            else
-                _goldWallet.Add—urrency(cell.AmountPrize);
+            cell.Prize.TakeItem(this, cell.AmountPrize);
         }
+    }
+
+    public void AccrueCard(CardData card, int count)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AccrueCristal(int amountCristal)
+    {
+        _cristalWallet.Add—urrency(amountCristal);
+    }
+
+    public void AccrueGold(int amountGold)
+    {
+        _goldWallet.Add—urrency(amountGold);
     }
 }

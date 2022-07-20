@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public enum PrizeType
 {
@@ -13,37 +12,30 @@ public enum PrizeType
 }
 
 [System.Serializable]
-public class Prize : IRoulette
+public class Prize 
 {
-    [Inject]
-    private void Construct(AssetProviderService assetProviderService)
-    {
-        _goldSprite = assetProviderService.GoldSprite;
-        _cristalSprite = assetProviderService.CristalSprite;
-    }
+    [SerializeField] private ScriptableObject _prizeScriptableObject;
+
+    protected IPrize _prize;
 
     [SerializeField] protected int _minPrizeValue;
     public virtual int AmountPrize => _minPrizeValue;
-
-    public PrizeType TypePrize;
-
-    private Sprite _goldSprite, _cristalSprite;
-
-    public Sprite UIIcon 
-    {
-        get 
+    public Sprite UIIcon
+    { 
+        get
         {
-            return TypePrize == PrizeType.Gold ? _goldSprite : _cristalSprite;
+            if (_prizeScriptableObject is not IPrize) throw new System.InvalidOperationException("ScriptableObject is not realize IPrize");
+            _prize = (_prizeScriptableObject as IPrize);
+
+            return _prize.UIIcon;
         }
     }
-    public string Description => TypePrize.ToString();
 
-    public void TakeItem(RoulettePage roulettePage)
+    public void TakeItem(IIncreaserWalletValueAndCardsCount increaser)
     {
-        if (TypePrize == PrizeType.Cristal)
-            roulettePage.AccrueCristal(AmountPrize);
+        if (_prize is not IPrize) throw new System.InvalidOperationException("ScriptableObject is not realize IPrize");
+        _prize = (_prizeScriptableObject as IPrize);
 
-        if (TypePrize == PrizeType.Gold)
-            roulettePage.AccrueGold(AmountPrize);
+        _prize.TakeItem(increaser, AmountPrize);
     }
 }
