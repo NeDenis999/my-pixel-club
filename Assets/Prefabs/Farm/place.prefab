@@ -466,12 +466,9 @@ MonoBehaviour:
       \u043B\u0438\u0441\u044C\u0435\u0432 \u0437\u0430 \u0448\u0451\u043F\u043E\u0442
       \u0432\u0435\u0442\u0440\u0430."
     RandomPrizes:
-    - GoldSprite: {fileID: 21300000, guid: c8a26c0f7b78b6443992528f4dc5f288, type: 3}
-      CristalSprite: {fileID: 21300000, guid: 1bc97c349937a6748a14e82c838bd49c, type: 3}
-      _amountPrize: 0
-      TypePrize: 0
-      MinNumberPrize: 3
-      MaxNumberPrize: 7
+    - _prize: {fileID: 11400000, guid: 58ad102e19c3bc346bea8b9fdd3058d7, type: 2}
+      _minPrizeValue: 0
+      _maxPrizeValue: 0
     CharacterType: 1
   _informationWindow: {fileID: 0}
   _characterImage: {fileID: 6139378432547552028}
@@ -493,7 +490,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2070474833912736702}
   _selectRectTransform: {fileID: 8450021662735973341}
-  _button: {fileID: 1584631200126108532}
 --- !u!114 &7393538789031664700
 MonoBehaviour:
   m_ObjectHideFlags: 0

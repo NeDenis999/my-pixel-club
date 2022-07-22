@@ -47,8 +47,8 @@ namespace FarmPage.Quest
             {
                 _lockedImage.SetActive(false);
 
-                _chapterList.InitAllChapter();
                 _chapterList.CloseAllChapters();
+                _chapterList.InitAllChapter();
                 Open();
             }
         }

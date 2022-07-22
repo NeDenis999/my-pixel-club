@@ -2355,7 +2355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hideAndSeekPages: {fileID: 0}
   _pageToOpen: {fileID: 0}
-  _shopCategoryRendering: {fileID: 0}
+  _eventRenderingButton: {fileID: 0}
   _image: {fileID: 2877042365024934373}
 --- !u!114 &25699354789724862
 MonoBehaviour:
@@ -3488,8 +3488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09200001, y: 0.17683569}
   m_AnchorMax: {x: 0.94400007, y: 0.7962337}
-  m_AnchoredPosition: {x: -4.8199997, y: 0.27000046}
-  m_SizeDelta: {x: 27.74, y: 8.67}
+  m_AnchoredPosition: {x: -4.8199997, y: 1.3700008}
+  m_SizeDelta: {x: 27.74, y: 13.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &61691805108831596
 CanvasRenderer:
@@ -3979,7 +3979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hideAndSeekPages: {fileID: 0}
   _pageToOpen: {fileID: 0}
-  _shopCategoryRendering: {fileID: 0}
+  _eventRenderingButton: {fileID: 0}
   _image: {fileID: 433111284514847308}
 --- !u!114 &9063388187612736357
 MonoBehaviour:
@@ -4741,8 +4741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09200001, y: 0.17683569}
   m_AnchorMax: {x: 0.94400007, y: 0.7962337}
-  m_AnchoredPosition: {x: -4.8199997, y: 0.87999916}
-  m_SizeDelta: {x: 27.74, y: 13.13}
+  m_AnchoredPosition: {x: -4.8199997, y: 3.8665}
+  m_SizeDelta: {x: 27.74, y: 19.103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5143834029720976756
 CanvasRenderer:
@@ -7834,10 +7834,10 @@ RectTransform:
   m_Father: {fileID: 7142938793481687736}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.91945946, y: 1}
-  m_AnchoredPosition: {x: 11.199997, y: 0.6000004}
-  m_SizeDelta: {x: -7.6124544, y: -13.718292}
+  m_AnchorMin: {x: 0.049000002, y: 0}
+  m_AnchorMax: {x: 0.95622075, y: 0.92224455}
+  m_AnchoredPosition: {x: -0.2415924, y: 4.54}
+  m_SizeDelta: {x: -4.33, y: -5.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7142938793020624412
 CanvasRenderer:
@@ -7867,7 +7867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MTVY
+  m_text: nic
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d378edc0a33ba134daa0a0fde89866a8, type: 2}
   m_sharedMaterial: {fileID: 4544939809095864320, guid: d378edc0a33ba134daa0a0fde89866a8, type: 2}
@@ -8244,10 +8244,10 @@ RectTransform:
   m_Father: {fileID: 7142938793313302154}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.09200001, y: 0.17683569}
+  m_AnchorMin: {x: 0.008869194, y: 0.08415508}
   m_AnchorMax: {x: 0.94400007, y: 0.7962337}
-  m_AnchoredPosition: {x: -4.8199997, y: 0.27000046}
-  m_SizeDelta: {x: 27.74, y: 8.67}
+  m_AnchoredPosition: {x: 5.119463, y: 3.2}
+  m_SizeDelta: {x: 7.86, y: 5.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7142938793179955823
 CanvasRenderer:

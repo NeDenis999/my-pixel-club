@@ -22,7 +22,7 @@ namespace FarmPage.Quest
 
         public void InitAllChapter()
         {
-            _srollbar.value = 1;
+            _srollbar.value = 1f;
 
             for (int i = 0; i < _chapters.Length; i++)
             {
@@ -30,7 +30,7 @@ namespace FarmPage.Quest
                     _chapters[i].UnlockedChapter();
 
                 if(_dataSaveLoadService.PlayerData.CountQuestPassed > i)
-                    _srollbar.value -= 0.15f;
+                    _srollbar.value -= 0.2f;
 
                 _chapters[i].Id = i;
             }

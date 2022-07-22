@@ -14,9 +14,9 @@ public enum PrizeType
 [System.Serializable]
 public class Prize 
 {
-    [SerializeField] private ScriptableObject _prize;
+    [SerializeField] private ScriptableObject _prizeAsScriptableObject;
 
-    public virtual IPrize PrizeAsInterface => _prize as IPrize;
+    public virtual IPrize PrizeAsInterface => _prizeAsScriptableObject as IPrize;
 
     [SerializeField] protected int _minPrizeValue;
     public virtual int AmountPrize => _minPrizeValue;
@@ -24,7 +24,7 @@ public class Prize
     {
         get
         {
-            return (_prize as IPrize).UIIcon;
+           return PrizeAsInterface.UIIcon;
         }
     }
     public void TakeItem(IIncreaserWalletValueAndCardsCount increaser)

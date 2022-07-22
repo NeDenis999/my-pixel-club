@@ -17,12 +17,6 @@ public class CooldownSelector : MonoBehaviour
     private void Start()
     {
         PrizeMultiplyer = 1;
-        _listCharacterForSet.OnCharacterSelected += TurnOffCooldownSelector;        
-    }
-
-    private void OnApplicationQuit()
-    {
-        _listCharacterForSet.OnCharacterSelected -= TurnOffCooldownSelector;
     }
 
     public void SetCooldown(float value)
@@ -32,10 +26,5 @@ public class CooldownSelector : MonoBehaviour
         PrizeMultiplyer = (int)(value / 5f);
         Cooldown = value;
         OnCooldownChanged?.Invoke();
-    }
-
-    private void TurnOffCooldownSelector()
-    {
-        gameObject.SetActive(false);
     }
 }

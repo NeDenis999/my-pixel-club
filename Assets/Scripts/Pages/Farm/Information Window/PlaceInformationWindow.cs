@@ -30,9 +30,16 @@ public class PlaceInformationWindow : MonoBehaviour
     
     private Farm _farm;
 
+    private Action _setCharacter;
+
     private void OnEnable()
     {
         _cooldownSelector.OnCooldownChanged += SetCooldownMultiplyer;
+        _characterList.OnCharacterSelected += (setCharacter) =>
+        {
+            RenderButton(_farm.Place);
+            _setCharacter = setCharacter;
+        };
     }
 
     private void OnDisable()
@@ -80,6 +87,7 @@ public class PlaceInformationWindow : MonoBehaviour
     {
         _setOrUnsetCharacterButton.onClick.RemoveAllListeners();
         _cooldownSelector.gameObject.SetActive(false);
+        _setCharacter = null;
 
         if (_farm.CanClaimRewared)
         {
@@ -101,13 +109,20 @@ public class PlaceInformationWindow : MonoBehaviour
         }
         else
         {
-            _setOrUnsetCharacterButtonText.text = "Set";
-            _setOrUnsetCharacterButton.onClick.AddListener(() =>
+            if (_setCharacter != null)
             {
-                _characterList.OpenCharacterList(place);
-                _farm.SetCooldown(_cooldownSelector.Cooldown);                
-            });
-            _cooldownSelector.gameObject.SetActive(true);
+                _setOrUnsetCharacterButtonText.text = "Set";
+                _setOrUnsetCharacterButton.onClick.AddListener(() =>
+                {
+                    _farm.SetCooldown(_cooldownSelector.Cooldown);
+                    _setCharacter.Invoke();
+                });
+                _cooldownSelector.gameObject.SetActive(true);
+            }
+            else
+            {
+                _setOrUnsetCharacterButton.gameObject.SetActive(false);
+            }
         }
     }   
 

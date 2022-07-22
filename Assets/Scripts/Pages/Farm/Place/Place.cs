@@ -8,7 +8,8 @@ namespace FarmPage.Farm
     {
         [SerializeField] private PlaceData _data;
 
-        [SerializeField] private PlaceInformationWindow _informationWindow;    
+        [SerializeField] private PlaceInformationWindow _informationWindow;
+        [SerializeField] private ListCharacterForSet _listCharacterForSet;
 
         [SerializeField] private Image _characterImage;
 
@@ -31,7 +32,11 @@ namespace FarmPage.Farm
 
         private void OnEnable()
         {
-            GetComponent<Button>().onClick.AddListener(() => _informationWindow.Render(this));
+            GetComponent<Button>().onClick.AddListener(() => 
+            {
+                _informationWindow.Render(this);
+                _listCharacterForSet.OpenCharacterList(this);
+            });
         }
 
         private void OnDisable()
@@ -47,12 +52,11 @@ namespace FarmPage.Farm
 
             _farm.StartFarm();
             _informationWindow.Render(this);
+            _listCharacterForSet.gameObject.SetActive(false);
         }
 
         public void UnsetCharacter()
-        {
-            print("UnsetCharacter");
-            
+        {             
             _isSet = false;
             _maskImage.color = _unsetCharacterColor;
             _farm.ClaimRewards();

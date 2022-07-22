@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Zenject;
+using System;
 
 public enum PlaceCharacterType
 {
@@ -16,17 +17,19 @@ public enum PlaceCharacterType
 
 public class ListCharacterForSet : MonoBehaviour
 {
-    public event UnityAction OnCharacterSelected;
+    public event UnityAction<Action> OnCharacterSelected;
 
     [SerializeField] private Transform _container;
     [SerializeField] private CharacterCell _characterCellTamplate;
     [SerializeField] private List<Sprite> _cardSprite;
 
+    [SerializeField] private PlaceInformationWindow _informationWindow;
+
     private List<Sprite> _nftSprites;
-    private Place _place;
     private List<CharacterCell> _characterCells = new();
 
-    public List<CharacterCell> CharacterCells => _characterCells;
+    private Action<CharacterCell> _setCharacter;
+    private CharacterCell _selectionCharacter;
 
     [Inject]
     private void Construct(AssetProviderService assetProviderService)
@@ -49,19 +52,23 @@ public class ListCharacterForSet : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        _place = place;
-
         if (place.Data.CharacterType == PlaceCharacterType.NFT)
             Render(_nftSprites);
         else
             Render(_cardSprite);
+
+        _setCharacter = place.SetCharacter;
     }
 
     private void SelectCharacter(CharacterCell character)
     {
-        _place.SetCharacter(character);
-        _ = _nftSprites.Contains(character.CharacterSprite) ? _nftSprites.Remove(character.CharacterSprite) : _cardSprite.Remove(character.CharacterSprite);
-        OnCharacterSelected?.Invoke();
+        _selectionCharacter = character;
+        OnCharacterSelected?.Invoke(SetCharacter);
+    }
+
+    private void SetCharacter()
+    {
+        _setCharacter.Invoke(_selectionCharacter);
         gameObject.SetActive(false);
     }
 
